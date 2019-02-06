@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
      <spacer name="horizontalSpacer">
       <property name="orientation">
@@ -85,21 +85,21 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
-               <widget class="QPushButton" name="startPushButton">
+               <widget class="QPushButton" name="buttonStart">
                 <property name="text">
                  <string>Start</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="editPushButton">
+               <widget class="QPushButton" name="buttonEdit">
                 <property name="text">
                  <string>Edit</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="removePushButton">
+               <widget class="QPushButton" name="buttonRemove">
                 <property name="text">
                  <string>Remove</string>
                 </property>
@@ -138,121 +138,136 @@
      </widget>
     </item>
     <item>
-     <widget class="QProgressBar" name="durationProgressBar">
-      <property name="value">
-       <number>24</number>
-      </property>
-      <property name="format">
-       <string notr="true">%v%</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <property name="spacing">
-       <number>5</number>
-      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
-       <widget class="QToolButton" name="playButton">
-        <property name="text">
-         <string>...</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <property name="spacing">
-         <number>0</number>
-        </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QToolButton" name="previousButton">
-          <property name="text">
-           <string>...</string>
+         <widget class="QProgressBar" name="durationProgressBar">
+          <property name="value">
+           <number>24</number>
+          </property>
+          <property name="format">
+           <string notr="true">%v%</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="stopButton">
-          <property name="text">
-           <string>...</string>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>5</number>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="nextButton">
-          <property name="text">
-           <string>...</string>
-          </property>
-         </widget>
+          <item>
+           <widget class="QToolButton" name="playButton">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QToolButton" name="previousButton">
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="stopButton">
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="nextButton">
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QToolButton" name="playlistButton">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="volumeSlider">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
       <item>
-       <widget class="QToolButton" name="playlistButton">
+       <widget class="QLabel" name="coverLabel">
         <property name="text">
-         <string>...</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QSlider" name="volumeSlider">
-        <property name="maximum">
-         <number>100</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <string/>
         </property>
        </widget>
       </item>
@@ -311,37 +326,63 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/menu/icons/About.png</normaloff>:/menu/icons/About.png</iconset>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
   </action>
   <action name="actionHelp">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/menu/icons/Help.png</normaloff>:/menu/icons/Help.png</iconset>
+   </property>
    <property name="text">
     <string>Help</string>
    </property>
   </action>
   <action name="actionEnglish">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/menu/icons/English128x86.png</normaloff>:/menu/icons/English128x86.png</iconset>
+   </property>
    <property name="text">
     <string>English</string>
    </property>
   </action>
   <action name="actionRussian">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/menu/icons/Russia128x86.png</normaloff>:/menu/icons/Russia128x86.png</iconset>
+   </property>
    <property name="text">
     <string>Russian</string>
    </property>
   </action>
   <action name="actionStart_Game">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/menu/icons/Start.png</normaloff>:/menu/icons/Start.png</iconset>
+   </property>
    <property name="text">
     <string>Start Game</string>
    </property>
   </action>
   <action name="actionQuit">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/menu/icons/Exit.png</normaloff>:/menu/icons/Exit.png</iconset>
+   </property>
    <property name="text">
     <string>Quit</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

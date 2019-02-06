@@ -7,4 +7,12 @@
         <file>icons/stop-button.png</file>
         <file>icons/song-playlist.png</file>
     </qresource>
+    <qresource prefix="/menu">
+        <file>icons/Russia128x86.png</file>
+        <file>icons/Start.png</file>
+        <file>icons/Exit.png</file>
+        <file>icons/About.png</file>
+        <file>icons/Help.png</file>
+        <file>icons/English128x86.png</file>
+    </qresource>
 </RCC>

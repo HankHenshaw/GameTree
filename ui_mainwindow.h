@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -45,7 +46,7 @@ public:
     QAction *actionStart_Game;
     QAction *actionQuit;
     QWidget *centralWidget;
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *verticalLayout_4;
     QSpacerItem *horizontalSpacer;
     QSpacerItem *horizontalSpacer_2;
     QStackedWidget *stackedWidget;
@@ -58,13 +59,15 @@ public:
     QWidget *tab;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_4;
-    QPushButton *startPushButton;
-    QPushButton *editPushButton;
-    QPushButton *removePushButton;
+    QPushButton *buttonStart;
+    QPushButton *buttonEdit;
+    QPushButton *buttonRemove;
     QSpacerItem *horizontalSpacer_7;
     QTextBrowser *textBrowser;
     QWidget *tab_2;
     QWidget *page_2;
+    QHBoxLayout *horizontalLayout_5;
+    QVBoxLayout *verticalLayout;
     QProgressBar *durationProgressBar;
     QHBoxLayout *horizontalLayout_2;
     QToolButton *playButton;
@@ -78,6 +81,7 @@ public:
     QSpacerItem *horizontalSpacer_5;
     QSpacerItem *horizontalSpacer_6;
     QSlider *volumeSlider;
+    QLabel *coverLabel;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QMenu *menuOption;
@@ -93,29 +97,47 @@ public:
         MainWindow->resize(800, 640);
         actionAbout = new QAction(MainWindow);
         actionAbout->setObjectName(QStringLiteral("actionAbout"));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/menu/icons/About.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionAbout->setIcon(icon);
         actionHelp = new QAction(MainWindow);
         actionHelp->setObjectName(QStringLiteral("actionHelp"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/menu/icons/Help.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionHelp->setIcon(icon1);
         actionEnglish = new QAction(MainWindow);
         actionEnglish->setObjectName(QStringLiteral("actionEnglish"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/menu/icons/English128x86.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionEnglish->setIcon(icon2);
         actionRussian = new QAction(MainWindow);
         actionRussian->setObjectName(QStringLiteral("actionRussian"));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/menu/icons/Russia128x86.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionRussian->setIcon(icon3);
         actionStart_Game = new QAction(MainWindow);
         actionStart_Game->setObjectName(QStringLiteral("actionStart_Game"));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/menu/icons/Start.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionStart_Game->setIcon(icon4);
         actionQuit = new QAction(MainWindow);
         actionQuit->setObjectName(QStringLiteral("actionQuit"));
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/menu/icons/Exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionQuit->setIcon(icon5);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        verticalLayout = new QVBoxLayout(centralWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout_4 = new QVBoxLayout(centralWidget);
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         horizontalSpacer = new QSpacerItem(779, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        verticalLayout->addItem(horizontalSpacer);
+        verticalLayout_4->addItem(horizontalSpacer);
 
         horizontalSpacer_2 = new QSpacerItem(779, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        verticalLayout->addItem(horizontalSpacer_2);
+        verticalLayout_4->addItem(horizontalSpacer_2);
 
         stackedWidget = new QStackedWidget(centralWidget);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
@@ -162,20 +184,20 @@ public:
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        startPushButton = new QPushButton(tab);
-        startPushButton->setObjectName(QStringLiteral("startPushButton"));
+        buttonStart = new QPushButton(tab);
+        buttonStart->setObjectName(QStringLiteral("buttonStart"));
 
-        horizontalLayout_4->addWidget(startPushButton);
+        horizontalLayout_4->addWidget(buttonStart);
 
-        editPushButton = new QPushButton(tab);
-        editPushButton->setObjectName(QStringLiteral("editPushButton"));
+        buttonEdit = new QPushButton(tab);
+        buttonEdit->setObjectName(QStringLiteral("buttonEdit"));
 
-        horizontalLayout_4->addWidget(editPushButton);
+        horizontalLayout_4->addWidget(buttonEdit);
 
-        removePushButton = new QPushButton(tab);
-        removePushButton->setObjectName(QStringLiteral("removePushButton"));
+        buttonRemove = new QPushButton(tab);
+        buttonRemove->setObjectName(QStringLiteral("buttonRemove"));
 
-        horizontalLayout_4->addWidget(removePushButton);
+        horizontalLayout_4->addWidget(buttonRemove);
 
         horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -201,8 +223,14 @@ public:
         page_2->setObjectName(QStringLiteral("page_2"));
         stackedWidget->addWidget(page_2);
 
-        verticalLayout->addWidget(stackedWidget);
+        verticalLayout_4->addWidget(stackedWidget);
 
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         durationProgressBar = new QProgressBar(centralWidget);
         durationProgressBar->setObjectName(QStringLiteral("durationProgressBar"));
         durationProgressBar->setValue(24);
@@ -270,6 +298,17 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
+
+        horizontalLayout_5->addLayout(verticalLayout);
+
+        coverLabel = new QLabel(centralWidget);
+        coverLabel->setObjectName(QStringLiteral("coverLabel"));
+
+        horizontalLayout_5->addWidget(coverLabel);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_5);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -317,9 +356,9 @@ public:
         actionStart_Game->setText(QApplication::translate("MainWindow", "Start Game", Q_NULLPTR));
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", Q_NULLPTR));
         searchGameLine->setPlaceholderText(QApplication::translate("MainWindow", "Search...", Q_NULLPTR));
-        startPushButton->setText(QApplication::translate("MainWindow", "Start", Q_NULLPTR));
-        editPushButton->setText(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
-        removePushButton->setText(QApplication::translate("MainWindow", "Remove", Q_NULLPTR));
+        buttonStart->setText(QApplication::translate("MainWindow", "Start", Q_NULLPTR));
+        buttonEdit->setText(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
+        buttonRemove->setText(QApplication::translate("MainWindow", "Remove", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Info", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", Q_NULLPTR));
         playButton->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
@@ -327,6 +366,7 @@ public:
         stopButton->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
         nextButton->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
         playlistButton->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
+        coverLabel->setText(QString());
         menuMenu->setTitle(QApplication::translate("MainWindow", "Menu", Q_NULLPTR));
         menuOption->setTitle(QApplication::translate("MainWindow", "Option", Q_NULLPTR));
         menuLanguage->setTitle(QApplication::translate("MainWindow", "Language", Q_NULLPTR));

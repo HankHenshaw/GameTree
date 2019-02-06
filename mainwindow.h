@@ -6,6 +6,8 @@
 #include <QMediaPlaylist>
 #include <QTime>
 #include <QProgressBar>
+#include <QTranslator>
+#include <QEvent>
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +33,11 @@ private slots:
     void slotSetProgressPosotion(qint64 n);
     /*Audio Player Slots*/
 
+    /*Translator Slots*/
+    void on_actionRussian_triggered();
+    void on_actionEnglish_triggered();
+    /*Translator Slots*/
+
 private:
     Ui::MainWindow *ui;
 
@@ -41,6 +48,13 @@ private:
     void audioPlayerInit();
     QString msecsToString(qint64 n);
     /*Audio Player*/
+
+    /*Translator*/
+    QTranslator* translator;
+
+    void changeLanguage(QString postfix);
+    void changeEvent(QEvent* event);
+    /*Translator*/
 };
 
 #endif // MAINWINDOW_H

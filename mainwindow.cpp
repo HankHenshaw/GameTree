@@ -5,6 +5,9 @@
 //TODO: RMB Progressbar
 //TODO: Playerlist widget
 //TODO: Mouse Wheel at volumeSlider
+//TODO: Settings
+//TODO: Fix all warnings
+//TODO: Replace menu icons to ~16x16 size
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -12,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    qInfo() << "Audioplayer initialization";
     audioPlayerInit();
 }
 
@@ -97,6 +101,9 @@ void MainWindow::audioPlayerInit()
     // Set text in the middle of the progress bar
     ui->durationProgressBar->setAlignment(Qt::AlignCenter);
     ui->durationProgressBar->setTextVisible(true);
+
+    //TEST: testing label
+    ui->coverLabel->setText("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
 }
 
 void MainWindow::slotSetDuration(qint64 n)
@@ -122,3 +129,49 @@ QString MainWindow::msecsToString(qint64 n)
     return QTime(nHours, nMinutes, nSeconds).toString("hh:mm:ss");
 }
 /*Audio Player*/
+/*Translator*/
+void MainWindow::changeLanguage(QString postfix)
+{
+    QApplication::removeTranslator(translator); // Удаляем старый
+    translator = new QTranslator(this);
+    translator->load(QApplication::applicationName() + "_" + postfix);
+    QApplication::installTranslator(translator); // Устанавливаем новый
+}
+
+void MainWindow::changeEvent(QEvent *event)
+{
+    qDebug() << "Language Change";
+    if(event->type() == QEvent::LanguageChange)
+    {
+        setWindowTitle(tr("GameTree"));
+        ui->menuLanguage->setTitle(tr("Language"));
+        ui->menuHelp->setTitle(tr("Help"));
+        ui->menuMenu->setTitle(tr("Menu"));
+        ui->menuOption->setTitle(tr("Options"));
+        ui->actionAbout->setText(tr("About"));
+        ui->actionHelp->setText(tr("Help"));
+        ui->actionQuit->setText(tr("Quit"));
+        ui->actionEnglish->setText(tr("English"));
+        ui->actionRussian->setText(tr("Russian"));
+        ui->actionStart_Game->setText(tr("Start Game"));
+        ui->buttonEdit->setText(tr("Edit"));
+        ui->buttonStart->setText(tr("Start"));
+        ui->buttonRemove->setText(tr("Remove"));
+        ui->searchGameLine->setPlaceholderText(tr("Search..."));
+    }
+    else
+    {
+        QMainWindow::changeEvent(event);
+    }
+}
+
+void MainWindow::on_actionRussian_triggered()
+{
+    changeLanguage("ru");
+}
+
+void MainWindow::on_actionEnglish_triggered()
+{
+    changeLanguage("en");
+}
+/*Translator*/
