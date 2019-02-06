@@ -8,6 +8,7 @@
 //TODO: Settings
 //TODO: Fix all warnings
 //TODO: Replace menu icons to ~16x16 size
+//TODO: Minimize to tray
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
