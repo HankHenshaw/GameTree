@@ -206,6 +206,7 @@ public:
         durationProgressBar = new QProgressBar(centralWidget);
         durationProgressBar->setObjectName(QStringLiteral("durationProgressBar"));
         durationProgressBar->setValue(24);
+        durationProgressBar->setFormat(QStringLiteral("%v%"));
 
         verticalLayout->addWidget(durationProgressBar);
 
@@ -261,6 +262,7 @@ public:
 
         volumeSlider = new QSlider(centralWidget);
         volumeSlider->setObjectName(QStringLiteral("volumeSlider"));
+        volumeSlider->setMaximum(100);
         volumeSlider->setOrientation(Qt::Horizontal);
 
         horizontalLayout_2->addWidget(volumeSlider);

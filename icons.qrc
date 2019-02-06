@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/audioplayer">
+        <file>icons/next-step-circular-button.png</file>
+        <file>icons/pause-button.png</file>
+        <file>icons/play-button.png</file>
+        <file>icons/previous-step-circular-button.png</file>
+        <file>icons/stop-button.png</file>
+        <file>icons/song-playlist.png</file>
+    </qresource>
+</RCC>

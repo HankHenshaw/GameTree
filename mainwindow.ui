@@ -142,6 +142,9 @@
       <property name="value">
        <number>24</number>
       </property>
+      <property name="format">
+       <string notr="true">%v%</string>
+      </property>
      </widget>
     </item>
     <item>
@@ -245,6 +248,9 @@
       </item>
       <item>
        <widget class="QSlider" name="volumeSlider">
+        <property name="maximum">
+         <number>100</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>

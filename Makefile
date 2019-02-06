@@ -210,6 +210,7 @@ Makefile: GameTree.pro ../../5.9.2/mingw53_32/mkspecs/win32-g++/qmake.conf ../..
 		../../5.9.2/mingw53_32/mkspecs/features/qt_config.prf \
 		../../5.9.2/mingw53_32/mkspecs/win32-g++/qmake.conf \
 		../../5.9.2/mingw53_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../5.9.2/mingw53_32/mkspecs/features/exclusive_builds.prf \
 		../../5.9.2/mingw53_32/mkspecs/features/toolchain.prf \
 		../../5.9.2/mingw53_32/mkspecs/features/default_pre.prf \
@@ -391,6 +392,7 @@ Makefile: GameTree.pro ../../5.9.2/mingw53_32/mkspecs/win32-g++/qmake.conf ../..
 ../../5.9.2/mingw53_32/mkspecs/features/qt_config.prf:
 ../../5.9.2/mingw53_32/mkspecs/win32-g++/qmake.conf:
 ../../5.9.2/mingw53_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../5.9.2/mingw53_32/mkspecs/features/exclusive_builds.prf:
 ../../5.9.2/mingw53_32/mkspecs/features/toolchain.prf:
 ../../5.9.2/mingw53_32/mkspecs/features/default_pre.prf:
