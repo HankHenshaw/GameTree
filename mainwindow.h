@@ -8,6 +8,13 @@
 #include <QProgressBar>
 #include <QTranslator>
 #include <QEvent>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QMap>
+#include <QSet>
+#include "treemodel.h"
+#include "addgamedialog.h"
+#include "addmoddialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,8 +45,26 @@ private slots:
     void on_actionEnglish_triggered();
     /*Translator Slots*/
 
+    /*Context Menu Slots*/
+    void on_treeView_customContextMenuRequested(const QPoint &pos);
+
+    void slotDelete();
+    void slotEdit();
+    void slotEditMod();
+    void slotStart();
+    void slotStartWithParameters();
+    void slotAdd();
+    void slotAddMod();
+    /*Context Menu Slots*/
+
 private:
     Ui::MainWindow *ui;
+
+    /*Model & Proxy*/
+    TreeModel *m_model;
+
+    QModelIndex m_selectedIndex;
+    /*Model & Proxy*/
 
     /*Audio Player*/
     QMediaPlayer *m_audioPlayer;
@@ -55,6 +80,15 @@ private:
     void changeLanguage(QString postfix);
     void changeEvent(QEvent* event);
     /*Translator*/
+
+    /*Sql*/
+    QSqlDatabase m_db;
+
+    QMap<QChar, int> m_mapOfLetters;
+    QMap<QString, QSet<QString>> m_mapOfGames;
+
+    void getDataFromDB();
+    /*Sql*/
 };
 
 #endif // MAINWINDOW_H

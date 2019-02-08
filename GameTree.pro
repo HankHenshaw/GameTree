@@ -27,16 +27,24 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
+    treemodel.cpp \
     treeitem.cpp \
-    treemodel.cpp
+    addgamedialog.cpp \
+    mylineedit.cpp \
+    addmoddialog.cpp
 
 HEADERS += \
         mainwindow.h \
+    treemodel.h \
     treeitem.h \
-    treemodel.h
+    addgamedialog.h \
+    mylineedit.h \
+    addmoddialog.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    addgamedialog.ui \
+    addmoddialog.ui
 
 TRANSLATIONS += GameTree_ru.ts
 

@@ -1,46 +1,201 @@
-06.02.19-17:56 Info: "Game Tree", main.cpp
-06.02.19-17:59 Info: "Game Tree", main.cpp
-06.02.19-17:59 Info: "Game Tree", main.cpp
-06.02.19-18:05 Info: "Game Tree", main.cpp
-06.02.19-18:05 Debug: Language Change, mainwindow.cpp
-06.02.19-18:05 Debug: Language Change, mainwindow.cpp
-06.02.19-18:05 Info: "Game Tree", main.cpp
-06.02.19-18:05 Debug: Language Change, mainwindow.cpp
-06.02.19-18:06 Debug: Language Change, mainwindow.cpp
-06.02.19-18:06 Debug: Language Change, mainwindow.cpp
-06.02.19-18:06 Debug: Language Change, mainwindow.cpp
-06.02.19-18:06 Debug: Language Change, mainwindow.cpp
-06.02.19-18:06 Debug: Language Change, mainwindow.cpp
-06.02.19-18:06 Debug: Language Change, mainwindow.cpp
-06.02.19-18:06 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Info: "Game Tree", main.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Info: "Game Tree", main.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:08 Info: "Game Tree", main.cpp
-06.02.19-18:08 Debug: Language Change, mainwindow.cpp
-06.02.19-18:09 Debug: Language Change, mainwindow.cpp
-06.02.19-18:09 Debug: Language Change, mainwindow.cpp
-06.02.19-18:09 Debug: Language Change, mainwindow.cpp
-06.02.19-18:09 Debug: Language Change, mainwindow.cpp
-06.02.19-18:33 Info: "GameTree", main.cpp
-06.02.19-18:33 Debug: Language Change, mainwindow.cpp
-06.02.19-18:33 Debug: Language Change, mainwindow.cpp
-06.02.19-18:33 Debug: Language Change, mainwindow.cpp
-06.02.19-18:33 Debug: Language Change, mainwindow.cpp
-06.02.19-18:33 Debug: Language Change, mainwindow.cpp
-06.02.19-18:34 Debug: Language Change, mainwindow.cpp
-06.02.19-18:36 Info: "GameTree", main.cpp
-06.02.19-18:36 Debug: Language Change, mainwindow.cpp
-06.02.19-18:36 Debug: Language Change, mainwindow.cpp
-06.02.19-18:36 Debug: Language Change, mainwindow.cpp
-06.02.19-18:36 Debug: Language Change, mainwindow.cpp
-06.02.19-18:36 Debug: Language Change, mainwindow.cpp
+08.02.19-19:39 Info: "GameTree", main.cpp
+08.02.19-19:39 Debug: Language Change, mainwindow.cpp
+08.02.19-19:39 Debug: Add game, mainwindow.cpp
+08.02.19-19:39 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-19:39 Debug: Language Change, mainwindow.cpp
+08.02.19-19:39 Debug: Language Change, mainwindow.cpp
+08.02.19-19:39 Debug: Language Change, mainwindow.cpp
+08.02.19-19:39 Debug: Language Change, mainwindow.cpp
+08.02.19-19:39 Debug: "" "", mainwindow.cpp
+08.02.19-19:39 Debug: Language Change, mainwindow.cpp
+08.02.19-19:40 Debug: Language Change, mainwindow.cpp
+08.02.19-19:40 Debug: Language Change, mainwindow.cpp
+08.02.19-19:40 Info: "GameTree", main.cpp
+08.02.19-19:40 Debug: Language Change, mainwindow.cpp
+08.02.19-19:41 Debug: Add game, mainwindow.cpp
+08.02.19-19:41 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-19:41 Debug: Language Change, mainwindow.cpp
+08.02.19-19:41 Debug: Language Change, mainwindow.cpp
+08.02.19-19:41 Debug: Language Change, mainwindow.cpp
+08.02.19-19:41 Debug: Language Change, mainwindow.cpp
+08.02.19-19:41 Debug: Language Change, mainwindow.cpp
+08.02.19-19:41 Debug: Language Change, mainwindow.cpp
+08.02.19-19:41 Debug: Language Change, mainwindow.cpp
+08.02.19-19:49 Info: "GameTree", main.cpp
+08.02.19-19:49 Debug: Language Change, mainwindow.cpp
+08.02.19-19:49 Debug: Add game, mainwindow.cpp
+08.02.19-19:49 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-19:49 Debug: Language Change, mainwindow.cpp
+08.02.19-19:50 Debug: Language Change, mainwindow.cpp
+08.02.19-19:50 Debug: Language Change, mainwindow.cpp
+08.02.19-19:51 Info: "GameTree", main.cpp
+08.02.19-19:51 Debug: Language Change, mainwindow.cpp
+08.02.19-19:51 Debug: Add game, mainwindow.cpp
+08.02.19-19:51 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-19:51 Debug: Language Change, mainwindow.cpp
+08.02.19-19:51 Debug: Language Change, mainwindow.cpp
+08.02.19-19:51 Debug: "MyNewGame" "C:/vs_community__1750185977.1507509163.exe", mainwindow.cpp
+08.02.19-19:51 Debug: Language Change, mainwindow.cpp
+08.02.19-20:03 Info: "GameTree", main.cpp
+08.02.19-20:03 Debug: Language Change, mainwindow.cpp
+08.02.19-20:03 Debug: Add game, mainwindow.cpp
+08.02.19-20:03 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:03 Debug: Language Change, mainwindow.cpp
+08.02.19-20:03 Debug: Language Change, mainwindow.cpp
+08.02.19-20:03 Debug: "Unreal" "C:/vs_community__1750185977.1507509163.exe", mainwindow.cpp
+08.02.19-20:03 Debug: Letter found, mainwindow.cpp
+08.02.19-20:03 Debug: Language Change, mainwindow.cpp
+08.02.19-20:04 Debug: Language Change, mainwindow.cpp
+08.02.19-20:04 Debug: Language Change, mainwindow.cpp
+08.02.19-20:04 Info: "GameTree", main.cpp
+08.02.19-20:04 Debug: Language Change, mainwindow.cpp
+08.02.19-20:04 Debug: Add game, mainwindow.cpp
+08.02.19-20:04 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:04 Debug: Language Change, mainwindow.cpp
+08.02.19-20:04 Debug: Language Change, mainwindow.cpp
+08.02.19-20:04 Debug: "Unreal" "C:/vs_community__1750185977.1507509163.exe", mainwindow.cpp
+08.02.19-20:04 Debug: Letter found, mainwindow.cpp
+08.02.19-20:04 Debug: Language Change, mainwindow.cpp
+08.02.19-20:13 Info: "GameTree", main.cpp
+08.02.19-20:13 Debug: Language Change, mainwindow.cpp
+08.02.19-20:13 Debug: Add game, mainwindow.cpp
+08.02.19-20:13 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:13 Debug: Language Change, mainwindow.cpp
+08.02.19-20:13 Debug: Language Change, mainwindow.cpp
+08.02.19-20:13 Debug: "Anthem" "C:/vs_community__1750185977.1507509163.exe", mainwindow.cpp
+08.02.19-20:13 Debug: Letter not found, mainwindow.cpp
+08.02.19-20:13 Debug: Language Change, mainwindow.cpp
+08.02.19-20:46 Info: "GameTree", main.cpp
+08.02.19-20:46 Debug: Language Change, mainwindow.cpp
+08.02.19-20:46 Debug: Add mod, mainwindow.cpp
+08.02.19-20:46 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:46 Debug: Language Change, mainwindow.cpp
+08.02.19-20:46 Debug: Language Change, mainwindow.cpp
+08.02.19-20:46 Debug: Language Change, mainwindow.cpp
+08.02.19-20:47 Info: "GameTree", main.cpp
+08.02.19-20:47 Debug: Language Change, mainwindow.cpp
+08.02.19-20:47 Debug: Add mod, mainwindow.cpp
+08.02.19-20:47 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:47 Debug: Language Change, mainwindow.cpp
+08.02.19-20:47 Debug: Language Change, mainwindow.cpp
+08.02.19-20:47 Debug: Add mod, mainwindow.cpp
+08.02.19-20:47 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:47 Debug: Language Change, mainwindow.cpp
+08.02.19-20:47 Debug: Language Change, mainwindow.cpp
+08.02.19-20:47 Debug: Language Change, mainwindow.cpp
+08.02.19-20:48 Info: "GameTree", main.cpp
+08.02.19-20:48 Debug: Language Change, mainwindow.cpp
+08.02.19-20:48 Debug: Add mod, mainwindow.cpp
+08.02.19-20:48 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:48 Debug: Language Change, mainwindow.cpp
+08.02.19-20:48 Debug: Language Change, mainwindow.cpp
+08.02.19-20:48 Debug: Add game, mainwindow.cpp
+08.02.19-20:48 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:48 Debug: Language Change, mainwindow.cpp
+08.02.19-20:48 Debug: Language Change, mainwindow.cpp
+08.02.19-20:48 Debug: Language Change, mainwindow.cpp
+08.02.19-20:50 Info: "GameTree", main.cpp
+08.02.19-20:50 Debug: Language Change, mainwindow.cpp
+08.02.19-20:50 Debug: Add game, mainwindow.cpp
+08.02.19-20:50 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:50 Debug: Language Change, mainwindow.cpp
+08.02.19-20:50 Info: "GameTree", main.cpp
+08.02.19-20:50 Debug: Language Change, mainwindow.cpp
+08.02.19-20:50 Debug: Add game, mainwindow.cpp
+08.02.19-20:50 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:50 Debug: Language Change, mainwindow.cpp
+08.02.19-20:50 Debug: Language Change, mainwindow.cpp
+08.02.19-20:50 Debug: Language Change, mainwindow.cpp
+08.02.19-20:52 Info: "GameTree", main.cpp
+08.02.19-20:52 Debug: Language Change, mainwindow.cpp
+08.02.19-20:53 Debug: Add game, mainwindow.cpp
+08.02.19-20:53 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:53 Debug: Language Change, mainwindow.cpp
+08.02.19-20:53 Debug: Language Change, mainwindow.cpp
+08.02.19-20:53 Debug: Add game, mainwindow.cpp
+08.02.19-20:53 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:53 Debug: Language Change, mainwindow.cpp
+08.02.19-20:53 Debug: Language Change, mainwindow.cpp
+08.02.19-20:53 Debug: Language Change, mainwindow.cpp
+08.02.19-20:53 Debug: Language Change, mainwindow.cpp
+08.02.19-20:53 Debug: Language Change, mainwindow.cpp
+08.02.19-20:54 Info: "GameTree", main.cpp
+08.02.19-20:54 Debug: Language Change, mainwindow.cpp
+08.02.19-20:54 Debug: Add game, mainwindow.cpp
+08.02.19-20:54 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:54 Debug: Language Change, mainwindow.cpp
+08.02.19-20:54 Debug: Language Change, mainwindow.cpp
+08.02.19-20:54 Debug: Add game, mainwindow.cpp
+08.02.19-20:54 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:54 Debug: Language Change, mainwindow.cpp
+08.02.19-20:54 Debug: Language Change, mainwindow.cpp
+08.02.19-20:54 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Info: "GameTree", main.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Debug: Add game, mainwindow.cpp
+08.02.19-20:55 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Info: "GameTree", main.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Info: "GameTree", main.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Debug: Add game, mainwindow.cpp
+08.02.19-20:55 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:55 Debug: Language Change, mainwindow.cpp
+08.02.19-20:56 Info: "GameTree", main.cpp
+08.02.19-20:56 Debug: Language Change, mainwindow.cpp
+08.02.19-20:56 Debug: Add game, mainwindow.cpp
+08.02.19-20:56 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:56 Debug: Language Change, mainwindow.cpp
+08.02.19-20:57 Debug: Language Change, mainwindow.cpp
+08.02.19-20:57 Debug: Language Change, mainwindow.cpp
+08.02.19-20:57 Debug: Language Change, mainwindow.cpp
+08.02.19-20:57 Debug: Language Change, mainwindow.cpp
+08.02.19-20:57 Info: "GameTree", main.cpp
+08.02.19-20:57 Debug: Language Change, mainwindow.cpp
+08.02.19-20:57 Debug: Add game, mainwindow.cpp
+08.02.19-20:57 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-20:57 Debug: Language Change, mainwindow.cpp
+08.02.19-20:57 Debug: Language Change, mainwindow.cpp
+08.02.19-20:57 Debug: Language Change, mainwindow.cpp
+08.02.19-21:00 Info: "GameTree", main.cpp
+08.02.19-21:00 Debug: Language Change, mainwindow.cpp
+08.02.19-21:00 Debug: Add mod, mainwindow.cpp
+08.02.19-21:00 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-21:00 Debug: Language Change, mainwindow.cpp
+08.02.19-21:01 Debug: Language Change, mainwindow.cpp
+08.02.19-21:01 Debug: Language Change, mainwindow.cpp
+08.02.19-21:14 Info: "GameTree", main.cpp
+08.02.19-21:14 Debug: Language Change, mainwindow.cpp
+08.02.19-21:14 Debug: Add mod, mainwindow.cpp
+08.02.19-21:14 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-21:14 Debug: Language Change, mainwindow.cpp
+08.02.19-21:14 Debug: Language Change, mainwindow.cpp
+08.02.19-21:14 Debug: Add mod, mainwindow.cpp
+08.02.19-21:14 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-21:14 Debug: Language Change, mainwindow.cpp
+08.02.19-21:14 Debug: Language Change, mainwindow.cpp
+08.02.19-21:14 Debug: Language Change, mainwindow.cpp
+08.02.19-21:15 Info: "GameTree", main.cpp
+08.02.19-21:15 Debug: Language Change, mainwindow.cpp
+08.02.19-21:15 Debug: Add mod, mainwindow.cpp
+08.02.19-21:15 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-21:15 Debug: Language Change, mainwindow.cpp
+08.02.19-21:15 Debug: Language Change, mainwindow.cpp
+08.02.19-21:15 Debug: Add mod, mainwindow.cpp
+08.02.19-21:15 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-21:15 Debug: Language Change, mainwindow.cpp
+08.02.19-21:15 Debug: Language Change, mainwindow.cpp
+08.02.19-21:15 Debug: Language Change, mainwindow.cpp
+08.02.19-21:17 Info: "GameTree", main.cpp
+08.02.19-21:17 Debug: Language Change, mainwindow.cpp
+08.02.19-21:17 Debug: Add mod, mainwindow.cpp
+08.02.19-21:17 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.02.19-21:17 Debug: Language Change, mainwindow.cpp
+08.02.19-21:17 Debug: Language Change, mainwindow.cpp
+08.02.19-21:17 Debug: Language Change, mainwindow.cpp

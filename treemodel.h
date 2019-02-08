@@ -1,8 +1,9 @@
 #ifndef TREEMODEL_H
 #define TREEMODEL_H
 
-#include <QModelIndex>
 #include <QAbstractItemModel>
+#include <QModelIndex>
+#include <QVariant>
 #include <QDebug>
 #include "treeitem.h"
 
@@ -10,7 +11,7 @@ class TreeModel : public QAbstractItemModel
 {
     Q_OBJECT
 public:
-    TreeModel();
+    TreeModel(QMap<QChar, int> &lettersList,QMap<QString, QSet<QString>> &gamesList,QObject *parent = nullptr); //explicit???
     ~TreeModel() override;
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
@@ -27,9 +28,10 @@ public:
 
     TreeItem *getItem(const QModelIndex &index) const;
     TreeItem* getRoot() const;
-    //QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 private:
     TreeItem *m_rootItem;
 };
+
 
 #endif // TREEMODEL_H
