@@ -17,6 +17,8 @@
 //TODO: Обнулять лог при каждом запуске??
 //TODO: Экранирование всех апострофов в запросах к БД
 //TODO: Запуск мода и запуск мода с параметрами
+//TODO: Абсолютный путь до лога!!!!
+//TODO: Добавить горизонтальный слайдер в ТриВью если название не влезает в отведенную область
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     qInfo() << "Audioplayer initialization";
     audioPlayerInit();
+
     qInfo() << "Get Data From DB";
     getDataFromDB();
 
@@ -214,7 +217,8 @@ void MainWindow::getDataFromDB()
 
             //Подзапрос
             QSqlQuery *subQuery = new QSqlQuery(m_db);
-            QString strSubQuery = "SELECT Title FROM " + tempQueryString;
+            QString strSubQuery = "SELECT Title FROM '" + tempQueryString + "'";
+
             subQuery->exec(strSubQuery);
             bool isSubQuerySuccess = false;
             while(subQuery->next())
@@ -231,7 +235,7 @@ void MainWindow::getDataFromDB()
 
                 //Если поиск удачный, просто добавляем еще 1 значение в сет
                 if(findIterator != endIterator)
-                {
+                {                  
                     findIterator.value().insert(tempSubQueryString);
                 }
                 //Иначе создаем сет, добаляем туда первое значение и создаем новую запись в мар
@@ -288,7 +292,13 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     QAction *startGame = new QAction(tr("Start game"));
 
     //Создаем действие для запуска игры с параметрами
-    QAction *startGameWithParemeters = new QAction(tr("Start game with parameters..."));
+    QAction *startGameWithParameters = new QAction(tr("Start game with parameters..."));
+
+    //Создаем действие для запуска игры с параметрами
+    QAction *startMod = new QAction(tr("Start game"));
+
+    //Создаем действие для запуска игры с параметрами
+    QAction *startModWithParameters = new QAction(tr("Start game with parameters..."));
 
     //Создаем действие для удаления игры
     QAction *deleteGame = new QAction(tr("Delete game/mod"));
@@ -302,8 +312,8 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     //Заполняем оба меню действиями
     invalidIndexMenu.addAction(addGame);
 
-    modMenu.addAction(startGame);
-    modMenu.addAction(startGameWithParemeters);
+    modMenu.addAction(startMod);
+    modMenu.addAction(startModWithParameters);
     modMenu.addSeparator();
     modMenu.addAction(addGame);
     modMenu.addAction(addMod);
@@ -312,7 +322,7 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     modMenu.addAction(deleteGame);
 
     gameMenu.addAction(startGame);
-    gameMenu.addAction(startGameWithParemeters);
+    gameMenu.addAction(startGameWithParameters);
     gameMenu.addSeparator();
     gameMenu.addAction(addGame);
     gameMenu.addAction(addMod);
@@ -329,7 +339,9 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     connect(editMod, &QAction::triggered, this, &MainWindow::slotEditMod);
     connect(deleteGame, &QAction::triggered, this, &MainWindow::slotDelete);
     connect(startGame, &QAction::triggered, this, &MainWindow::slotStart);
-    connect(startGameWithParemeters, &QAction::triggered, this, &MainWindow::slotStartWithParameters);
+    connect(startGameWithParameters, &QAction::triggered, this, &MainWindow::slotStartWithParameters);
+    connect(startMod, &QAction::triggered, this, &MainWindow::slotStartMod);
+    connect(startModWithParameters, &QAction::triggered, this, &MainWindow::slotStartModWithParameters);
 
     //Исп. перемн. класса, а не локальную, для того что бы запоминать послд. выделен. позицию и исп. эту перемен. в слотах QAction
     m_selectedIndex = ui->treeView->indexAt(pos);
@@ -396,7 +408,7 @@ void MainWindow::slotStart()
     queryPath.next();
     QString path = queryPath.value(0).toString();
 
-    qDebug() << "Start Game:" << m_selectedIndex.data().toString() << "From:" << path;
+    qDebug() << "Start Game:" << gameName << "From:" << path;
 
     //Устанавливаем путь до папки где расположен ехе
     QDir dir(path);
@@ -467,6 +479,132 @@ void MainWindow::slotStartWithParameters()
         QDir dir(path);
         dir.cdUp();
 
+        QDir::setCurrent(dir.path());
+
+        //Получаем из пути имя ехе файла
+        QString exeNameReverse;
+        QString::reverse_iterator beginIterator = path.rbegin();
+        QString::reverse_iterator endIterator = path.rend();
+
+        while(beginIterator != endIterator)
+        {
+            if(*beginIterator == '\\')
+                break;
+            exeNameReverse.append(*beginIterator);
+            ++beginIterator;
+        }
+
+        //Экранируем имя
+        QString exeName('\"');
+
+        beginIterator = exeNameReverse.rbegin();
+        endIterator = exeNameReverse.rend();
+
+        while(beginIterator != endIterator)
+        {
+            exeName.append(*beginIterator);
+            ++beginIterator;
+        }
+
+        //Экранируем имя
+        exeName.append('\"');
+
+        QProcess::startDetached(exeName, dialog.getList());
+    }
+}
+
+void MainWindow::slotStartMod()
+{
+    //WARNING: Проблема такого запуска мода, в том, что будет если ехе находится на большей вложенности
+
+    //Получаем имя мода
+    QString modName = m_selectedIndex.data().toString();
+
+    //Получаем имя игры
+    QString gameName = m_selectedIndex.parent().data().toString();
+
+    //Получаем путь до .ехе из БД
+    QString strPath = ("SELECT Path FROM '" + gameName + "' WHERE Title = '" + modName + "'");
+    QSqlQuery queryPath;
+    queryPath.exec(strPath);
+    queryPath.next();
+    QString path = queryPath.value(0).toString();
+
+    qDebug() << "Start Mod:" << modName << "From:" << path;
+
+    //Устанавливаем путь до папки где расположен ехе
+    QDir dir(path);
+    dir.cdUp();
+    QDir::setCurrent(dir.path());
+
+    //Получаем из пути имя ехе файла
+    QString exeNameReverse;
+    QString::reverse_iterator beginIterator = path.rbegin();
+    QString::reverse_iterator endIterator = path.rend();
+
+    while(beginIterator != endIterator)
+    {
+        if(*beginIterator == '\\')
+            break;
+        exeNameReverse.append(*beginIterator);
+        ++beginIterator;
+    }
+
+    //Экранируем имя
+    QString exeName('\"');
+
+    beginIterator = exeNameReverse.rbegin();
+    endIterator = exeNameReverse.rend();
+
+    while(beginIterator != endIterator)
+    {
+        exeName.append(*beginIterator);
+        ++beginIterator;
+    }
+
+    //Экранируем имя
+    exeName.append('\"');
+
+    QProcess::startDetached(exeName);
+}
+
+void MainWindow::slotStartModWithParameters()
+{
+    qDebug() << "Start Mod with parameters:";
+
+    ArgsDialog dialog;
+
+    if(dialog.exec() == QDialog::Accepted)
+    {
+        /*Для печати в дебаг*/
+        //        QStringList tmp = dialog.getList();
+        //        auto itb = tmp.begin();
+        //        auto ite = tmp.end();
+        //        while(itb != ite)
+        //        {
+        //            qDebug() << *itb;
+        //            ++itb;
+        //        }
+        /*Для печати в дебаг*/
+
+        //Получаем имя игры
+        QString modName = m_selectedIndex.data().toString();
+
+        //Получаем имя игры
+        QString gameName = m_selectedIndex.parent().data().toString();
+
+        //Получаем путь до .ехе из БД
+        QString strPath = ("SELECT Path FROM '" + gameName + "' WHERE Title = '" + modName + "'");
+        QSqlQuery queryPath;
+        queryPath.exec(strPath);
+        queryPath.next();
+        QString path = queryPath.value(0).toString();
+
+        qDebug() << "Start Mod:" << modName << "From:" << path;
+
+        //Устанавливаем путь до папки где расположен ехе
+        QDir dir(path);
+        dir.cdUp();
         QDir::setCurrent(dir.path());
 
         //Получаем из пути имя ехе файла

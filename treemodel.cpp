@@ -15,6 +15,26 @@ TreeModel::TreeModel(QMap<QChar, int> &lettersList, QMap<QString, QSet<QString> 
 
     QMap<QString, QSet<QString>>::iterator gamesBeginIterator = gamesList.begin();
 
+
+    /*Test*/
+//    QMap<QString, QSet<QString>>::iterator itb = gamesList.begin();
+//    QMap<QString, QSet<QString>>::iterator ite = gamesList.end();
+//    while(itb != ite)
+//    {
+//        qDebug() << itb.key();
+
+//        QSet<QString>::iterator sitb = itb.value().begin();
+//        QSet<QString>::iterator site = itb.value().end();
+
+//        while(sitb != site)
+//        {
+//            qDebug() << *sitb;
+//            ++sitb;
+//        }
+//        ++itb;
+//    }
+    /*Test*/
+
     //Позиция родителя 0 ур-ня вложенности(не считая корня)
     int parentNumber = 0;
 
@@ -30,13 +50,16 @@ TreeModel::TreeModel(QMap<QChar, int> &lettersList, QMap<QString, QSet<QString> 
         //Счетчик игр
         int counterOfGames = 0;
 
-        //Итераторы по подпозициям в зависимости от позиции
-        QSet<QString>::iterator subGamesBeginIterator = gamesBeginIterator.value().begin();
-        QSet<QString>::iterator subGamesEndIterator = gamesBeginIterator.value().end();
+        //Позиция родителя 1 ур-ня вложенности(подродителя)
+        int subParentNumber = 0;
 
         //while(gamesBeginIterator != gamesEndIterator)
         while(counterOfGames < numberOfParticularGames) // Решить что лучше цикл по списку(мар) игр или по кол-ву
         {
+            //Итераторы по подпозициям в зависимости от позиции
+            QSet<QString>::iterator subGamesBeginIterator = gamesBeginIterator.value().begin();
+            QSet<QString>::iterator subGamesEndIterator = gamesBeginIterator.value().end();
+
             //Добавляем ребенка к родителю 0 ур-ня
             parents.last()->child(parentNumber)->insertChildren(new TreeItem(gamesBeginIterator.key(), parents.last()->child(parentNumber)));
 
@@ -45,9 +68,6 @@ TreeModel::TreeModel(QMap<QChar, int> &lettersList, QMap<QString, QSet<QString> 
 
             //Увеличиваем итератор прохода по подциклу
             ++gamesBeginIterator;
-
-            //Позиция родителя 1 ур-ня вложенности(подродителя)
-            int subParentNumber = 0;
 
             //Цикл по подпозициям
             //Возможно есть смысл сделать тоже отдельный счетчик для подпозиций

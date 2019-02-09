@@ -56,6 +56,8 @@ private slots:
     void slotEditMod();
     void slotStart();
     void slotStartWithParameters();
+    void slotStartMod();
+    void slotStartModWithParameters();
     void slotAdd();
     void slotAddMod();
     /*Context Menu Slots*/
