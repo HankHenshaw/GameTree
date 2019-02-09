@@ -16,7 +16,7 @@
 //TODO: Проверить почему у позиций не должно быть указано родителя(т.е. корня)
 //TODO: Обнулять лог при каждом запуске??
 //TODO: Экранирование всех апострофов в запросах к БД
-
+//TODO: Запуск мода и запуск мода с параметрами
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -279,25 +279,25 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     QMenu invalidIndexMenu;
 
     //Создаем действие для добавления игры
-    QAction *addGame = new QAction("Add game");
+    QAction *addGame = new QAction(tr("Add game"));
 
     //Создаем действие для добавления мода
-    QAction *addMod = new QAction("Add mod");
+    QAction *addMod = new QAction(tr("Add mod"));
 
     //Создаем действие для запуска игры
-    QAction *startGame = new QAction("Start game");
+    QAction *startGame = new QAction(tr("Start game"));
 
     //Создаем действие для запуска игры с параметрами
-    QAction *startGameWithParemeters = new QAction("Start game with parameters...");
+    QAction *startGameWithParemeters = new QAction(tr("Start game with parameters..."));
 
     //Создаем действие для удаления игры
-    QAction *deleteGame = new QAction("Delete game/mod");
+    QAction *deleteGame = new QAction(tr("Delete game/mod"));
 
     //Создаем действие для редактирования информации об игре
-    QAction *editGame = new QAction("Edit information about game");
+    QAction *editGame = new QAction(tr("Edit information about game"));
 
     //Создаем действие для редактирования информации о моде
-    QAction *editMod = new QAction("Edit information about mod");
+    QAction *editMod = new QAction(tr("Edit information about mod"));
 
     //Заполняем оба меню действиями
     invalidIndexMenu.addAction(addGame);
@@ -384,12 +384,121 @@ void MainWindow::slotEditMod()
 
 void MainWindow::slotStart()
 {
-    qDebug() << "Start" << m_selectedIndex.data().toString();
+    //WARNING: Проблема такого запуска игр, в том, что будет если ехе находится на большей вложенности
+
+    //Получаем имя игры
+    QString gameName = m_selectedIndex.data().toString();
+
+    //Получаем путь до .ехе из БД
+    QString strPath = ("SELECT Path FROM Games WHERE Title = '" + gameName + "'");
+    QSqlQuery queryPath;
+    queryPath.exec(strPath);
+    queryPath.next();
+    QString path = queryPath.value(0).toString();
+
+    qDebug() << "Start Game:" << m_selectedIndex.data().toString() << "From:" << path;
+
+    //Устанавливаем путь до папки где расположен ехе
+    QDir dir(path);
+    dir.cdUp();
+    QDir::setCurrent(dir.path());
+
+    //Получаем из пути имя ехе файла
+    QString exeNameReverse;
+    QString::reverse_iterator beginIterator = path.rbegin();
+    QString::reverse_iterator endIterator = path.rend();
+
+    while(beginIterator != endIterator)
+    {
+        if(*beginIterator == '\\')
+            break;
+        exeNameReverse.append(*beginIterator);
+        ++beginIterator;
+    }
+
+    //Экранируем имя
+    QString exeName('\"');
+
+    beginIterator = exeNameReverse.rbegin();
+    endIterator = exeNameReverse.rend();
+
+    while(beginIterator != endIterator)
+    {
+        exeName.append(*beginIterator);
+        ++beginIterator;
+    }
+
+    //Экранируем имя
+    exeName.append('\"');
+
+    QProcess::startDetached(exeName);
 }
 
 void MainWindow::slotStartWithParameters()
 {
-    qDebug() << "Start" << m_selectedIndex.data().toString();
+    qDebug() << "Start with paremeters" << m_selectedIndex.data().toString();
+
+    ArgsDialog dialog;
+
+    if(dialog.exec() == QDialog::Accepted)
+    {
+        /*Для печати в дебаг*/
+        //        QStringList tmp = dialog.getList();
+        //        auto itb = tmp.begin();
+        //        auto ite = tmp.end();
+        //        while(itb != ite)
+        //        {
+        //            qDebug() << *itb;
+        //            ++itb;
+        //        }
+        /*Для печати в дебаг*/
+
+        //Получаем имя игры
+        QString gameName = m_selectedIndex.data().toString();
+
+        //Получаем путь до ехе из БД
+        QString strPath = ("SELECT Path FROM Games WHERE Title = '" + gameName + "'");
+        QSqlQuery queryPath;
+        queryPath.exec(strPath);
+        queryPath.next();
+        QString path = queryPath.value(0).toString();
+
+        //Устанавливаем путь до папки где расположен ехе
+        QDir dir(path);
+        dir.cdUp();
+
+        QDir::setCurrent(dir.path());
+
+        //Получаем из пути имя ехе файла
+        QString exeNameReverse;
+        QString::reverse_iterator beginIterator = path.rbegin();
+        QString::reverse_iterator endIterator = path.rend();
+
+        while(beginIterator != endIterator)
+        {
+            if(*beginIterator == '\\')
+                break;
+            exeNameReverse.append(*beginIterator);
+            ++beginIterator;
+        }
+
+        //Экранируем имя
+        QString exeName('\"');
+
+        beginIterator = exeNameReverse.rbegin();
+        endIterator = exeNameReverse.rend();
+
+        while(beginIterator != endIterator)
+        {
+            exeName.append(*beginIterator);
+            ++beginIterator;
+        }
+
+        //Экранируем имя
+        exeName.append('\"');
+
+        QProcess::startDetached(exeName, dialog.getList());
+    }
 }
 
 void MainWindow::slotAdd()

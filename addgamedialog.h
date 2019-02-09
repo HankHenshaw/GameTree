@@ -33,6 +33,8 @@ private slots:
     void on_buttonBox_accepted();
 
     void on_lineEditName_textChanged(const QString &arg1);
+    void on_lineEditPath_textChanged(const QString &arg1);
+
 private:
     Ui::AddGameDialog *ui;
     GameInfo m_gameinfo; // ptr?

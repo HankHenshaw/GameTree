@@ -34,6 +34,8 @@ private slots:
 
     void on_lineEditPath_textChanged(const QString &arg1);
 
+    void on_lineEditName_textChanged(const QString &arg1);
+
 private:
     Ui::AddModDialog *ui;
     ModInfo m_modinfo; // ptr?

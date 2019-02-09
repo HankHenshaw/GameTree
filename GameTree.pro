@@ -31,7 +31,8 @@ SOURCES += \
     treeitem.cpp \
     addgamedialog.cpp \
     mylineedit.cpp \
-    addmoddialog.cpp
+    addmoddialog.cpp \
+    argsdialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,12 +40,14 @@ HEADERS += \
     treeitem.h \
     addgamedialog.h \
     mylineedit.h \
-    addmoddialog.h
+    addmoddialog.h \
+    argsdialog.h
 
 FORMS += \
         mainwindow.ui \
     addgamedialog.ui \
-    addmoddialog.ui
+    addmoddialog.ui \
+    argsdialog.ui
 
 TRANSLATIONS += GameTree_ru.ts
 

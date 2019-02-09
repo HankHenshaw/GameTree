@@ -41,7 +41,7 @@ void AddModDialog::on_buttonBox_accepted()
     m_modinfo.m_path = ui->lineEditPath->text();
 }
 
-void AddModDialog::on_lineEditPath_textChanged(const QString &arg1)
+void AddModDialog::on_lineEditName_textChanged(const QString &arg1)
 {
     Q_UNUSED(arg1); //Что за arg1??
     if(ui->lineEditName->text().isEmpty())
@@ -50,7 +50,25 @@ void AddModDialog::on_lineEditPath_textChanged(const QString &arg1)
     {
         if(ui->lineEditPath->text().isEmpty())
             ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
+        else if(ui->lineEditName->text().startsWith(" "))
+            ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
         else
             ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(false);
+    }
+}
+
+void AddModDialog::on_lineEditPath_textChanged(const QString &arg1)
+{
+    Q_UNUSED(arg1);//Что за arg1??
+    if(!ui->lineEditPath->text().isEmpty())
+    {
+        if(!ui->lineEditName->text().isEmpty())
+        {
+//            if(!ui->buttonBox->button(QDialogButtonBox::Ok)->isEnabled())
+            if(ui->lineEditName->text().startsWith(" "))
+                ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+            else
+                ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
+        }
     }
 }

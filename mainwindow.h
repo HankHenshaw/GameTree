@@ -12,9 +12,12 @@
 #include <QSqlQuery>
 #include <QMap>
 #include <QSet>
+#include <QDir>
+#include <QProcess>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
+#include "argsdialog.h"
 
 namespace Ui {
 class MainWindow;
