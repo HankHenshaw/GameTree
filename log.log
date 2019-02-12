@@ -218,3 +218,55 @@
 12.02.19-19:20 Info: "GameTree", main.cpp
 12.02.19-19:20 Debug: Language Change, mainwindow.cpp
 12.02.19-19:20 Debug: Language Change, mainwindow.cpp
+12.02.19-19:35 Info: "GameTree", main.cpp
+12.02.19-19:35 Debug: Language Change, mainwindow.cpp
+12.02.19-19:35 Debug: Edit game "Unepic", mainwindow.cpp
+12.02.19-19:35 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+12.02.19-19:35 Debug: Language Change, mainwindow.cpp
+12.02.19-19:35 Debug: Language Change, mainwindow.cpp
+12.02.19-19:35 Debug: Not Found!, mainwindow.cpp
+12.02.19-19:35 Debug: Match!, treemodel.cpp
+12.02.19-19:36 Debug: Language Change, mainwindow.cpp
+12.02.19-19:39 Info: "GameTree", main.cpp
+12.02.19-19:39 Debug: Language Change, mainwindow.cpp
+12.02.19-19:39 Debug: Edit game "Unepic", mainwindow.cpp
+12.02.19-19:39 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+12.02.19-19:39 Debug: Language Change, mainwindow.cpp
+12.02.19-19:39 Debug: Language Change, mainwindow.cpp
+12.02.19-19:39 Debug: Not Found!, mainwindow.cpp
+12.02.19-19:39 Debug: Match!, treemodel.cpp
+12.02.19-19:39 Debug: Language Change, mainwindow.cpp
+12.02.19-19:40 Info: "GameTree", main.cpp
+12.02.19-19:40 Debug: Language Change, mainwindow.cpp
+12.02.19-19:40 Debug: Add game, mainwindow.cpp
+12.02.19-19:40 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+12.02.19-19:40 Debug: Language Change, mainwindow.cpp
+12.02.19-19:40 Debug: Language Change, mainwindow.cpp
+12.02.19-19:40 Debug: "Unreal" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
+12.02.19-19:40 Debug: Letter found, mainwindow.cpp
+12.02.19-19:41 Debug: Add mod, mainwindow.cpp
+12.02.19-19:41 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+12.02.19-19:41 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+12.02.19-19:41 Debug: Language Change, mainwindow.cpp
+12.02.19-19:41 Debug: Language Change, mainwindow.cpp
+12.02.19-19:41 Debug: Delete item "Extreme", mainwindow.cpp
+12.02.19-19:41 Debug: Mod, mainwindow.cpp
+12.02.19-19:41 Debug: Match!, treemodel.cpp
+12.02.19-19:41 Debug: Delete item "Unreal", mainwindow.cpp
+12.02.19-19:41 Debug: Game, mainwindow.cpp
+12.02.19-19:41 Debug: Match!, treemodel.cpp
+12.02.19-19:41 Debug: Language Change, mainwindow.cpp
+12.02.19-19:42 Info: "GameTree", main.cpp
+12.02.19-19:42 Debug: Language Change, mainwindow.cpp
+12.02.19-19:42 Debug: Edit game "Unepic", mainwindow.cpp
+12.02.19-19:42 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+12.02.19-19:42 Debug: Language Change, mainwindow.cpp
+12.02.19-19:42 Debug: Language Change, mainwindow.cpp
+12.02.19-19:42 Debug: Not Found!, mainwindow.cpp
+12.02.19-19:42 Debug: Match!, treemodel.cpp
+12.02.19-19:42 Debug: Edit game "Anepic", mainwindow.cpp
+12.02.19-19:42 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+12.02.19-19:42 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+12.02.19-19:42 Debug: Language Change, mainwindow.cpp
+12.02.19-19:42 Debug: Language Change, mainwindow.cpp
+12.02.19-19:42 Debug: Language Change, mainwindow.cpp

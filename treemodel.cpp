@@ -187,12 +187,17 @@ bool TreeModel::setData(const QModelIndex &index, const QVariant &value, int rol
 
 bool TreeModel::insertRows(int position, int rows, const QModelIndex &parent)
 {
+    //WARNING: Могут быть проблемы т.к. немного поменял логику метода, а он много где используется
     TreeItem *parentItem = getItem(parent);
     bool success;
     //TODO: Проверку на вставку
 
     beginInsertRows(parent, position, position + rows - 1);
-    parentItem->insertChildren(new TreeItem("", getItem(parent)));
+//    parentItem->insertChildren(new TreeItem("", getItem(parent)));
+    if(parent.isValid())
+        parentItem->insertChildren(new TreeItem("", getItem(parent)));
+    else
+        parentItem->insertChildren(new TreeItem(""));
     endInsertRows();
 
     return true;
