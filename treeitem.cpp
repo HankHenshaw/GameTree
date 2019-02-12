@@ -49,3 +49,13 @@ int TreeItem::childNumber() const
 
     return 0;
 }
+
+void TreeItem::removeChild(int row)
+{
+    m_childItems.removeAt(row);
+}
+
+const QList<TreeItem *> &TreeItem::getList() const
+{
+    return m_childItems;
+}

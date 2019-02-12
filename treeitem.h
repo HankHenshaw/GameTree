@@ -17,6 +17,8 @@ public:
     TreeItem* parent();
     void setData(const QString &data);
     int childNumber() const;
+    void removeChild(int row);
+    const QList<TreeItem*>& getList() const;
     //bool removeChildren(int position, int count);
 
 private:

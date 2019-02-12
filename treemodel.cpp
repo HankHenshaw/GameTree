@@ -226,3 +226,55 @@ TreeItem *TreeModel::getItem(const QModelIndex &index) const
     return root;
 }
 
+void TreeModel::deleteElement(const QModelIndex &index)
+{
+    //TODO?: Отдельные методы для удаления родителя/ребенка/внука
+    int parentsAmount = m_rootItem->childCount();
+    QString itemData = index.data().toString();
+
+    for(int parentsCount = 0; parentsCount < parentsAmount; ++parentsCount)
+    {
+        //QString childData = m_rootItem->child(parentsCount)->data();
+        if(m_rootItem->child(parentsCount)->data() == itemData)
+        {
+            qDebug() << "Match!";
+            m_rootItem->removeChild(parentsCount);
+            break;
+        }
+
+        bool isFound = false;
+
+        int childrenAmount = m_rootItem->child(parentsCount)->childCount();
+        for(int childrenCount = 0; childrenCount < childrenAmount; ++childrenCount)
+        {
+            if(m_rootItem->child(parentsCount)->child(childrenCount)->data() == itemData)
+            {
+                qDebug() << "Match!";
+                m_rootItem->child(parentsCount)->removeChild(childrenCount);
+                isFound = true;
+                break;
+            }
+
+            int grandChildrenAmount = m_rootItem->child(parentsCount)->child(childrenCount)->childCount();
+            for(int grandChildrenCount = 0; grandChildrenCount < grandChildrenAmount; ++grandChildrenCount)
+            {
+                if(m_rootItem->child(parentsCount)->child(childrenCount)->child(grandChildrenCount)->data() == itemData)
+                {
+                    qDebug() << "Match!";
+                    m_rootItem->child(parentsCount)->child(childrenCount)->removeChild(grandChildrenCount);
+                    isFound = true;
+                    break;
+                }
+            }
+
+            if(isFound)
+                break;
+        }
+
+        if(isFound)
+            break;
+    }
+
+    beginRemoveRows(index, 1, 1);
+    endRemoveRows();
+}

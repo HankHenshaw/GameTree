@@ -25,10 +25,12 @@ public:
     bool insertRows(int position, int rows, const QModelIndex& parent = QModelIndex()) override;
 
     Qt::ItemFlags flags(const QModelIndex &index) const override;
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
     TreeItem *getItem(const QModelIndex &index) const;
     TreeItem* getRoot() const;
-    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+    void deleteElement(const QModelIndex &index);
+
 private:
     TreeItem *m_rootItem;
 };
