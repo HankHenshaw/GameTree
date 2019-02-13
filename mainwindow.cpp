@@ -387,17 +387,55 @@ void MainWindow::slotDelete()
     if(!m_selectedIndex.parent().isValid())
     {
         qDebug() << "Letter";
-        //Удаление из БД
+        //Удаление игр и модов из под каждой игры
+
+        int childAmount = m_model->getItem(m_selectedIndex)->childCount();
+
+        for(int childCount = 0; childCount < childAmount; ++childCount)
+        {
+            QString childName = m_model->getItem(m_selectedIndex)->child(childCount)->data();
+            QString strRemoveChild("DELETE FROM Games WHERE Title = '" + childName + "'");
+            QString strRemoveGrandchild("DROP TABLE '" + childName + "'");
+            QSqlQuery queryRemoveChild;
+            QSqlQuery queryRemoveGrandchild;
+            queryRemoveChild.exec(strRemoveChild);
+            queryRemoveGrandchild.exec(strRemoveGrandchild);
+        }
     }
     else if(!m_selectedIndex.parent().parent().isValid())
     {
         qDebug() << "Game";
-        //Удаление из БД
+        //Удаление игры и модов из под этой игры из БД
+        QString childName = m_selectedIndex.data().toString();
+        QString strRemoveChild("DELETE FROM Games WHERE Title = '" + childName + "'");
+        QSqlQuery queryRemoveChild;
+        queryRemoveChild.exec(strRemoveChild);
+        if(m_model->getItem(m_selectedIndex)->childCount() > 0)
+        {
+            qDebug() << "Child";
+            QString strRemoveGrandchild("DROP TABLE '" + childName + "'");
+            QSqlQuery queryRemoveGrandchild;
+            queryRemoveGrandchild.exec(strRemoveGrandchild);
+        }
     }
     else if(!m_selectedIndex.parent().parent().parent().isValid())
     {
         qDebug() << "Mod";
-        //Удаление из БД
+        //Удаление мода из БД
+        QString gameName = m_selectedIndex.parent().data().toString();
+        QString grandChildName = m_selectedIndex.data().toString();
+        QString strRemoveMod("DELETE FROM '" + gameName + "' WHERE Title = '" + grandChildName + "'");
+        QSqlQuery queryRemove;
+        queryRemove.exec(strRemoveMod);
+
+        //TODO: Удалить таблицу с модами, если модов не осталось
+        //DROP TABLE Имя_таблицы
+        if(m_model->getItem(m_selectedIndex.parent())->childCount() == 1) // 1, т.к. удаление из модели происходит после редактирования БД
+        {
+            QString strDropTable("DROP TABLE '" + gameName + "'");
+            QSqlQuery queryDrop;
+            queryDrop.exec(strDropTable);
+        }
     }
 
     //Удаление из модели
@@ -436,12 +474,12 @@ void MainWindow::slotEdit()
             //Если имя не поменялось, то можно не лезть в модель
             if(dialog.getInfo().m_name == gameName)
             {
-                //Обновляем БД
-                //TODO
                 if(dialog.getInfo().m_path != path)
                 {
                     //Обновляем путь в БД
-                    //TODO:
+                    QString strUpdPath("UPDATE Games SET Path = '" + dialog.getInfo().m_path + "' WHERE Title = '" + gameName + "'");
+                    QSqlQuery queryUpd;
+                    queryUpd.exec(strUpdPath);
                 }
             }
             else //Если имя поменялось
@@ -451,13 +489,19 @@ void MainWindow::slotEdit()
                 if(dialog.getInfo().m_path != path)
                 {
                     //Меняем путь в таблицы игр в БД
-                    //TODO
+                    QString strUpdPath("UPDATE Games SET Path = '" + dialog.getInfo().m_path + "' WHERE Title = '" + gameName + "'");
+                    QSqlQuery queryUpd;
+                    queryUpd.exec(strUpdPath);
                 }
                 //Обновляем таблицу игр
-                //TODO
+                QString strUpdName("UPDATE Games SET Title = '" + dialog.getInfo().m_name + "' WHERE Title = '" + gameName + "'");
+                QSqlQuery queryUpdName;
+                queryUpdName.exec(strUpdName);
 
-                //Обновляем таблицу модов к этой игре
-                //TODO
+                //Обновляем имя таблицы модов к этой игре
+                QString strUpdModTableName("ALTER TABLE '" + gameName + "' RENAME TO '" + dialog.getInfo().m_name + "'");
+                QSqlQuery queryUpdModTable;
+                queryUpdModTable.exec(strUpdModTableName);
 
                 //Если первая буква совпадает
                 if(dialog.getInfo().m_name.at(0) == gameName.at(0))
@@ -607,8 +651,10 @@ void MainWindow::slotEdit()
                 //Только в случае, если путь изменился, тогда лезем в БД
                 if(dialog.getInfo().m_path != path)
                 {
-                    //Обнавляем БД
-                    //TODO:
+                    //Обновляем путь в БД
+                    QString strUpdPath("UPDATE Games SET Path = '" + dialog.getInfo().m_path + "' WHERE Title = '" + gameName + "'");
+                    QSqlQuery queryUpd;
+                    queryUpd.exec(strUpdPath);
                 }
             }
             else //Если имя поменялось
@@ -617,15 +663,21 @@ void MainWindow::slotEdit()
                 //А также менять имя игры не только в таблице игр, но и в таблице модов к этой игре
                 if(dialog.getInfo().m_path != path)
                 {
-                    //Обнавляем БД
-                    //TODO:
+                    //Меняем путь в таблицы игр в БД
+                    QString strUpdPath("UPDATE Games SET Path = '" + dialog.getInfo().m_path + "' WHERE Title = '" + gameName + "'");
+                    QSqlQuery queryUpd;
+                    queryUpd.exec(strUpdPath);
                 }
 
-                //Обновляем таблицы игр
-                //TODO:
+                //Обновляем таблицу игр
+                QString strUpdName("UPDATE Games SET Title = '" + dialog.getInfo().m_name + "' WHERE Title = '" + gameName + "'");
+                QSqlQuery queryUpdName;
+                queryUpdName.exec(strUpdName);
 
-                //Обновление таблицы модов
-                //TODO:
+                //Обновляем имя таблицы модов к этой игре
+                QString strUpdModTableName("ALTER TABLE '" + gameName + "' RENAME TO '" + dialog.getInfo().m_name + "'");
+                QSqlQuery queryUpdModTable;
+                queryUpdModTable.exec(strUpdModTableName);
 
                 //Если первая буква совпадает
                 if(dialog.getInfo().m_name.at(0) == gameName.at(0))
@@ -772,10 +824,10 @@ void MainWindow::slotEditMod()
 
     //Получаем путь до ехе мода из БД
     QString strPath("SELECT Path FROM '" + gameName + "' WHERE Title = '" + modName + "'");
-    QSqlQuery queryParh;
-    queryParh.exec(strPath);
-    queryParh.next();
-    QString path = queryParh.value(0).toString();
+    QSqlQuery queryPath;
+    queryPath.exec(strPath);
+    queryPath.next();
+    QString path = queryPath.value(0).toString();
 
     //Добавляем в диалог имя мода и путь до .ехе
     dialog.setNamePath(modName, path);
@@ -788,10 +840,17 @@ void MainWindow::slotEditMod()
         {
             if(dialog.getInfo().m_path != path)
             {
-                //Обнавляем путь в БД
+                //Обновляем путь в БД
+                QString strUpdPath("UPDATE '" + gameName + "' SET Path = '" + dialog.getInfo().m_path + "' WHERE Title = '" + modName + "'");
+                QSqlQuery queryUpd;
+                queryUpd.exec(strUpdPath);
+                qDebug() << strUpdPath;
             }
 
             //Обновляем имя в БД
+            QString strUpdName("UPDATE '" + gameName + "' SET Title = '" + dialog.getInfo().m_name + "' WHERE Title = '" + modName + "'");
+            QSqlQuery queryUpdName;
+            queryUpdName.exec(strUpdName);
 
             //Обновляем модель
             m_model->setData(m_selectedIndex, dialog.getInfo().m_name);
@@ -802,6 +861,9 @@ void MainWindow::slotEditMod()
             if(dialog.getInfo().m_path != path)
             {
                 //Обновляем путь в БД
+                QString strUpdPath("UPDATE '" + gameName + "' SET Path = '" + dialog.getInfo().m_path + "' WHERE Title = '" + modName + "'");
+                QSqlQuery queryUpd;
+                queryUpd.exec(strUpdPath);
             }
         }
     }
@@ -1101,6 +1163,9 @@ void MainWindow::slotAdd()
             m_model->setData(newIdx, gameName);
 
             //TODO: Добавляем в БД
+            QString strInsert("INSERT INTO Games(Title, Path) VALUES ('" + gameName + "', '" + path + "');");
+            QSqlQuery queryInsert;
+            queryInsert.exec(strInsert);
         }
         else //Если нет
         {
@@ -1127,6 +1192,9 @@ void MainWindow::slotAdd()
             m_model->setData(newGameIdx, gameName);
 
             //TODO: Добавляем запись в БД
+            QString strInsert("INSERT INTO Games(Title, Path) VALUES ('" + gameName + "', '" + path + "');");
+            QSqlQuery queryInsert;
+            queryInsert.exec(strInsert);
         }
     }
 }
@@ -1170,7 +1238,15 @@ void MainWindow::slotAddMod()
             //Устанавливаем данные в этой строке
             m_model->setData(newRowIdx, modName);
 
+            //Добавляем таблицу с модами если ее ещё нету
+            QString strCreate("CREATE TABLE IF NOT EXISTS '" + gameName + "' (ID INTEGER PRIMARY KEY AUTOINCREMENT, Title STRING, Path STRING);");
+            QSqlQuery queryCreate;
+            queryCreate.exec(strCreate);
+
             //Добавляем запись в БД
+            QString strInsert("INSERT INTO '" + gameName + "'(Title, Path) VALUES('" + modName + "', '" + dialog.getInfo().m_path + "');");
+            QSqlQuery queryInsert;
+            queryInsert.exec(strInsert);
         }
     }
     else //WARNING: Тут могут быть проблемы
@@ -1203,7 +1279,15 @@ void MainWindow::slotAddMod()
             //Устанавливаем название
             m_model->setData(newRowIdx, modName);
 
+            //Добавляем таблицу с модами если ее ещё нету
+            QString strCreate("CREATE TABLE IF NOT EXISTS '" + gameName + "' (ID INTEGER PRIMARY KEY AUTOINCREMENT, Title STRING, Path STRING);");
+            QSqlQuery queryCreate;
+            queryCreate.exec(strCreate);
+
             //Добавляем мод в БД
+            QString strInsert("INSERT INTO '" + gameName + "'(Title, Path) VALUES('" + modName + "', '" + dialog.getInfo().m_path + "');");
+            QSqlQuery queryInsert;
+            queryInsert.exec(strInsert);
         }
     }
 }
