@@ -18,6 +18,7 @@
 #include "addgamedialog.h"
 #include "addmoddialog.h"
 #include "argsdialog.h"
+#include "editmoddialog.h"
 
 namespace Ui {
 class MainWindow;

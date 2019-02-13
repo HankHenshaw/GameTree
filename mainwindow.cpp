@@ -438,6 +438,11 @@ void MainWindow::slotEdit()
             {
                 //Обновляем БД
                 //TODO
+                if(dialog.getInfo().m_path != path)
+                {
+                    //Обновляем путь в БД
+                    //TODO:
+                }
             }
             else //Если имя поменялось
             {
@@ -526,7 +531,7 @@ void MainWindow::slotEdit()
                         //Возможно надо добавить перевода буквы в Верхний регистр
 
                         /*Добавляем букву*/
-                        //Получаем номер новый строки
+                        //Получаем номер новой строки
                         int newRowNumber = m_model->getRoot()->childCount();
 
                         //Добавляем строку
@@ -559,17 +564,17 @@ void MainWindow::slotEdit()
                             //Получаем список всех детей, что бы узнать их имена
                             QList<TreeItem*> modItem = m_model->getItem(m_selectedIndex)->getList();
 
-                            int childCount = m_model->getItem(m_selectedIndex)->childCount();
-                            for(int i = 0; i < childCount; ++i)
+                            int childAmount = m_model->getItem(m_selectedIndex)->childCount();
+                            for(int childCount = 0; childCount < childAmount; ++childCount)
                             {
                                 //Добавляем строку
-                                m_model->insertRow(i, gameIdx);
+                                m_model->insertRow(childCount, gameIdx);
 
                                 //Получаем индекс на эту строку
-                                QModelIndex modIdx = m_model->index(i, 0, gameIdx);
+                                QModelIndex modIdx = m_model->index(childCount, 0, gameIdx);
 
                                 //Устанавливаем данные в этой строке
-                                m_model->setData(modIdx, modItem.at(i)->data());
+                                m_model->setData(modIdx, modItem.at(childCount)->data());
                             }
                         }
                         //Удаляем игру
@@ -592,6 +597,7 @@ void MainWindow::slotEdit()
         //Устанавливаем поля в диалоге в соответствии с данными в БД
         dialog.setNamePath(gameName, path);
 
+        //Отображаем диалог и если нажата Ок
         if(dialog.exec() == QDialog::Accepted)
         {
             //Если имя не поменялось
@@ -615,14 +621,136 @@ void MainWindow::slotEdit()
                     //TODO:
                 }
 
-                //Обнавляем таблицы игр
+                //Обновляем таблицы игр
                 //TODO:
 
-                //Обнавление таблицы модов
+                //Обновление таблицы модов
                 //TODO:
 
-                //Действие с моделью
-                m_model->setData(m_selectedIndex, dialog.getInfo().m_name);
+                //Если первая буква совпадает
+                if(dialog.getInfo().m_name.at(0) == gameName.at(0))
+                {
+                    //Меняем данные в модели
+                    m_model->setData(m_selectedIndex.parent(), dialog.getInfo().m_name);
+                }
+                else //Если буква не совпадает
+                {
+                    //Ищем есть ли такая буква
+                    int i = 0;
+                    bool isFound = false;
+                    for(; i < m_model->getRoot()->childCount(); ++i)
+                    {
+                        if(m_model->getRoot()->child(i)->data().at(0) == dialog.getInfo().m_name.at(0))
+                        {
+                            isFound = true;
+                            break;
+                        }
+                    }
+
+                    //Если буква нашлась
+                    if(isFound)
+                    {
+                        qDebug() << "Found!";
+                        //Получаем индекс буквы
+                        QModelIndex parent = m_model->index(i, 0);
+
+                        //Получаем номер новой строки
+                        int newRowNumber = m_model->getRoot()->child(i)->childCount();
+
+                        //Добавляем строку
+                        m_model->insertRow(newRowNumber, parent);
+
+                        //Получаем индекс новой строки
+                        QModelIndex newIdx = m_model->index(newRowNumber, 0, parent);
+
+                        //Устанавливаем данные в новой строке
+                        m_model->setData(newIdx, dialog.getInfo().m_name);
+
+                        /*Добавляем моды*/
+                        //Если моды есть
+                        if(m_model->getItem(m_selectedIndex.parent())->childCount() > 0)
+                        {
+                            qDebug() << "Has children";
+
+                            //Получаем список всех детей, что бы узнать их имена
+                            QList<TreeItem*> modItem = m_model->getItem(m_selectedIndex.parent())->getList();
+
+                            int childCount = m_model->getItem(m_selectedIndex.parent())->childCount();
+                            for(int i = 0; i < childCount; ++i)
+                            {
+                                //Добавляем строку
+                                m_model->insertRow(i, newIdx);
+
+                                //Получаем индекс на эту строку
+                                QModelIndex modIdx = m_model->index(i, 0, newIdx);
+
+                                //Устанавливаем данные в этой строке
+                                m_model->setData(modIdx, modItem.at(i)->data());
+                            }
+                        }
+                        /*Добавляем моды*/
+
+                        //Удаляем старую запись
+                        m_model->deleteElement(m_selectedIndex.parent());
+                    }
+                    else //Если буквы нет
+                    {
+                        qDebug() << "Not Found!";
+                        //Возможно надо добавить перевода буквы в Верхний регистр
+
+                        /*Добавляем букву*/
+                        //Получаем номер новой строки
+                        int newRowNumber = m_model->getRoot()->childCount();
+
+                        //Добавляем строку
+                        m_model->insertRow(newRowNumber);
+
+                        //Получаем индекс на эту строку
+                        QModelIndex letterIdx = m_model->index(newRowNumber, 0);
+
+                        //Устанавливаем данные в этой строке
+                        m_model->setData(letterIdx, dialog.getInfo().m_name.at(0));
+                        /*Добавляем букву*/
+
+                        /*Добавляем игру*/
+                        //Добавляем строку(0-ая, т.к. там ничего еще нету)
+                        m_model->insertRow(0, letterIdx);
+
+                        //Получаем индекс на эту строку
+                        QModelIndex gameIdx = m_model->index(0, 0, letterIdx);
+
+                        //Устанавливаем данные в этой строке
+                        m_model->setData(gameIdx, dialog.getInfo().m_name);
+                        /*Добавляем игру*/
+
+                        /*Добавляем моды*/
+                        //Если моды есть
+                        if(m_model->getItem(m_selectedIndex.parent())->childCount() > 0)
+                        {
+                            qDebug() << "Has choldren";
+
+                            //Получаем список всех детей, что бы узнать их имена
+                            QList<TreeItem*> modItem = m_model->getItem(m_selectedIndex.parent())->getList();
+
+                            int childAmount = m_model->getItem(m_selectedIndex.parent())->childCount();
+                            for(int childCount = 0; childCount < childAmount; ++childCount)
+                            {
+                                //Добавляем строку
+                                m_model->insertRow(childCount, gameIdx);
+
+                                //Получаем индекс на эту строку
+                                QModelIndex modIdx = m_model->index(childCount, 0, gameIdx);
+
+                                //Устанавливаем данные в этой строке
+                                m_model->setData(modIdx, modItem.at(childCount)->data());
+                            }
+                        }
+                        /*Добавляем моды*/
+
+                        //Удаляем игру
+                        m_model->deleteElement(m_selectedIndex.parent());
+                    }
+                }
             }
         }
     }
@@ -630,7 +758,53 @@ void MainWindow::slotEdit()
 
 void MainWindow::slotEditMod()
 {
+    //TODO: При стирании имени мода, если строка остается пустой, то можно нажать "Ок". Пофиксить.
     qDebug() << "Edit mod" << m_selectedIndex.data().toString() << "of" << m_selectedIndex.parent().data().toString();
+
+    //Создаем диалог
+    EditModDialog dialog;
+
+    //Получаем имя мода
+    QString modName = m_selectedIndex.data().toString();
+
+    //Получаем имя игры
+    QString gameName = m_selectedIndex.parent().data().toString();
+
+    //Получаем путь до ехе мода из БД
+    QString strPath("SELECT Path FROM '" + gameName + "' WHERE Title = '" + modName + "'");
+    QSqlQuery queryParh;
+    queryParh.exec(strPath);
+    queryParh.next();
+    QString path = queryParh.value(0).toString();
+
+    //Добавляем в диалог имя мода и путь до .ехе
+    dialog.setNamePath(modName, path);
+
+    //Отображаем диалог и если нажата кнопка Ок
+    if(dialog.exec() == QDialog::Accepted)
+    {
+        //Если имя не совпадает, то надо лезть в модель
+        if(dialog.getInfo().m_name != modName)
+        {
+            if(dialog.getInfo().m_path != path)
+            {
+                //Обнавляем путь в БД
+            }
+
+            //Обновляем имя в БД
+
+            //Обновляем модель
+            m_model->setData(m_selectedIndex, dialog.getInfo().m_name);
+        }
+        else //Если имя одинако, то лезем только в БД
+        {
+            //Только если путь изменился, лезем БД
+            if(dialog.getInfo().m_path != path)
+            {
+                //Обновляем путь в БД
+            }
+        }
+    }
 }
 
 void MainWindow::slotStart()
