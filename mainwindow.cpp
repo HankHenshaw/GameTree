@@ -52,6 +52,30 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Устанавливаем соединение, для отслеживания двойного клика
     connect(ui->treeView, &QTreeView::doubleClicked, this, &MainWindow::slotDblClicked);
+
+    //Создаем действися для меню трея*/
+    //TODO: Переделать коннекты в новом виде
+    QAction* aTrayQuit = new QAction(tr("Quit"), this);
+    connect(aTrayQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+//    connect(aTrayQuit, &QAction::triggered, qApp, &QApplication::quit);
+    QAction* aTrayShowHide = new QAction(tr("Show/Hide Application Window"), this);
+    connect(aTrayShowHide, SIGNAL(triggered()), this, SLOT(slotShowHide()));
+//    connect(aTrayShowHide, &QAction::triggered, &MainWindow::slotShowHide);
+
+    //Создаем меню и заполняем его действиямм
+    m_trayMenu = new QMenu(this);
+    m_trayMenu->addAction(aTrayShowHide);
+    m_trayMenu->addSeparator();
+    m_trayMenu->addAction(aTrayQuit);
+
+    //Создаем иконку для меню и отображаем в трее
+    m_trayIcon = new QSystemTrayIcon(this);
+    m_trayIcon->setContextMenu(m_trayMenu);
+    m_trayIcon->setToolTip(tr("System Tray")); //TODO: Поменять/Убрать
+    m_trayIcon->setIcon(QPixmap(":/menu/icons/tree.png"));
+    connect(m_trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::slotIconActivated);
+
+    m_trayIcon->show();
 }
 
 MainWindow::~MainWindow()
@@ -1370,7 +1394,40 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
     }
 }
 
+/*Dbl Click*/
 void MainWindow::slotDblClicked()
 {
     on_buttonStart_clicked();
 }
+/*Dbl Click*/
+
+/*System Tray*/
+void MainWindow::slotShowHide()
+{
+    setVisible(!isVisible());
+}
+
+void MainWindow::slotIconActivated(QSystemTrayIcon::ActivationReason reason)
+{
+    switch(reason)
+    {
+    //case QSystemTrayIcon::Trigger:
+    case QSystemTrayIcon::DoubleClick:
+        setVisible(true);
+        break;
+    //case QSystemTrayIcon::MiddleClick:
+    //    break;
+    default:
+        ;
+    }
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if(m_trayIcon->isVisible())
+    {
+        hide();
+        event->ignore();
+    }
+}
+/*System Tray*/

@@ -14,5 +14,6 @@
         <file>icons/About.png</file>
         <file>icons/Help.png</file>
         <file>icons/English128x86.png</file>
+        <file>icons/tree.png</file>
     </qresource>
 </RCC>

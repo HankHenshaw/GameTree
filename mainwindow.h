@@ -14,6 +14,8 @@
 #include <QSet>
 #include <QDir>
 #include <QProcess>
+#include <QSystemTrayIcon>
+#include <QCloseEvent>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
@@ -30,7 +32,10 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() override;
+
+protected:
+    virtual void closeEvent(QCloseEvent *event) override;
 
 private slots:
     /*Audio Player Slots*/
@@ -71,6 +76,11 @@ private slots:
     void slotButtonActivator(QModelIndex selectedIndex);
     /*Button slots*/
 
+    /*System Tray*/
+    void slotShowHide();
+    void slotIconActivated(QSystemTrayIcon::ActivationReason reason);
+    /*System Tray*/
+
     /*Dbl Clk Start Game Slot*/
     void slotDblClicked();
 private:
@@ -94,7 +104,7 @@ private:
     QTranslator* translator;
 
     void changeLanguage(QString postfix);
-    void changeEvent(QEvent* event);
+    void changeEvent(QEvent* event) override;
     /*Translator*/
 
     /*Sql*/
@@ -105,6 +115,11 @@ private:
 
     void getDataFromDB();
     /*Sql*/
+
+    /*System Tray*/
+    QMenu *m_trayMenu;
+    QSystemTrayIcon *m_trayIcon;
+    /*System Tray*/
 };
 
 #endif // MAINWINDOW_H
