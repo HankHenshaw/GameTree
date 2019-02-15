@@ -41,6 +41,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Разукрашивает каждую нечетную строку в серый, чеиные остаются белыми
     ui->treeView->setAlternatingRowColors(true);
+
+    //Устанавливаем соединения, для отслеживания выбранных индексов на представлении
+    connect(ui->treeView, &QTreeView::clicked, this, &MainWindow::slotButtonActivator);
+
+    //Устанавливаем кнопки в нерабочее состояние, т.к. пока еще ничего не выбрано
+    ui->buttonStart->setDisabled(true);
+    ui->buttonEdit->setDisabled(true);
+    ui->buttonRemove->setDisabled(true);
 }
 
 MainWindow::~MainWindow()
@@ -295,10 +303,10 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     QAction *startGameWithParameters = new QAction(tr("Start game with parameters..."));
 
     //Создаем действие для запуска игры с параметрами
-    QAction *startMod = new QAction(tr("Start game"));
+    QAction *startMod = new QAction(tr("Start mod"));
 
     //Создаем действие для запуска игры с параметрами
-    QAction *startModWithParameters = new QAction(tr("Start game with parameters..."));
+    QAction *startModWithParameters = new QAction(tr("Start mod with parameters..."));
 
     //Создаем действие для удаления игры
     QAction *deleteGame = new QAction(tr("Delete game/mod"));
@@ -345,6 +353,7 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
 
     //Исп. перемн. класса, а не локальную, для того что бы запоминать послд. выделен. позицию и исп. эту перемен. в слотах QAction
     m_selectedIndex = ui->treeView->indexAt(pos);
+    //m_selectedIndex = ui->treeView->selectionModel()->currentIndex();
 
     if(!m_selectedIndex.isValid())
     {
@@ -381,19 +390,20 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
 
 void MainWindow::slotDelete()
 {
-    qDebug() << "Delete item" << m_selectedIndex.data().toString();
+    QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex();
+    qDebug() << "Delete item" << selectedIndex.data().toString();
     //TODO: Удалять букву если игр на эту букву не осталось
 
-    if(!m_selectedIndex.parent().isValid())
+    if(!selectedIndex.parent().isValid())
     {
         qDebug() << "Letter";
         //Удаление игр и модов из под каждой игры
 
-        int childAmount = m_model->getItem(m_selectedIndex)->childCount();
+        int childAmount = m_model->getItem(selectedIndex)->childCount();
 
         for(int childCount = 0; childCount < childAmount; ++childCount)
         {
-            QString childName = m_model->getItem(m_selectedIndex)->child(childCount)->data();
+            QString childName = m_model->getItem(selectedIndex)->child(childCount)->data();
             QString strRemoveChild("DELETE FROM Games WHERE Title = '" + childName + "'");
             QString strRemoveGrandchild("DROP TABLE '" + childName + "'");
             QSqlQuery queryRemoveChild;
@@ -402,15 +412,15 @@ void MainWindow::slotDelete()
             queryRemoveGrandchild.exec(strRemoveGrandchild);
         }
     }
-    else if(!m_selectedIndex.parent().parent().isValid())
+    else if(!selectedIndex.parent().parent().isValid())
     {
         qDebug() << "Game";
         //Удаление игры и модов из под этой игры из БД
-        QString childName = m_selectedIndex.data().toString();
+        QString childName = selectedIndex.data().toString();
         QString strRemoveChild("DELETE FROM Games WHERE Title = '" + childName + "'");
         QSqlQuery queryRemoveChild;
         queryRemoveChild.exec(strRemoveChild);
-        if(m_model->getItem(m_selectedIndex)->childCount() > 0)
+        if(m_model->getItem(selectedIndex)->childCount() > 0)
         {
             qDebug() << "Child";
             QString strRemoveGrandchild("DROP TABLE '" + childName + "'");
@@ -418,19 +428,19 @@ void MainWindow::slotDelete()
             queryRemoveGrandchild.exec(strRemoveGrandchild);
         }
     }
-    else if(!m_selectedIndex.parent().parent().parent().isValid())
+    else if(!selectedIndex.parent().parent().parent().isValid())
     {
         qDebug() << "Mod";
         //Удаление мода из БД
-        QString gameName = m_selectedIndex.parent().data().toString();
-        QString grandChildName = m_selectedIndex.data().toString();
+        QString gameName = selectedIndex.parent().data().toString();
+        QString grandChildName = selectedIndex.data().toString();
         QString strRemoveMod("DELETE FROM '" + gameName + "' WHERE Title = '" + grandChildName + "'");
         QSqlQuery queryRemove;
         queryRemove.exec(strRemoveMod);
 
         //TODO: Удалить таблицу с модами, если модов не осталось
         //DROP TABLE Имя_таблицы
-        if(m_model->getItem(m_selectedIndex.parent())->childCount() == 1) // 1, т.к. удаление из модели происходит после редактирования БД
+        if(m_model->getItem(selectedIndex.parent())->childCount() == 1) // 1, т.к. удаление из модели происходит после редактирования БД
         {
             QString strDropTable("DROP TABLE '" + gameName + "'");
             QSqlQuery queryDrop;
@@ -439,26 +449,27 @@ void MainWindow::slotDelete()
     }
 
     //Удаление из модели
-    m_model->deleteElement(m_selectedIndex);
+    m_model->deleteElement(selectedIndex);
 }
 
 void MainWindow::slotEdit()
 {
+    QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex();
     //TODO: При редактировании, если в строке путь, в диалоге до .ехе нажать отмена
     //То потом в диалоге редактироваения можно нажать "Ок"(нельзя давать нажимать "Ок", если путь пустой)
     //TODO: При редактировании после нажатия Ок, путь до .ехе сбрасывается, починить!!!!
     //Сбрасывается т.к. я пока не добавил занос данных в БД
     //TODO: При редактировании игры из под индекса мода, меняется название мода а не игры
-    qDebug() << "Edit game" << m_selectedIndex.data().toString();
+    qDebug() << "Edit game" << selectedIndex.data().toString();
 
     //Создаем диалог
     AddGameDialog dialog;
 
     //Если выбрана игра
-    if(!m_selectedIndex.parent().parent().isValid())
+    if(!selectedIndex.parent().parent().isValid())
     {
         //Добавляем в диалог имя игры и путь до .ехе
-        QString gameName = m_selectedIndex.data().toString();
+        QString gameName = selectedIndex.data().toString();
         QString strPath("SELECT Path FROM Games WHERE Title = '" + gameName + "'");
         QSqlQuery queryPath;
         queryPath.exec(strPath);
@@ -507,7 +518,7 @@ void MainWindow::slotEdit()
                 if(dialog.getInfo().m_name.at(0) == gameName.at(0))
                 {
                     //Меняем данные в модели
-                    m_model->setData(m_selectedIndex, dialog.getInfo().m_name);
+                    m_model->setData(selectedIndex, dialog.getInfo().m_name);
                 }
                 else //Если буква не совпадает
                 {
@@ -544,14 +555,14 @@ void MainWindow::slotEdit()
 
                         /*Добавляем моды*/
                         //Если моды есть
-                        if(m_model->getItem(m_selectedIndex)->childCount() > 0)
+                        if(m_model->getItem(selectedIndex)->childCount() > 0)
                         {
                             qDebug() << "Has children";
 
                             //Получаем список всех детей, что бы узнать их имена
-                            QList<TreeItem*> modItem = m_model->getItem(m_selectedIndex)->getList();
+                            QList<TreeItem*> modItem = m_model->getItem(selectedIndex)->getList();
 
-                            int childCount = m_model->getItem(m_selectedIndex)->childCount();
+                            int childCount = m_model->getItem(selectedIndex)->childCount();
                             for(int i = 0; i < childCount; ++i)
                             {
                                 //Добавляем строку
@@ -567,7 +578,7 @@ void MainWindow::slotEdit()
                         /*Добавляем моды*/
 
                         //Удаляем старую запись
-                        m_model->deleteElement(m_selectedIndex);
+                        m_model->deleteElement(selectedIndex);
                     }
                     else //Если буквы нету
                     {
@@ -601,14 +612,14 @@ void MainWindow::slotEdit()
 
                         /*Добавляем моды*/
                         //Если моды есть
-                        if(m_model->getItem(m_selectedIndex)->childCount() > 0)
+                        if(m_model->getItem(selectedIndex)->childCount() > 0)
                         {
                             qDebug() << "Has children";
 
                             //Получаем список всех детей, что бы узнать их имена
-                            QList<TreeItem*> modItem = m_model->getItem(m_selectedIndex)->getList();
+                            QList<TreeItem*> modItem = m_model->getItem(selectedIndex)->getList();
 
-                            int childAmount = m_model->getItem(m_selectedIndex)->childCount();
+                            int childAmount = m_model->getItem(selectedIndex)->childCount();
                             for(int childCount = 0; childCount < childAmount; ++childCount)
                             {
                                 //Добавляем строку
@@ -622,7 +633,7 @@ void MainWindow::slotEdit()
                             }
                         }
                         //Удаляем игру
-                        m_model->deleteElement(m_selectedIndex);
+                        m_model->deleteElement(selectedIndex);
                     }
                 }
             }
@@ -631,7 +642,7 @@ void MainWindow::slotEdit()
     else//Если выбран мод
     {
         //Добавляем в диалог имя игры и путь до .ехе
-        QString gameName = m_selectedIndex.parent().data().toString();
+        QString gameName = selectedIndex.parent().data().toString();
         QString strPath("SELECT Path FROM Games WHERE Title = '" + gameName + "'");
         QSqlQuery queryPath;
         queryPath.exec(strPath);
@@ -683,7 +694,7 @@ void MainWindow::slotEdit()
                 if(dialog.getInfo().m_name.at(0) == gameName.at(0))
                 {
                     //Меняем данные в модели
-                    m_model->setData(m_selectedIndex.parent(), dialog.getInfo().m_name);
+                    m_model->setData(selectedIndex.parent(), dialog.getInfo().m_name);
                 }
                 else //Если буква не совпадает
                 {
@@ -720,14 +731,14 @@ void MainWindow::slotEdit()
 
                         /*Добавляем моды*/
                         //Если моды есть
-                        if(m_model->getItem(m_selectedIndex.parent())->childCount() > 0)
+                        if(m_model->getItem(selectedIndex.parent())->childCount() > 0)
                         {
                             qDebug() << "Has children";
 
                             //Получаем список всех детей, что бы узнать их имена
-                            QList<TreeItem*> modItem = m_model->getItem(m_selectedIndex.parent())->getList();
+                            QList<TreeItem*> modItem = m_model->getItem(selectedIndex.parent())->getList();
 
-                            int childCount = m_model->getItem(m_selectedIndex.parent())->childCount();
+                            int childCount = m_model->getItem(selectedIndex.parent())->childCount();
                             for(int i = 0; i < childCount; ++i)
                             {
                                 //Добавляем строку
@@ -743,7 +754,7 @@ void MainWindow::slotEdit()
                         /*Добавляем моды*/
 
                         //Удаляем старую запись
-                        m_model->deleteElement(m_selectedIndex.parent());
+                        m_model->deleteElement(selectedIndex.parent());
                     }
                     else //Если буквы нет
                     {
@@ -777,14 +788,14 @@ void MainWindow::slotEdit()
 
                         /*Добавляем моды*/
                         //Если моды есть
-                        if(m_model->getItem(m_selectedIndex.parent())->childCount() > 0)
+                        if(m_model->getItem(selectedIndex.parent())->childCount() > 0)
                         {
                             qDebug() << "Has choldren";
 
                             //Получаем список всех детей, что бы узнать их имена
-                            QList<TreeItem*> modItem = m_model->getItem(m_selectedIndex.parent())->getList();
+                            QList<TreeItem*> modItem = m_model->getItem(selectedIndex.parent())->getList();
 
-                            int childAmount = m_model->getItem(m_selectedIndex.parent())->childCount();
+                            int childAmount = m_model->getItem(selectedIndex.parent())->childCount();
                             for(int childCount = 0; childCount < childAmount; ++childCount)
                             {
                                 //Добавляем строку
@@ -800,7 +811,7 @@ void MainWindow::slotEdit()
                         /*Добавляем моды*/
 
                         //Удаляем игру
-                        m_model->deleteElement(m_selectedIndex.parent());
+                        m_model->deleteElement(selectedIndex.parent());
                     }
                 }
             }
@@ -810,17 +821,18 @@ void MainWindow::slotEdit()
 
 void MainWindow::slotEditMod()
 {
+    QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex();
     //TODO: При стирании имени мода, если строка остается пустой, то можно нажать "Ок". Пофиксить.
-    qDebug() << "Edit mod" << m_selectedIndex.data().toString() << "of" << m_selectedIndex.parent().data().toString();
+    qDebug() << "Edit mod" << selectedIndex.data().toString() << "of" << selectedIndex.parent().data().toString();
 
     //Создаем диалог
     EditModDialog dialog;
 
     //Получаем имя мода
-    QString modName = m_selectedIndex.data().toString();
+    QString modName = selectedIndex.data().toString();
 
     //Получаем имя игры
-    QString gameName = m_selectedIndex.parent().data().toString();
+    QString gameName = selectedIndex.parent().data().toString();
 
     //Получаем путь до ехе мода из БД
     QString strPath("SELECT Path FROM '" + gameName + "' WHERE Title = '" + modName + "'");
@@ -853,7 +865,7 @@ void MainWindow::slotEditMod()
             queryUpdName.exec(strUpdName);
 
             //Обновляем модель
-            m_model->setData(m_selectedIndex, dialog.getInfo().m_name);
+            m_model->setData(selectedIndex, dialog.getInfo().m_name);
         }
         else //Если имя одинако, то лезем только в БД
         {
@@ -874,7 +886,8 @@ void MainWindow::slotStart()
     //WARNING: Проблема такого запуска игр, в том, что будет если ехе находится на большей вложенности
 
     //Получаем имя игры
-    QString gameName = m_selectedIndex.data().toString();
+    //QString gameName = m_selectedIndex.data().toString();
+    QString gameName = ui->treeView->selectionModel()->currentIndex().data().toString();
 
     //Получаем путь до .ехе из БД
     QString strPath = ("SELECT Path FROM Games WHERE Title = '" + gameName + "'");
@@ -993,10 +1006,16 @@ void MainWindow::slotStartMod()
     //WARNING: Проблема такого запуска мода, в том, что будет если ехе находится на большей вложенности
 
     //Получаем имя мода
-    QString modName = m_selectedIndex.data().toString();
+    //QString modName = m_selectedIndex.data().toString();
+    QString modName = ui->treeView->selectionModel()->currentIndex().data().toString();
 
     //Получаем имя игры
-    QString gameName = m_selectedIndex.parent().data().toString();
+    //QString gameName = m_selectedIndex.parent().data().toString();
+    QString gameName = ui->treeView->selectionModel()->currentIndex().parent().data().toString();
+
+    qDebug() << "------------";
+    qDebug() << modName;
+    qDebug() << gameName;
 
     //Получаем путь до .ехе из БД
     QString strPath = ("SELECT Path FROM '" + gameName + "' WHERE Title = '" + modName + "'");
@@ -1289,5 +1308,61 @@ void MainWindow::slotAddMod()
             QSqlQuery queryInsert;
             queryInsert.exec(strInsert);
         }
+    }
+}
+
+void MainWindow::on_buttonStart_clicked()
+{
+    QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex();
+    if(!selectedIndex.parent().parent().isValid())
+    {
+        slotStart();
+    }
+    else if(!selectedIndex.parent().parent().parent().isValid())
+    {
+        slotStartMod();
+    }
+    //TODO: Message box, что выбрана не игра/мод или вообще ничего не выбрано
+    //Или не давать нажимать на кнопку
+    //Или в конструкторе ставить сразу игру выделенной, н-р последнюю запушенную
+}
+
+void MainWindow::on_buttonEdit_clicked()
+{
+    //TODO: Не очень хороша, так делать, лучше сделать, что бы кнопки были не активны пока не выбрана игра или мод
+    QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex();
+//    if(!selectedIndex.parent().isValid())
+//    {
+
+//    }
+    if(!selectedIndex.parent().parent().isValid())
+    {
+        slotEdit();
+    }
+    else if(!selectedIndex.parent().parent().parent().isValid())
+    {
+        slotEditMod();
+    }
+}
+
+void MainWindow::on_buttonRemove_clicked()
+{
+    if(ui->treeView->selectionModel()->currentIndex().isValid())
+        slotDelete();
+}
+
+void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
+{
+    if(!selectedIndex.parent().isValid())
+    {
+        ui->buttonStart->setDisabled(true);
+        ui->buttonEdit->setDisabled(true);
+        ui->buttonRemove->setDisabled(true);
+    }
+    else
+    {
+        ui->buttonStart->setEnabled(true);
+        ui->buttonEdit->setEnabled(true);
+        ui->buttonRemove->setEnabled(true);
     }
 }

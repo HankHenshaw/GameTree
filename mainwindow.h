@@ -63,6 +63,13 @@ private slots:
     void slotAddMod();
     /*Context Menu Slots*/
 
+    /*Button slots*/
+    void on_buttonStart_clicked();
+    void on_buttonEdit_clicked();
+    void on_buttonRemove_clicked();
+
+    void slotButtonActivator(QModelIndex selectedIndex);
+    /*Button slots*/
 private:
     Ui::MainWindow *ui;
 

@@ -1,0 +1,106 @@
+15.02.19-16:34 Info: "GameTree", main.cpp
+15.02.19-16:34 Debug: Language Change, mainwindow.cpp
+15.02.19-16:34 Debug: QVariant(QString, "H"), mainwindow.cpp
+15.02.19-16:34 Debug: Button Start - Game, mainwindow.cpp
+15.02.19-16:34 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+15.02.19-16:34 Debug: Start Game: "" From: "", mainwindow.cpp
+15.02.19-16:35 Info: "GameTree", main.cpp
+15.02.19-16:35 Debug: Language Change, mainwindow.cpp
+15.02.19-16:36 Debug: QVariant(QString, "H"), mainwindow.cpp
+15.02.19-16:36 Debug: Button Start - Game, mainwindow.cpp
+15.02.19-16:36 Debug: Start Game: "Heroes of Might & Magic III" From: "D:\\Games\\Heroes3\\h3roe.exe", mainwindow.cpp
+15.02.19-16:59 Info: "GameTree", main.cpp
+15.02.19-16:59 Debug: Language Change, mainwindow.cpp
+15.02.19-17:00 Debug: Delete item "Heroes of Might & Magic III: Armareddons Blade", mainwindow.cpp
+15.02.19-17:00 Debug: Mod, mainwindow.cpp
+15.02.19-17:00 Debug: Match!, treemodel.cpp
+15.02.19-17:00 Debug: Delete item "Heroes of Might & Magic III", mainwindow.cpp
+15.02.19-17:00 Debug: Game, mainwindow.cpp
+15.02.19-17:00 Debug: Child, mainwindow.cpp
+15.02.19-17:00 Debug: Match!, treemodel.cpp
+15.02.19-17:00 Debug: Delete item "U", mainwindow.cpp
+15.02.19-17:00 Debug: Letter, mainwindow.cpp
+15.02.19-17:00 Debug: Match!, treemodel.cpp
+15.02.19-17:00 Debug: Delete item "Half-Life", mainwindow.cpp
+15.02.19-17:00 Debug: Game, mainwindow.cpp
+15.02.19-17:00 Debug: Match!, treemodel.cpp
+15.02.19-17:00 Debug: Language Change, mainwindow.cpp
+15.02.19-17:06 Info: "GameTree", main.cpp
+15.02.19-17:06 Debug: Language Change, mainwindow.cpp
+15.02.19-17:06 Debug: Language Change, mainwindow.cpp
+15.02.19-17:07 Info: "GameTree", main.cpp
+15.02.19-17:07 Debug: Language Change, mainwindow.cpp
+15.02.19-17:07 Debug: Language Change, mainwindow.cpp
+15.02.19-17:07 Debug: Language Change, mainwindow.cpp
+15.02.19-17:07 Debug: ------------, mainwindow.cpp
+15.02.19-17:07 Debug: "Heroes of Might & Magic III: Restoration of Erathia", mainwindow.cpp
+15.02.19-17:07 Debug: "Heroes of Might & Magic III", mainwindow.cpp
+15.02.19-17:07 Debug: Start Mod: "Heroes of Might & Magic III: Restoration of Erathia" From: "D:\\Games\\Heroes3\\h3roe.exe", mainwindow.cpp
+15.02.19-17:08 Info: "GameTree", main.cpp
+15.02.19-17:08 Debug: Language Change, mainwindow.cpp
+15.02.19-17:09 Debug: Language Change, mainwindow.cpp
+15.02.19-17:09 Info: "GameTree", main.cpp
+15.02.19-17:09 Debug: Language Change, mainwindow.cpp
+15.02.19-17:09 Debug: Language Change, mainwindow.cpp
+15.02.19-17:10 Info: "GameTree", main.cpp
+15.02.19-17:10 Debug: Language Change, mainwindow.cpp
+15.02.19-17:10 Debug: Language Change, mainwindow.cpp
+15.02.19-17:11 Info: "GameTree", main.cpp
+15.02.19-17:11 Debug: Language Change, mainwindow.cpp
+15.02.19-17:11 Debug: ------------, mainwindow.cpp
+15.02.19-17:11 Debug: "Heroes of Might & Magic III: Armareddons Blade", mainwindow.cpp
+15.02.19-17:11 Debug: "Heroes of Might & Magic III", mainwindow.cpp
+15.02.19-17:11 Debug: Start Mod: "Heroes of Might & Magic III: Armareddons Blade" From: "D:\\Games\\Heroes3\\h3blade.exe", mainwindow.cpp
+15.02.19-17:12 Info: "GameTree", main.cpp
+15.02.19-17:12 Debug: Language Change, mainwindow.cpp
+15.02.19-17:12 Debug: Edit game "O", mainwindow.cpp
+15.02.19-17:12 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+15.02.19-17:12 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+15.02.19-17:12 Debug: Language Change, mainwindow.cpp
+15.02.19-17:12 Debug: Language Change, mainwindow.cpp
+15.02.19-17:12 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+15.02.19-17:12 Debug: Start Game: "H" From: "", mainwindow.cpp
+15.02.19-17:15 Info: "GameTree", main.cpp
+15.02.19-17:15 Debug: Language Change, mainwindow.cpp
+15.02.19-17:15 Debug: Edit game "H", mainwindow.cpp
+15.02.19-17:15 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+15.02.19-17:15 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+15.02.19-17:15 Debug: Language Change, mainwindow.cpp
+15.02.19-17:15 Debug: Language Change, mainwindow.cpp
+15.02.19-17:16 Debug: Language Change, mainwindow.cpp
+15.02.19-17:16 Debug: Language Change, mainwindow.cpp
+15.02.19-17:16 Debug: Language Change, mainwindow.cpp
+15.02.19-17:16 Info: "GameTree", main.cpp
+15.02.19-17:16 Debug: Language Change, mainwindow.cpp
+15.02.19-17:16 Debug: Language Change, mainwindow.cpp
+15.02.19-17:26 Info: "GameTree", main.cpp
+15.02.19-17:26 Debug: Language Change, mainwindow.cpp
+15.02.19-17:27 Debug: Language Change, mainwindow.cpp
+15.02.19-17:27 Info: "GameTree", main.cpp
+15.02.19-17:27 Debug: Language Change, mainwindow.cpp
+15.02.19-17:27 Debug: ------------, mainwindow.cpp
+15.02.19-17:27 Debug: "Heroes of Might & Magic III: Restoration of Erathia", mainwindow.cpp
+15.02.19-17:27 Debug: "Heroes of Might & Magic III", mainwindow.cpp
+15.02.19-17:27 Debug: Start Mod: "Heroes of Might & Magic III: Restoration of Erathia" From: "D:\\Games\\Heroes3\\h3roe.exe", mainwindow.cpp
+15.02.19-17:30 Info: "GameTree", main.cpp
+15.02.19-17:30 Debug: Language Change, mainwindow.cpp
+15.02.19-17:30 Debug: Language Change, mainwindow.cpp
+15.02.19-17:30 Info: "GameTree", main.cpp
+15.02.19-17:30 Debug: Language Change, mainwindow.cpp
+15.02.19-17:30 Debug: Edit game "Overwatch", mainwindow.cpp
+15.02.19-17:30 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+15.02.19-17:30 Debug: Language Change, mainwindow.cpp
+15.02.19-17:30 Debug: Language Change, mainwindow.cpp
+15.02.19-17:30 Debug: Edit game "Overwatch", mainwindow.cpp
+15.02.19-17:30 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+15.02.19-17:30 Debug: Language Change, mainwindow.cpp
+15.02.19-17:30 Debug: Language Change, mainwindow.cpp
+15.02.19-17:30 Debug: Edit game "Overwatch", mainwindow.cpp
+15.02.19-17:30 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+15.02.19-17:30 Debug: Language Change, mainwindow.cpp
+15.02.19-17:31 Debug: Language Change, mainwindow.cpp
+15.02.19-17:31 Debug: Edit mod "Overwatch Launcher" of "Overwatch", mainwindow.cpp
+15.02.19-17:31 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'EditModDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+15.02.19-17:31 Debug: Language Change, mainwindow.cpp
+15.02.19-17:31 Debug: Language Change, mainwindow.cpp
+15.02.19-17:31 Debug: Language Change, mainwindow.cpp
