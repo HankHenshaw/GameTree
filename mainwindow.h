@@ -70,6 +70,9 @@ private slots:
 
     void slotButtonActivator(QModelIndex selectedIndex);
     /*Button slots*/
+
+    /*Dbl Clk Start Game Slot*/
+    void slotDblClicked();
 private:
     Ui::MainWindow *ui;
 

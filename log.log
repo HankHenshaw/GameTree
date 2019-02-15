@@ -104,3 +104,13 @@
 15.02.19-17:31 Debug: Language Change, mainwindow.cpp
 15.02.19-17:31 Debug: Language Change, mainwindow.cpp
 15.02.19-17:31 Debug: Language Change, mainwindow.cpp
+15.02.19-17:54 Info: "GameTree", main.cpp
+15.02.19-17:54 Debug: Language Change, mainwindow.cpp
+15.02.19-17:54 Debug: Start Game: "Heroes of Might & Magic III" From: "D:\\Games\\Heroes3\\h3roe.exe", mainwindow.cpp
+15.02.19-17:57 Info: "GameTree", main.cpp
+15.02.19-17:57 Debug: Language Change, mainwindow.cpp
+15.02.19-17:58 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+15.02.19-17:58 Debug: Start Game: "U" From: "", mainwindow.cpp
+15.02.19-18:00 Info: "GameTree", main.cpp
+15.02.19-18:00 Debug: Language Change, mainwindow.cpp
+15.02.19-18:00 Debug: Language Change, mainwindow.cpp

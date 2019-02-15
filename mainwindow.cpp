@@ -42,13 +42,16 @@ MainWindow::MainWindow(QWidget *parent) :
     // Разукрашивает каждую нечетную строку в серый, чеиные остаются белыми
     ui->treeView->setAlternatingRowColors(true);
 
-    //Устанавливаем соединения, для отслеживания выбранных индексов на представлении
-    connect(ui->treeView, &QTreeView::clicked, this, &MainWindow::slotButtonActivator);
+    //Устанавливаем соединение, для отслеживания выбранных индексов на представлении
+    connect(ui->treeView, &QTreeView::pressed, this, &MainWindow::slotButtonActivator);
 
     //Устанавливаем кнопки в нерабочее состояние, т.к. пока еще ничего не выбрано
     ui->buttonStart->setDisabled(true);
     ui->buttonEdit->setDisabled(true);
     ui->buttonRemove->setDisabled(true);
+
+    //Устанавливаем соединение, для отслеживания двойного клика
+    connect(ui->treeView, &QTreeView::doubleClicked, this, &MainWindow::slotDblClicked);
 }
 
 MainWindow::~MainWindow()
@@ -1365,4 +1368,9 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         ui->buttonEdit->setEnabled(true);
         ui->buttonRemove->setEnabled(true);
     }
+}
+
+void MainWindow::slotDblClicked()
+{
+    on_buttonStart_clicked();
 }
