@@ -137,6 +137,10 @@ private:
     QMenu *m_trayMenu;
     QSystemTrayIcon *m_trayIcon;
     /*System Tray*/
+
+    /*Dirs*/
+    QDir m_dir;
+    /*Dirs*/
 };
 
 #endif // MAINWINDOW_H

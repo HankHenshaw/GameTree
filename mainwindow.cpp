@@ -34,6 +34,11 @@ MainWindow::MainWindow(QWidget *parent) :
     qInfo() << "Get Data From DB";
     getDataFromDB();
 
+    //Создаем основную папку для контента
+    m_dir = MainWindow::appPath();
+    m_dir.mkdir("Games");
+    m_dir = MainWindow::appPath() + "\\Games\\";
+
     //Путь к приложению
     //m_appPath = QDir::currentPath();
     qDebug() << m_appPath;
@@ -1250,6 +1255,18 @@ void MainWindow::slotAdd()
             //Устанавливаем данные в новой строке
             m_model->setData(newIdx, gameName);
 
+            //Создаем папки игры и т.д
+            QString pathToLetter = m_dir.path() + '\\' + gameName.at(0);
+            QDir dir(pathToLetter);
+            QString path = pathToLetter + '\\' + gameName + '\\';
+            dir.mkdir(gameName);
+            dir.setPath(path);
+            dir.mkpath("music\\covers");
+            dir.mkpath("image\\covers");
+            dir.mkpath("image\\screenshots");
+            dir.mkdir("video");
+            dir.mkdir("mods");
+
             //TODO: Добавляем в БД
             QString strInsert("INSERT INTO Games(Title, Path) VALUES ('" + gameName + "', '" + path + "');");
             QSqlQuery queryInsert;
@@ -1278,6 +1295,16 @@ void MainWindow::slotAdd()
 
             //Устанавливаем данные в этой строке
             m_model->setData(newGameIdx, gameName);
+
+            //Создаем папки буквы/игры и т.д
+            QString path = m_dir.path() + '\\' + gameName.at(0) + '\\' + gameName + '\\';
+            m_dir.mkpath(path);
+            QDir dir(path);
+            dir.mkpath("music\\covers");
+            dir.mkpath("image\\covers");
+            dir.mkpath("image\\screenshots");
+            dir.mkdir("video");
+            dir.mkdir("mods");
 
             //TODO: Добавляем запись в БД
             QString strInsert("INSERT INTO Games(Title, Path) VALUES ('" + gameName + "', '" + path + "');");
@@ -1331,6 +1358,17 @@ void MainWindow::slotAddMod()
             QSqlQuery queryCreate;
             queryCreate.exec(strCreate);
 
+            //Создаем папки для мода
+            QString path = m_dir.path() + '\\' + gameName.at(0) + '\\' + gameName + "\\mods";
+            QDir dir(path);
+            dir.mkdir(modName);
+            QString pathToMod = path + '\\' + modName;
+            dir.setPath(pathToMod);
+            dir.mkpath("music\\covers");
+            dir.mkpath("image\\covers");
+            dir.mkpath("image\\screenshots");
+            dir.mkdir("video");
+
             //Добавляем запись в БД
             QString strInsert("INSERT INTO '" + gameName + "'(Title, Path) VALUES('" + modName + "', '" + dialog.getInfo().m_path + "');");
             QSqlQuery queryInsert;
@@ -1371,6 +1409,17 @@ void MainWindow::slotAddMod()
             QString strCreate("CREATE TABLE IF NOT EXISTS '" + gameName + "' (ID INTEGER PRIMARY KEY AUTOINCREMENT, Title STRING, Path STRING);");
             QSqlQuery queryCreate;
             queryCreate.exec(strCreate);
+
+            //Создаем папки для мода
+            QString path = m_dir.path() + '\\' + gameName.at(0) + '\\' + gameName + "\\mods";
+            QDir dir(path);
+            dir.mkdir(modName);
+            QString pathToMod = path + '\\' + modName;
+            dir.setPath(pathToMod);
+            dir.mkpath("music\\covers");
+            dir.mkpath("image\\covers");
+            dir.mkpath("image\\screenshots");
+            dir.mkdir("video");
 
             //Добавляем мод в БД
             QString strInsert("INSERT INTO '" + gameName + "'(Title, Path) VALUES('" + modName + "', '" + dialog.getInfo().m_path + "');");
