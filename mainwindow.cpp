@@ -19,6 +19,9 @@
 //TODO: Запуск мода и запуск мода с параметрами
 //TODO: Абсолютный путь до лога!!!!
 //TODO: Добавить горизонтальный слайдер в ТриВью если название не влезает в отведенную область
+//TODO: Для централизованного обращение к настройкам можно добавить объект настроек в класс приложения QApplication (пример на стр. 433/412)
+//TODO: Для первого запуска прил. установить положение окна по центру
+//TODO: Лог записывается в файл не с самого начала
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -30,6 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qInfo() << "Get Data From DB";
     getDataFromDB();
+
+    //Путь к приложению
+    m_appPath = QDir::currentPath();
 
     //Основная модель с данными
     m_model = new TreeModel(m_mapOfLetters, m_mapOfGames);
@@ -44,6 +50,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Устанавливаем соединение, для отслеживания выбранных индексов на представлении
     connect(ui->treeView, &QTreeView::pressed, this, &MainWindow::slotButtonActivator);
+
+    //Создаем объект класса настроек и загружаем настройки из ини файла
+    QString cfgFilePath(m_appPath + "/cfg.ini");
+    m_settings = new QSettings(cfgFilePath, QSettings::IniFormat, this);
+    loadSettings();
 
     //Устанавливаем кнопки в нерабочее состояние, т.к. пока еще ничего не выбрано
     ui->buttonStart->setDisabled(true);
@@ -80,7 +91,27 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    saveSettings();
     delete ui;
+}
+
+void MainWindow::loadSettings()
+{
+    //setGeometry(m_settings->value("Geometry", QRect(100, 100, 800, 640)).toRect());
+    qDebug() << "Load settings";
+
+    m_settings->beginGroup(objectName());
+    this->setGeometry(m_settings->value("Geometry", QRect(100, 100, 800, 640)).toRect());
+    m_settings->endGroup();
+}
+
+void MainWindow::saveSettings()
+{
+    qDebug() << "Save settings";
+
+    m_settings->beginGroup(objectName());
+    m_settings->setValue("Geometry", geometry());
+    m_settings->endGroup();
 }
 
 /*Audio Player*/

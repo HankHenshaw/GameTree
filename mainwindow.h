@@ -16,6 +16,7 @@
 #include <QProcess>
 #include <QSystemTrayIcon>
 #include <QCloseEvent>
+#include <QSettings>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
@@ -34,6 +35,10 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
+    /*Settings*/
+    void loadSettings();
+    void saveSettings();
+    /*Settings*/
 protected:
     virtual void closeEvent(QCloseEvent *event) override;
 
@@ -85,6 +90,12 @@ private slots:
     void slotDblClicked();
 private:
     Ui::MainWindow *ui;
+
+    QString m_appPath;
+
+    /*Settings*/
+    QSettings *m_settings;
+    /*Settings*/
 
     /*Model & Proxy*/
     TreeModel *m_model;
