@@ -25,7 +25,8 @@ int main(int argc, char *argv[])
 
 void messageToFile(QtMsgType type, const QMessageLogContext &context, const QString& msg)
 {
-    QFile file("log.log");
+    QString path = MainWindow::appPath() + '\\';
+    QFile file(path + "log.log");
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) // Убрать Append?
         return;
 

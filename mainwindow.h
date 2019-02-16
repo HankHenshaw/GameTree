@@ -39,6 +39,10 @@ public:
     void loadSettings();
     void saveSettings();
     /*Settings*/
+
+    /*Static*/
+    static const QString appPath();
+    /*Static*/
 protected:
     virtual void closeEvent(QCloseEvent *event) override;
 
@@ -91,7 +95,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    QString m_appPath;
+    /*Static*/
+    static QString m_appPath;
+    /*Static*/
 
     /*Settings*/
     QSettings *m_settings;

@@ -35,7 +35,8 @@ MainWindow::MainWindow(QWidget *parent) :
     getDataFromDB();
 
     //Путь к приложению
-    m_appPath = QDir::currentPath();
+    //m_appPath = QDir::currentPath();
+    qDebug() << m_appPath;
 
     //Основная модель с данными
     m_model = new TreeModel(m_mapOfLetters, m_mapOfGames);
@@ -94,6 +95,16 @@ MainWindow::~MainWindow()
     saveSettings();
     delete ui;
 }
+
+/*Static*/
+QString MainWindow::m_appPath = QDir::currentPath();
+
+
+const QString MainWindow::appPath()
+{
+    return m_appPath;
+}
+/*Static*/
 
 void MainWindow::loadSettings()
 {
