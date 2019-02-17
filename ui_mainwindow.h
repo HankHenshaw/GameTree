@@ -20,7 +20,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
@@ -33,6 +32,7 @@
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "myprogressbar.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -68,7 +68,7 @@ public:
     QWidget *page_2;
     QHBoxLayout *horizontalLayout_5;
     QVBoxLayout *verticalLayout;
-    QProgressBar *durationProgressBar;
+    MyProgressBar *durationProgressBar;
     QHBoxLayout *horizontalLayout_2;
     QToolButton *playButton;
     QHBoxLayout *horizontalLayout;
@@ -231,7 +231,7 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        durationProgressBar = new QProgressBar(centralWidget);
+        durationProgressBar = new MyProgressBar(centralWidget);
         durationProgressBar->setObjectName(QStringLiteral("durationProgressBar"));
         durationProgressBar->setValue(24);
         durationProgressBar->setFormat(QStringLiteral("%v%"));

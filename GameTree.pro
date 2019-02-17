@@ -33,7 +33,8 @@ SOURCES += \
     mylineedit.cpp \
     addmoddialog.cpp \
     argsdialog.cpp \
-    editmoddialog.cpp
+    editmoddialog.cpp \
+    myprogressbar.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,7 +44,8 @@ HEADERS += \
     mylineedit.h \
     addmoddialog.h \
     argsdialog.h \
-    editmoddialog.h
+    editmoddialog.h \
+    myprogressbar.h
 
 FORMS += \
         mainwindow.ui \

@@ -1,25 +1,11 @@
-17.02.19-17:19 Info: "GameTree", main.cpp
-17.02.19-17:19 Debug: Language Change, mainwindow.cpp
-17.02.19-17:19 Debug: Add game, mainwindow.cpp
-17.02.19-17:19 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
-17.02.19-17:19 Debug: Language Change, mainwindow.cpp
-17.02.19-17:19 Debug: Language Change, mainwindow.cpp
-17.02.19-17:19 Debug: "Anthem" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
-17.02.19-17:19 Debug: Letter not found, mainwindow.cpp
-17.02.19-17:19 Debug: Add mod, mainwindow.cpp
-17.02.19-17:19 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
-17.02.19-17:19 Debug: Language Change, mainwindow.cpp
-17.02.19-17:20 Debug: Language Change, mainwindow.cpp
-17.02.19-17:20 Debug: Language Change, mainwindow.cpp
-17.02.19-17:20 Debug: Language Change, mainwindow.cpp
-17.02.19-17:20 Debug: Edit mod "Cheat" of "Anthem", mainwindow.cpp
-17.02.19-17:20 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'EditModDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
-17.02.19-17:20 Debug: Language Change, mainwindow.cpp
-17.02.19-17:20 Debug: Language Change, mainwindow.cpp
-17.02.19-17:20 Debug: Language Change, mainwindow.cpp
-17.02.19-17:20 Debug: Language Change, mainwindow.cpp
-17.02.19-17:20 Debug: Delete item "A", mainwindow.cpp
-17.02.19-17:20 Debug: Letter, mainwindow.cpp
-17.02.19-17:20 Debug: Match!, treemodel.cpp
-17.02.19-17:20 Debug: Language Change, mainwindow.cpp
-17.02.19-17:20 Debug: Save settings, mainwindow.cpp
+18.02.19-02:04 Info: "GameTree", main.cpp
+18.02.19-02:04 Debug: Language Change, mainwindow.cpp
+18.02.19-02:04 Info: Audioplayer initialization, mainwindow.cpp
+18.02.19-02:04 Info: Get Data From DB, mainwindow.cpp
+18.02.19-02:04 Debug: DB Connected, mainwindow.cpp
+18.02.19-02:04 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+18.02.19-02:04 Debug: Load settings, mainwindow.cpp
+18.02.19-02:04 Debug: Language Change, mainwindow.cpp
+18.02.19-02:04 Debug: Language Change, mainwindow.cpp
+18.02.19-02:05 Debug: Language Change, mainwindow.cpp
+18.02.19-02:05 Debug: Language Change, mainwindow.cpp

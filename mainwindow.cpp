@@ -6,24 +6,20 @@
 ///TODO: То что надо сделать
 
 //TODO: Add Author of Icons from www.flaticon.com
-//TODO: RMB Progressbar
 //TODO: Playerlist widget
-//TODO: Mouse Wheel at volumeSlider
-//TODO: Settings
+//TODO: Исправить колесо мыши на звуковом слайдере
 //TODO: Fix all warnings
 //TODO: Replace menu icons to ~16x16 size
-//TODO: Minimize to tray
 //TODO: Проверить почему у позиций не должно быть указано родителя(т.е. корня)
 //TODO: Обнулять лог при каждом запуске??
 //TODO: Экранирование всех апострофов в запросах к БД
-//TODO: Запуск мода и запуск мода с параметрами
-//TODO: Абсолютный путь до лога!!!!
 //TODO: Добавить горизонтальный слайдер в ТриВью если название не влезает в отведенную область
 //TODO: Для централизованного обращение к настройкам можно добавить объект настроек в класс приложения QApplication (пример на стр. 433/412)
 //TODO: Для первого запуска прил. установить положение окна по центру
-//TODO: Лог записывается в файл не с самого начала
 //TODO: Предупреждение при удалении буквы/игры/мод что будет удалено все из внутренних папок
 //TODO: Ограничить/заменять символы с помощью которых нельзя задавать имена файлам/папкам
+//TODO: Начальное изображения для случая когда еще ничего не выбрано
+//TODO: Добавить язык в настройки
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -204,6 +200,7 @@ void MainWindow::audioPlayerInit()
     // Set connection
     connect(m_audioPlayer, SIGNAL(durationChanged(qint64)), SLOT(slotSetDuration(qint64)));
     connect(m_audioPlayer, SIGNAL(positionChanged(qint64)), SLOT(slotSetProgressPosotion(qint64)));
+    connect(ui->durationProgressBar, &MyProgressBar::signalMousePressedPos, this, &MainWindow::slotSetMediaPosition);
 
     // Set text in the middle of the progress bar
     ui->durationProgressBar->setAlignment(Qt::AlignCenter);
@@ -234,6 +231,14 @@ QString MainWindow::msecsToString(qint64 n)
     int nSeconds = ((n % (60 * 1000)) / 1000);
 
     return QTime(nHours, nMinutes, nSeconds).toString("hh:mm:ss");
+}
+
+void MainWindow::slotSetMediaPosition(QPoint pos)
+{
+    int widthOfProgressBar = size().width() - 86; // 24 = 9x2 (Margins) - 6(Space between progressbar and label) - 60 (Lable size) - 2(idk, mb Border)
+
+    double nScale = static_cast<double>(pos.x())/widthOfProgressBar;
+    m_audioPlayer->setPosition((ui->durationProgressBar->maximum())*nScale);
 }
 /*Audio Player*/
 /*Translator*/

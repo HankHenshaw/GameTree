@@ -142,7 +142,7 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QProgressBar" name="durationProgressBar">
+         <widget class="MyProgressBar" name="durationProgressBar">
           <property name="value">
            <number>24</number>
           </property>
@@ -381,6 +381,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MyProgressBar</class>
+   <extends>QProgressBar</extends>
+   <header>myprogressbar.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="icons.qrc"/>
  </resources>

@@ -22,6 +22,7 @@
 #include "addmoddialog.h"
 #include "argsdialog.h"
 #include "editmoddialog.h"
+#include "myprogressbar.h"
 
 namespace Ui {
 class MainWindow;
@@ -56,6 +57,7 @@ private slots:
     void on_volumeSlider_sliderMoved(int position);
     void slotSetDuration(qint64 n);
     void slotSetProgressPosotion(qint64 n);
+    void slotSetMediaPosition(QPoint pos);
     /*Audio Player Slots*/
 
     /*Translator Slots*/

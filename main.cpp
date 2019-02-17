@@ -10,8 +10,6 @@ void messageToFile(QtMsgType type, const QMessageLogContext &context, const QStr
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
     QApplication::setApplicationName("GameTree");
     {
 //#ifndef QT_DEBUG // Для записи в файл только во время отладки
@@ -20,6 +18,9 @@ int main(int argc, char *argv[])
     qInstallMessageHandler(messageToFile); // Чтобы вернуть старый хэндлер qInstallMessageHandler()
     }
     qInfo() << QApplication::applicationName();
+    MainWindow w;
+    w.show();
+
     return a.exec();
 }
 
