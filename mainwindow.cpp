@@ -23,7 +23,7 @@
 //TODO: Для первого запуска прил. установить положение окна по центру
 //TODO: Лог записывается в файл не с самого начала
 //TODO: Предупреждение при удалении буквы/игры/мод что будет удалено все из внутренних папок
-
+//TODO: Ограничить/заменять символы с помощью которых нельзя задавать имена файлам/папкам
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -612,6 +612,13 @@ void MainWindow::slotEdit()
                 {
                     //Меняем данные в модели
                     m_model->setData(selectedIndex, dialog.getInfo().m_name);
+
+                    //Переимен. папку
+                    QString oldPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName;
+                    QString newPath = m_dir.path() + '/' + gameName.at(0) + '/' + dialog.getInfo().m_name;
+                    QDir dir;
+                    dir.rename(oldPath, newPath);
+                    //TODO: qDebug??
                 }
                 else //Если буква не совпадает
                 {
@@ -670,6 +677,13 @@ void MainWindow::slotEdit()
                         }
                         /*Добавляем моды*/
 
+                        //Перемещаем папку
+                        QString oldPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName;
+                        QString newPath = m_dir.path() + '/' + dialog.getInfo().m_name.at(0) + '/' + dialog.getInfo().m_name;
+                        QDir dir;
+                        dir.rename(oldPath, newPath);
+                        //TODO: qDebug??
+
                         //Удаляем старую запись
                         m_model->deleteElement(selectedIndex);
                     }
@@ -725,6 +739,14 @@ void MainWindow::slotEdit()
                                 m_model->setData(modIdx, modItem.at(childCount)->data());
                             }
                         }
+                        //Перемещаем папку
+                        m_dir.mkdir(dialog.getInfo().m_name.at(0));
+                        QString oldPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName;
+                        QString newPath = m_dir.path() + '/' + dialog.getInfo().m_name.at(0) + '/' + dialog.getInfo().m_name;
+                        QDir dir;
+                        dir.rename(oldPath, newPath);
+                        //TODO: qDebug??
+
                         //Удаляем игру
                         m_model->deleteElement(selectedIndex);
                     }
@@ -788,6 +810,13 @@ void MainWindow::slotEdit()
                 {
                     //Меняем данные в модели
                     m_model->setData(selectedIndex.parent(), dialog.getInfo().m_name);
+
+                    //Переимен. папку
+                    QString oldPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName;
+                    QString newPath = m_dir.path() + '/' + gameName.at(0) + '/' + dialog.getInfo().m_name;
+                    QDir dir;
+                    dir.rename(oldPath, newPath);
+                    //TODO: qDebug??
                 }
                 else //Если буква не совпадает
                 {
@@ -846,6 +875,13 @@ void MainWindow::slotEdit()
                         }
                         /*Добавляем моды*/
 
+                        //Перемещаем папку
+                        QString oldPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName;
+                        QString newPath = m_dir.path() + '/' + dialog.getInfo().m_name.at(0) + '/' + dialog.getInfo().m_name;
+                        QDir dir;
+                        dir.rename(oldPath, newPath);
+                        //TODO: qDebug??
+
                         //Удаляем старую запись
                         m_model->deleteElement(selectedIndex.parent());
                     }
@@ -903,6 +939,14 @@ void MainWindow::slotEdit()
                         }
                         /*Добавляем моды*/
 
+                        //Перемещаем папку
+                        m_dir.mkdir(dialog.getInfo().m_name.at(0));
+                        QString oldPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName;
+                        QString newPath = m_dir.path() + '/' + dialog.getInfo().m_name.at(0) + '/' + dialog.getInfo().m_name;
+                        QDir dir;
+                        dir.rename(oldPath, newPath);
+                        //TODO: qDebug??
+
                         //Удаляем игру
                         m_model->deleteElement(selectedIndex.parent());
                     }
@@ -957,10 +1001,17 @@ void MainWindow::slotEditMod()
             QSqlQuery queryUpdName;
             queryUpdName.exec(strUpdName);
 
+            //Переимен. папку мода
+            QString oldPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName;
+            QString newPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName + "/mods/" + dialog.getInfo().m_name;
+            QDir dir;
+            dir.rename(oldPath, newPath);
+            //TODO: qDebug??
+
             //Обновляем модель
             m_model->setData(selectedIndex, dialog.getInfo().m_name);
         }
-        else //Если имя одинако, то лезем только в БД
+        else //Если имя одинаково, то лезем только в БД
         {
             //Только если путь изменился, лезем БД
             if(dialog.getInfo().m_path != path)
@@ -1277,9 +1328,9 @@ void MainWindow::slotAdd()
             //Создаем папки игры и т.д
             QString pathToLetter = m_dir.path() + '/' + gameName.at(0);
             QDir dir(pathToLetter);
-            QString path = pathToLetter + '/' + gameName + '/';
+            QString pathToGame = pathToLetter + '/' + gameName + '/';
             dir.mkdir(gameName);
-            dir.setPath(path);
+            dir.setPath(pathToGame);
             dir.mkpath("music/covers");
             dir.mkpath("image/covers");
             dir.mkpath("image/screenshots");
@@ -1317,9 +1368,9 @@ void MainWindow::slotAdd()
             m_model->setData(newGameIdx, gameName);
 
             //Создаем папки буквы/игры и т.д
-            QString path = m_dir.path() + '\\' + gameName.at(0) + '\\' + gameName + '\\';
-            m_dir.mkpath(path);
-            QDir dir(path);
+            QString pathToGame = m_dir.path() + '/' + gameName.at(0) + '/' + gameName + '/';
+            m_dir.mkpath(pathToGame);
+            QDir dir(pathToGame);
             dir.mkpath("music/covers");
             dir.mkpath("image/covers");
             dir.mkpath("image/screenshots");
@@ -1380,10 +1431,10 @@ void MainWindow::slotAddMod()
             queryCreate.exec(strCreate);
 
             //Создаем папки для мода
-            QString path = m_dir.path() + '/' + gameName.at(0) + '/' + gameName + "/mods";
-            QDir dir(path);
+            QString pathToModsFolder = m_dir.path() + '/' + gameName.at(0) + '/' + gameName + "/mods";
+            QDir dir(pathToModsFolder);
             dir.mkdir(modName);
-            QString pathToMod = path + '/' + modName;
+            QString pathToMod = pathToModsFolder + '/' + modName;
             dir.setPath(pathToMod);
             dir.mkpath("music/covers");
             dir.mkpath("image/covers");
@@ -1433,14 +1484,14 @@ void MainWindow::slotAddMod()
             queryCreate.exec(strCreate);
 
             //Создаем папки для мода
-            QString path = m_dir.path() + '\\' + gameName.at(0) + '\\' + gameName + "\\mods";
-            QDir dir(path);
+            QString pathToModsFolder = m_dir.path() + '/' + gameName.at(0) + '/' + gameName + "/mods";
+            QDir dir(pathToModsFolder);
             dir.mkdir(modName);
-            QString pathToMod = path + '\\' + modName;
+            QString pathToMod = pathToModsFolder + '/' + modName;
             dir.setPath(pathToMod);
-            dir.mkpath("music\\covers");
-            dir.mkpath("image\\covers");
-            dir.mkpath("image\\screenshots");
+            dir.mkpath("music/covers");
+            dir.mkpath("image/covers");
+            dir.mkpath("image/screenshots");
             dir.mkdir("video");
 
             //Добавляем мод в БД
