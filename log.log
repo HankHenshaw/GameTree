@@ -1,127 +1,81 @@
-16.02.19-22:40 Debug: Language Change, mainwindow.cpp
-16.02.19-22:40 Debug: Language Change, mainwindow.cpp
-16.02.19-22:40 Debug: Save settings, mainwindow.cpp
-16.02.19-22:42 Info: "GameTree", main.cpp
-16.02.19-22:42 Debug: Language Change, mainwindow.cpp
-16.02.19-22:42 Debug: Delete item "T", mainwindow.cpp
-16.02.19-22:42 Debug: Letter, mainwindow.cpp
-16.02.19-22:42 Debug: Match!, treemodel.cpp
-16.02.19-22:42 Debug: Add game, mainwindow.cpp
-16.02.19-22:42 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
-16.02.19-22:42 Debug: Language Change, mainwindow.cpp
-16.02.19-22:42 Debug: Language Change, mainwindow.cpp
-16.02.19-22:42 Debug: "TrackMania" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
-16.02.19-22:42 Debug: Letter not found, mainwindow.cpp
-16.02.19-22:42 Debug: Language Change, mainwindow.cpp
-16.02.19-22:42 Debug: Language Change, mainwindow.cpp
-16.02.19-22:42 Debug: Delete item "T", mainwindow.cpp
-16.02.19-22:42 Debug: Letter, mainwindow.cpp
-16.02.19-22:42 Debug: Match!, treemodel.cpp
-16.02.19-22:42 Debug: Language Change, mainwindow.cpp
-16.02.19-22:43 Debug: Language Change, mainwindow.cpp
-16.02.19-22:43 Debug: Language Change, mainwindow.cpp
-16.02.19-22:43 Debug: Save settings, mainwindow.cpp
-16.02.19-22:44 Info: "GameTree", main.cpp
-16.02.19-22:44 Debug: Language Change, mainwindow.cpp
-16.02.19-22:44 Debug: Add game, mainwindow.cpp
-16.02.19-22:44 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
-16.02.19-22:44 Debug: Language Change, mainwindow.cpp
-16.02.19-22:44 Debug: Language Change, mainwindow.cpp
-16.02.19-22:44 Debug: "Elements" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
-16.02.19-22:44 Debug: Letter not found, mainwindow.cpp
-16.02.19-22:44 Debug: Language Change, mainwindow.cpp
-16.02.19-22:44 Debug: Language Change, mainwindow.cpp
-16.02.19-22:44 Debug: Delete item "E", mainwindow.cpp
-16.02.19-22:44 Debug: Letter, mainwindow.cpp
-16.02.19-22:44 Debug: Match!, treemodel.cpp
-16.02.19-22:44 Debug: Language Change, mainwindow.cpp
-16.02.19-22:50 Debug: Language Change, mainwindow.cpp
-16.02.19-22:50 Debug: Language Change, mainwindow.cpp
-16.02.19-22:50 Debug: Save settings, mainwindow.cpp
-16.02.19-22:50 Info: "GameTree", main.cpp
-16.02.19-22:50 Debug: Language Change, mainwindow.cpp
-16.02.19-22:50 Debug: Add game, mainwindow.cpp
-16.02.19-22:50 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
-16.02.19-22:50 Debug: Language Change, mainwindow.cpp
-16.02.19-22:50 Debug: Language Change, mainwindow.cpp
-16.02.19-22:50 Debug: "Unreal 99" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
-16.02.19-22:50 Debug: Letter found, mainwindow.cpp
-16.02.19-22:50 Debug: Language Change, mainwindow.cpp
-16.02.19-22:50 Debug: Language Change, mainwindow.cpp
-16.02.19-22:50 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Info: "GameTree", main.cpp
-16.02.19-22:53 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Debug: Add game, mainwindow.cpp
-16.02.19-22:53 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
-16.02.19-22:53 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Debug: "Extreme" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
-16.02.19-22:53 Debug: Letter not found, mainwindow.cpp
-16.02.19-22:53 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Debug: Add game, mainwindow.cpp
-16.02.19-22:53 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
-16.02.19-22:53 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Debug: "Anthem" "C:/vs_community__1750185977.1507509163.exe", mainwindow.cpp
-16.02.19-22:53 Debug: Letter not found, mainwindow.cpp
-16.02.19-22:53 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Debug: Language Change, mainwindow.cpp
-16.02.19-22:53 Debug: Delete item "A", mainwindow.cpp
-16.02.19-22:53 Debug: Letter, mainwindow.cpp
-16.02.19-22:53 Debug: Match!, treemodel.cpp
-16.02.19-22:53 Debug: Delete item "E", mainwindow.cpp
-16.02.19-22:53 Debug: Letter, mainwindow.cpp
-16.02.19-22:53 Debug: Match!, treemodel.cpp
-16.02.19-22:54 Debug: Language Change, mainwindow.cpp
-16.02.19-22:54 Debug: Save settings, mainwindow.cpp
-16.02.19-22:58 Info: "GameTree", main.cpp
-16.02.19-22:58 Debug: Language Change, mainwindow.cpp
-16.02.19-22:58 Debug: Add mod, mainwindow.cpp
-16.02.19-22:58 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
-16.02.19-22:58 Debug: Language Change, mainwindow.cpp
-16.02.19-22:58 Debug: Language Change, mainwindow.cpp
-16.02.19-22:58 Debug: Language Change, mainwindow.cpp
-16.02.19-22:58 Debug: Language Change, mainwindow.cpp
-16.02.19-22:58 Debug: Delete item "Heroes 3 WoG", mainwindow.cpp
-16.02.19-22:58 Debug: Mod, mainwindow.cpp
-16.02.19-22:58 Debug: Match!, treemodel.cpp
-16.02.19-22:58 Debug: Language Change, mainwindow.cpp
-16.02.19-22:58 Debug: Save settings, mainwindow.cpp
-16.02.19-23:01 Info: "GameTree", main.cpp
-16.02.19-23:01 Debug: Language Change, mainwindow.cpp
-16.02.19-23:01 Debug: Add mod, mainwindow.cpp
-16.02.19-23:01 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
-16.02.19-23:01 Debug: Language Change, mainwindow.cpp
-16.02.19-23:01 Debug: Language Change, mainwindow.cpp
-16.02.19-23:01 Debug: Language Change, mainwindow.cpp
-16.02.19-23:02 Debug: Language Change, mainwindow.cpp
-16.02.19-23:02 Debug: Delete item "Heroes 3 WoG", mainwindow.cpp
-16.02.19-23:02 Debug: Mod, mainwindow.cpp
-16.02.19-23:02 Debug: Match!, treemodel.cpp
-16.02.19-23:02 Debug: Language Change, mainwindow.cpp
-16.02.19-23:02 Debug: Save settings, mainwindow.cpp
-16.02.19-23:02 Info: "GameTree", main.cpp
-16.02.19-23:02 Debug: Language Change, mainwindow.cpp
-16.02.19-23:02 Debug: Add mod, mainwindow.cpp
-16.02.19-23:02 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
-16.02.19-23:02 Debug: Language Change, mainwindow.cpp
-16.02.19-23:02 Debug: Language Change, mainwindow.cpp
-16.02.19-23:02 Debug: Language Change, mainwindow.cpp
-16.02.19-23:02 Debug: Language Change, mainwindow.cpp
-16.02.19-23:03 Debug: Delete item "Heroes 3 WoG", mainwindow.cpp
-16.02.19-23:03 Debug: Mod, mainwindow.cpp
-16.02.19-23:03 Debug: Match!, treemodel.cpp
-16.02.19-23:03 Debug: Language Change, mainwindow.cpp
-16.02.19-23:03 Debug: Save settings, mainwindow.cpp
-16.02.19-23:04 Info: "GameTree", main.cpp
-16.02.19-23:04 Debug: Language Change, mainwindow.cpp
-16.02.19-23:04 Debug: Delete item "Unreal 99", mainwindow.cpp
-16.02.19-23:04 Debug: Game, mainwindow.cpp
-16.02.19-23:04 Debug: Match!, treemodel.cpp
-16.02.19-23:04 Debug: Language Change, mainwindow.cpp
-16.02.19-23:04 Debug: Language Change, mainwindow.cpp
-16.02.19-23:04 Debug: Language Change, mainwindow.cpp
-16.02.19-23:04 Debug: Language Change, mainwindow.cpp
-16.02.19-23:04 Debug: Language Change, mainwindow.cpp
-16.02.19-23:04 Debug: Save settings, mainwindow.cpp
+17.02.19-15:13 Info: "GameTree", main.cpp
+17.02.19-15:13 Debug: Language Change, mainwindow.cpp
+17.02.19-15:13 Debug: Add mod, mainwindow.cpp
+17.02.19-15:13 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+17.02.19-15:13 Debug: Language Change, mainwindow.cpp
+17.02.19-15:13 Debug: Language Change, mainwindow.cpp
+17.02.19-15:13 Debug: Language Change, mainwindow.cpp
+17.02.19-15:13 Debug: Language Change, mainwindow.cpp
+17.02.19-15:13 Debug: Delete item "Extrem", mainwindow.cpp
+17.02.19-15:13 Debug: Mod, mainwindow.cpp
+17.02.19-15:13 Debug: "C:/Qt/project/GameTree/Games/U/Unepic/mods/", mainwindow.cpp
+17.02.19-15:13 Debug: Match!, treemodel.cpp
+17.02.19-15:13 Debug: Language Change, mainwindow.cpp
+17.02.19-15:14 Debug: Language Change, mainwindow.cpp
+17.02.19-15:14 Debug: Language Change, mainwindow.cpp
+17.02.19-15:14 Debug: Save settings, mainwindow.cpp
+17.02.19-15:15 Info: "GameTree", main.cpp
+17.02.19-15:15 Debug: Language Change, mainwindow.cpp
+17.02.19-15:15 Debug: Add mod, mainwindow.cpp
+17.02.19-15:15 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+17.02.19-15:15 Debug: Language Change, mainwindow.cpp
+17.02.19-15:15 Debug: Language Change, mainwindow.cpp
+17.02.19-15:15 Debug: Language Change, mainwindow.cpp
+17.02.19-15:15 Debug: Language Change, mainwindow.cpp
+17.02.19-15:16 Debug: Delete item "Extr", mainwindow.cpp
+17.02.19-15:16 Debug: Mod, mainwindow.cpp
+17.02.19-15:16 Debug: "C:/Qt/project/GameTree/Games/U/Unepic/mods/", mainwindow.cpp
+17.02.19-15:16 Debug: Match!, treemodel.cpp
+17.02.19-15:16 Debug: Language Change, mainwindow.cpp
+17.02.19-15:19 Debug: Language Change, mainwindow.cpp
+17.02.19-15:19 Debug: Language Change, mainwindow.cpp
+17.02.19-15:19 Debug: Save settings, mainwindow.cpp
+17.02.19-15:19 Info: "GameTree", main.cpp
+17.02.19-15:19 Debug: Language Change, mainwindow.cpp
+17.02.19-15:19 Debug: Add mod, mainwindow.cpp
+17.02.19-15:19 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+17.02.19-15:19 Debug: Language Change, mainwindow.cpp
+17.02.19-15:20 Debug: Language Change, mainwindow.cpp
+17.02.19-15:20 Debug: Language Change, mainwindow.cpp
+17.02.19-15:20 Debug: Language Change, mainwindow.cpp
+17.02.19-15:20 Debug: Delete item "Extra", mainwindow.cpp
+17.02.19-15:20 Debug: Mod, mainwindow.cpp
+17.02.19-15:20 Debug: "C:/Qt/project/GameTree/Games/U/Unepic/mods/Extra", mainwindow.cpp
+17.02.19-15:20 Debug: Match!, treemodel.cpp
+17.02.19-15:20 Debug: Language Change, mainwindow.cpp
+17.02.19-15:20 Debug: Language Change, mainwindow.cpp
+17.02.19-15:20 Debug: Language Change, mainwindow.cpp
+17.02.19-15:20 Debug: Save settings, mainwindow.cpp
+17.02.19-15:24 Info: "GameTree", main.cpp
+17.02.19-15:24 Debug: Language Change, mainwindow.cpp
+17.02.19-15:24 Debug: Delete item "U", mainwindow.cpp
+17.02.19-15:24 Debug: Letter, mainwindow.cpp
+17.02.19-15:24 Debug: Match!, treemodel.cpp
+17.02.19-15:24 Debug: Language Change, mainwindow.cpp
+17.02.19-15:25 Debug: Language Change, mainwindow.cpp
+17.02.19-15:25 Debug: Language Change, mainwindow.cpp
+17.02.19-15:25 Debug: Save settings, mainwindow.cpp
+17.02.19-15:25 Info: "GameTree", main.cpp
+17.02.19-15:25 Debug: Language Change, mainwindow.cpp
+17.02.19-15:25 Debug: Delete item "Unepic", mainwindow.cpp
+17.02.19-15:25 Debug: Game, mainwindow.cpp
+17.02.19-15:25 Debug: Match!, treemodel.cpp
+17.02.19-15:25 Debug: Language Change, mainwindow.cpp
+17.02.19-15:25 Debug: Language Change, mainwindow.cpp
+17.02.19-15:25 Debug: Language Change, mainwindow.cpp
+17.02.19-15:25 Debug: Language Change, mainwindow.cpp
+17.02.19-15:25 Debug: Language Change, mainwindow.cpp
+17.02.19-15:25 Debug: Save settings, mainwindow.cpp
+17.02.19-15:32 Info: "GameTree", main.cpp
+17.02.19-15:32 Debug: Language Change, mainwindow.cpp
+17.02.19-15:32 Debug: Language Change, mainwindow.cpp
+17.02.19-15:32 Debug: Save settings, mainwindow.cpp
+17.02.19-15:32 Info: "GameTree", main.cpp
+17.02.19-15:32 Debug: Language Change, mainwindow.cpp
+17.02.19-15:32 Debug: Delete item "U", mainwindow.cpp
+17.02.19-15:32 Debug: Letter, mainwindow.cpp
+17.02.19-15:32 Debug: Match!, treemodel.cpp
+17.02.19-15:32 Debug: Language Change, mainwindow.cpp
+17.02.19-15:32 Debug: Language Change, mainwindow.cpp
+17.02.19-15:32 Debug: Language Change, mainwindow.cpp
+17.02.19-15:32 Debug: Save settings, mainwindow.cpp
