@@ -1,71 +1,59 @@
-18.02.19-02:04 Info: "GameTree", main.cpp
-18.02.19-02:04 Debug: Language Change, mainwindow.cpp
-18.02.19-02:04 Info: Audioplayer initialization, mainwindow.cpp
-18.02.19-02:04 Info: Get Data From DB, mainwindow.cpp
-18.02.19-02:04 Debug: DB Connected, mainwindow.cpp
-18.02.19-02:04 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-18.02.19-02:04 Debug: Load settings, mainwindow.cpp
-18.02.19-02:04 Debug: Language Change, mainwindow.cpp
-18.02.19-02:04 Debug: Language Change, mainwindow.cpp
-18.02.19-02:05 Debug: Language Change, mainwindow.cpp
-18.02.19-02:05 Debug: Language Change, mainwindow.cpp
-19.02.19-14:44 Info: "GameTree", main.cpp
-19.02.19-14:44 Debug: Language Change, mainwindow.cpp
-19.02.19-14:44 Info: Audioplayer initialization, mainwindow.cpp
-19.02.19-14:44 Info: Get Data From DB, mainwindow.cpp
-19.02.19-14:44 Debug: DB Connected, mainwindow.cpp
-19.02.19-14:44 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-19.02.19-14:44 Debug: Load settings, mainwindow.cpp
-19.02.19-14:44 Debug: Language Change, mainwindow.cpp
-19.02.19-14:44 Debug: Language Change, mainwindow.cpp
-19.02.19-14:44 Debug: Save settings, mainwindow.cpp
-19.02.19-15:26 Info: "GameTree", main.cpp
-19.02.19-15:26 Debug: Language Change, mainwindow.cpp
-19.02.19-15:26 Info: Audioplayer initialization, mainwindow.cpp
-19.02.19-15:26 Info: Get Data From DB, mainwindow.cpp
-19.02.19-15:26 Debug: DB Connected, mainwindow.cpp
-19.02.19-15:26 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-19.02.19-15:26 Debug: Load settings, mainwindow.cpp
-19.02.19-15:26 Debug: Language Change, mainwindow.cpp
-19.02.19-15:26 Debug: Language Change, mainwindow.cpp
-19.02.19-15:26 Debug: Save settings, mainwindow.cpp
-19.02.19-15:26 Info: "GameTree", main.cpp
-19.02.19-15:26 Debug: Language Change, mainwindow.cpp
-19.02.19-15:26 Info: Audioplayer initialization, mainwindow.cpp
-19.02.19-15:26 Info: Get Data From DB, mainwindow.cpp
-19.02.19-15:26 Debug: DB Connected, mainwindow.cpp
-19.02.19-15:26 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-19.02.19-15:26 Debug: Load settings, mainwindow.cpp
-19.02.19-15:26 Debug: Language Change, mainwindow.cpp
-19.02.19-15:26 Debug: Language Change, mainwindow.cpp
-19.02.19-15:26 Debug: Language Change, mainwindow.cpp
-19.02.19-15:26 Debug: Language Change, mainwindow.cpp
-19.02.19-15:29 Debug: Save settings, mainwindow.cpp
-19.02.19-15:30 Info: "GameTree", main.cpp
-19.02.19-15:30 Debug: Language Change, mainwindow.cpp
-19.02.19-15:30 Info: Audioplayer initialization, mainwindow.cpp
-19.02.19-15:30 Info: Get Data From DB, mainwindow.cpp
-19.02.19-15:30 Debug: DB Connected, mainwindow.cpp
-19.02.19-15:30 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-19.02.19-15:30 Debug: Load settings, mainwindow.cpp
-19.02.19-15:30 Debug: Language Change, mainwindow.cpp
-19.02.19-15:30 Debug: Language Change, mainwindow.cpp
-19.02.19-15:30 Debug: Language Change, mainwindow.cpp
-19.02.19-15:30 Debug: Language Change, mainwindow.cpp
-19.02.19-15:30 Debug: Language Change, mainwindow.cpp
-19.02.19-15:30 Debug: Language Change, mainwindow.cpp
-19.02.19-15:31 Debug: Save settings, mainwindow.cpp
-19.02.19-15:31 Info: "GameTree", main.cpp
-19.02.19-15:31 Debug: Language Change, mainwindow.cpp
-19.02.19-15:31 Info: Audioplayer initialization, mainwindow.cpp
-19.02.19-15:31 Info: Get Data From DB, mainwindow.cpp
-19.02.19-15:31 Debug: DB Connected, mainwindow.cpp
-19.02.19-15:31 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-19.02.19-15:31 Debug: Load settings, mainwindow.cpp
-19.02.19-15:31 Debug: Language Change, mainwindow.cpp
-19.02.19-15:31 Debug: Language Change, mainwindow.cpp
-19.02.19-15:31 Debug: Language Change, mainwindow.cpp
-19.02.19-15:31 Debug: Language Change, mainwindow.cpp
-19.02.19-15:32 Debug: Language Change, mainwindow.cpp
-19.02.19-15:32 Debug: Language Change, mainwindow.cpp
-19.02.19-15:32 Debug: Save settings, mainwindow.cpp
+19.02.19-17:21 Info: "GameTree", main.cpp
+19.02.19-17:21 Debug: Language Change, mainwindow.cpp
+19.02.19-17:21 Info: Audioplayer initialization, mainwindow.cpp
+19.02.19-17:21 Info: Get Data From DB, mainwindow.cpp
+19.02.19-17:21 Debug: DB Connected, mainwindow.cpp
+19.02.19-17:21 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+19.02.19-17:21 Debug: Load settings, mainwindow.cpp
+19.02.19-17:21 Debug: Language Change, mainwindow.cpp
+19.02.19-17:21 Debug: "<img src = C:/Qt/project/GameTree/Games/H/Heroes of Might & Magic III/mods/Heroes Chronicles 1/music/covers/CD.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+19.02.19-17:21 Debug: Language Change, mainwindow.cpp
+19.02.19-17:21 Debug: Language Change, mainwindow.cpp
+19.02.19-17:21 Debug: Language Change, mainwindow.cpp
+19.02.19-17:21 Debug: Language Change, mainwindow.cpp
+19.02.19-17:23 Debug: Save settings, mainwindow.cpp
+19.02.19-17:23 Info: "GameTree", main.cpp
+19.02.19-17:23 Debug: Language Change, mainwindow.cpp
+19.02.19-17:23 Info: Audioplayer initialization, mainwindow.cpp
+19.02.19-17:23 Info: Get Data From DB, mainwindow.cpp
+19.02.19-17:23 Debug: DB Connected, mainwindow.cpp
+19.02.19-17:23 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+19.02.19-17:23 Debug: Load settings, mainwindow.cpp
+19.02.19-17:23 Debug: Language Change, mainwindow.cpp
+19.02.19-17:23 Debug: "<img src = C:/Qt/project/GameTree/Games/H/Heroes of Might & Magic III/mods/Heroes Chronicles 1/music/covers/CD.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+19.02.19-17:23 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+19.02.19-17:23 Debug: Language Change, mainwindow.cpp
+19.02.19-17:24 Debug: Save settings, mainwindow.cpp
+19.02.19-17:24 Info: "GameTree", main.cpp
+19.02.19-17:24 Debug: Language Change, mainwindow.cpp
+19.02.19-17:24 Info: Audioplayer initialization, mainwindow.cpp
+19.02.19-17:24 Info: Get Data From DB, mainwindow.cpp
+19.02.19-17:24 Debug: DB Connected, mainwindow.cpp
+19.02.19-17:24 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+19.02.19-17:24 Debug: Load settings, mainwindow.cpp
+19.02.19-17:24 Debug: Language Change, mainwindow.cpp
+19.02.19-17:24 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+19.02.19-17:24 Debug: Language Change, mainwindow.cpp
+19.02.19-17:24 Debug: Language Change, mainwindow.cpp
+19.02.19-17:25 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Save settings, mainwindow.cpp
+19.02.19-17:26 Info: "GameTree", main.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Info: Audioplayer initialization, mainwindow.cpp
+19.02.19-17:26 Info: Get Data From DB, mainwindow.cpp
+19.02.19-17:26 Debug: DB Connected, mainwindow.cpp
+19.02.19-17:26 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+19.02.19-17:26 Debug: Load settings, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:26 Debug: Language Change, mainwindow.cpp
+19.02.19-17:27 Debug: Save settings, mainwindow.cpp

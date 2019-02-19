@@ -21,6 +21,10 @@
 //TODO: Начальное изображения для случая когда еще ничего не выбрано
 //TODO: Добавить язык в настройки
 //TODO: Удаление игр/модов по кнопку delete на клавиатуре
+//TODO: Возможность двигать виджет дерева и информации(менять ширину)
+//TODO!: Создавать playlistform только 1 раз(в конструкторе?), иначе будут создаваться несколько виджетов при каждом нажатии на кнопку
+//TODO: Очищение списка песен в PlaylistForm
+//TODO: Убрать начальный список песен и обложек
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -1056,35 +1060,40 @@ void MainWindow::slotStart()
     dir.cdUp();
     QDir::setCurrent(dir.path());
 
-    //Получаем из пути имя ехе файла
-    QString exeNameReverse;
-    QString::reverse_iterator beginIterator = path.rbegin();
-    QString::reverse_iterator endIterator = path.rend();
+    /*Старый вариант*/
+//    //Получаем из пути имя ехе файла
+//    QString exeNameReverse;
+//    QString::reverse_iterator beginIterator = path.rbegin();
+//    QString::reverse_iterator endIterator = path.rend();
 
-    while(beginIterator != endIterator)
-    {
-        if(*beginIterator == '\\')
-            break;
-        exeNameReverse.append(*beginIterator);
-        ++beginIterator;
-    }
+//    while(beginIterator != endIterator)
+//    {
+//        if(*beginIterator == '\\')
+//            break;
+//        exeNameReverse.append(*beginIterator);
+//        ++beginIterator;
+//    }
 
-    //Экранируем имя
-    QString exeName('\"');
+//    //Экранируем имя
+//    QString exeName('\"');
 
-    beginIterator = exeNameReverse.rbegin();
-    endIterator = exeNameReverse.rend();
+//    beginIterator = exeNameReverse.rbegin();
+//    endIterator = exeNameReverse.rend();
 
-    while(beginIterator != endIterator)
-    {
-        exeName.append(*beginIterator);
-        ++beginIterator;
-    }
+//    while(beginIterator != endIterator)
+//    {
+//        exeName.append(*beginIterator);
+//        ++beginIterator;
+//    }
 
-    //Экранируем имя
-    exeName.append('\"');
+//    //Экранируем имя
+//    exeName.append('\"');
 
-    QProcess::startDetached(exeName);
+//    QProcess::startDetached(exeName);
+    /*Старый вариант*/
+
+    QFileInfo pathToExe(path);
+    QProcess::startDetached(pathToExe.fileName());
 }
 
 void MainWindow::slotStartWithParameters()
@@ -1122,35 +1131,40 @@ void MainWindow::slotStartWithParameters()
 
         QDir::setCurrent(dir.path());
 
-        //Получаем из пути имя ехе файла
-        QString exeNameReverse;
-        QString::reverse_iterator beginIterator = path.rbegin();
-        QString::reverse_iterator endIterator = path.rend();
+        /*Старый вариант*/
+//        //Получаем из пути имя ехе файла
+//        QString exeNameReverse;
+//        QString::reverse_iterator beginIterator = path.rbegin();
+//        QString::reverse_iterator endIterator = path.rend();
 
-        while(beginIterator != endIterator)
-        {
-            if(*beginIterator == '\\')
-                break;
-            exeNameReverse.append(*beginIterator);
-            ++beginIterator;
-        }
+//        while(beginIterator != endIterator)
+//        {
+//            if(*beginIterator == '\\')
+//                break;
+//            exeNameReverse.append(*beginIterator);
+//            ++beginIterator;
+//        }
 
-        //Экранируем имя
-        QString exeName('\"');
+//        //Экранируем имя
+//        QString exeName('\"');
 
-        beginIterator = exeNameReverse.rbegin();
-        endIterator = exeNameReverse.rend();
+//        beginIterator = exeNameReverse.rbegin();
+//        endIterator = exeNameReverse.rend();
 
-        while(beginIterator != endIterator)
-        {
-            exeName.append(*beginIterator);
-            ++beginIterator;
-        }
+//        while(beginIterator != endIterator)
+//        {
+//            exeName.append(*beginIterator);
+//            ++beginIterator;
+//        }
 
-        //Экранируем имя
-        exeName.append('\"');
+//        //Экранируем имя
+//        exeName.append('\"');
 
-        QProcess::startDetached(exeName, dialog.getList());
+//        QProcess::startDetached(exeName, dialog.getList());
+     /*Старый вариант*/
+
+        QFileInfo pathToExe(path);
+        QProcess::startDetached(pathToExe.fileName());
     }
 }
 
@@ -1565,6 +1579,107 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         ui->buttonEdit->setEnabled(true);
         ui->buttonRemove->setEnabled(true);
     }
+
+    //Путь до основной папки с медиафайлами
+    QString pathToItem = m_appPath + "/Games";
+
+    /*Получаем медиафайламы*/
+    if(!selectedIndex.parent().parent().isValid()) //Если выбрана игра
+    {
+        //Добавляем в диалог имя игры и путь до .ехе
+        QString gameName = selectedIndex.data().toString();
+
+        QString strToMusic = '/' + gameName.at(0) + '/' + gameName + "/music";
+        QString strToMusicCovers = '/' + gameName.at(0) + '/' + gameName + "/music/covers";
+
+        QString pathToMusic = pathToItem + strToMusic;
+        QString pathToMusicCovers = pathToItem + strToMusicCovers;
+
+        QDir musDir(pathToMusic);
+        QDir musCoverDir(pathToMusicCovers);
+
+        QStringList musList = musDir.entryList(QStringList() << "*.mp3", QDir::Files);
+        QStringList musCoverList = musCoverDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+
+        bool isListEmpty = false;
+
+        //Очищаем список, только если в выбраном итеме есть мп3 файлы
+        if(!musList.isEmpty())
+        {
+            isListEmpty = true;
+            m_audioPlayerList->clear();
+            if(musCoverList.isEmpty())
+                ui->coverLabel->setText("");
+            else
+            {
+                //QString text = ("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
+                ui->coverLabel->setText("<img src = \"" + pathToMusicCovers + '/' + musCoverList.at(0) + "\" height = \"60\" width = \"60\" />");
+                qDebug() << "<img src = " + pathToMusicCovers + '/' + musCoverList.at(0) + " height = \"60\" width = \"60\" />";
+            }
+        }
+
+        foreach (QString audio, musList)
+        {
+            m_audioPlayerList->addMedia(QUrl::fromLocalFile(pathToMusic + '/' + audio));
+        }
+
+        if(isListEmpty)
+        {
+            m_audioPlayer->play();
+        }
+    }
+    else if(!selectedIndex.parent().parent().parent().isValid()) //Если выбран мод
+    {
+        //Очищаем список
+        m_audioPlayerList->clear();
+
+        //Получаем имя мода
+        QString modName = selectedIndex.data().toString();
+
+        //Получаем имя игры
+        QString gameName = selectedIndex.parent().data().toString();
+
+        QString strToMusic = '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/music";
+        QString strToMusicCovers = '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/music/covers";
+
+        QString pathToMusic = pathToItem + strToMusic;
+        QString pathToMusicCovers = pathToItem + strToMusicCovers;
+
+        QDir musDir(pathToMusic);
+        QDir musCoverDir(pathToMusicCovers);
+
+        QStringList musList = musDir.entryList(QStringList() << "*.mp3", QDir::Files);
+        QStringList musCoverList = musCoverDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+
+        bool isListEmpty = false;
+
+        //Очищаем список, только если в выбраном итеме есть мп3 файлы
+        if(!musList.isEmpty())
+        {
+            isListEmpty = true;
+            m_audioPlayerList->clear();
+            if(musCoverList.isEmpty())
+                ui->coverLabel->setText("");
+            else
+            {
+                //QString text = ("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
+                ui->coverLabel->setText("<img src = \"" + pathToMusicCovers + '/' + musCoverList.at(0) + "\" height = \"60\" width = \"60\" />");
+                qDebug() << "<img src = " + pathToMusicCovers + '/' + musCoverList.at(0) + " height = \"60\" width = \"60\" />";
+            }
+        }
+
+        foreach (QString audio, musList)
+        {
+            m_audioPlayerList->addMedia(QUrl::fromLocalFile(pathToMusic + '/' + audio));
+        }
+
+        if(isListEmpty)
+        {
+            m_audioPlayer->play();
+        }
+    }
+    /*Получаем медиафайламы*/
+
 }
 
 /*Dbl Click*/

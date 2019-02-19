@@ -17,6 +17,7 @@
 #include <QSystemTrayIcon>
 #include <QCloseEvent>
 #include <QSettings>
+#include <QFileInfo>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
