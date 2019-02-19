@@ -20,6 +20,8 @@
 //TODO: Ограничить/заменять символы с помощью которых нельзя задавать имена файлам/папкам
 //TODO: Начальное изображения для случая когда еще ничего не выбрано
 //TODO: Добавить язык в настройки
+//TODO: Удаление игр/модов по кнопку delete на клавиатуре
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -165,7 +167,9 @@ void MainWindow::on_nextButton_clicked()
 
 void MainWindow::on_playlistButton_clicked()
 {
-
+    m_playlistForm = new PlaylistForm(); // Где удалять, где создавать
+    m_playlistForm->show();
+    m_playlistForm->playlistClicked(m_audioPlayer);
 }
 
 void MainWindow::on_volumeSlider_sliderMoved(int position)

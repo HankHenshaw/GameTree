@@ -34,7 +34,8 @@ SOURCES += \
     addmoddialog.cpp \
     argsdialog.cpp \
     editmoddialog.cpp \
-    myprogressbar.cpp
+    myprogressbar.cpp \
+    playlistform.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,14 +46,16 @@ HEADERS += \
     addmoddialog.h \
     argsdialog.h \
     editmoddialog.h \
-    myprogressbar.h
+    myprogressbar.h \
+    playlistform.h
 
 FORMS += \
         mainwindow.ui \
     addgamedialog.ui \
     addmoddialog.ui \
     argsdialog.ui \
-    editmoddialog.ui
+    editmoddialog.ui \
+    playlistform.ui
 
 TRANSLATIONS += GameTree_ru.ts
 

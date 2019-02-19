@@ -23,6 +23,7 @@
 #include "argsdialog.h"
 #include "editmoddialog.h"
 #include "myprogressbar.h"
+#include "playlistform.h"
 
 namespace Ui {
 class MainWindow;
@@ -117,6 +118,8 @@ private:
 
     void audioPlayerInit();
     QString msecsToString(qint64 n);
+
+    PlaylistForm *m_playlistForm;
     /*Audio Player*/
 
     /*Translator*/
