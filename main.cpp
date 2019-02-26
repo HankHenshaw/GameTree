@@ -28,7 +28,7 @@ void messageToFile(QtMsgType type, const QMessageLogContext &context, const QStr
 {
     QString path = MainWindow::appPath() + '\\';
     QFile file(path + "log.log");
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) // Убрать Append?
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) // Убрать Append?
         return;
 
     QString strDate = QDateTime::currentDateTime().toString("dd.MM.yy-hh:mm");

@@ -1,59 +1,911 @@
-19.02.19-17:21 Info: "GameTree", main.cpp
-19.02.19-17:21 Debug: Language Change, mainwindow.cpp
-19.02.19-17:21 Info: Audioplayer initialization, mainwindow.cpp
-19.02.19-17:21 Info: Get Data From DB, mainwindow.cpp
-19.02.19-17:21 Debug: DB Connected, mainwindow.cpp
-19.02.19-17:21 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-19.02.19-17:21 Debug: Load settings, mainwindow.cpp
-19.02.19-17:21 Debug: Language Change, mainwindow.cpp
-19.02.19-17:21 Debug: "<img src = C:/Qt/project/GameTree/Games/H/Heroes of Might & Magic III/mods/Heroes Chronicles 1/music/covers/CD.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
-19.02.19-17:21 Debug: Language Change, mainwindow.cpp
-19.02.19-17:21 Debug: Language Change, mainwindow.cpp
-19.02.19-17:21 Debug: Language Change, mainwindow.cpp
-19.02.19-17:21 Debug: Language Change, mainwindow.cpp
-19.02.19-17:23 Debug: Save settings, mainwindow.cpp
-19.02.19-17:23 Info: "GameTree", main.cpp
-19.02.19-17:23 Debug: Language Change, mainwindow.cpp
-19.02.19-17:23 Info: Audioplayer initialization, mainwindow.cpp
-19.02.19-17:23 Info: Get Data From DB, mainwindow.cpp
-19.02.19-17:23 Debug: DB Connected, mainwindow.cpp
-19.02.19-17:23 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-19.02.19-17:23 Debug: Load settings, mainwindow.cpp
-19.02.19-17:23 Debug: Language Change, mainwindow.cpp
-19.02.19-17:23 Debug: "<img src = C:/Qt/project/GameTree/Games/H/Heroes of Might & Magic III/mods/Heroes Chronicles 1/music/covers/CD.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
-19.02.19-17:23 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
-19.02.19-17:23 Debug: Language Change, mainwindow.cpp
-19.02.19-17:24 Debug: Save settings, mainwindow.cpp
-19.02.19-17:24 Info: "GameTree", main.cpp
-19.02.19-17:24 Debug: Language Change, mainwindow.cpp
-19.02.19-17:24 Info: Audioplayer initialization, mainwindow.cpp
-19.02.19-17:24 Info: Get Data From DB, mainwindow.cpp
-19.02.19-17:24 Debug: DB Connected, mainwindow.cpp
-19.02.19-17:24 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-19.02.19-17:24 Debug: Load settings, mainwindow.cpp
-19.02.19-17:24 Debug: Language Change, mainwindow.cpp
-19.02.19-17:24 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
-19.02.19-17:24 Debug: Language Change, mainwindow.cpp
-19.02.19-17:24 Debug: Language Change, mainwindow.cpp
-19.02.19-17:25 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Save settings, mainwindow.cpp
-19.02.19-17:26 Info: "GameTree", main.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Info: Audioplayer initialization, mainwindow.cpp
-19.02.19-17:26 Info: Get Data From DB, mainwindow.cpp
-19.02.19-17:26 Debug: DB Connected, mainwindow.cpp
-19.02.19-17:26 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-19.02.19-17:26 Debug: Load settings, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:26 Debug: Language Change, mainwindow.cpp
-19.02.19-17:27 Debug: Save settings, mainwindow.cpp
+20.02.19-21:40 Info: "GameTree", main.cpp
+20.02.19-21:40 Debug: Language Change, mainwindow.cpp
+20.02.19-21:40 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-21:40 Info: Get Data From DB, mainwindow.cpp
+20.02.19-21:40 Debug: DB Connected, mainwindow.cpp
+20.02.19-21:40 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-21:40 Debug: Load settings, mainwindow.cpp
+20.02.19-21:40 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-21:40 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-21:40 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-21:40 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-21:40 Debug: 0 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-21:40 Debug: 0 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-21:40 Debug: 2 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-21:40 Debug: 3 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-21:40 Debug: Language Change, mainwindow.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III: Restoration of Erathia"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III: Horn of The Abyss"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III: Shadow of Death"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes Chronicles 1"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III: Armareddons Blade"), myproxymodel.cpp
+20.02.19-21:40 Debug: Language Change, mainwindow.cpp
+20.02.19-21:40 Debug: Save settings, mainwindow.cpp
+20.02.19-21:40 Info: "GameTree", main.cpp
+20.02.19-21:40 Debug: Language Change, mainwindow.cpp
+20.02.19-21:40 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-21:40 Info: Get Data From DB, mainwindow.cpp
+20.02.19-21:40 Debug: DB Connected, mainwindow.cpp
+20.02.19-21:40 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-21:40 Debug: Load settings, mainwindow.cpp
+20.02.19-21:40 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-21:40 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-21:40 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-21:40 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-21:40 Debug: 0 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-21:40 Debug: 0 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-21:40 Debug: 2 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-21:40 Debug: 3 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-21:40 Debug: Language Change, mainwindow.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III: Shadow of Death"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes Chronicles 1"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III: Horn of The Abyss"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III: Restoration of Erathia"), myproxymodel.cpp
+20.02.19-21:40 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:40 Debug: QVariant(QString, "Heroes of Might & Magic III: Armareddons Blade"), myproxymodel.cpp
+20.02.19-21:40 Debug: Language Change, mainwindow.cpp
+20.02.19-21:40 Debug: Save settings, mainwindow.cpp
+20.02.19-21:42 Info: "GameTree", main.cpp
+20.02.19-21:42 Debug: Language Change, mainwindow.cpp
+20.02.19-21:42 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-21:42 Info: Get Data From DB, mainwindow.cpp
+20.02.19-21:42 Debug: DB Connected, mainwindow.cpp
+20.02.19-21:42 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-21:42 Debug: Load settings, mainwindow.cpp
+20.02.19-21:42 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-21:42 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-21:42 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-21:42 Debug: -1 -1, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-21:42 Debug: 0 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-21:42 Debug: 0 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:42 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-21:42 Debug: 2 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-21:42 Debug: 3 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-21:42 Debug: Language Change, mainwindow.cpp
+20.02.19-21:42 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III: Armareddons Blade"), myproxymodel.cpp
+20.02.19-21:42 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes Chronicles 1"), myproxymodel.cpp
+20.02.19-21:42 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III: Restoration of Erathia"), myproxymodel.cpp
+20.02.19-21:42 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III: Horn of The Abyss"), myproxymodel.cpp
+20.02.19-21:42 Debug: 1 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Heroes of Might & Magic III: Shadow of Death"), myproxymodel.cpp
+20.02.19-21:42 Debug: 0 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "BattleNet"), myproxymodel.cpp
+20.02.19-21:42 Debug: 0 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Overwatch Launcher"), myproxymodel.cpp
+20.02.19-21:42 Debug: 0 0, myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-21:42 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-21:42 Debug: "<img src = C:/Qt/project/GameTree/Games/H/Heroes of Might & Magic III/mods/Heroes Chronicles 1/music/covers/CD.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+20.02.19-21:42 Debug: Language Change, mainwindow.cpp
+20.02.19-21:42 Debug: Save settings, mainwindow.cpp
+20.02.19-23:10 Info: "GameTree", main.cpp
+20.02.19-23:10 Debug: Language Change, mainwindow.cpp
+20.02.19-23:10 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-23:10 Info: Get Data From DB, mainwindow.cpp
+20.02.19-23:10 Debug: DB Connected, mainwindow.cpp
+20.02.19-23:10 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-23:10 Debug: Load settings, mainwindow.cpp
+20.02.19-23:10 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:10 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:10 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:10 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:10 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-23:10 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:10 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:10 Debug: 2 0, myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-23:10 Debug: 3 0, myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:10 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-23:10 Debug: Language Change, mainwindow.cpp
+20.02.19-23:10 Debug: Delete item "Unepic", mainwindow.cpp
+20.02.19-23:10 Debug: Game, mainwindow.cpp
+20.02.19-23:10 Debug: Match!, treemodel.cpp
+20.02.19-23:10 Debug: Language Change, mainwindow.cpp
+20.02.19-23:10 Debug: Save settings, mainwindow.cpp
+20.02.19-23:12 Info: "GameTree", main.cpp
+20.02.19-23:12 Debug: Language Change, mainwindow.cpp
+20.02.19-23:12 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-23:12 Info: Get Data From DB, mainwindow.cpp
+20.02.19-23:12 Debug: DB Connected, mainwindow.cpp
+20.02.19-23:12 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-23:12 Debug: Load settings, mainwindow.cpp
+20.02.19-23:12 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:12 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:12 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:12 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:12 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-23:12 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:12 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:12 Debug: 2 0, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-23:12 Debug: 3 0, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-23:12 Debug: Language Change, mainwindow.cpp
+20.02.19-23:12 Debug: Delete item "Unepic", mainwindow.cpp
+20.02.19-23:12 Debug: Game, mainwindow.cpp
+20.02.19-23:12 Debug: Match!, treemodel.cpp
+20.02.19-23:12 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+20.02.19-23:12 Debug: Start Game: "" From: "", mainwindow.cpp
+20.02.19-23:12 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+20.02.19-23:12 Debug: Start Game: "" From: "", mainwindow.cpp
+20.02.19-23:12 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+20.02.19-23:12 Debug: Start Game: "" From: "", mainwindow.cpp
+20.02.19-23:12 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+20.02.19-23:12 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+20.02.19-23:12 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+20.02.19-23:12 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+20.02.19-23:12 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+20.02.19-23:12 Debug: "<img src = C:/Qt/project/GameTree/Games/T/Trackmania Turbo/music/covers/Front.jpg height = \"60\" width = \"60\" />", mainwindow.cpp
+20.02.19-23:12 Debug: Delete item "Trackmania Turbo", mainwindow.cpp
+20.02.19-23:12 Debug: Game, mainwindow.cpp
+20.02.19-23:12 Debug: Match!, treemodel.cpp
+20.02.19-23:12 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "Overwatch Launcher"), myproxymodel.cpp
+20.02.19-23:12 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "BattleNet"), myproxymodel.cpp
+20.02.19-23:12 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:12 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:12 Debug: Delete item "Overwatch", mainwindow.cpp
+20.02.19-23:12 Debug: Game, mainwindow.cpp
+20.02.19-23:12 Debug: Match!, treemodel.cpp
+20.02.19-23:12 Warning: QSqlQuery::value: not positioned on a valid record, kernel\qsqlquery.cpp
+20.02.19-23:12 Debug: Start Game: "U" From: "", mainwindow.cpp
+20.02.19-23:12 Debug: Language Change, mainwindow.cpp
+20.02.19-23:13 Debug: Save settings, mainwindow.cpp
+20.02.19-23:18 Info: "GameTree", main.cpp
+20.02.19-23:18 Debug: Language Change, mainwindow.cpp
+20.02.19-23:18 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-23:18 Info: Get Data From DB, mainwindow.cpp
+20.02.19-23:18 Debug: DB Connected, mainwindow.cpp
+20.02.19-23:18 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-23:18 Debug: Load settings, mainwindow.cpp
+20.02.19-23:18 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:18 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:18 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:18 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:18 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-23:18 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:18 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:18 Debug: 2 0, myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-23:18 Debug: 3 0, myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:18 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-23:18 Debug: Language Change, mainwindow.cpp
+20.02.19-23:18 Debug: Delete item "Unepic", mainwindow.cpp
+20.02.19-23:18 Debug: Game, mainwindow.cpp
+20.02.19-23:18 Debug: Match!, treemodel.cpp
+20.02.19-23:18 Debug: Language Change, mainwindow.cpp
+20.02.19-23:18 Debug: Save settings, mainwindow.cpp
+20.02.19-23:23 Info: "GameTree", main.cpp
+20.02.19-23:23 Debug: Language Change, mainwindow.cpp
+20.02.19-23:23 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-23:23 Info: Get Data From DB, mainwindow.cpp
+20.02.19-23:23 Debug: DB Connected, mainwindow.cpp
+20.02.19-23:23 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-23:23 Debug: Load settings, mainwindow.cpp
+20.02.19-23:23 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:23 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:23 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:23 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:23 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-23:23 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:23 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:23 Debug: 2 0, myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-23:23 Debug: 3 0, myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:23 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-23:23 Debug: Language Change, mainwindow.cpp
+20.02.19-23:23 Debug: Edit game "Unepic", mainwindow.cpp
+20.02.19-23:23 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+20.02.19-23:23 Debug: Language Change, mainwindow.cpp
+20.02.19-23:23 Debug: Language Change, mainwindow.cpp
+20.02.19-23:23 Debug: Language Change, mainwindow.cpp
+20.02.19-23:23 Debug: Save settings, mainwindow.cpp
+20.02.19-23:24 Info: "GameTree", main.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:24 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-23:24 Info: Get Data From DB, mainwindow.cpp
+20.02.19-23:24 Debug: DB Connected, mainwindow.cpp
+20.02.19-23:24 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-23:24 Debug: Load settings, mainwindow.cpp
+20.02.19-23:24 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:24 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:24 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:24 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:24 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-23:24 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:24 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:24 Debug: 2 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-23:24 Debug: 3 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Un"), myproxymodel.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:24 Debug: Edit game "Un", mainwindow.cpp
+20.02.19-23:24 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:24 Debug: Save settings, mainwindow.cpp
+20.02.19-23:24 Info: "GameTree", main.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:24 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-23:24 Info: Get Data From DB, mainwindow.cpp
+20.02.19-23:24 Debug: DB Connected, mainwindow.cpp
+20.02.19-23:24 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-23:24 Debug: Load settings, mainwindow.cpp
+20.02.19-23:24 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:24 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:24 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:24 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:24 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-23:24 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:24 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:24 Debug: 2 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-23:24 Debug: 3 0, myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:24 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:24 Debug: Add game, mainwindow.cpp
+20.02.19-23:24 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+20.02.19-23:24 Debug: Language Change, mainwindow.cpp
+20.02.19-23:25 Debug: Language Change, mainwindow.cpp
+20.02.19-23:25 Debug: "Worms" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
+20.02.19-23:25 Debug: Letter not found, mainwindow.cpp
+20.02.19-23:25 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:25 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:25 Debug: QVariant(QString, ""), myproxymodel.cpp
+20.02.19-23:25 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:25 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:25 Debug: QVariant(QString, "W"), myproxymodel.cpp
+20.02.19-23:25 Debug: 4 0, myproxymodel.cpp
+20.02.19-23:25 Debug: QVariant(QString, "W"), myproxymodel.cpp
+20.02.19-23:25 Debug: QVariant(QString, ""), myproxymodel.cpp
+20.02.19-23:25 Debug: Add game, mainwindow.cpp
+20.02.19-23:25 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+20.02.19-23:25 Debug: Language Change, mainwindow.cpp
+20.02.19-23:25 Debug: Language Change, mainwindow.cpp
+20.02.19-23:25 Debug: "Wrestling" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
+20.02.19-23:25 Debug: Letter found, mainwindow.cpp
+20.02.19-23:25 Debug: 4 0, myproxymodel.cpp
+20.02.19-23:25 Debug: QVariant(QString, "W"), myproxymodel.cpp
+20.02.19-23:25 Debug: QVariant(QString, ""), myproxymodel.cpp
+20.02.19-23:25 Debug: Add game, mainwindow.cpp
+20.02.19-23:25 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+20.02.19-23:25 Debug: Language Change, mainwindow.cpp
+20.02.19-23:26 Debug: Language Change, mainwindow.cpp
+20.02.19-23:26 Debug: "Wars" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
+20.02.19-23:26 Debug: Letter found, mainwindow.cpp
+20.02.19-23:26 Debug: 4 0, myproxymodel.cpp
+20.02.19-23:26 Debug: QVariant(QString, "W"), myproxymodel.cpp
+20.02.19-23:26 Debug: QVariant(QString, ""), myproxymodel.cpp
+20.02.19-23:26 Debug: Add mod, mainwindow.cpp
+20.02.19-23:26 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+20.02.19-23:26 Debug: Language Change, mainwindow.cpp
+20.02.19-23:26 Debug: Language Change, mainwindow.cpp
+20.02.19-23:27 Info: "GameTree", main.cpp
+20.02.19-23:27 Debug: Language Change, mainwindow.cpp
+20.02.19-23:27 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-23:27 Info: Get Data From DB, mainwindow.cpp
+20.02.19-23:27 Debug: DB Connected, mainwindow.cpp
+20.02.19-23:27 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-23:27 Debug: Load settings, mainwindow.cpp
+20.02.19-23:27 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:27 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:27 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:27 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:27 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "W"), myproxymodel.cpp
+20.02.19-23:27 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-23:27 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:27 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:27 Debug: 2 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-23:27 Debug: 3 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-23:27 Debug: 4 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "W"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Wars"), myproxymodel.cpp
+20.02.19-23:27 Debug: 4 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "W"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Worms"), myproxymodel.cpp
+20.02.19-23:27 Debug: 4 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "W"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Wrestling"), myproxymodel.cpp
+20.02.19-23:27 Debug: Language Change, mainwindow.cpp
+20.02.19-23:27 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Overwatch Launcher"), myproxymodel.cpp
+20.02.19-23:27 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "BattleNet"), myproxymodel.cpp
+20.02.19-23:27 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:27 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III: Horn of The Abyss"), myproxymodel.cpp
+20.02.19-23:27 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes Chronicles 1"), myproxymodel.cpp
+20.02.19-23:27 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III: Shadow of Death"), myproxymodel.cpp
+20.02.19-23:27 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III: Armareddons Blade"), myproxymodel.cpp
+20.02.19-23:27 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "Heroes of Might & Magic III: Restoration of Erathia"), myproxymodel.cpp
+20.02.19-23:27 Debug: Add game, mainwindow.cpp
+20.02.19-23:27 Warning: setGeometry: Unable to set geometry 400x127+600+385 on QWidgetWindow/'AddGameDialogWindow'. Resulting geometry:  400x131+600+385 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x131, maximum size: 16777215x16777215)., qwindowswindow.cpp
+20.02.19-23:27 Debug: Language Change, mainwindow.cpp
+20.02.19-23:27 Debug: Language Change, mainwindow.cpp
+20.02.19-23:27 Debug: "Wolf" "C:/Qt/MaintenanceTool.exe", mainwindow.cpp
+20.02.19-23:27 Debug: Letter found, mainwindow.cpp
+20.02.19-23:27 Debug: 4 0, myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, "W"), myproxymodel.cpp
+20.02.19-23:27 Debug: QVariant(QString, ""), myproxymodel.cpp
+20.02.19-23:27 Debug: Add mod, mainwindow.cpp
+20.02.19-23:27 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+20.02.19-23:27 Debug: Language Change, mainwindow.cpp
+20.02.19-23:27 Debug: Language Change, mainwindow.cpp
+20.02.19-23:27 Fatal: ASSERT: "first >= 0" in file itemmodels\qabstractitemmodel.cpp, line 2688, itemmodels\qabstractitemmodel.cpp
+20.02.19-23:28 Info: "GameTree", main.cpp
+20.02.19-23:28 Debug: Language Change, mainwindow.cpp
+20.02.19-23:28 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-23:28 Info: Get Data From DB, mainwindow.cpp
+20.02.19-23:28 Debug: DB Connected, mainwindow.cpp
+20.02.19-23:28 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-23:28 Debug: Load settings, mainwindow.cpp
+20.02.19-23:28 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:28 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:28 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:28 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:28 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-23:28 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:28 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:28 Debug: 2 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-23:28 Debug: 3 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-23:28 Debug: Language Change, mainwindow.cpp
+20.02.19-23:28 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III: Armareddons Blade"), myproxymodel.cpp
+20.02.19-23:28 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III: Horn of The Abyss"), myproxymodel.cpp
+20.02.19-23:28 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III: Shadow of Death"), myproxymodel.cpp
+20.02.19-23:28 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes Chronicles 1"), myproxymodel.cpp
+20.02.19-23:28 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:28 Debug: QVariant(QString, "Heroes of Might & Magic III: Restoration of Erathia"), myproxymodel.cpp
+20.02.19-23:29 Debug: Add mod, mainwindow.cpp
+20.02.19-23:29 Warning: setGeometry: Unable to set geometry 400x213+600+342 on QWidgetWindow/'AddModDialogWindow'. Resulting geometry:  400x217+600+342 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 178x217, maximum size: 16777215x16777215)., qwindowswindow.cpp
+20.02.19-23:29 Debug: Language Change, mainwindow.cpp
+20.02.19-23:29 Debug: Language Change, mainwindow.cpp
+20.02.19-23:29 Fatal: ASSERT: "first >= 0" in file itemmodels\qabstractitemmodel.cpp, line 2688, itemmodels\qabstractitemmodel.cpp
+20.02.19-23:51 Info: "GameTree", main.cpp
+20.02.19-23:51 Debug: Language Change, mainwindow.cpp
+20.02.19-23:51 Info: Audioplayer initialization, mainwindow.cpp
+20.02.19-23:51 Info: Get Data From DB, mainwindow.cpp
+20.02.19-23:51 Debug: DB Connected, mainwindow.cpp
+20.02.19-23:51 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+20.02.19-23:51 Debug: Load settings, mainwindow.cpp
+20.02.19-23:51 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:51 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:51 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:51 Debug: -1 -1, myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(Invalid), myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:51 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+20.02.19-23:51 Debug: 0 0, myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "H"), myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+20.02.19-23:51 Debug: 1 0, myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "O"), myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+20.02.19-23:51 Debug: 2 0, myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "T"), myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+20.02.19-23:51 Debug: 3 0, myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "U"), myproxymodel.cpp
+20.02.19-23:51 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+20.02.19-23:51 Debug: Language Change, mainwindow.cpp
+20.02.19-23:52 Debug: Language Change, mainwindow.cpp
+20.02.19-23:52 Debug: Save settings, mainwindow.cpp
+24.02.19-18:09 Info: "GameTree", main.cpp
+24.02.19-18:09 Debug: Language Change, mainwindow.cpp
+24.02.19-18:09 Info: Audioplayer initialization, mainwindow.cpp
+24.02.19-18:09 Info: Get Data From DB, mainwindow.cpp
+24.02.19-18:09 Debug: DB Connected, mainwindow.cpp
+24.02.19-18:09 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+24.02.19-18:09 Debug: Load settings, mainwindow.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: 0 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+24.02.19-18:09 Debug: 0 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+24.02.19-18:09 Debug: 1 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+24.02.19-18:09 Debug: 2 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+24.02.19-18:09 Debug: 3 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+24.02.19-18:09 Debug: Language Change, mainwindow.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: 3 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: 3 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: 3 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+24.02.19-18:09 Debug: 0 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+24.02.19-18:09 Debug: 0 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+24.02.19-18:09 Debug: 1 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+24.02.19-18:09 Debug: 2 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: 3 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: 3 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: -1 -1, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(Invalid), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: 3 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+24.02.19-18:09 Debug: 0 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+24.02.19-18:09 Debug: 0 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+24.02.19-18:09 Debug: 1 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+24.02.19-18:09 Debug: 2 0, myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+24.02.19-18:09 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+24.02.19-18:09 Debug: Language Change, mainwindow.cpp
+24.02.19-18:09 Debug: Save settings, mainwindow.cpp
+26.02.19-17:09 Info: "GameTree", main.cpp
+26.02.19-17:09 Debug: Language Change, mainwindow.cpp
+26.02.19-17:09 Info: Audioplayer initialization, mainwindow.cpp
+26.02.19-17:09 Info: Get Data From DB, mainwindow.cpp
+26.02.19-17:09 Debug: DB Connected, mainwindow.cpp
+26.02.19-17:09 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+26.02.19-17:09 Debug: Load settings, mainwindow.cpp
+26.02.19-17:09 Debug: -1 -1, myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(Invalid), myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+26.02.19-17:09 Debug: -1 -1, myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(Invalid), myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+26.02.19-17:09 Debug: -1 -1, myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(Invalid), myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+26.02.19-17:09 Debug: -1 -1, myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(Invalid), myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+26.02.19-17:09 Debug: 0 0, myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "Half-Life"), myproxymodel.cpp
+26.02.19-17:09 Debug: 0 0, myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "H"), myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "Heroes of Might & Magic III"), myproxymodel.cpp
+26.02.19-17:09 Debug: 1 0, myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "O"), myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "Overwatch"), myproxymodel.cpp
+26.02.19-17:09 Debug: 2 0, myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "T"), myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "Trackmania Turbo"), myproxymodel.cpp
+26.02.19-17:09 Debug: 3 0, myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "U"), myproxymodel.cpp
+26.02.19-17:09 Debug: QVariant(QString, "Unepic"), myproxymodel.cpp
+26.02.19-17:09 Debug: Language Change, mainwindow.cpp
+26.02.19-17:09 Debug: Language Change, mainwindow.cpp
+26.02.19-17:11 Debug: Language Change, mainwindow.cpp
+26.02.19-17:11 Debug: Language Change, mainwindow.cpp
+26.02.19-17:11 Debug: Language Change, mainwindow.cpp
+26.02.19-17:12 Debug: Language Change, mainwindow.cpp

@@ -35,7 +35,8 @@ SOURCES += \
     argsdialog.cpp \
     editmoddialog.cpp \
     myprogressbar.cpp \
-    playlistform.cpp
+    playlistform.cpp \
+    myproxymodel.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,7 +48,8 @@ HEADERS += \
     argsdialog.h \
     editmoddialog.h \
     myprogressbar.h \
-    playlistform.h
+    playlistform.h \
+    myproxymodel.h
 
 FORMS += \
         mainwindow.ui \

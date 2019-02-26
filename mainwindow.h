@@ -25,6 +25,7 @@
 #include "editmoddialog.h"
 #include "myprogressbar.h"
 #include "playlistform.h"
+#include "myproxymodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -96,6 +97,11 @@ private slots:
 
     /*Dbl Clk Start Game Slot*/
     void slotDblClicked();
+    /*Dbl Clk Start Game Slot*/
+
+    /*Proxy*/
+    void slotFilter();
+    /*Proxy*/
 private:
     Ui::MainWindow *ui;
 
@@ -147,6 +153,10 @@ private:
     /*Dirs*/
     QDir m_dir;
     /*Dirs*/
+
+    /*Proxy*/
+    MyProxyModel *m_proxy;
+    /*Proxy*/
 };
 
 #endif // MAINWINDOW_H

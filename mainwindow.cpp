@@ -10,8 +10,6 @@
 //TODO: Исправить колесо мыши на звуковом слайдере
 //TODO: Fix all warnings
 //TODO: Replace menu icons to ~16x16 size
-//TODO: Проверить почему у позиций не должно быть указано родителя(т.е. корня)
-//TODO: Обнулять лог при каждом запуске??
 //TODO: Экранирование всех апострофов в запросах к БД
 //TODO: Добавить горизонтальный слайдер в ТриВью если название не влезает в отведенную область
 //TODO: Для централизованного обращение к настройкам можно добавить объект настроек в класс приложения QApplication (пример на стр. 433/412)
@@ -21,10 +19,15 @@
 //TODO: Начальное изображения для случая когда еще ничего не выбрано
 //TODO: Добавить язык в настройки
 //TODO: Удаление игр/модов по кнопку delete на клавиатуре
-//TODO: Возможность двигать виджет дерева и информации(менять ширину)
 //TODO!: Создавать playlistform только 1 раз(в конструкторе?), иначе будут создаваться несколько виджетов при каждом нажатии на кнопку
 //TODO: Очищение списка песен в PlaylistForm
 //TODO: Убрать начальный список песен и обложек
+//TODO: Кнопки аудиоплеера должны работать, только если в плейлисте есть песни
+//TODO: Сделать пункты меню активными
+//https://github.com/pasnox/fresh/blob/master/src/core/pRecursiveSortFilterProxyModel.cpp
+//TODO: Обнулять строку поиска после того как было нажато на любую из позиций
+//TODO: QSplitter, https://www.youtube.com/watch?v=G4JKg97qqAY - 19:46 Про сохранение настроек
+//TODO: Добавить настройки сплиттера
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -49,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //Основная модель с данными
     m_model = new TreeModel(m_mapOfLetters, m_mapOfGames);
 
-    ui->treeView->setModel(m_model);
+    //ui->treeView->setModel(m_model);
 
     //Устанавливаем политику кастомного меню
     ui->treeView->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -96,6 +99,20 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::slotIconActivated);
 
     m_trayIcon->show();
+
+    /*TEST: Proxy*/
+    //Соединяем строку поиска с прокси моделью
+    connect(ui->searchGameLine, &QLineEdit::textChanged, this, &MainWindow::slotFilter);
+
+    //Прокси модель для фильтрации
+    m_proxy = new MyProxyModel;
+
+    //Устанавливаем в прокси модель основную модель с данными
+    m_proxy->setSourceModel(m_model);
+
+     //а в отображение устанавливаем прокси модель
+    ui->treeView->setModel(m_proxy);
+    /*TEST: Proxy*/
 }
 
 MainWindow::~MainWindow()
@@ -555,7 +572,8 @@ void MainWindow::slotDelete()
     }
 
     //Удаление из модели
-    m_model->deleteElement(selectedIndex);
+    m_model->deleteElement(m_proxy->mapToSource(selectedIndex));
+    //m_model->deleteElement(selectedIndex);
 }
 
 void MainWindow::slotEdit()
@@ -1686,6 +1704,13 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
 void MainWindow::slotDblClicked()
 {
     on_buttonStart_clicked();
+}
+
+void MainWindow::slotFilter()
+{
+    //Поисковое выражение, без привязки к регистру, с базовым паттерном поиска
+    QRegExp filterExpr(ui->searchGameLine->text(), Qt::CaseInsensitive, QRegExp::RegExp);
+    m_proxy->setFilterRegExp(filterExpr);
 }
 /*Dbl Click*/
 
