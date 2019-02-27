@@ -10,10 +10,11 @@ class MyProxyModel : public QSortFilterProxyModel
 public:
     explicit MyProxyModel(QObject *parent = nullptr);
 
+    virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
+    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
+    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 private:
     virtual bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
-
-    mutable QModelIndex prevIdx;
 };
 
 #endif // MYPROXYMODEL_H
