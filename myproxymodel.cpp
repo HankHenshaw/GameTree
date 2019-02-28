@@ -74,7 +74,10 @@ bool MyProxyModel::removeRows(int row, int count, const QModelIndex &parent)
     bool success;
 
     beginRemoveRows(parent, row, row + count - 1);
+    qDebug() << "Start Proxy remove";
+    qDebug() << parent.data();
     success = sourceModel()->removeRow(row, mapToSource(parent));
+    qDebug() << "End Proxy remove";
     endRemoveRows();
 
     return true;

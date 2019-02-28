@@ -1,1 +1,23 @@
-28.02.19-01:21 Fatal: ASSERT failure in QVector<T>::at: "index out of range", file ..\..\include/QtCore/../../src/corelib/tools/qvector.h, line 422, ..\..\include/QtCore/../../src/corelib/tools/qvector.h
+01.03.19-02:40 Debug: Save settings, mainwindow.cpp
+01.03.19-02:41 Info: "GameTree", main.cpp
+01.03.19-02:41 Debug: Language Change, mainwindow.cpp
+01.03.19-02:41 Info: Audioplayer initialization, mainwindow.cpp
+01.03.19-02:41 Info: Get Data From DB, mainwindow.cpp
+01.03.19-02:41 Debug: DB Connected, mainwindow.cpp
+01.03.19-02:41 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+01.03.19-02:41 Debug: Load settings, mainwindow.cpp
+01.03.19-02:41 Debug: Language Change, mainwindow.cpp
+01.03.19-02:41 Debug: Language Change, mainwindow.cpp
+01.03.19-02:41 Debug: Language Change, mainwindow.cpp
+01.03.19-02:41 Debug: Language Change, mainwindow.cpp
+01.03.19-02:41 Debug: Save settings, mainwindow.cpp
+01.03.19-02:42 Info: "GameTree", main.cpp
+01.03.19-02:42 Debug: Language Change, mainwindow.cpp
+01.03.19-02:42 Info: Audioplayer initialization, mainwindow.cpp
+01.03.19-02:42 Info: Get Data From DB, mainwindow.cpp
+01.03.19-02:42 Debug: DB Connected, mainwindow.cpp
+01.03.19-02:42 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+01.03.19-02:42 Debug: Load settings, mainwindow.cpp
+01.03.19-02:42 Debug: Language Change, mainwindow.cpp
+01.03.19-02:42 Debug: Language Change, mainwindow.cpp
+01.03.19-02:42 Debug: Save settings, mainwindow.cpp

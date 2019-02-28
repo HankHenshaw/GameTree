@@ -211,6 +211,8 @@ bool TreeModel::insertRows(int position, int rows, const QModelIndex &parent)
 bool TreeModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     //TODO: Удалить метод deleteElement
+    qDebug() << "Start model remove";
+    qDebug() << parent.data();
     layoutAboutToBeChanged();
     beginRemoveRows(parent, row, row + count -1);
     //TODO?: Отдельные методы для удаления родителя/ребенка/внука
@@ -260,8 +262,11 @@ bool TreeModel::removeRows(int row, int count, const QModelIndex &parent)
             break;
     }
 
+    qDebug() << "End model remove";
     endRemoveRows();
+    qDebug() << "endRemoveRows";
     layoutChanged();
+    qDebug() << "layoutChanged";
     return true;
 }
 

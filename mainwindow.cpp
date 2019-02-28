@@ -33,7 +33,10 @@
 //TODO: Поправить баг, когда включается музыка при выборе итем, кнопка плей не переходит в состояние плей (т.е. иконка не меняется на паузу)
 //WARNING: Иногда при выходе из программы вылетает runtime error
 //TODO: EditGame работет не правильно если менять имя игры на другую букве, существующую или нет.
-//TODO: EditGame не меняет папки с содержимым игры пр изменении названия игры на другое, но начинающееся с той же буквы
+//WARNING: Обнуление лога после каждого запуска
+//TODO: Подумать как лучше реоганизовать метод slotEdit чтобы не повторять один и тотже кусок дважды
+//TODO: Возникает проблемы при редактировании игры из под мода, пока уберу этого действия из контекстного меню
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -439,7 +442,7 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     modMenu.addSeparator();
     modMenu.addAction(addGame);
     modMenu.addAction(addMod);
-    modMenu.addAction(editGame);
+//    modMenu.addAction(editGame); //Вырублено до лучших времен
     modMenu.addAction(editMod);
     modMenu.addAction(deleteGame);
 
@@ -594,7 +597,10 @@ void MainWindow::slotDelete()
 
 void MainWindow::slotEdit()
 {
+    qDebug() << "Slot Edit";
+
     QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex();
+    qDebug() << selectedIndex.data();
     QModelIndex selectedOriginalIndex = m_proxy->mapToSource(selectedIndex);
 
     //TODO: При редактировании, если в строке путь, в диалоге до .ехе нажать отмена
@@ -602,7 +608,6 @@ void MainWindow::slotEdit()
     //TODO: При редактировании после нажатия Ок, путь до .ехе сбрасывается, починить!!!!
     //Сбрасывается т.к. я пока не добавил занос данных в БД
     //TODO: При редактировании игры из под индекса мода, меняется название мода а не игры
-    qDebug() << "Edit game" << selectedOriginalIndex.data().toString();
 
     //Создаем диалог
     AddGameDialog dialog;
@@ -610,6 +615,7 @@ void MainWindow::slotEdit()
     //Если выбрана игра
     if(!selectedOriginalIndex.parent().parent().isValid())
     {
+        qDebug() << selectedIndex.data();
         //Добавляем в диалог имя игры и путь до .ехе
         QString gameName = selectedOriginalIndex.data().toString();
         QString strPath("SELECT Path FROM Games WHERE Title = '" + gameName + "'");
@@ -624,6 +630,11 @@ void MainWindow::slotEdit()
         //Отображаем диалог и если нажата Ок
         if(dialog.exec() == QDialog::Accepted)
         {
+            qDebug() << selectedIndex.data();
+            //Останавливаем плеер и очищаем список
+            m_audioPlayer->stop();
+            m_audioPlayerList->clear();
+
             //Если имя не поменялось, то можно не лезть в модель
             if(dialog.getInfo().m_name == gameName)
             {
@@ -637,6 +648,7 @@ void MainWindow::slotEdit()
             }
             else //Если имя поменялось
             {
+                qDebug() << selectedIndex.data();
                 //Тут придется лезть в модель
                 //А также менять имя игры не только в таблице игр, но и название таблицы к этой игре
                 if(dialog.getInfo().m_path != path)
@@ -687,25 +699,26 @@ void MainWindow::slotEdit()
                     //Если буква нашлась
                     if(isFound)
                     {
-                        qDebug() << "Found!";
+                        qDebug() << "Game";
+                        qDebug() << "Letter Found!";
                         //Получаем индекс буквы
                         //QModelIndex parent = m_model->index(i, 0);
-                        QModelIndex parent = m_proxy->index(i, 0);
+                        QModelIndex parent = m_model->index(i, 0);
 
                         //Получаем номер новой строки
                         int newRowNumber = m_model->getRoot()->child(i)->childCount();
 
                         //Добавляем строку
                         //m_model->insertRow(newRowNumber, parent);
-                        m_proxy->insertRow(newRowNumber, parent);
+                        m_proxy->insertRow(newRowNumber, m_proxy->mapFromSource(parent));
 
                         //Получаем индекс новой строки
-                        //QModelIndex newIdx = m_model->index(newRowNumber, 0, parent);
-                        QModelIndex newIdx = m_proxy->index(newRowNumber, 0, parent);
+                        QModelIndex newIdx = m_model->index(newRowNumber, 0, parent);
+                        //QModelIndex newIdx = m_proxy->index(newRowNumber, 0, parent);
 
                         //Устанавливаем данные в новой строке
                         //m_model->setData(newIdx, dialog.getInfo().m_name);
-                        m_model->setData(m_proxy->mapToSource(newIdx), dialog.getInfo().m_name);
+                        m_proxy->setData(newIdx, dialog.getInfo().m_name);
 
                         /*Добавляем моды*/
                         //Если моды есть
@@ -721,15 +734,15 @@ void MainWindow::slotEdit()
                             {
                                 //Добавляем строку
                                 //m_model->insertRow(i, newIdx);
-                                m_proxy->insertRow(i, newIdx);
+                                m_proxy->insertRow(i, m_proxy->mapFromSource(newIdx));
 
                                 //Получаем индекс на эту строку
                                 //QModelIndex modIdx = m_model->index(i, 0, newIdx);
-                                QModelIndex modIdx = m_proxy->index(i, 0, newIdx);
+                                QModelIndex modIdx = m_model->index(i, 0, newIdx);
 
                                 //Устанавливаем данные в этой строке
                                 //m_model->setData(modIdx, modItem.at(i)->data());
-                                m_model->setData(m_proxy->mapToSource(modIdx), modItem.at(i)->data());
+                                m_model->setData(modIdx, modItem.at(i)->data());
                             }
                         }
                         /*Добавляем моды*/
@@ -743,7 +756,9 @@ void MainWindow::slotEdit()
 
                         //Удаляем старую запись
                         //m_model->deleteElement(selectedIndex);
-                        m_proxy->removeRow(selectedIndex.row(), selectedIndex);
+                        //m_proxy->removeRow(selectedIndex.row(), selectedIndex);
+                        //Только так т.к. selectedIndex меняет свое значение после добавления строки
+                        m_proxy->removeRow(m_proxy->mapFromSource(selectedOriginalIndex).row(), m_proxy->mapFromSource(selectedOriginalIndex));
                     }
                     else //Если буквы нету
                     {
@@ -759,26 +774,26 @@ void MainWindow::slotEdit()
                         m_proxy->insertRow(newRowNumber);
 
                         //Получаем индекс на эту строку
-                        //QModelIndex letterIdx = m_model->index(newRowNumber, 0);
-                        QModelIndex letterIdx = m_proxy->index(newRowNumber, 0);
+                        QModelIndex letterIdx = m_model->index(newRowNumber, 0);
+                        //QModelIndex letterIdx = m_proxy->index(newRowNumber, 0);
 
                         //Устанавливаем данные в этой строке
                         //m_model->setData(letterIdx, dialog.getInfo().m_name.at(0));
-                        m_model->setData(letterIdx, dialog.getInfo().m_name.at(0));
+                        m_proxy->setData(letterIdx, dialog.getInfo().m_name.at(0));
                         /*Добавляем букву*/
 
                         /*Добавляем игру*/
                         //Добавляем строку(0-ая, т.к. там ничего до этого не было)
                         //m_model->insertRow(0, letterIdx);
-                        m_proxy->insertRow(0, letterIdx);
+                        m_proxy->insertRow(0, m_proxy->mapFromSource(letterIdx));
 
                         //Получаем индекс на эту строку
-                        //QModelIndex gameIdx = m_model->index(0, 0, letterIdx);
-                        QModelIndex gameIdx = m_proxy->index(0, 0, letterIdx);
+                        QModelIndex gameIdx = m_model->index(0, 0, letterIdx);
+                        //QModelIndex gameIdx = m_proxy->index(0, 0, letterIdx);
 
                         //Устанавливаем данные в этой строке
                         //m_model->setData(gameIdx, dialog.getInfo().m_name);
-                        m_model->setData(m_proxy->mapToSource(gameIdx), dialog.getInfo().m_name);
+                        m_proxy->setData(gameIdx, dialog.getInfo().m_name);
                         /*Добавляем игру*/
 
                         /*Добавляем моды*/
@@ -795,15 +810,15 @@ void MainWindow::slotEdit()
                             {
                                 //Добавляем строку
                                 //m_model->insertRow(childCount, gameIdx);
-                                m_proxy->insertRow(childCount, gameIdx);
+                                m_proxy->insertRow(childCount, m_proxy->mapFromSource(gameIdx));
 
                                 //Получаем индекс на эту строку
                                 //QModelIndex modIdx = m_model->index(childCount, 0, gameIdx);
-                                QModelIndex modIdx = m_proxy->index(childCount, 0, gameIdx);
+                                QModelIndex modIdx = m_model->index(childCount, 0, gameIdx);
 
                                 //Устанавливаем данные в этой строке
                                 //m_model->setData(modIdx, modItem.at(childCount)->data());
-                                m_model->setData(m_proxy->mapToSource(modIdx), modItem.at(childCount)->data());
+                                m_model->setData(modIdx, modItem.at(childCount)->data());
                             }
                         }
                         //Перемещаем папку
@@ -816,16 +831,16 @@ void MainWindow::slotEdit()
 
                         //Удаляем игру
                         //m_model->deleteElement(selectedIndex);
-                        m_model->removeRow(selectedIndex.row(), selectedIndex);
+                        m_proxy->removeRow(m_proxy->mapFromSource(selectedOriginalIndex).row(), m_proxy->mapFromSource(selectedOriginalIndex));
                     }
                 }
             }
         }
     }
-    else//Если выбран мод
+    else if(!selectedOriginalIndex.parent().parent().parent().isValid())//Если выбран мод
     {
         //Добавляем в диалог имя игры и путь до .ехе
-        QString gameName = selectedIndex.parent().data().toString();
+        QString gameName = selectedOriginalIndex.parent().data().toString();
         QString strPath("SELECT Path FROM Games WHERE Title = '" + gameName + "'");
         QSqlQuery queryPath;
         queryPath.exec(strPath);
@@ -838,6 +853,10 @@ void MainWindow::slotEdit()
         //Отображаем диалог и если нажата Ок
         if(dialog.exec() == QDialog::Accepted)
         {
+            //Останавливаем плеер и очищаем список
+            m_audioPlayer->stop();
+            m_audioPlayerList->clear();
+
             //Если имя не поменялось
             if(dialog.getInfo().m_name == gameName)
             {
@@ -877,7 +896,7 @@ void MainWindow::slotEdit()
                 if(dialog.getInfo().m_name.at(0) == gameName.at(0))
                 {
                     //Меняем данные в модели
-                    m_model->setData(selectedIndex.parent(), dialog.getInfo().m_name);
+                    m_model->setData(selectedOriginalIndex.parent(), dialog.getInfo().m_name);
 
                     //Переимен. папку
                     QString oldPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName;
@@ -911,33 +930,38 @@ void MainWindow::slotEdit()
                         int newRowNumber = m_model->getRoot()->child(i)->childCount();
 
                         //Добавляем строку
-                        m_model->insertRow(newRowNumber, parent);
+                        //m_model->insertRow(newRowNumber, parent);
+                        m_proxy->insertRow(newRowNumber, m_proxy->mapFromSource(parent));
 
                         //Получаем индекс новой строки
                         QModelIndex newIdx = m_model->index(newRowNumber, 0, parent);
 
                         //Устанавливаем данные в новой строке
-                        m_model->setData(newIdx, dialog.getInfo().m_name);
+                        //m_model->setData(newIdx, dialog.getInfo().m_name);
+                        m_proxy->setData(newIdx, dialog.getInfo().m_name);
 
                         /*Добавляем моды*/
                         //Если моды есть
-                        if(m_model->getItem(selectedIndex.parent())->childCount() > 0)
+                        if(m_model->getItem(selectedOriginalIndex.parent())->childCount() > 0)
                         {
                             qDebug() << "Has children";
 
                             //Получаем список всех детей, что бы узнать их имена
-                            QList<TreeItem*> modItem = m_model->getItem(selectedIndex.parent())->getList();
+                            QList<TreeItem*> modItem = m_model->getItem(selectedOriginalIndex.parent())->getList();
 
-                            int childCount = m_model->getItem(selectedIndex.parent())->childCount();
+                            int childCount = m_model->getItem(selectedOriginalIndex.parent())->childCount();
                             for(int i = 0; i < childCount; ++i)
                             {
                                 //Добавляем строку
-                                m_model->insertRow(i, newIdx);
+                                //m_model->insertRow(i, newIdx);
+                                m_proxy->insertRow(i, m_proxy->mapFromSource(newIdx));
 
                                 //Получаем индекс на эту строку
+                                //QModelIndex modIdx = m_model->index(i, 0, newIdx);
                                 QModelIndex modIdx = m_model->index(i, 0, newIdx);
 
                                 //Устанавливаем данные в этой строке
+                                //m_model->setData(modIdx, modItem.at(i)->data());
                                 m_model->setData(modIdx, modItem.at(i)->data());
                             }
                         }
@@ -951,7 +975,9 @@ void MainWindow::slotEdit()
                         //TODO: qDebug??
 
                         //Удаляем старую запись
-                        m_model->deleteElement(selectedIndex.parent());
+                        qDebug() << "Start remove";
+                        m_proxy->removeRow(m_proxy->mapFromSource(selectedOriginalIndex).parent().row(), m_proxy->mapFromSource(selectedOriginalIndex).parent());
+                        qDebug() << "End remove";
                     }
                     else //Если буквы нет
                     {
@@ -963,46 +989,53 @@ void MainWindow::slotEdit()
                         int newRowNumber = m_model->getRoot()->childCount();
 
                         //Добавляем строку
-                        m_model->insertRow(newRowNumber);
+                        //m_model->insertRow(newRowNumber);
+                        m_proxy->insertRow(newRowNumber);
 
                         //Получаем индекс на эту строку
                         QModelIndex letterIdx = m_model->index(newRowNumber, 0);
 
                         //Устанавливаем данные в этой строке
-                        m_model->setData(letterIdx, dialog.getInfo().m_name.at(0));
+                        //m_model->setData(letterIdx, dialog.getInfo().m_name.at(0));
+                        m_proxy->setData(letterIdx, dialog.getInfo().m_name.at(0));
                         /*Добавляем букву*/
 
                         /*Добавляем игру*/
                         //Добавляем строку(0-ая, т.к. там ничего еще нету)
-                        m_model->insertRow(0, letterIdx);
+                        //m_model->insertRow(0, letterIdx);
+                        m_proxy->insertRow(0, m_proxy->mapFromSource(letterIdx));
 
                         //Получаем индекс на эту строку
                         QModelIndex gameIdx = m_model->index(0, 0, letterIdx);
 
                         //Устанавливаем данные в этой строке
-                        m_model->setData(gameIdx, dialog.getInfo().m_name);
+                        //m_model->setData(gameIdx, dialog.getInfo().m_name);
+                        m_proxy->setData(gameIdx, dialog.getInfo().m_name);
                         /*Добавляем игру*/
 
                         /*Добавляем моды*/
                         //Если моды есть
-                        if(m_model->getItem(selectedIndex.parent())->childCount() > 0)
+                        if(m_model->getItem(selectedOriginalIndex.parent())->childCount() > 0)
                         {
                             qDebug() << "Has choldren";
 
                             //Получаем список всех детей, что бы узнать их имена
-                            QList<TreeItem*> modItem = m_model->getItem(selectedIndex.parent())->getList();
+                            QList<TreeItem*> modItem = m_model->getItem(selectedOriginalIndex.parent())->getList();
 
-                            int childAmount = m_model->getItem(selectedIndex.parent())->childCount();
+                            int childAmount = m_model->getItem(selectedOriginalIndex.parent())->childCount();
                             for(int childCount = 0; childCount < childAmount; ++childCount)
                             {
                                 //Добавляем строку
-                                m_model->insertRow(childCount, gameIdx);
+                                //m_model->insertRow(childCount, gameIdx);
+                                m_proxy->insertRow(childCount, m_proxy->mapFromSource(gameIdx));
 
+                                qDebug() << "1111111111";
                                 //Получаем индекс на эту строку
                                 QModelIndex modIdx = m_model->index(childCount, 0, gameIdx);
 
                                 //Устанавливаем данные в этой строке
                                 m_model->setData(modIdx, modItem.at(childCount)->data());
+                                qDebug() << "22222222222222";
                             }
                         }
                         /*Добавляем моды*/
@@ -1016,7 +1049,7 @@ void MainWindow::slotEdit()
                         //TODO: qDebug??
 
                         //Удаляем игру
-                        m_model->deleteElement(selectedIndex.parent());
+                        m_proxy->removeRow(m_proxy->mapFromSource(selectedOriginalIndex).parent().row(), m_proxy->mapFromSource(selectedOriginalIndex).parent());
                     }
                 }
             }
@@ -1052,6 +1085,10 @@ void MainWindow::slotEditMod()
     //Отображаем диалог и если нажата кнопка Ок
     if(dialog.exec() == QDialog::Accepted)
     {
+        //Останавливаем плеер и очищаем список
+        m_audioPlayer->stop();
+        m_audioPlayerList->clear();
+
         //Если имя не совпадает, то надо лезть в модель
         if(dialog.getInfo().m_name != modName)
         {
@@ -1077,7 +1114,9 @@ void MainWindow::slotEditMod()
             //TODO: qDebug??
 
             //Обновляем модель
-            m_model->setData(selectedIndex, dialog.getInfo().m_name);
+            //m_model->setData(selectedIndex, dialog.getInfo().m_name);
+            m_proxy->setData(m_proxy->mapToSource(selectedIndex), dialog.getInfo().m_name);
+
         }
         else //Если имя одинаково, то лезем только в БД
         {
