@@ -1777,17 +1777,20 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         QStringList coversList = coversDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
         QStringList mediaList = mediaDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
 
-        QPixmap cover(strToCover + '/' + coversList.at(0));
-        QPixmap media(strToMedia + '/' + mediaList.at(0));
-
-//        cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
-//        media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
-
-        QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
-        QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
-
-        m_coverScene->addItem(coverItem);
-        m_mediaScene->addItem(mediaItem);
+        if(!coversList.isEmpty())
+        {
+            QPixmap cover(strToCover + '/' + coversList.at(0));
+            //cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
+            QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
+            m_coverScene->addItem(coverItem);
+        }
+        if(!mediaList.isEmpty())
+        {
+            QPixmap media(strToMedia + '/' + mediaList.at(0));
+            //media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
+            QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
+            m_mediaScene->addItem(mediaItem);
+        }
 
         //Text Browser
         QString strToHtml = pathToItem + '/' + gameName.at(0) + '/' + gameName;
@@ -1795,11 +1798,13 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         QDir htmlDir(strToHtml);
         QStringList htmlList = htmlDir.entryList(QStringList() << "*.html", QDir::Files);
 
-        QFile htmlFile(strToHtml + '/' + htmlList.at(0));
-        htmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
-        QTextStream stream(&htmlFile);
-        ui->textBrowser->setHtml(htmlFile.readAll());
-
+        if(!htmlList.isEmpty())
+        {
+            QFile htmlFile(strToHtml + '/' + htmlList.at(0));
+            htmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
+            QTextStream stream(&htmlFile);
+            ui->textBrowser->setHtml(htmlFile.readAll());
+        }
     }
     else if(!selectedIndex.parent().parent().parent().isValid()) //Если выбран мод
     {
@@ -1865,17 +1870,20 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         QStringList coversList = coversDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
         QStringList mediaList = mediaDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
 
-        QPixmap cover(strToCover + '/' + coversList.at(0));
-        QPixmap media(strToMedia + '/' + mediaList.at(0));
-
-//        cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
-//        media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
-
-        QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
-        QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
-
-        m_coverScene->addItem(coverItem);
-        m_mediaScene->addItem(mediaItem);
+        if(!coversList.isEmpty())
+        {
+            QPixmap cover(strToCover + '/' + coversList.at(0));
+            cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
+            QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
+            m_coverScene->addItem(coverItem);
+        }
+        if(!mediaList.isEmpty())
+        {
+            QPixmap media(strToMedia + '/' + mediaList.at(0));
+            //media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
+            QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
+            m_mediaScene->addItem(mediaItem);
+        }
 
         //Text Browser
         QString strToHtml = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName;
@@ -1883,10 +1891,13 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         QDir htmlDir(strToHtml);
         QStringList htmlList = htmlDir.entryList(QStringList() << "*.html", QDir::Files);
 
-        QFile htmlFile(strToHtml + '/' + htmlList.at(0));
-        htmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
-        QTextStream stream(&htmlFile);
-        ui->textBrowser->setHtml(htmlFile.readAll());
+        if(!htmlList.isEmpty())
+        {
+            QFile htmlFile(strToHtml + '/' + htmlList.at(0));
+            htmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
+            QTextStream stream(&htmlFile);
+            ui->textBrowser->setHtml(htmlFile.readAll());
+        }
     }
     /*Получаем медиафайламы*/
 
