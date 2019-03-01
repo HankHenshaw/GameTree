@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[37];
-    char stringdata0[653];
+    QByteArrayData data[42];
+    char stringdata0[807];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -67,7 +67,12 @@ QT_MOC_LITERAL(32, 568, 17), // "slotIconActivated"
 QT_MOC_LITERAL(33, 586, 33), // "QSystemTrayIcon::ActivationRe..."
 QT_MOC_LITERAL(34, 620, 6), // "reason"
 QT_MOC_LITERAL(35, 627, 14), // "slotDblClicked"
-QT_MOC_LITERAL(36, 642, 10) // "slotFilter"
+QT_MOC_LITERAL(36, 642, 10), // "slotFilter"
+QT_MOC_LITERAL(37, 653, 33), // "on_splitterVertical_splitterM..."
+QT_MOC_LITERAL(38, 687, 5), // "index"
+QT_MOC_LITERAL(39, 693, 35), // "on_splitterHorizontal_splitte..."
+QT_MOC_LITERAL(40, 729, 39), // "on_splitterHorizontalInfo_spl..."
+QT_MOC_LITERAL(41, 769, 37) // "on_splitterVerticalInfo_split..."
 
     },
     "MainWindow\0on_playButton_clicked\0\0"
@@ -88,7 +93,11 @@ QT_MOC_LITERAL(36, 642, 10) // "slotFilter"
     "slotButtonActivator\0selectedIndex\0"
     "slotShowHide\0slotIconActivated\0"
     "QSystemTrayIcon::ActivationReason\0"
-    "reason\0slotDblClicked\0slotFilter"
+    "reason\0slotDblClicked\0slotFilter\0"
+    "on_splitterVertical_splitterMoved\0"
+    "index\0on_splitterHorizontal_splitterMoved\0"
+    "on_splitterHorizontalInfo_splitterMoved\0"
+    "on_splitterVerticalInfo_splitterMoved"
 };
 #undef QT_MOC_LITERAL
 
@@ -98,7 +107,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      29,   14, // methods
+      33,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -106,35 +115,39 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  159,    2, 0x08 /* Private */,
-       3,    0,  160,    2, 0x08 /* Private */,
-       4,    0,  161,    2, 0x08 /* Private */,
-       5,    0,  162,    2, 0x08 /* Private */,
-       6,    0,  163,    2, 0x08 /* Private */,
-       7,    1,  164,    2, 0x08 /* Private */,
-       9,    1,  167,    2, 0x08 /* Private */,
-      11,    1,  170,    2, 0x08 /* Private */,
-      12,    1,  173,    2, 0x08 /* Private */,
-      14,    0,  176,    2, 0x08 /* Private */,
-      15,    0,  177,    2, 0x08 /* Private */,
-      16,    1,  178,    2, 0x08 /* Private */,
-      17,    0,  181,    2, 0x08 /* Private */,
-      18,    0,  182,    2, 0x08 /* Private */,
-      19,    0,  183,    2, 0x08 /* Private */,
-      20,    0,  184,    2, 0x08 /* Private */,
-      21,    0,  185,    2, 0x08 /* Private */,
-      22,    0,  186,    2, 0x08 /* Private */,
-      23,    0,  187,    2, 0x08 /* Private */,
-      24,    0,  188,    2, 0x08 /* Private */,
-      25,    0,  189,    2, 0x08 /* Private */,
-      26,    0,  190,    2, 0x08 /* Private */,
-      27,    0,  191,    2, 0x08 /* Private */,
-      28,    0,  192,    2, 0x08 /* Private */,
-      29,    1,  193,    2, 0x08 /* Private */,
-      31,    0,  196,    2, 0x08 /* Private */,
-      32,    1,  197,    2, 0x08 /* Private */,
-      35,    0,  200,    2, 0x08 /* Private */,
-      36,    0,  201,    2, 0x08 /* Private */,
+       1,    0,  179,    2, 0x08 /* Private */,
+       3,    0,  180,    2, 0x08 /* Private */,
+       4,    0,  181,    2, 0x08 /* Private */,
+       5,    0,  182,    2, 0x08 /* Private */,
+       6,    0,  183,    2, 0x08 /* Private */,
+       7,    1,  184,    2, 0x08 /* Private */,
+       9,    1,  187,    2, 0x08 /* Private */,
+      11,    1,  190,    2, 0x08 /* Private */,
+      12,    1,  193,    2, 0x08 /* Private */,
+      14,    0,  196,    2, 0x08 /* Private */,
+      15,    0,  197,    2, 0x08 /* Private */,
+      16,    1,  198,    2, 0x08 /* Private */,
+      17,    0,  201,    2, 0x08 /* Private */,
+      18,    0,  202,    2, 0x08 /* Private */,
+      19,    0,  203,    2, 0x08 /* Private */,
+      20,    0,  204,    2, 0x08 /* Private */,
+      21,    0,  205,    2, 0x08 /* Private */,
+      22,    0,  206,    2, 0x08 /* Private */,
+      23,    0,  207,    2, 0x08 /* Private */,
+      24,    0,  208,    2, 0x08 /* Private */,
+      25,    0,  209,    2, 0x08 /* Private */,
+      26,    0,  210,    2, 0x08 /* Private */,
+      27,    0,  211,    2, 0x08 /* Private */,
+      28,    0,  212,    2, 0x08 /* Private */,
+      29,    1,  213,    2, 0x08 /* Private */,
+      31,    0,  216,    2, 0x08 /* Private */,
+      32,    1,  217,    2, 0x08 /* Private */,
+      35,    0,  220,    2, 0x08 /* Private */,
+      36,    0,  221,    2, 0x08 /* Private */,
+      37,    2,  222,    2, 0x08 /* Private */,
+      39,    2,  227,    2, 0x08 /* Private */,
+      40,    2,  232,    2, 0x08 /* Private */,
+      41,    2,  237,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -166,6 +179,10 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, 0x80000000 | 33,   34,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   13,   38,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   13,   38,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   13,   38,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   13,   38,
 
        0        // eod
 };
@@ -205,6 +222,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 26: _t->slotIconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
         case 27: _t->slotDblClicked(); break;
         case 28: _t->slotFilter(); break;
+        case 29: _t->on_splitterVertical_splitterMoved((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 30: _t->on_splitterHorizontal_splitterMoved((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 31: _t->on_splitterHorizontalInfo_splitterMoved((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 32: _t->on_splitterVerticalInfo_splitterMoved((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
     }
@@ -235,13 +256,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 29)
+        if (_id < 33)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 29;
+        _id -= 33;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 29)
+        if (_id < 33)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 29;
+        _id -= 33;
     }
     return _id;
 }

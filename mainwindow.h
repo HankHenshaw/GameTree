@@ -50,9 +50,8 @@ public:
     static const QString appPath();
     /*Static*/
 protected:
-    virtual void closeEvent(QCloseEvent *event) override;
     virtual void showEvent(QShowEvent *event) override;
-    virtual void resizeEvent(QResizeEvent *event) override;
+    virtual void closeEvent(QCloseEvent *event) override;
 
 private slots:
     /*Audio Player Slots*/
@@ -106,6 +105,14 @@ private slots:
     /*Proxy*/
     void slotFilter();
     /*Proxy*/
+    void on_splitterVertical_splitterMoved(int pos, int index);
+
+    void on_splitterHorizontal_splitterMoved(int pos, int index);
+
+    void on_splitterHorizontalInfo_splitterMoved(int pos, int index);
+
+    void on_splitterVerticalInfo_splitterMoved(int pos, int index);
+
 private:
     Ui::MainWindow *ui;
 

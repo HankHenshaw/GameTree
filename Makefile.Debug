@@ -332,6 +332,11 @@ debug/moc_mainwindow.cpp: ../../5.9.2/mingw53_32/include/QtWidgets/QMainWindow \
 		../../5.9.2/mingw53_32/include/QtCore/QSettings \
 		../../5.9.2/mingw53_32/include/QtCore/qsettings.h \
 		../../5.9.2/mingw53_32/include/QtCore/QFileInfo \
+		../../5.9.2/mingw53_32/include/QtWidgets/QGraphicsScene \
+		../../5.9.2/mingw53_32/include/QtWidgets/qgraphicsscene.h \
+		../../5.9.2/mingw53_32/include/QtGui/qpen.h \
+		../../5.9.2/mingw53_32/include/QtWidgets/QGraphicsPixmapItem \
+		../../5.9.2/mingw53_32/include/QtWidgets/qgraphicsitem.h \
 		treemodel.h \
 		../../5.9.2/mingw53_32/include/QtCore/QAbstractItemModel \
 		../../5.9.2/mingw53_32/include/QtCore/qabstractitemmodel.h \
@@ -1314,6 +1319,7 @@ debug/moc_myproxymodel.cpp: ../../5.9.2/mingw53_32/include/QtCore/QSortFilterPro
 		../../5.9.2/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../5.9.2/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../5.9.2/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		../../5.9.2/mingw53_32/include/QtCore/QModelIndex \
 		myproxymodel.h \
 		debug/moc_predefs.h \
 		../../5.9.2/mingw53_32/bin/moc.exe
@@ -1957,6 +1963,11 @@ debug/main.o: main.cpp mainwindow.h \
 		../../5.9.2/mingw53_32/include/QtCore/QSettings \
 		../../5.9.2/mingw53_32/include/QtCore/qsettings.h \
 		../../5.9.2/mingw53_32/include/QtCore/QFileInfo \
+		../../5.9.2/mingw53_32/include/QtWidgets/QGraphicsScene \
+		../../5.9.2/mingw53_32/include/QtWidgets/qgraphicsscene.h \
+		../../5.9.2/mingw53_32/include/QtGui/qpen.h \
+		../../5.9.2/mingw53_32/include/QtWidgets/QGraphicsPixmapItem \
+		../../5.9.2/mingw53_32/include/QtWidgets/qgraphicsitem.h \
 		treemodel.h \
 		../../5.9.2/mingw53_32/include/QtCore/QAbstractItemModel \
 		../../5.9.2/mingw53_32/include/QtCore/qabstractitemmodel.h \
@@ -2147,6 +2158,11 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../5.9.2/mingw53_32/include/QtCore/QSettings \
 		../../5.9.2/mingw53_32/include/QtCore/qsettings.h \
 		../../5.9.2/mingw53_32/include/QtCore/QFileInfo \
+		../../5.9.2/mingw53_32/include/QtWidgets/QGraphicsScene \
+		../../5.9.2/mingw53_32/include/QtWidgets/qgraphicsscene.h \
+		../../5.9.2/mingw53_32/include/QtGui/qpen.h \
+		../../5.9.2/mingw53_32/include/QtWidgets/QGraphicsPixmapItem \
+		../../5.9.2/mingw53_32/include/QtWidgets/qgraphicsitem.h \
 		treemodel.h \
 		../../5.9.2/mingw53_32/include/QtCore/QAbstractItemModel \
 		../../5.9.2/mingw53_32/include/QtCore/qabstractitemmodel.h \
@@ -2186,6 +2202,12 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../5.9.2/mingw53_32/include/QtGui/qinputmethod.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QButtonGroup \
 		../../5.9.2/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		../../5.9.2/mingw53_32/include/QtWidgets/QGraphicsView \
+		../../5.9.2/mingw53_32/include/QtWidgets/qgraphicsview.h \
+		../../5.9.2/mingw53_32/include/QtGui/qpainter.h \
+		../../5.9.2/mingw53_32/include/QtGui/qtextoption.h \
+		../../5.9.2/mingw53_32/include/QtWidgets/qscrollarea.h \
+		../../5.9.2/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QHBoxLayout \
 		../../5.9.2/mingw53_32/include/QtWidgets/qboxlayout.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/qlayout.h \
@@ -2194,7 +2216,6 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QHeaderView \
 		../../5.9.2/mingw53_32/include/QtWidgets/qheaderview.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		../../5.9.2/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../5.9.2/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/qstyleoption.h \
@@ -2212,16 +2233,14 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/qlineedit.h \
 		../../5.9.2/mingw53_32/include/QtGui/qtextcursor.h \
 		../../5.9.2/mingw53_32/include/QtGui/qtextformat.h \
-		../../5.9.2/mingw53_32/include/QtGui/qpen.h \
-		../../5.9.2/mingw53_32/include/QtGui/qtextoption.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QMenu \
 		../../5.9.2/mingw53_32/include/QtWidgets/qmenu.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QMenuBar \
 		../../5.9.2/mingw53_32/include/QtWidgets/qmenubar.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QSlider \
 		../../5.9.2/mingw53_32/include/QtWidgets/QSpacerItem \
-		../../5.9.2/mingw53_32/include/QtWidgets/QStackedWidget \
-		../../5.9.2/mingw53_32/include/QtWidgets/qstackedwidget.h \
+		../../5.9.2/mingw53_32/include/QtWidgets/QSplitter \
+		../../5.9.2/mingw53_32/include/QtWidgets/qsplitter.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QStatusBar \
 		../../5.9.2/mingw53_32/include/QtWidgets/qstatusbar.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QTabWidget \
@@ -3503,7 +3522,9 @@ debug/myproxymodel.o: myproxymodel.cpp myproxymodel.h \
 		../../5.9.2/mingw53_32/include/QtCore/qset.h \
 		../../5.9.2/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../5.9.2/mingw53_32/include/QtCore/qsharedpointer.h \
-		../../5.9.2/mingw53_32/include/QtCore/qsharedpointer_impl.h
+		../../5.9.2/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		../../5.9.2/mingw53_32/include/QtCore/QModelIndex \
+		../../5.9.2/mingw53_32/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\myproxymodel.o myproxymodel.cpp
 
 debug/qrc_icons.o: debug/qrc_icons.cpp 

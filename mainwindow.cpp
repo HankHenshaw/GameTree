@@ -38,8 +38,10 @@
 //TODO: Возникает проблемы при редактировании игры из под мода, пока уберу этого действия из контекстного меню
 //TODO: Справка https://www.opennet.ru/docs/RUS/qt3_prog/x7532.html
 //TODO: Чтение html сделать в другом потоке
-//TODO: Написать подгон изображения, при изменения размера окна через сплиттер
-//TODO: Подгон изображения сразу после выбора итема
+//http://qaru.site/questions/1239698/how-can-i-asynchronously-load-data-from-large-files-in-qt
+//http://itnotesblog.ru/note.php?id=244
+//TODO: Слайдшоу изображений
+//TODO: Стили (https://habr.com/ru/company/istodo/blog/216275/)
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -1695,6 +1697,7 @@ void MainWindow::on_buttonRemove_clicked()
 
 void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
 {
+    qDebug() << ui->splitterVerticalInfo->saveState();
     if(!selectedIndex.parent().isValid())
     {
         ui->buttonStart->setDisabled(true);
@@ -1780,16 +1783,21 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         if(!coversList.isEmpty())
         {
             QPixmap cover(strToCover + '/' + coversList.at(0));
+            ui->coversView->setSceneRect(0, 0, cover.width(), cover.height());
             //cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
             m_coverScene->addItem(coverItem);
+            ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
         }
         if(!mediaList.isEmpty())
         {
             QPixmap media(strToMedia + '/' + mediaList.at(0));
+            ui->mediaView->setSceneRect(0, 0, media.width(), media.height());
             //media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
             m_mediaScene->addItem(mediaItem);
+            ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+
         }
 
         //Text Browser
@@ -1873,16 +1881,20 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         if(!coversList.isEmpty())
         {
             QPixmap cover(strToCover + '/' + coversList.at(0));
-            cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
+            ui->coversView->setSceneRect(0, 0, cover.width(), cover.height());
+            //cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
             m_coverScene->addItem(coverItem);
+            ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
         }
         if(!mediaList.isEmpty())
         {
             QPixmap media(strToMedia + '/' + mediaList.at(0));
+            ui->mediaView->setSceneRect(0, 0, media.width(), media.height());
             //media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
             m_mediaScene->addItem(mediaItem);
+            ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
         }
 
         //Text Browser
@@ -1948,17 +1960,43 @@ void MainWindow::closeEvent(QCloseEvent *event)
 }
 /*System Tray*/
 
-/*Resize Image*/
+/*Show Image*/
 void MainWindow::showEvent(QShowEvent *event)
 {
     ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
     ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
     QMainWindow::showEvent(event);
 }
-void MainWindow::resizeEvent(QResizeEvent *event)
+/*Show Image*/
+
+void MainWindow::on_splitterVertical_splitterMoved(int pos, int index)
 {
+    Q_UNUSED(pos);
+    Q_UNUSED(index);
     ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
     ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
-    QMainWindow::resizeEvent(event);
 }
-/*Resize Image*/
+
+void MainWindow::on_splitterHorizontal_splitterMoved(int pos, int index)
+{
+    Q_UNUSED(pos);
+    Q_UNUSED(index);
+    ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+}
+
+void MainWindow::on_splitterHorizontalInfo_splitterMoved(int pos, int index)
+{
+    Q_UNUSED(pos);
+    Q_UNUSED(index);
+    ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+}
+
+void MainWindow::on_splitterVerticalInfo_splitterMoved(int pos, int index)
+{
+    Q_UNUSED(pos);
+    Q_UNUSED(index);
+    ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+}
