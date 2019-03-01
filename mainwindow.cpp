@@ -36,6 +36,10 @@
 //WARNING: Обнуление лога после каждого запуска
 //TODO: Подумать как лучше реоганизовать метод slotEdit чтобы не повторять один и тотже кусок дважды
 //TODO: Возникает проблемы при редактировании игры из под мода, пока уберу этого действия из контекстного меню
+//TODO: Справка https://www.opennet.ru/docs/RUS/qt3_prog/x7532.html
+//TODO: Чтение html сделать в другом потоке
+//TODO: Написать подгон изображения, при изменения размера окна через сплиттер
+//TODO: Подгон изображения сразу после выбора итема
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -108,7 +112,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_trayIcon->show();
 
-    /*TEST: Proxy*/
+    /*Proxy*/
     //Соединяем строку поиска с прокси моделью
     connect(ui->searchGameLine, &QLineEdit::textChanged, this, &MainWindow::slotFilter);
 
@@ -120,7 +124,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
      //а в отображение устанавливаем прокси модель
     ui->treeView->setModel(m_proxy);
-    /*TEST: Proxy*/
+    /*Proxy*/
+
+    /*Covers & Media players*/
+    m_coverScene = new QGraphicsScene(this);
+    ui->coversView->setScene(m_coverScene);
+
+    m_mediaScene = new QGraphicsScene(this);
+    ui->mediaView->setScene(m_mediaScene);
+    /*Covers & Media players*/
 }
 
 MainWindow::~MainWindow()
@@ -148,6 +160,8 @@ void MainWindow::loadSettings()
     this->setGeometry(m_settings->value("Geometry", QRect(100, 100, 800, 640)).toRect());
     ui->splitterVertical->restoreState(m_settings->value("Vertical Splitter").toByteArray());
     ui->splitterHorizontal->restoreState(m_settings->value("Horizontal Splitter").toByteArray());
+    ui->splitterVerticalInfo->restoreState(m_settings->value("Vertical Info Splitter").toByteArray());
+    ui->splitterHorizontalInfo->restoreState(m_settings->value("Horizontal Info Splitter").toByteArray());
     m_settings->endGroup();
 }
 
@@ -159,6 +173,8 @@ void MainWindow::saveSettings()
     m_settings->setValue("Geometry", geometry());
     m_settings->setValue("Vertical Splitter", ui->splitterVertical->saveState());
     m_settings->setValue("Horizontal Splitter", ui->splitterHorizontal->saveState());
+    m_settings->setValue("Vertical Info Splitter", ui->splitterVerticalInfo->saveState());
+    m_settings->setValue("Horizontal Info Splitter", ui->splitterHorizontalInfo->saveState());
     m_settings->endGroup();
 }
 
@@ -1696,8 +1712,19 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
     QString pathToItem = m_appPath + "/Games";
 
     /*Получаем медиафайламы*/
-    if(!selectedIndex.parent().parent().isValid()) //Если выбрана игра
+    if(!selectedIndex.parent().isValid()) // Если выбрана буква
     {
+        qDebug() << "It's Letter";
+    }
+    else if(!selectedIndex.parent().parent().isValid()) //Если выбрана игра
+    {
+        //Очищаем список и сцены, а также обновляем отображения
+        m_audioPlayerList->clear();
+        m_coverScene->clear();
+        m_mediaScene->clear();
+        ui->coversView->viewport()->update();
+        ui->mediaView->viewport()->update();
+
         //Добавляем в диалог имя игры и путь до .ехе
         QString gameName = selectedIndex.data().toString();
 
@@ -1739,11 +1766,49 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         {
             m_audioPlayer->play();
         }
+
+        //Covers & Media Views
+        QString strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/covers";
+        QString strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/screenshots";
+
+        QDir coversDir(strToCover);
+        QDir mediaDir(strToMedia);
+
+        QStringList coversList = coversDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+        QStringList mediaList = mediaDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+
+        QPixmap cover(strToCover + '/' + coversList.at(0));
+        QPixmap media(strToMedia + '/' + mediaList.at(0));
+
+//        cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
+//        media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
+
+        QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
+        QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
+
+        m_coverScene->addItem(coverItem);
+        m_mediaScene->addItem(mediaItem);
+
+        //Text Browser
+        QString strToHtml = pathToItem + '/' + gameName.at(0) + '/' + gameName;
+
+        QDir htmlDir(strToHtml);
+        QStringList htmlList = htmlDir.entryList(QStringList() << "*.html", QDir::Files);
+
+        QFile htmlFile(strToHtml + '/' + htmlList.at(0));
+        htmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
+        QTextStream stream(&htmlFile);
+        ui->textBrowser->setHtml(htmlFile.readAll());
+
     }
     else if(!selectedIndex.parent().parent().parent().isValid()) //Если выбран мод
     {
-        //Очищаем список
+        //Очищаем список и сцены, а также обновляем отображения
         m_audioPlayerList->clear();
+        m_coverScene->clear();
+        m_mediaScene->clear();
+        ui->coversView->viewport()->update();
+        ui->mediaView->viewport()->update();
 
         //Получаем имя мода
         QString modName = selectedIndex.data().toString();
@@ -1789,6 +1854,39 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         {
             m_audioPlayer->play();
         }
+
+        //Covers & Media Views
+        QString strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/covers";
+        QString strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/screenshots";
+
+        QDir coversDir(strToCover);
+        QDir mediaDir(strToMedia);
+
+        QStringList coversList = coversDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+        QStringList mediaList = mediaDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+
+        QPixmap cover(strToCover + '/' + coversList.at(0));
+        QPixmap media(strToMedia + '/' + mediaList.at(0));
+
+//        cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
+//        media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
+
+        QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
+        QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
+
+        m_coverScene->addItem(coverItem);
+        m_mediaScene->addItem(mediaItem);
+
+        //Text Browser
+        QString strToHtml = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName;
+
+        QDir htmlDir(strToHtml);
+        QStringList htmlList = htmlDir.entryList(QStringList() << "*.html", QDir::Files);
+
+        QFile htmlFile(strToHtml + '/' + htmlList.at(0));
+        htmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
+        QTextStream stream(&htmlFile);
+        ui->textBrowser->setHtml(htmlFile.readAll());
     }
     /*Получаем медиафайламы*/
 
@@ -1838,3 +1936,18 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
 }
 /*System Tray*/
+
+/*Resize Image*/
+void MainWindow::showEvent(QShowEvent *event)
+{
+    ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    QMainWindow::showEvent(event);
+}
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    QMainWindow::resizeEvent(event);
+}
+/*Resize Image*/

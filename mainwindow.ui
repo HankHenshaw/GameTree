@@ -50,7 +50,7 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <property name="bottomMargin">
           <number>1</number>
@@ -125,7 +125,19 @@
            </layout>
           </item>
           <item>
-           <widget class="QTextBrowser" name="textBrowser"/>
+           <widget class="QSplitter" name="splitterHorizontalInfo">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <widget class="QSplitter" name="splitterVerticalInfo">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <widget class="QGraphicsView" name="mediaView"/>
+             <widget class="QGraphicsView" name="coversView"/>
+            </widget>
+            <widget class="QTextBrowser" name="textBrowser"/>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -136,7 +148,7 @@
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout">

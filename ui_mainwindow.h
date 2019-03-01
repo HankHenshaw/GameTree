@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -51,7 +52,7 @@ public:
     QSpacerItem *horizontalSpacer_2;
     QSplitter *splitterHorizontal;
     QSplitter *splitterVertical;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLineEdit *searchGameLine;
     QTreeView *treeView;
@@ -63,9 +64,13 @@ public:
     QPushButton *buttonEdit;
     QPushButton *buttonRemove;
     QSpacerItem *horizontalSpacer_7;
+    QSplitter *splitterHorizontalInfo;
+    QSplitter *splitterVerticalInfo;
+    QGraphicsView *mediaView;
+    QGraphicsView *coversView;
     QTextBrowser *textBrowser;
     QWidget *tab_2;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_5;
     QVBoxLayout *verticalLayout;
     MyProgressBar *durationProgressBar;
@@ -145,14 +150,14 @@ public:
         splitterVertical = new QSplitter(splitterHorizontal);
         splitterVertical->setObjectName(QStringLiteral("splitterVertical"));
         splitterVertical->setOrientation(Qt::Horizontal);
-        widget = new QWidget(splitterVertical);
-        widget->setObjectName(QStringLiteral("widget"));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(splitterVertical);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 1);
-        searchGameLine = new QLineEdit(widget);
+        searchGameLine = new QLineEdit(layoutWidget);
         searchGameLine->setObjectName(QStringLiteral("searchGameLine"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -162,7 +167,7 @@ public:
 
         verticalLayout_2->addWidget(searchGameLine);
 
-        treeView = new QTreeView(widget);
+        treeView = new QTreeView(layoutWidget);
         treeView->setObjectName(QStringLiteral("treeView"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
@@ -172,7 +177,7 @@ public:
 
         verticalLayout_2->addWidget(treeView);
 
-        splitterVertical->addWidget(widget);
+        splitterVertical->addWidget(layoutWidget);
         tabWidget = new QTabWidget(splitterVertical);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tab = new QWidget();
@@ -206,10 +211,24 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_4);
 
-        textBrowser = new QTextBrowser(tab);
+        splitterHorizontalInfo = new QSplitter(tab);
+        splitterHorizontalInfo->setObjectName(QStringLiteral("splitterHorizontalInfo"));
+        splitterHorizontalInfo->setOrientation(Qt::Vertical);
+        splitterVerticalInfo = new QSplitter(splitterHorizontalInfo);
+        splitterVerticalInfo->setObjectName(QStringLiteral("splitterVerticalInfo"));
+        splitterVerticalInfo->setOrientation(Qt::Horizontal);
+        mediaView = new QGraphicsView(splitterVerticalInfo);
+        mediaView->setObjectName(QStringLiteral("mediaView"));
+        splitterVerticalInfo->addWidget(mediaView);
+        coversView = new QGraphicsView(splitterVerticalInfo);
+        coversView->setObjectName(QStringLiteral("coversView"));
+        splitterVerticalInfo->addWidget(coversView);
+        splitterHorizontalInfo->addWidget(splitterVerticalInfo);
+        textBrowser = new QTextBrowser(splitterHorizontalInfo);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
+        splitterHorizontalInfo->addWidget(textBrowser);
 
-        verticalLayout_3->addWidget(textBrowser);
+        verticalLayout_3->addWidget(splitterHorizontalInfo);
 
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
@@ -217,9 +236,9 @@ public:
         tabWidget->addTab(tab_2, QString());
         splitterVertical->addWidget(tabWidget);
         splitterHorizontal->addWidget(splitterVertical);
-        widget1 = new QWidget(splitterHorizontal);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        horizontalLayout_5 = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(splitterHorizontal);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        horizontalLayout_5 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
@@ -227,7 +246,7 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        durationProgressBar = new MyProgressBar(widget1);
+        durationProgressBar = new MyProgressBar(layoutWidget1);
         durationProgressBar->setObjectName(QStringLiteral("durationProgressBar"));
         durationProgressBar->setValue(24);
         durationProgressBar->setFormat(QStringLiteral("%v%"));
@@ -237,7 +256,7 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(5);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        playButton = new QToolButton(widget1);
+        playButton = new QToolButton(layoutWidget1);
         playButton->setObjectName(QStringLiteral("playButton"));
 
         horizontalLayout_2->addWidget(playButton);
@@ -245,17 +264,17 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        previousButton = new QToolButton(widget1);
+        previousButton = new QToolButton(layoutWidget1);
         previousButton->setObjectName(QStringLiteral("previousButton"));
 
         horizontalLayout->addWidget(previousButton);
 
-        stopButton = new QToolButton(widget1);
+        stopButton = new QToolButton(layoutWidget1);
         stopButton->setObjectName(QStringLiteral("stopButton"));
 
         horizontalLayout->addWidget(stopButton);
 
-        nextButton = new QToolButton(widget1);
+        nextButton = new QToolButton(layoutWidget1);
         nextButton->setObjectName(QStringLiteral("nextButton"));
 
         horizontalLayout->addWidget(nextButton);
@@ -263,7 +282,7 @@ public:
 
         horizontalLayout_2->addLayout(horizontalLayout);
 
-        playlistButton = new QToolButton(widget1);
+        playlistButton = new QToolButton(layoutWidget1);
         playlistButton->setObjectName(QStringLiteral("playlistButton"));
 
         horizontalLayout_2->addWidget(playlistButton);
@@ -284,7 +303,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_6);
 
-        volumeSlider = new QSlider(widget1);
+        volumeSlider = new QSlider(layoutWidget1);
         volumeSlider->setObjectName(QStringLiteral("volumeSlider"));
         volumeSlider->setMaximum(100);
         volumeSlider->setOrientation(Qt::Horizontal);
@@ -297,12 +316,12 @@ public:
 
         horizontalLayout_5->addLayout(verticalLayout);
 
-        coverLabel = new QLabel(widget1);
+        coverLabel = new QLabel(layoutWidget1);
         coverLabel->setObjectName(QStringLiteral("coverLabel"));
 
         horizontalLayout_5->addWidget(coverLabel);
 
-        splitterHorizontal->addWidget(widget1);
+        splitterHorizontal->addWidget(layoutWidget1);
 
         verticalLayout_4->addWidget(splitterHorizontal);
 

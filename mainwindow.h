@@ -18,6 +18,8 @@
 #include <QCloseEvent>
 #include <QSettings>
 #include <QFileInfo>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
@@ -49,6 +51,8 @@ public:
     /*Static*/
 protected:
     virtual void closeEvent(QCloseEvent *event) override;
+    virtual void showEvent(QShowEvent *event) override;
+    virtual void resizeEvent(QResizeEvent *event) override;
 
 private slots:
     /*Audio Player Slots*/
@@ -115,8 +119,8 @@ private:
 
     /*Model & Proxy*/
     TreeModel *m_model;
-
     QModelIndex m_selectedIndex;
+    MyProxyModel *m_proxy;
     /*Model & Proxy*/
 
     /*Audio Player*/
@@ -128,6 +132,16 @@ private:
 
     PlaylistForm *m_playlistForm;
     /*Audio Player*/
+
+    /*Test Covers View*/
+    QMediaPlayer *m_coversPlayer;
+    QGraphicsScene *m_coverScene;
+    /*Test Covers View*/
+
+    /*Test Media View*/
+    QMediaPlayer *m_mediaPlayer;
+    QGraphicsScene *m_mediaScene;
+    /*Test Media View*/
 
     /*Translator*/
     QTranslator* translator;
@@ -153,10 +167,6 @@ private:
     /*Dirs*/
     QDir m_dir;
     /*Dirs*/
-
-    /*Proxy*/
-    MyProxyModel *m_proxy;
-    /*Proxy*/
 };
 
 #endif // MAINWINDOW_H
