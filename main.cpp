@@ -4,11 +4,18 @@
 #include <QDateTime>
 #include <QTextStream>
 #include <QDebug>
+#include <QStyleFactory>
 
 void messageToFile(QtMsgType type, const QMessageLogContext &context, const QString& msg);
 
 int main(int argc, char *argv[])
 {
+    QApplication::setStyle(QStyleFactory::create("Fusion"));
+    //Windows
+    //WindowsXP
+    //WindowsVista
+    //Fusion
+    //Пустая строка - Default
     QApplication a(argc, argv);
     QApplication::setApplicationName("GameTree");
     {
