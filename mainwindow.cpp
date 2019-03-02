@@ -40,8 +40,8 @@
 //TODO: Чтение html сделать в другом потоке
 //http://qaru.site/questions/1239698/how-can-i-asynchronously-load-data-from-large-files-in-qt
 //http://itnotesblog.ru/note.php?id=244
-//TODO: Слайдшоу изображений
 //TODO: Стили (https://habr.com/ru/company/istodo/blog/216275/)
+//TODO: Интервал для слайдшоу таймеров из настроек от пользователя, а также вкл/выкл слайдшоу
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -135,6 +135,21 @@ MainWindow::MainWindow(QWidget *parent) :
     m_mediaScene = new QGraphicsScene(this);
     ui->mediaView->setScene(m_mediaScene);
     /*Covers & Media players*/
+
+    /*Timer*/
+    m_coversSlideshowTimer = new QTimer(this);
+    m_mediaSlideshowTimer = new QTimer(this);
+    m_slideMediaNumber = 0;
+    m_slideCoverNumber = 0;
+    isCoversSlideshowEnabled = true;
+    isMediaSlideshowEnabled = true;
+    if(isCoversSlideshowEnabled)
+        m_coversSlideshowTimer->start(5000);
+    if(isMediaSlideshowEnabled)
+        m_mediaSlideshowTimer->start(10000);
+    connect(m_coversSlideshowTimer, &QTimer::timeout, this, &MainWindow::slotCoversSlideshowStart);
+    connect(m_mediaSlideshowTimer, &QTimer::timeout, this, &MainWindow::slotMediaSlideshowStart);
+    /*Timer*/
 }
 
 MainWindow::~MainWindow()
@@ -153,6 +168,7 @@ const QString MainWindow::appPath()
 }
 /*Static*/
 
+/*Settings*/
 void MainWindow::loadSettings()
 {
     //setGeometry(m_settings->value("Geometry", QRect(100, 100, 800, 640)).toRect());
@@ -179,6 +195,7 @@ void MainWindow::saveSettings()
     m_settings->setValue("Horizontal Info Splitter", ui->splitterHorizontalInfo->saveState());
     m_settings->endGroup();
 }
+/*Settings*/
 
 /*Audio Player*/
 void MainWindow::on_playButton_clicked()
@@ -326,11 +343,48 @@ void MainWindow::changeEvent(QEvent *event)
         ui->buttonRemove->setText(tr("Remove"));
         ui->searchGameLine->setPlaceholderText(tr("Search..."));
     }
+    else if(event->type() == QEvent::WindowStateChange)
+    {
+        if(this->isMinimized())
+        {
+            m_coversSlideshowTimer->stop();
+            m_mediaSlideshowTimer->stop();
+        }
+        else
+        {
+            if(!m_coversSlideshowTimer->isActive())
+                m_coversSlideshowTimer->start();
+            if(!m_mediaSlideshowTimer->isActive())
+                m_mediaSlideshowTimer->start();
+        }
+
+        if(this->isMaximized())
+        {
+            ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+            ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+        }
+        else
+        {
+            ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+            ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+        }
+    }
     else
     {
         QMainWindow::changeEvent(event);
     }
 }
+
+void MainWindow::on_actionRussian_triggered()
+{
+    changeLanguage("ru");
+}
+
+void MainWindow::on_actionEnglish_triggered()
+{
+    changeLanguage("en");
+}
+/*Translator*/
 
 void MainWindow::getDataFromDB()
 {
@@ -378,7 +432,7 @@ void MainWindow::getDataFromDB()
 
                 //Если поиск удачный, просто добавляем еще 1 значение в сет
                 if(findIterator != endIterator)
-                {                  
+                {
                     findIterator.value().insert(tempSubQueryString);
                 }
                 //Иначе создаем сет, добаляем туда первое значение и создаем новую запись в мар
@@ -396,18 +450,7 @@ void MainWindow::getDataFromDB()
         }
     }
 }
-
-void MainWindow::on_actionRussian_triggered()
-{
-    changeLanguage("ru");
-}
-
-void MainWindow::on_actionEnglish_triggered()
-{
-    changeLanguage("en");
-}
-/*Translator*/
-
+/*Context Menu*/
 void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
 {
     //Получаем глобальные координаты виджета
@@ -1654,7 +1697,9 @@ void MainWindow::slotAddMod()
         }
     }
 }
+/*Context Menu*/
 
+/*Buttons*/
 void MainWindow::on_buttonStart_clicked()
 {
     QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex();
@@ -1694,10 +1739,10 @@ void MainWindow::on_buttonRemove_clicked()
     if(ui->treeView->selectionModel()->currentIndex().isValid())
         slotDelete();
 }
+/*Buttons*/
 
 void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
 {
-    qDebug() << ui->splitterVerticalInfo->saveState();
     if(!selectedIndex.parent().isValid())
     {
         ui->buttonStart->setDisabled(true);
@@ -1771,27 +1816,32 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         }
 
         //Covers & Media Views
-        QString strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/covers";
-        QString strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/screenshots";
+//        QString strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/covers";
+//        QString strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/screenshots";
+        m_strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/screenshots";
+        m_strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/screenshots";
 
-        QDir coversDir(strToCover);
-        QDir mediaDir(strToMedia);
+        QDir coversDir(m_strToCover);
+        QDir mediaDir(m_strToMedia);
 
-        QStringList coversList = coversDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
-        QStringList mediaList = mediaDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+//        QStringList coversList = coversDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+//        QStringList mediaList = mediaDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
 
-        if(!coversList.isEmpty())
+        m_coversList = coversDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+        m_mediaList = mediaDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+
+        if(!m_coversList.isEmpty())
         {
-            QPixmap cover(strToCover + '/' + coversList.at(0));
+            QPixmap cover(m_strToCover + '/' + m_coversList.at(0));
             ui->coversView->setSceneRect(0, 0, cover.width(), cover.height());
             //cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
             m_coverScene->addItem(coverItem);
             ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
         }
-        if(!mediaList.isEmpty())
+        if(!m_mediaList.isEmpty())
         {
-            QPixmap media(strToMedia + '/' + mediaList.at(0));
+            QPixmap media(m_strToMedia + '/' + m_mediaList.at(0));
             ui->mediaView->setSceneRect(0, 0, media.width(), media.height());
             //media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
@@ -1869,27 +1919,29 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         }
 
         //Covers & Media Views
-        QString strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/covers";
-        QString strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/screenshots";
+//        QString strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/covers";
+//        QString strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/screenshots";
+        m_strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/screenshots";
+        m_strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/covers";
 
-        QDir coversDir(strToCover);
-        QDir mediaDir(strToMedia);
+        QDir coversDir(m_strToCover);
+        QDir mediaDir(m_strToMedia);
 
-        QStringList coversList = coversDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
-        QStringList mediaList = mediaDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+        m_coversList = coversDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+        m_mediaList = mediaDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
 
-        if(!coversList.isEmpty())
+        if(!m_coversList.isEmpty())
         {
-            QPixmap cover(strToCover + '/' + coversList.at(0));
+            QPixmap cover(m_strToCover + '/' + m_coversList.at(0));
             ui->coversView->setSceneRect(0, 0, cover.width(), cover.height());
             //cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
             m_coverScene->addItem(coverItem);
             ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
         }
-        if(!mediaList.isEmpty())
+        if(!m_mediaList.isEmpty())
         {
-            QPixmap media(strToMedia + '/' + mediaList.at(0));
+            QPixmap media(m_strToMedia + '/' + m_mediaList.at(0));
             ui->mediaView->setSceneRect(0, 0, media.width(), media.height());
             //media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
@@ -1933,6 +1985,18 @@ void MainWindow::slotFilter()
 void MainWindow::slotShowHide()
 {
     setVisible(!isVisible());
+    if(!isVisible())
+    {
+        m_coversSlideshowTimer->stop();
+        m_mediaSlideshowTimer->stop();
+    }
+    else
+    {
+        if(!m_coversSlideshowTimer->isActive())
+            m_coversSlideshowTimer->start();
+        if(!m_mediaSlideshowTimer->isActive())
+            m_mediaSlideshowTimer->start();
+    }
 }
 
 void MainWindow::slotIconActivated(QSystemTrayIcon::ActivationReason reason)
@@ -1942,6 +2006,10 @@ void MainWindow::slotIconActivated(QSystemTrayIcon::ActivationReason reason)
     //case QSystemTrayIcon::Trigger:
     case QSystemTrayIcon::DoubleClick:
         setVisible(true);
+        if(!m_coversSlideshowTimer->isActive())
+            m_coversSlideshowTimer->start();
+        if(!m_mediaSlideshowTimer->isActive())
+            m_mediaSlideshowTimer->start();
         break;
     //case QSystemTrayIcon::MiddleClick:
     //    break;
@@ -1954,6 +2022,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     if(m_trayIcon->isVisible())
     {
+        m_coversSlideshowTimer->stop();
+        m_mediaSlideshowTimer->stop();
         hide();
         event->ignore();
     }
@@ -2000,3 +2070,35 @@ void MainWindow::on_splitterVerticalInfo_splitterMoved(int pos, int index)
     ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
     ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
 }
+
+/*Slideshow Slots*/
+void MainWindow::slotMediaSlideshowStart()
+{
+    if(m_mediaList.size() > 1)
+    {
+        ++m_slideMediaNumber;
+        m_mediaScene->clear();
+        ui->mediaView->viewport()->update();
+        QPixmap media(m_strToMedia + '/' + m_mediaList.at(m_slideMediaNumber%m_mediaList.size()));
+        ui->mediaView->setSceneRect(0, 0, media.width(), media.height());
+        QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
+        m_mediaScene->addItem(mediaItem);
+        ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    }
+}
+
+void MainWindow::slotCoversSlideshowStart()
+{
+    if(m_coversList.size() > 1)
+    {
+        ++m_slideCoverNumber;
+        m_coverScene->clear();
+        ui->coversView->viewport()->update();
+        QPixmap media(m_strToCover + '/' + m_coversList.at(m_slideCoverNumber%m_coversList.size()));
+        ui->coversView->setSceneRect(0, 0, media.width(), media.height());
+        QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
+        m_coverScene->addItem(mediaItem);
+        ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    }
+}
+/*Slideshow Slots*/

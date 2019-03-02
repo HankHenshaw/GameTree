@@ -20,6 +20,7 @@
 #include <QFileInfo>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+#include <QTimer>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
@@ -113,6 +114,10 @@ private slots:
 
     void on_splitterVerticalInfo_splitterMoved(int pos, int index);
 
+    /*Timer*/
+    void slotCoversSlideshowStart();
+    void slotMediaSlideshowStart();
+    /*Timer*/
 private:
     Ui::MainWindow *ui;
 
@@ -174,6 +179,19 @@ private:
     /*Dirs*/
     QDir m_dir;
     /*Dirs*/
+
+    /*Timer*/
+    QTimer *m_coversSlideshowTimer;
+    QTimer *m_mediaSlideshowTimer;
+    QStringList m_coversList;
+    QStringList m_mediaList;
+    int m_slideMediaNumber;
+    int m_slideCoverNumber;
+    bool isCoversSlideshowEnabled;
+    bool isMediaSlideshowEnabled;
+    QString m_strToMedia;
+    QString m_strToCover;
+    /*Timer*/
 };
 
 #endif // MAINWINDOW_H
