@@ -10,7 +10,6 @@ PlaylistForm::PlaylistForm(QWidget *parent) :
     ui(new Ui::PlaylistForm)
 {
     ui->setupUi(this);
-
     connect(ui->listWidget, &QListWidget::doubleClicked, this, &PlaylistForm::slotDoubleClicked);
 }
 
@@ -24,10 +23,14 @@ void PlaylistForm::playlistClicked(QMediaPlayer *mp)
     QMediaPlaylist *list = mp->playlist();
     int listCount = list->mediaCount();
 
-    for(int i = 0; i < listCount; ++i)
+    if(ui->listWidget->count() < listCount) //TODO: Костыль, надо подумать как переделать
     {
-        QFileInfo info(list->media(i).resources().first().url().path());
-        ui->listWidget->addItem(info.fileName());
+        ui->listWidget->clear();
+        for(int i = 0; i < listCount; ++i)
+        {
+            QFileInfo info(list->media(i).resources().first().url().path());
+            ui->listWidget->addItem(info.fileName());
+        }
     }
 
     m_mp = mp;
@@ -37,4 +40,5 @@ void PlaylistForm::slotDoubleClicked()
 {
     int itemRow = ui->listWidget->currentRow();
     m_mp->playlist()->setCurrentIndex(itemRow);
+    emit signalPlay();
 }

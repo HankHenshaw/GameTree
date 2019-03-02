@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     //Fusion
     //Пустая строка - Default
     QApplication a(argc, argv);
+    a.setWindowIcon(QIcon(":/menu/icons/tree_64.png"));
     QApplication::setApplicationName("GameTree");
     {
 //#ifndef QT_DEBUG // Для записи в файл только во время отладки

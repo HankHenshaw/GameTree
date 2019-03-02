@@ -61,10 +61,11 @@ private slots:
     void on_stopButton_clicked();
     void on_nextButton_clicked();
     void on_playlistButton_clicked();
-    void on_volumeSlider_sliderMoved(int position);
+    //void on_volumeSlider_sliderMoved(int position);
     void slotSetDuration(qint64 n);
     void slotSetProgressPosotion(qint64 n);
     void slotSetMediaPosition(QPoint pos);
+    void slotPlaylistFormClicked();
     /*Audio Player Slots*/
 
     /*Translator Slots*/
@@ -107,17 +108,16 @@ private slots:
     void slotFilter();
     /*Proxy*/
     void on_splitterVertical_splitterMoved(int pos, int index);
-
     void on_splitterHorizontal_splitterMoved(int pos, int index);
-
     void on_splitterHorizontalInfo_splitterMoved(int pos, int index);
-
     void on_splitterVerticalInfo_splitterMoved(int pos, int index);
 
     /*Timer*/
     void slotCoversSlideshowStart();
     void slotMediaSlideshowStart();
     /*Timer*/
+    void on_volumeSlider_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 
@@ -143,6 +143,8 @@ private:
     QString msecsToString(qint64 n);
 
     PlaylistForm *m_playlistForm;
+
+    bool m_isPlayButtonClicked;
     /*Audio Player*/
 
     /*Test Covers View*/

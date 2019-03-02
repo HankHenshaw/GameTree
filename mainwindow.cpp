@@ -28,17 +28,17 @@
 //TODO: Добавить настройки сплиттера
 //TODO: При выборе того же итема музыка начинается заного
 //TODO: Подчистить код, он не нужных строк
-//TODO: Поправить баг, когда включается музыка при выборе итем, кнопка плей не переходит в состояние плей (т.е. иконка не меняется на паузу)
 //WARNING: Иногда при выходе из программы вылетает runtime error
 //WARNING: Обнуление лога после каждого запуска
 //TODO: Подумать как лучше реоганизовать метод slotEdit чтобы не повторять один и тотже кусок дважды
-//TODO: Возникает проблемы при редактировании игры из под мода, пока уберу этого действия из контекстного меню
+//TODO: Возникает проблемы при редактировании игры из под мода, пока уберу это действия из контекстного меню
 //TODO: Справка https://www.opennet.ru/docs/RUS/qt3_prog/x7532.html
 //TODO: Чтение html сделать в другом потоке
 //http://qaru.site/questions/1239698/how-can-i-asynchronously-load-data-from-large-files-in-qt
 //http://itnotesblog.ru/note.php?id=244
 //TODO: Стили (https://habr.com/ru/company/istodo/blog/216275/)
 //TODO: Интервал для слайдшоу таймеров из настроек от пользователя, а также вкл/выкл слайдшоу
+//TODO: Playlist form сдлеать локальным?
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -106,7 +106,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_trayIcon = new QSystemTrayIcon(this);
     m_trayIcon->setContextMenu(m_trayMenu);
     m_trayIcon->setToolTip(tr("System Tray")); //TODO: Поменять/Убрать
-    m_trayIcon->setIcon(QPixmap(":/menu/icons/tree.png"));
+    m_trayIcon->setIcon(QPixmap(":/menu/icons/tree_24.png"));
     connect(m_trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::slotIconActivated);
 
     m_trayIcon->show();
@@ -152,6 +152,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     saveSettings();
+    delete m_playlistForm;
     delete ui;
 }
 
@@ -198,16 +199,28 @@ void MainWindow::saveSettings()
 void MainWindow::on_playButton_clicked()
 {
     // Play/Pause Button
-    static bool isClicked = true; // можно вынести в реал. класса или лучше переписать
-    if(isClicked)
+//    static bool isClicked = true; // можно вынести в реал. класса или лучше переписать
+//    if(isClicked)
+//    {
+//        isClicked = false;
+//        ui->playButton->setIcon(QIcon(":/audioplayer/icons/pause-button.png"));
+//        m_audioPlayer->play();
+//    }
+//    else
+//    {
+//        isClicked = true;
+//        ui->playButton->setIcon(QIcon(":/audioplayer/icons/play-button.png"));
+//        m_audioPlayer->pause();
+//    }
+    if(!m_isPlayButtonClicked)
     {
-        isClicked = false;
+        m_isPlayButtonClicked = true;
         ui->playButton->setIcon(QIcon(":/audioplayer/icons/pause-button.png"));
         m_audioPlayer->play();
     }
     else
     {
-        isClicked = true;
+        m_isPlayButtonClicked = false;
         ui->playButton->setIcon(QIcon(":/audioplayer/icons/play-button.png"));
         m_audioPlayer->pause();
     }
@@ -232,18 +245,30 @@ void MainWindow::on_nextButton_clicked()
 
 void MainWindow::on_playlistButton_clicked()
 {
-    m_playlistForm = new PlaylistForm(); // Где удалять, где создавать
+    m_playlistForm->setWindowTitle(tr("Playlist"));
+    m_playlistForm->setWindowModality(Qt::ApplicationModal);
     m_playlistForm->show();
     m_playlistForm->playlistClicked(m_audioPlayer);
 }
 
-void MainWindow::on_volumeSlider_sliderMoved(int position)
+//void MainWindow::on_volumeSlider_sliderMoved(int position)
+//{
+//    m_audioPlayer->setVolume(position);
+//}
+
+void MainWindow::on_volumeSlider_valueChanged(int value)
 {
-    m_audioPlayer->setVolume(position);
+    m_audioPlayer->setVolume(value);
 }
 
 void MainWindow::audioPlayerInit()
 {
+    //
+    m_isPlayButtonClicked = false;
+
+    //Создаем виджет для списка песен
+    m_playlistForm = new PlaylistForm();
+
     // Set icons
     ui->playButton->setIcon(QIcon(":/audioplayer/icons/play-button.png"));
     ui->previousButton->setIcon(QIcon(":/audioplayer/icons/previous-step-circular-button.png"));
@@ -256,8 +281,8 @@ void MainWindow::audioPlayerInit()
     m_audioPlayerList = new QMediaPlaylist(this);
 
     // Add songs to playerlist
-    m_audioPlayerList->addMedia(QUrl::fromLocalFile("C:/Users/Максим/Downloads/Trivium/Albums/2011 - In Waves (Special Edition)/06 - Black.mp3"));
-    m_audioPlayerList->addMedia(QUrl::fromLocalFile("C:/Users/Максим/Downloads/Trivium/Albums/2011 - In Waves (Special Edition)/09 - Built To Fall.mp3"));
+//    m_audioPlayerList->addMedia(QUrl::fromLocalFile("C:/Users/Максим/Downloads/Trivium/Albums/2011 - In Waves (Special Edition)/06 - Black.mp3"));
+//    m_audioPlayerList->addMedia(QUrl::fromLocalFile("C:/Users/Максим/Downloads/Trivium/Albums/2011 - In Waves (Special Edition)/09 - Built To Fall.mp3"));
 
     // Set Playback Mode
     m_audioPlayerList->setPlaybackMode(QMediaPlaylist::Loop);
@@ -270,13 +295,17 @@ void MainWindow::audioPlayerInit()
     connect(m_audioPlayer, SIGNAL(durationChanged(qint64)), SLOT(slotSetDuration(qint64)));
     connect(m_audioPlayer, SIGNAL(positionChanged(qint64)), SLOT(slotSetProgressPosotion(qint64)));
     connect(ui->durationProgressBar, &MyProgressBar::signalMousePressedPos, this, &MainWindow::slotSetMediaPosition);
-
+    connect(m_playlistForm, &PlaylistForm::signalPlay, this, &MainWindow::slotPlaylistFormClicked);
     // Set text in the middle of the progress bar
     ui->durationProgressBar->setAlignment(Qt::AlignCenter);
     ui->durationProgressBar->setTextVisible(true);
 
+    // Set start value and format
+    ui->durationProgressBar->setValue(0);
+    ui->durationProgressBar->setFormat(msecsToString(0));
+
     //TEST: testing label
-    ui->coverLabel->setText("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
+//    ui->coverLabel->setText("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
 }
 
 void MainWindow::slotSetDuration(qint64 n)
@@ -308,6 +337,13 @@ void MainWindow::slotSetMediaPosition(QPoint pos)
 
     double nScale = static_cast<double>(pos.x())/widthOfProgressBar;
     m_audioPlayer->setPosition((ui->durationProgressBar->maximum())*nScale);
+}
+
+void MainWindow::slotPlaylistFormClicked()
+{
+    m_isPlayButtonClicked = true;
+    ui->playButton->setIcon(QIcon(":/audioplayer/icons/pause-button.png"));
+    m_audioPlayer->play();
 }
 /*Audio Player*/
 /*Translator*/
@@ -1740,6 +1776,16 @@ void MainWindow::on_buttonRemove_clicked()
 
 void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
 {
+    bool isLMBCliked = false;
+    if(QApplication::mouseButtons() == Qt::LeftButton)
+    {
+        qDebug() << "LEFT";
+        isLMBCliked = true;
+    }
+    else if(QApplication::mouseButtons() == Qt::RightButton)
+    {
+        qDebug() << "RIGHT";
+    }
     if(!selectedIndex.parent().isValid())
     {
         ui->buttonStart->setDisabled(true);
@@ -1764,7 +1810,7 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
     else if(!selectedIndex.parent().parent().isValid()) //Если выбрана игра
     {
         //Очищаем список и сцены, а также обновляем отображения
-        m_audioPlayerList->clear();
+//        m_audioPlayerList->clear();
         m_coverScene->clear();
         m_mediaScene->clear();
         ui->coversView->viewport()->update();
@@ -1773,50 +1819,64 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         //Добавляем в диалог имя игры и путь до .ехе
         QString gameName = selectedIndex.data().toString();
 
-        QString strToMusic = '/' + gameName.at(0) + '/' + gameName + "/music";
-        QString strToMusicCovers = '/' + gameName.at(0) + '/' + gameName + "/music/covers";
-
-        QString pathToMusic = pathToItem + strToMusic;
-        QString pathToMusicCovers = pathToItem + strToMusicCovers;
-
-        QDir musDir(pathToMusic);
-        QDir musCoverDir(pathToMusicCovers);
-
-        QStringList musList = musDir.entryList(QStringList() << "*.mp3", QDir::Files);
-        QStringList musCoverList = musCoverDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
-
-        bool isListEmpty = false;
-
-        //Очищаем список, только если в выбраном итеме есть мп3 файлы
-        if(!musList.isEmpty())
+        /*Audio Player*/
+        //Работаем с аудио только в с случае нажатия ЛКМ на итеме
+        if(isLMBCliked)
         {
-            isListEmpty = true;
-            m_audioPlayerList->clear();
-            if(musCoverList.isEmpty())
-                ui->coverLabel->setText("");
-            else
+            QString strToMusic = '/' + gameName.at(0) + '/' + gameName + "/music";
+            QString strToMusicCovers = '/' + gameName.at(0) + '/' + gameName + "/music/covers";
+
+            QString pathToMusic = pathToItem + strToMusic;
+            QString pathToMusicCovers = pathToItem + strToMusicCovers;
+
+            QDir musDir(pathToMusic);
+            QDir musCoverDir(pathToMusicCovers);
+
+            QStringList musList = musDir.entryList(QStringList() << "*.mp3", QDir::Files);
+            QStringList musCoverList = musCoverDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+
+            bool isListEmpty = false;
+
+            //Очищаем список, только если в выбраном итеме есть мп3 файлы
+            if(!musList.isEmpty())
             {
-                //QString text = ("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
-                ui->coverLabel->setText("<img src = \"" + pathToMusicCovers + '/' + musCoverList.at(0) + "\" height = \"60\" width = \"60\" />");
-                qDebug() << "<img src = " + pathToMusicCovers + '/' + musCoverList.at(0) + " height = \"60\" width = \"60\" />";
+                isListEmpty = true;
+                m_audioPlayerList->clear();
+                if(musCoverList.isEmpty())
+                    ui->coverLabel->setText("");
+                else
+                {
+                    //QString text = ("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
+                    ui->coverLabel->setText("<img src = \"" + pathToMusicCovers + '/' + musCoverList.at(0) + "\" height = \"60\" width = \"60\" />");
+                    qDebug() << "<img src = " + pathToMusicCovers + '/' + musCoverList.at(0) + " height = \"60\" width = \"60\" />";
+                }
+
+                if(m_isPlayButtonClicked)
+                {
+                    m_isPlayButtonClicked = false;
+                    ui->playButton->setIcon(QIcon(":/audioplayer/icons/play-button.png"));
+                    m_audioPlayer->pause();
+                }
+            }
+
+            foreach (QString audio, musList)
+            {
+                m_audioPlayerList->addMedia(QUrl::fromLocalFile(pathToMusic + '/' + audio));
+            }
+
+            if(isListEmpty)
+            {
+                m_audioPlayer->playlist()->setCurrentIndex(0);
+    //            m_audioPlayer->play(); //Начинает воспроизводить композицию при нажатии на итем
             }
         }
-
-        foreach (QString audio, musList)
-        {
-            m_audioPlayerList->addMedia(QUrl::fromLocalFile(pathToMusic + '/' + audio));
-        }
-
-        if(isListEmpty)
-        {
-            m_audioPlayer->play();
-        }
+        /*Audio Player*/
 
         //Covers & Media Views
 //        QString strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/covers";
 //        QString strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/screenshots";
         m_strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/screenshots";
-        m_strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/screenshots";
+        m_strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/image/covers";
 
         QDir coversDir(m_strToCover);
         QDir mediaDir(m_strToMedia);
@@ -1864,7 +1924,7 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
     else if(!selectedIndex.parent().parent().parent().isValid()) //Если выбран мод
     {
         //Очищаем список и сцены, а также обновляем отображения
-        m_audioPlayerList->clear();
+//        m_audioPlayerList->clear();
         m_coverScene->clear();
         m_mediaScene->clear();
         ui->coversView->viewport()->update();
@@ -1876,44 +1936,58 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         //Получаем имя игры
         QString gameName = selectedIndex.parent().data().toString();
 
-        QString strToMusic = '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/music";
-        QString strToMusicCovers = '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/music/covers";
-
-        QString pathToMusic = pathToItem + strToMusic;
-        QString pathToMusicCovers = pathToItem + strToMusicCovers;
-
-        QDir musDir(pathToMusic);
-        QDir musCoverDir(pathToMusicCovers);
-
-        QStringList musList = musDir.entryList(QStringList() << "*.mp3", QDir::Files);
-        QStringList musCoverList = musCoverDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
-
-        bool isListEmpty = false;
-
-        //Очищаем список, только если в выбраном итеме есть мп3 файлы
-        if(!musList.isEmpty())
+        /*Audio Player*/
+        //Работаем с аудио только в с случае нажатия ЛКМ на итеме
+        if(isLMBCliked)
         {
-            isListEmpty = true;
-            m_audioPlayerList->clear();
-            if(musCoverList.isEmpty())
-                ui->coverLabel->setText("");
-            else
+            QString strToMusic = '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/music";
+            QString strToMusicCovers = '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/music/covers";
+
+            QString pathToMusic = pathToItem + strToMusic;
+            QString pathToMusicCovers = pathToItem + strToMusicCovers;
+
+            QDir musDir(pathToMusic);
+            QDir musCoverDir(pathToMusicCovers);
+
+            QStringList musList = musDir.entryList(QStringList() << "*.mp3", QDir::Files);
+            QStringList musCoverList = musCoverDir.entryList(QStringList() << "*.jpg" << "*.png", QDir::Files);
+
+            bool isListEmpty = false;
+
+            //Очищаем список, только если в выбраном итеме есть мп3 файлы
+            if(!musList.isEmpty())
             {
-                //QString text = ("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
-                ui->coverLabel->setText("<img src = \"" + pathToMusicCovers + '/' + musCoverList.at(0) + "\" height = \"60\" width = \"60\" />");
-                qDebug() << "<img src = " + pathToMusicCovers + '/' + musCoverList.at(0) + " height = \"60\" width = \"60\" />";
+                isListEmpty = true;
+                m_audioPlayerList->clear();
+                if(musCoverList.isEmpty())
+                    ui->coverLabel->setText("");
+                else
+                {
+                    //QString text = ("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
+                    ui->coverLabel->setText("<img src = \"" + pathToMusicCovers + '/' + musCoverList.at(0) + "\" height = \"60\" width = \"60\" />");
+                    qDebug() << "<img src = " + pathToMusicCovers + '/' + musCoverList.at(0) + " height = \"60\" width = \"60\" />";
+                }
+
+                if(m_isPlayButtonClicked)
+                {
+                    m_isPlayButtonClicked = false;
+                    ui->playButton->setIcon(QIcon(":/audioplayer/icons/play-button.png"));
+                    m_audioPlayer->pause();
+                }
+            }
+
+            foreach (QString audio, musList)
+            {
+                m_audioPlayerList->addMedia(QUrl::fromLocalFile(pathToMusic + '/' + audio));
+            }
+
+            if(isListEmpty)
+            {
+                m_audioPlayer->playlist()->setCurrentIndex(0);
+    //            m_audioPlayer->play(); //Начинает воспроизводить композицию при нажатии на итем
             }
         }
-
-        foreach (QString audio, musList)
-        {
-            m_audioPlayerList->addMedia(QUrl::fromLocalFile(pathToMusic + '/' + audio));
-        }
-
-        if(isListEmpty)
-        {
-            m_audioPlayer->play();
-        }
+        /*Audio Player*/
 
         //Covers & Media Views
 //        QString strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/covers";

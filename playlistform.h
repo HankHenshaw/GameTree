@@ -24,6 +24,8 @@ private:
     Ui::PlaylistForm *ui;  
 private slots:
     void slotDoubleClicked();
+signals:
+    void signalPlay();
 };
 
 #endif // PLAYLISTFORM_H
