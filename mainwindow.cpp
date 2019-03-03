@@ -4,34 +4,26 @@
 ///WARNING: Опасные моменты кода, которые могут вызвать проблемы
 ///TEST: Тестовые эл-ты
 ///TODO: То что надо сделать
+///OFF: Закоммент. нерабочии участки кода
 
+//OFF: Возникает проблемы при редактировании игры из под мода
 //TODO: Add Author of Icons from www.flaticon.com
-//TODO: Исправить колесо мыши на звуковом слайдере
+//TODO: Добавить авторов стилий
 //TODO: Fix all warnings
-//TODO: Replace menu icons to ~16x16 size
 //TODO: Экранирование всех апострофов в запросах к БД
 //TODO: Добавить горизонтальный слайдер в ТриВью если название не влезает в отведенную область
 //TODO: Для централизованного обращение к настройкам можно добавить объект настроек в класс приложения QApplication (пример на стр. 433/412)
 //TODO: Для первого запуска прил. установить положение окна по центру
 //TODO: Предупреждение при удалении буквы/игры/мод что будет удалено все из внутренних папок
 //TODO: Ограничить/заменять символы с помощью которых нельзя задавать имена файлам/папкам
-//TODO: Добавить язык в настройки
 //TODO: Удаление игр/модов по кнопку delete на клавиатуре
-//TODO!: Создавать playlistform только 1 раз(в конструкторе?), иначе будут создаваться несколько виджетов при каждом нажатии на кнопку, и сделать его модальным
-//TODO: Очищение списка песен в PlaylistForm
-//TODO: Убрать начальный список песен и обложек
 //TODO: Кнопки аудиоплеера должны работать, только если в плейлисте есть песни
 //TODO: Сделать пункты меню активными
-//https://github.com/pasnox/fresh/blob/master/src/core/pRecursiveSortFilterProxyModel.cpp
-//TODO: Обнулять строку поиска после того как было нажато на любую из позиций
-//TODO: QSplitter, https://www.youtube.com/watch?v=G4JKg97qqAY - 19:46 Про сохранение настроек
-//TODO: Добавить настройки сплиттера
-//TODO: При выборе того же итема музыка начинается заного
+//TODO: При ипользовании строки поиска, при удалении соответствующего поиску эл-та в результатах поиска появл. новый эл-т не соответствующий поиску
 //TODO: Подчистить код, он не нужных строк
 //WARNING: Иногда при выходе из программы вылетает runtime error
 //WARNING: Обнуление лога после каждого запуска
 //TODO: Подумать как лучше реоганизовать метод slotEdit чтобы не повторять один и тотже кусок дважды
-//TODO: Возникает проблемы при редактировании игры из под мода, пока уберу это действия из контекстного меню
 //TODO: Справка https://www.opennet.ru/docs/RUS/qt3_prog/x7532.html
 //TODO: Чтение html сделать в другом потоке
 //http://qaru.site/questions/1239698/how-can-i-asynchronously-load-data-from-large-files-in-qt
@@ -39,6 +31,7 @@
 //TODO: Стили (https://habr.com/ru/company/istodo/blog/216275/)
 //TODO: Интервал для слайдшоу таймеров из настроек от пользователя, а также вкл/выкл слайдшоу
 //TODO: Playlist form сдлеать локальным?
+//TODO: Пофиксить баги некоторых стилей
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -2173,3 +2166,27 @@ void MainWindow::slotCoversSlideshowStart()
     }
 }
 /*Slideshow Slots*/
+
+/*Menu Actions*/
+void MainWindow::on_actionQuit_triggered()
+{
+    qApp->quit();
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox::information(this, tr("About"), tr("GameTree v0.1 By Max Zherebkov"));
+}
+
+void MainWindow::on_actionSettings_triggered()
+{
+    /*TEST*/
+    OptionsDialog dialog;
+
+    if(dialog.exec() == QDialog::Accepted)
+    {
+
+    }
+    /*TEST*/
+}
+/*Menu Actions*/

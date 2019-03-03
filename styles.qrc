@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>styles/Aqua.qss</file>
+        <file>styles/Coffee.qss</file>
+        <file>styles/Dark Orange.qss</file>
+        <file>styles/Dark.qss</file>
+        <file>styles/Elegant Dark.qss</file>
+        <file>styles/Material Dark.qss</file>
+        <file>styles/Ubuntu.qss</file>
+    </qresource>
+</RCC>

@@ -29,6 +29,7 @@
 #include "myprogressbar.h"
 #include "playlistform.h"
 #include "myproxymodel.h"
+#include "optionsdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -117,6 +118,12 @@ private slots:
     void slotMediaSlideshowStart();
     /*Timer*/
     void on_volumeSlider_valueChanged(int value);
+
+    void on_actionQuit_triggered();
+
+    void on_actionAbout_triggered();
+
+    void on_actionSettings_triggered();
 
 private:
     Ui::MainWindow *ui;

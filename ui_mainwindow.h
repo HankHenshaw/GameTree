@@ -46,6 +46,7 @@ public:
     QAction *actionRussian;
     QAction *actionStart_Game;
     QAction *actionQuit;
+    QAction *actionSettings;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_4;
     QSpacerItem *horizontalSpacer;
@@ -130,6 +131,8 @@ public:
         QIcon icon5;
         icon5.addFile(QStringLiteral(":/menu/icons/Exit.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionQuit->setIcon(icon5);
+        actionSettings = new QAction(MainWindow);
+        actionSettings->setObjectName(QStringLiteral("actionSettings"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout_4 = new QVBoxLayout(centralWidget);
@@ -352,6 +355,7 @@ public:
         menuMenu->addSeparator();
         menuMenu->addAction(actionQuit);
         menuOption->addAction(menuLanguage->menuAction());
+        menuOption->addAction(actionSettings);
         menuLanguage->addAction(actionEnglish);
         menuLanguage->addAction(actionRussian);
         menuHelp->addAction(actionAbout);
@@ -369,8 +373,9 @@ public:
         actionHelp->setText(QApplication::translate("MainWindow", "Help", Q_NULLPTR));
         actionEnglish->setText(QApplication::translate("MainWindow", "English", Q_NULLPTR));
         actionRussian->setText(QApplication::translate("MainWindow", "Russian", Q_NULLPTR));
-        actionStart_Game->setText(QApplication::translate("MainWindow", "Start Game", Q_NULLPTR));
+        actionStart_Game->setText(QApplication::translate("MainWindow", "Add Game", Q_NULLPTR));
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", Q_NULLPTR));
+        actionSettings->setText(QApplication::translate("MainWindow", "Settings...", Q_NULLPTR));
         searchGameLine->setPlaceholderText(QApplication::translate("MainWindow", "Search...", Q_NULLPTR));
         buttonStart->setText(QApplication::translate("MainWindow", "Start", Q_NULLPTR));
         buttonEdit->setText(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));

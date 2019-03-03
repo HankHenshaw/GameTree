@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[45];
-    char stringdata0[878];
+    QByteArrayData data[48];
+    char stringdata0[955];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -75,7 +75,10 @@ QT_MOC_LITERAL(40, 756, 37), // "on_splitterVerticalInfo_split..."
 QT_MOC_LITERAL(41, 794, 24), // "slotCoversSlideshowStart"
 QT_MOC_LITERAL(42, 819, 23), // "slotMediaSlideshowStart"
 QT_MOC_LITERAL(43, 843, 28), // "on_volumeSlider_valueChanged"
-QT_MOC_LITERAL(44, 872, 5) // "value"
+QT_MOC_LITERAL(44, 872, 5), // "value"
+QT_MOC_LITERAL(45, 878, 23), // "on_actionQuit_triggered"
+QT_MOC_LITERAL(46, 902, 24), // "on_actionAbout_triggered"
+QT_MOC_LITERAL(47, 927, 27) // "on_actionSettings_triggered"
 
     },
     "MainWindow\0on_playButton_clicked\0\0"
@@ -103,7 +106,10 @@ QT_MOC_LITERAL(44, 872, 5) // "value"
     "on_splitterVerticalInfo_splitterMoved\0"
     "slotCoversSlideshowStart\0"
     "slotMediaSlideshowStart\0"
-    "on_volumeSlider_valueChanged\0value"
+    "on_volumeSlider_valueChanged\0value\0"
+    "on_actionQuit_triggered\0"
+    "on_actionAbout_triggered\0"
+    "on_actionSettings_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -113,7 +119,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      36,   14, // methods
+      39,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -121,42 +127,45 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  194,    2, 0x08 /* Private */,
-       3,    0,  195,    2, 0x08 /* Private */,
-       4,    0,  196,    2, 0x08 /* Private */,
-       5,    0,  197,    2, 0x08 /* Private */,
-       6,    0,  198,    2, 0x08 /* Private */,
-       7,    1,  199,    2, 0x08 /* Private */,
-       9,    1,  202,    2, 0x08 /* Private */,
-      10,    1,  205,    2, 0x08 /* Private */,
-      12,    0,  208,    2, 0x08 /* Private */,
-      13,    0,  209,    2, 0x08 /* Private */,
-      14,    0,  210,    2, 0x08 /* Private */,
-      15,    1,  211,    2, 0x08 /* Private */,
-      16,    0,  214,    2, 0x08 /* Private */,
-      17,    0,  215,    2, 0x08 /* Private */,
-      18,    0,  216,    2, 0x08 /* Private */,
-      19,    0,  217,    2, 0x08 /* Private */,
-      20,    0,  218,    2, 0x08 /* Private */,
-      21,    0,  219,    2, 0x08 /* Private */,
-      22,    0,  220,    2, 0x08 /* Private */,
-      23,    0,  221,    2, 0x08 /* Private */,
-      24,    0,  222,    2, 0x08 /* Private */,
-      25,    0,  223,    2, 0x08 /* Private */,
-      26,    0,  224,    2, 0x08 /* Private */,
-      27,    0,  225,    2, 0x08 /* Private */,
-      28,    1,  226,    2, 0x08 /* Private */,
-      30,    0,  229,    2, 0x08 /* Private */,
-      31,    1,  230,    2, 0x08 /* Private */,
-      34,    0,  233,    2, 0x08 /* Private */,
-      35,    0,  234,    2, 0x08 /* Private */,
-      36,    2,  235,    2, 0x08 /* Private */,
-      38,    2,  240,    2, 0x08 /* Private */,
-      39,    2,  245,    2, 0x08 /* Private */,
-      40,    2,  250,    2, 0x08 /* Private */,
-      41,    0,  255,    2, 0x08 /* Private */,
-      42,    0,  256,    2, 0x08 /* Private */,
-      43,    1,  257,    2, 0x08 /* Private */,
+       1,    0,  209,    2, 0x08 /* Private */,
+       3,    0,  210,    2, 0x08 /* Private */,
+       4,    0,  211,    2, 0x08 /* Private */,
+       5,    0,  212,    2, 0x08 /* Private */,
+       6,    0,  213,    2, 0x08 /* Private */,
+       7,    1,  214,    2, 0x08 /* Private */,
+       9,    1,  217,    2, 0x08 /* Private */,
+      10,    1,  220,    2, 0x08 /* Private */,
+      12,    0,  223,    2, 0x08 /* Private */,
+      13,    0,  224,    2, 0x08 /* Private */,
+      14,    0,  225,    2, 0x08 /* Private */,
+      15,    1,  226,    2, 0x08 /* Private */,
+      16,    0,  229,    2, 0x08 /* Private */,
+      17,    0,  230,    2, 0x08 /* Private */,
+      18,    0,  231,    2, 0x08 /* Private */,
+      19,    0,  232,    2, 0x08 /* Private */,
+      20,    0,  233,    2, 0x08 /* Private */,
+      21,    0,  234,    2, 0x08 /* Private */,
+      22,    0,  235,    2, 0x08 /* Private */,
+      23,    0,  236,    2, 0x08 /* Private */,
+      24,    0,  237,    2, 0x08 /* Private */,
+      25,    0,  238,    2, 0x08 /* Private */,
+      26,    0,  239,    2, 0x08 /* Private */,
+      27,    0,  240,    2, 0x08 /* Private */,
+      28,    1,  241,    2, 0x08 /* Private */,
+      30,    0,  244,    2, 0x08 /* Private */,
+      31,    1,  245,    2, 0x08 /* Private */,
+      34,    0,  248,    2, 0x08 /* Private */,
+      35,    0,  249,    2, 0x08 /* Private */,
+      36,    2,  250,    2, 0x08 /* Private */,
+      38,    2,  255,    2, 0x08 /* Private */,
+      39,    2,  260,    2, 0x08 /* Private */,
+      40,    2,  265,    2, 0x08 /* Private */,
+      41,    0,  270,    2, 0x08 /* Private */,
+      42,    0,  271,    2, 0x08 /* Private */,
+      43,    1,  272,    2, 0x08 /* Private */,
+      45,    0,  275,    2, 0x08 /* Private */,
+      46,    0,  276,    2, 0x08 /* Private */,
+      47,    0,  277,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -195,6 +204,9 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   44,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -241,6 +253,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 33: _t->slotCoversSlideshowStart(); break;
         case 34: _t->slotMediaSlideshowStart(); break;
         case 35: _t->on_volumeSlider_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 36: _t->on_actionQuit_triggered(); break;
+        case 37: _t->on_actionAbout_triggered(); break;
+        case 38: _t->on_actionSettings_triggered(); break;
         default: ;
         }
     }
@@ -271,13 +286,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 36)
+        if (_id < 39)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 36;
+        _id -= 39;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 36)
+        if (_id < 39)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 36;
+        _id -= 39;
     }
     return _id;
 }

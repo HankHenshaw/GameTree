@@ -10,7 +10,7 @@ void messageToFile(QtMsgType type, const QMessageLogContext &context, const QStr
 
 int main(int argc, char *argv[])
 {
-    QApplication::setStyle(QStyleFactory::create("Fusion"));
+//    QApplication::setStyle(QStyleFactory::create("Fusion"));
     //Windows
     //WindowsXP
     //WindowsVista
