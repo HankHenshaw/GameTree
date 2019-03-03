@@ -37,7 +37,8 @@ SOURCES += \
     myprogressbar.cpp \
     playlistform.cpp \
     myproxymodel.cpp \
-    optionsdialog.cpp
+    optionsdialog.cpp \
+    helpdialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -51,7 +52,8 @@ HEADERS += \
     myprogressbar.h \
     playlistform.h \
     myproxymodel.h \
-    optionsdialog.h
+    optionsdialog.h \
+    helpdialog.h
 
 FORMS += \
         mainwindow.ui \
@@ -60,7 +62,8 @@ FORMS += \
     argsdialog.ui \
     editmoddialog.ui \
     playlistform.ui \
-    optionsdialog.ui
+    optionsdialog.ui \
+    helpdialog.ui
 
 TRANSLATIONS += GameTree_ru.ts
 
@@ -74,5 +77,6 @@ DISTFILES += \
 
 RESOURCES += \
     icons.qrc \
-    styles.qrc
+    styles.qrc \
+    help.qrc
 

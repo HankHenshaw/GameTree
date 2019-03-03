@@ -30,6 +30,7 @@
 #include "playlistform.h"
 #include "myproxymodel.h"
 #include "optionsdialog.h"
+#include "helpdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -67,6 +68,7 @@ private slots:
     void slotSetProgressPosotion(qint64 n);
     void slotSetMediaPosition(QPoint pos);
     void slotPlaylistFormClicked();
+    void on_volumeSlider_valueChanged(int value);
     /*Audio Player Slots*/
 
     /*Translator Slots*/
@@ -117,14 +119,13 @@ private slots:
     void slotCoversSlideshowStart();
     void slotMediaSlideshowStart();
     /*Timer*/
-    void on_volumeSlider_valueChanged(int value);
 
+    /*Menu Actions*/
     void on_actionQuit_triggered();
-
     void on_actionAbout_triggered();
-
     void on_actionSettings_triggered();
-
+    void on_actionHelp_triggered();
+    /*Menu Actions*/
 private:
     Ui::MainWindow *ui;
 

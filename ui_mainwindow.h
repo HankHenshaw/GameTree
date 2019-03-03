@@ -49,8 +49,6 @@ public:
     QAction *actionSettings;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_4;
-    QSpacerItem *horizontalSpacer;
-    QSpacerItem *horizontalSpacer_2;
     QSplitter *splitterHorizontal;
     QSplitter *splitterVertical;
     QWidget *layoutWidget;
@@ -139,14 +137,6 @@ public:
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        horizontalSpacer = new QSpacerItem(779, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout_4->addItem(horizontalSpacer);
-
-        horizontalSpacer_2 = new QSpacerItem(779, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout_4->addItem(horizontalSpacer_2);
-
         splitterHorizontal = new QSplitter(centralWidget);
         splitterHorizontal->setObjectName(QStringLiteral("splitterHorizontal"));
         splitterHorizontal->setOrientation(Qt::Vertical);
@@ -369,8 +359,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        actionAbout->setText(QApplication::translate("MainWindow", "About", Q_NULLPTR));
-        actionHelp->setText(QApplication::translate("MainWindow", "Help", Q_NULLPTR));
+        actionAbout->setText(QApplication::translate("MainWindow", "About...", Q_NULLPTR));
+        actionHelp->setText(QApplication::translate("MainWindow", "Help...", Q_NULLPTR));
         actionEnglish->setText(QApplication::translate("MainWindow", "English", Q_NULLPTR));
         actionRussian->setText(QApplication::translate("MainWindow", "Russian", Q_NULLPTR));
         actionStart_Game->setText(QApplication::translate("MainWindow", "Add Game", Q_NULLPTR));

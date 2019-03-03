@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>help/add.html</file>
+        <file>help/audioplayer.html</file>
+        <file>help/delete.html</file>
+        <file>help/edit.html</file>
+        <file>help/Main.html</file>
+        <file>help/screenshots.html</file>
+        <file>help/search.html</file>
+        <file>help/text.html</file>
+    </qresource>
+</RCC>

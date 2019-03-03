@@ -16,32 +16,6 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>779</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>779</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
      <widget class="QSplitter" name="splitterHorizontal">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -345,7 +319,7 @@
      <normaloff>:/menu/icons/About.png</normaloff>:/menu/icons/About.png</iconset>
    </property>
    <property name="text">
-    <string>About</string>
+    <string>About...</string>
    </property>
   </action>
   <action name="actionHelp">
@@ -354,7 +328,7 @@
      <normaloff>:/menu/icons/Help.png</normaloff>:/menu/icons/Help.png</iconset>
    </property>
    <property name="text">
-    <string>Help</string>
+    <string>Help...</string>
    </property>
   </action>
   <action name="actionEnglish">

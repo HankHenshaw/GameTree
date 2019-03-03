@@ -54,7 +54,7 @@
       <item row="0" column="1">
        <widget class="QLabel" name="labelCoversSHRate">
         <property name="text">
-         <string>Rate</string>
+         <string>Rate:</string>
         </property>
        </widget>
       </item>
@@ -84,7 +84,7 @@
       <item row="1" column="1">
        <widget class="QLabel" name="labelMediaSHRate">
         <property name="text">
-         <string>Rate</string>
+         <string>Rate:</string>
         </property>
        </widget>
       </item>

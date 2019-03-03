@@ -28,10 +28,11 @@
 //TODO: Чтение html сделать в другом потоке
 //http://qaru.site/questions/1239698/how-can-i-asynchronously-load-data-from-large-files-in-qt
 //http://itnotesblog.ru/note.php?id=244
-//TODO: Стили (https://habr.com/ru/company/istodo/blog/216275/)
 //TODO: Интервал для слайдшоу таймеров из настроек от пользователя, а также вкл/выкл слайдшоу
 //TODO: Playlist form сдлеать локальным?
 //TODO: Пофиксить баги некоторых стилей
+//TODO: Дописать справку
+//TODO: Добавить в диалог справки кнопку возвращения на начальную страницу
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -2188,5 +2189,10 @@ void MainWindow::on_actionSettings_triggered()
 
     }
     /*TEST*/
+}
+void MainWindow::on_actionHelp_triggered()
+{
+    HelpDialog dialog;
+    dialog.exec();
 }
 /*Menu Actions*/
