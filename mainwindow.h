@@ -202,6 +202,10 @@ private:
     QString m_strToMedia;
     QString m_strToCover;
     /*Timer*/
+
+    /*Options*/
+    Setting m_options;
+    /*Options*/
 };
 
 #endif // MAINWINDOW_H

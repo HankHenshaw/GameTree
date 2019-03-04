@@ -26,6 +26,22 @@ OptionsDialog::~OptionsDialog()
     delete ui;
 }
 
+const Setting &OptionsDialog::getSettings() const
+{
+    return m_setting;
+}
+
+void OptionsDialog::setSettings(const Setting &settings)
+{
+    m_setting = settings;
+    ui->checkBoxCoverSH->setChecked(m_setting.isCoverSlideshowEnabled);
+    ui->checkBoxMediaSH->setChecked(m_setting.isMediaSlideshowEnabled);
+    ui->checkBoxFullscreen->setChecked(m_setting.isFullscreen);
+    ui->spinBoxMediaSH->setValue(m_setting.mediaSlideshowRate);
+    ui->spinBoxCoversSH->setValue(m_setting.coverSlideshowRate);
+    ui->comboStylesBox->setCurrentIndex(m_setting.styleNumber);
+}
+
 void OptionsDialog::on_comboStylesBox_currentIndexChanged(int index)
 {
     qApp->setStyleSheet(styleSheet());
@@ -41,4 +57,14 @@ void OptionsDialog::on_comboStylesBox_currentIndexChanged(int index)
         QString str = QLatin1String(file.readAll());
         qApp->setStyleSheet(str);
     }
+}
+
+void OptionsDialog::on_buttonBox_accepted()
+{
+    m_setting.isFullscreen = ui->checkBoxFullscreen->isChecked();
+    m_setting.isCoverSlideshowEnabled = ui->checkBoxCoverSH->isChecked();
+    m_setting.isMediaSlideshowEnabled = ui->checkBoxMediaSH->isChecked();
+    m_setting.styleNumber = ui->comboStylesBox->currentIndex();
+    m_setting.mediaSlideshowRate = ui->spinBoxMediaSH->value();
+    m_setting.coverSlideshowRate = ui->spinBoxCoversSH->value();
 }

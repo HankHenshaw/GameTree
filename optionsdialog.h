@@ -29,13 +29,17 @@ class OptionsDialog : public QDialog
 public:
     explicit OptionsDialog(QWidget *parent = nullptr);
     ~OptionsDialog();
+    const Setting &getSettings() const;
+    void setSettings(const Setting &settings);
 
 private slots:
     void on_comboStylesBox_currentIndexChanged(int index);
+    void on_buttonBox_accepted();
 
 private:
     Ui::OptionsDialog *ui;
     QStringList stylesPath;
+    Setting m_setting;
 };
 
 #endif // OPTIONSDIALOG_H

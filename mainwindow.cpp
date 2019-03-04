@@ -17,14 +17,11 @@
 //TODO: Предупреждение при удалении буквы/игры/мод что будет удалено все из внутренних папок
 //TODO: Ограничить/заменять символы с помощью которых нельзя задавать имена файлам/папкам
 //TODO: Удаление игр/модов по кнопку delete на клавиатуре
-//TODO: Кнопки аудиоплеера должны работать, только если в плейлисте есть песни
-//TODO: Сделать пункты меню активными
 //TODO: При ипользовании строки поиска, при удалении соответствующего поиску эл-та в результатах поиска появл. новый эл-т не соответствующий поиску
 //TODO: Подчистить код, он не нужных строк
 //WARNING: Иногда при выходе из программы вылетает runtime error
 //WARNING: Обнуление лога после каждого запуска
 //TODO: Подумать как лучше реоганизовать метод slotEdit чтобы не повторять один и тотже кусок дважды
-//TODO: Справка https://www.opennet.ru/docs/RUS/qt3_prog/x7532.html
 //TODO: Чтение html сделать в другом потоке
 //http://qaru.site/questions/1239698/how-can-i-asynchronously-load-data-from-large-files-in-qt
 //http://itnotesblog.ru/note.php?id=244
@@ -33,6 +30,8 @@
 //TODO: Пофиксить баги некоторых стилей
 //TODO: Дописать справку
 //TODO: Добавить в диалог справки кнопку возвращения на начальную страницу
+//TODO: Заменить в textBrowser setHtml на setSource
+//TODO: Сохранять фулскрин и размеры других окон
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -173,6 +172,18 @@ void MainWindow::loadSettings()
     ui->splitterVerticalInfo->restoreState(m_settings->value("Vertical Info Splitter").toByteArray());
     ui->splitterHorizontalInfo->restoreState(m_settings->value("Horizontal Info Splitter").toByteArray());
     m_settings->endGroup();
+
+    m_settings->beginGroup("Options");
+    m_options.isFullscreen = m_settings->value("Fullscreen").toBool();
+    m_options.isCoverSlideshowEnabled = m_settings->value("Covers Slideshow").toBool();
+    m_options.coverSlideshowRate = m_settings->value("Covers Slideshow Rate").toInt();
+    m_options.isMediaSlideshowEnabled = m_settings->value("Media Slideshow").toBool();
+    m_options.mediaSlideshowRate = m_settings->value("Media Slideshow Rate").toInt();
+    m_options.styleNumber = m_settings->value("Style Number").toInt();
+    m_settings->endGroup();
+
+    OptionsDialog dialog;
+    dialog.setSettings(m_options);
 }
 
 void MainWindow::saveSettings()
@@ -185,6 +196,15 @@ void MainWindow::saveSettings()
     m_settings->setValue("Horizontal Splitter", ui->splitterHorizontal->saveState());
     m_settings->setValue("Vertical Info Splitter", ui->splitterVerticalInfo->saveState());
     m_settings->setValue("Horizontal Info Splitter", ui->splitterHorizontalInfo->saveState());
+    m_settings->endGroup();
+
+    m_settings->beginGroup("Options");
+    m_settings->setValue("Fullscreen", m_options.isFullscreen);
+    m_settings->setValue("Covers Slideshow", m_options.isCoverSlideshowEnabled);
+    m_settings->setValue("Covers Slideshow Rate", m_options.coverSlideshowRate);
+    m_settings->setValue("Media Slideshow", m_options.isMediaSlideshowEnabled);
+    m_settings->setValue("Media Slideshow Rate", m_options.mediaSlideshowRate);
+    m_settings->setValue("Style Number", m_options.styleNumber);
     m_settings->endGroup();
 }
 /*Settings*/
@@ -380,9 +400,15 @@ void MainWindow::changeEvent(QEvent *event)
         else
         {
             if(!m_coversSlideshowTimer->isActive())
-                m_coversSlideshowTimer->start();
+            {
+                if(m_options.isCoverSlideshowEnabled)
+                    m_coversSlideshowTimer->start();
+            }
             if(!m_mediaSlideshowTimer->isActive())
-                m_mediaSlideshowTimer->start();
+            {
+                if(m_options.isMediaSlideshowEnabled)
+                    m_mediaSlideshowTimer->start();
+            }
         }
 
         if(this->isMaximized())
@@ -2184,9 +2210,47 @@ void MainWindow::on_actionSettings_triggered()
     /*TEST*/
     OptionsDialog dialog;
 
+//    qDebug() << m_options.isFullscreen;
+//    qDebug() << m_options.isCoverSlideshowEnabled;
+//    qDebug() << m_options.coverSlideshowRate;
+//    qDebug() << m_options.isMediaSlideshowEnabled;
+//    qDebug() << m_options.mediaSlideshowRate;
+//    qDebug() << m_options.styleNumber;
+
+    dialog.setSettings(m_options);
+
     if(dialog.exec() == QDialog::Accepted)
     {
+        m_options = dialog.getSettings();
+        //Если включен слайд шоу обложек
+        if(m_options.isCoverSlideshowEnabled)
+        {
+            m_coversSlideshowTimer->start(m_options.coverSlideshowRate * 1000);
+        }
+        else //Иначе
+        {
+            m_coversSlideshowTimer->stop();
+        }
 
+        //Если включен слайд шоу скринов
+        if(m_options.isMediaSlideshowEnabled)
+        {
+            m_mediaSlideshowTimer->start(m_options.mediaSlideshowRate * 1000);
+        }
+        else
+        {
+            m_mediaSlideshowTimer->stop();
+        }
+
+        if(m_options.isFullscreen)
+        {
+            this->setWindowState(Qt::WindowMaximized);
+
+        }
+        else
+        {
+            this->setWindowState(Qt::WindowNoState);
+        }
     }
     /*TEST*/
 }
