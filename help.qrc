@@ -1,12 +1,39 @@
 <RCC>
     <qresource prefix="/">
         <file>help/add.html</file>
+        <file>help/AddGame.png</file>
+        <file>help/AddMod.png</file>
         <file>help/audioplayer.html</file>
+        <file>help/AudioPlayer.png</file>
+        <file>help/close.html</file>
+        <file>help/close.png</file>
+        <file>help/context.html</file>
+        <file>help/ContextMenu1.png</file>
+        <file>help/ContextMenu2.png</file>
+        <file>help/ContextMenu3.png</file>
+        <file>help/ContextMenu4.png</file>
         <file>help/delete.html</file>
         <file>help/edit.html</file>
-        <file>help/Main.html</file>
-        <file>help/screenshots.html</file>
-        <file>help/search.html</file>
-        <file>help/text.html</file>
+        <file>help/Edit.png</file>
+        <file>help/home.html</file>
+        <file>help/home_en.html</file>
+        <file>help/InfoTab.png</file>
+        <file>help/MainWindow.png</file>
+        <file>help/menu.html</file>
+        <file>help/Menu1.png</file>
+        <file>help/Menu2.png</file>
+        <file>help/Menu3.png</file>
+        <file>help/Menu4.png</file>
+        <file>help/Playlist.png</file>
+        <file>help/settings.html</file>
+        <file>help/Settings.png</file>
+        <file>help/start.html</file>
+        <file>help/StartWithParam.png</file>
+        <file>help/tab.html</file>
+        <file>help/tray.html</file>
+        <file>help/Tray.png</file>
+        <file>help/tree.html</file>
+        <file>help/TreeView.png</file>
+        <file>help/mainwindow.html</file>
     </qresource>
 </RCC>

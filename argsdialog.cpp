@@ -9,6 +9,8 @@ ArgsDialog::ArgsDialog(QWidget *parent) :
     ui->setupUi(this);
     ui->labelArgs->setText(tr("Arguments"));
     ui->lineEditArgs->setPlaceholderText(tr("Enter arguments here"));
+
+    this->setWindowTitle(tr("Start With Arguments"));
 }
 
 ArgsDialog::~ArgsDialog()

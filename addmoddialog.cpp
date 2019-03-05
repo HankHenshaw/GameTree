@@ -13,6 +13,8 @@ AddModDialog::AddModDialog(QWidget *parent) :
     ui->labelGameName->setText(tr("Game Name:"));
     ui->labelGamePath->setText(tr("Path to game .exe"));
     ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
+
+    this->setWindowTitle(tr("Adding Mod"));
 }
 
 AddModDialog::~AddModDialog()

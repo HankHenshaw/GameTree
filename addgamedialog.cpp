@@ -13,6 +13,8 @@ AddGameDialog::AddGameDialog(QWidget *parent) :
     ui->lineEditPath->setPlaceholderText(tr("Choose path here"));
 
     ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
+
+    this->setWindowTitle(tr("Editing Game"));
 }
 
 AddGameDialog::~AddGameDialog()

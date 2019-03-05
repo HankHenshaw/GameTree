@@ -361,6 +361,9 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         actionAbout->setText(QApplication::translate("MainWindow", "About...", Q_NULLPTR));
         actionHelp->setText(QApplication::translate("MainWindow", "Help...", Q_NULLPTR));
+#ifndef QT_NO_SHORTCUT
+        actionHelp->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
         actionEnglish->setText(QApplication::translate("MainWindow", "English", Q_NULLPTR));
         actionRussian->setText(QApplication::translate("MainWindow", "Russian", Q_NULLPTR));
         actionStart_Game->setText(QApplication::translate("MainWindow", "Add Game", Q_NULLPTR));

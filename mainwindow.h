@@ -55,6 +55,7 @@ public:
 protected:
     virtual void showEvent(QShowEvent *event) override;
     virtual void closeEvent(QCloseEvent *event) override;
+    virtual void resizeEvent(QResizeEvent *event) override;
 
 private slots:
     /*Audio Player Slots*/

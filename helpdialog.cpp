@@ -6,7 +6,7 @@ HelpDialog::HelpDialog(QWidget *parent) :
     ui(new Ui::HelpDialog)
 {
     ui->setupUi(this);
-    ui->textBrowser->setSource(QUrl::fromLocalFile("://help/Main.html"));
+    ui->textBrowser->setSource(QUrl::fromLocalFile("://help/home_en.html"));
 }
 
 HelpDialog::~HelpDialog()

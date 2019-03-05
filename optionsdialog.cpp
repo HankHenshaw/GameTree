@@ -16,6 +16,8 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
         stylesPath.append(it.filePath());
     }
 
+    this->setWindowTitle(tr("Settings"));
+
     ui->comboStylesBox->addItems(styles);
     ui->comboStylesBox->setCurrentIndex(2);
 

@@ -201,14 +201,41 @@ release/qrc_styles.cpp: styles.qrc \
 
 release/qrc_help.cpp: help.qrc \
 		../../5.9.2/mingw53_32/bin/rcc.exe \
-		help/search.html \
-		help/audioplayer.html \
-		help/Main.html \
-		help/delete.html \
-		help/screenshots.html \
-		help/text.html \
+		help/MainWindow.png \
+		help/close.png \
+		help/MainWindow.html \
+		help/Tray.png \
+		help/tab.html \
+		help/settings.html \
+		help/TreeView.png \
+		help/Edit.png \
+		help/ContextMenu1.png \
+		help/InfoTab.png \
+		help/AudioPlayer.png \
+		help/ContextMenu2.png \
+		help/ContextMenu3.png \
+		help/Settings.png \
+		help/ContextMenu4.png \
+		help/tray.html \
+		help/AddMod.png \
+		help/add.html \
+		help/Menu1.png \
+		help/Menu2.png \
+		help/Menu3.png \
+		help/Menu4.png \
+		help/tree.html \
+		help/home.html \
 		help/edit.html \
-		help/add.html
+		help/audioplayer.html \
+		help/close.html \
+		help/AddGame.png \
+		help/Playlist.png \
+		help/context.html \
+		help/menu.html \
+		help/StartWithParam.png \
+		help/start.html \
+		help/delete.html \
+		help/home_en.html
 	C:\Qt\5.9.2\mingw53_32\bin\rcc.exe -name help help.qrc -o release\qrc_help.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h

@@ -25,19 +25,31 @@
 //TODO: Чтение html сделать в другом потоке
 //http://qaru.site/questions/1239698/how-can-i-asynchronously-load-data-from-large-files-in-qt
 //http://itnotesblog.ru/note.php?id=244
-//TODO: Интервал для слайдшоу таймеров из настроек от пользователя, а также вкл/выкл слайдшоу
 //TODO: Playlist form сдлеать локальным?
 //TODO: Пофиксить баги некоторых стилей
 //TODO: Дописать справку
 //TODO: Добавить в диалог справки кнопку возвращения на начальную страницу
 //TODO: Заменить в textBrowser setHtml на setSource
 //TODO: Сохранять фулскрин и размеры других окон
+//TODO: Добавить хоткеи для аудиоплеера и для запуска игры? и т.д., F1 для справки
+//TODO: Добавить в меню add game в конце троеточие
+//TODO: Обновить ресурс справки
+//TODO: Изменить начальный размер окна справки
+//TODO: Переименовать диалоги добавления, изменения и запуска с параметрами для игр/модов
+//TODO: Для добавления и редактировании игры используется один и тотже диалог, надо установит разное название для них.
+//TODO: Сделать нормальное окно About
+//TODO: Добавить в контекстное меню, возможность открытия разных связных папок
+//TODO: Англ. справка
+//TODO: Подсказки по долгому зависанию курсора над разными эл-тами
+//TODO: Установить назвние создателя программы / организации
+//TODO: В справке поменять на скриншотах с основным окном, на скрины с нормальным названием основного окна, а также добавить скрин окна о программе
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Game Tree"); //TEST
     qInfo() << "Audioplayer initialization";
     audioPlayerInit();
 
@@ -2118,6 +2130,13 @@ void MainWindow::closeEvent(QCloseEvent *event)
         hide();
         event->ignore();
     }
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
+    QMainWindow::resizeEvent(event);
 }
 /*System Tray*/
 
