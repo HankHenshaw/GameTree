@@ -18,5 +18,6 @@
         <file>icons/tree_16.png</file>
         <file>icons/tree_24.png</file>
         <file>icons/tree_64.png</file>
+        <file>icons/checked.png</file>
     </qresource>
 </RCC>

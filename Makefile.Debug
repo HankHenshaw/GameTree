@@ -182,6 +182,7 @@ debug/qrc_icons.cpp: icons.qrc \
 		icons/tree_24.png \
 		icons/Russia128x86.png \
 		icons/tree.png \
+		icons/checked.png \
 		icons/Help.png \
 		icons/previous-step-circular-button.png \
 		icons/stop-button.png \
@@ -194,16 +195,13 @@ debug/qrc_icons.cpp: icons.qrc \
 debug/qrc_styles.cpp: styles.qrc \
 		../../5.9.2/mingw53_32/bin/rcc.exe \
 		styles/Coffee.qss \
-		styles/Ubuntu.qss \
-		styles/Dark.qss \
-		styles/Aqua.qss
+		styles/Lime.qss
 	C:\Qt\5.9.2\mingw53_32\bin\rcc.exe -name styles styles.qrc -o debug\qrc_styles.cpp
 
 debug/qrc_help.cpp: help.qrc \
 		../../5.9.2/mingw53_32/bin/rcc.exe \
 		help/MainWindow.png \
 		help/close.png \
-		help/MainWindow.html \
 		help/Tray.png \
 		help/tab.html \
 		help/settings.html \
@@ -230,6 +228,7 @@ debug/qrc_help.cpp: help.qrc \
 		help/close.html \
 		help/AddGame.png \
 		help/Playlist.png \
+		help/mainwindow.html \
 		help/context.html \
 		help/menu.html \
 		help/StartWithParam.png \
@@ -2577,8 +2576,6 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/qtextbrowser.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/qtextedit.h \
 		../../5.9.2/mingw53_32/include/QtGui/qtextdocument.h \
-		../../5.9.2/mingw53_32/include/QtWidgets/QToolBar \
-		../../5.9.2/mingw53_32/include/QtWidgets/qtoolbar.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QToolButton \
 		../../5.9.2/mingw53_32/include/QtWidgets/qtoolbutton.h \
 		../../5.9.2/mingw53_32/include/QtWidgets/QTreeView \
