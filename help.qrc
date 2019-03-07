@@ -10,8 +10,6 @@
         <file>help/context.html</file>
         <file>help/ContextMenu1.png</file>
         <file>help/ContextMenu2.png</file>
-        <file>help/ContextMenu3.png</file>
-        <file>help/ContextMenu4.png</file>
         <file>help/delete.html</file>
         <file>help/edit.html</file>
         <file>help/Edit.png</file>
@@ -35,5 +33,9 @@
         <file>help/tree.html</file>
         <file>help/TreeView.png</file>
         <file>help/mainwindow.html</file>
+        <file>help/about.png</file>
+        <file>help/about.html</file>
+        <file>help/ContextMenu3.png</file>
+        <file>help/ContextMenu4.png</file>
     </qresource>
 </RCC>

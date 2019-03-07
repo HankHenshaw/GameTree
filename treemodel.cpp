@@ -15,26 +15,6 @@ TreeModel::TreeModel(QMap<QChar, int> &lettersList, QMap<QString, QSet<QString> 
 
     QMap<QString, QSet<QString>>::iterator gamesBeginIterator = gamesList.begin();
 
-
-    /*Test*/
-//    QMap<QString, QSet<QString>>::iterator itb = gamesList.begin();
-//    QMap<QString, QSet<QString>>::iterator ite = gamesList.end();
-//    while(itb != ite)
-//    {
-//        qDebug() << itb.key();
-
-//        QSet<QString>::iterator sitb = itb.value().begin();
-//        QSet<QString>::iterator site = itb.value().end();
-
-//        while(sitb != site)
-//        {
-//            qDebug() << *sitb;
-//            ++sitb;
-//        }
-//        ++itb;
-//    }
-    /*Test*/
-
     //Позиция родителя 0 ур-ня вложенности(не считая корня)
     int parentNumber = 0;
 
@@ -53,7 +33,6 @@ TreeModel::TreeModel(QMap<QChar, int> &lettersList, QMap<QString, QSet<QString> 
         //Позиция родителя 1 ур-ня вложенности(подродителя)
         int subParentNumber = 0;
 
-        //while(gamesBeginIterator != gamesEndIterator)
         while(counterOfGames < numberOfParticularGames) // Решить что лучше цикл по списку(мар) игр или по кол-ву
         {
             //Итераторы по подпозициям в зависимости от позиции
@@ -159,7 +138,6 @@ int TreeModel::rowCount(const QModelIndex &parent) const
 
 int TreeModel::columnCount(const QModelIndex &parent) const
 {
-    //Поменять если нужно больше столбцов
     Q_UNUSED(parent);
 
     return 1;
@@ -187,17 +165,10 @@ bool TreeModel::setData(const QModelIndex &index, const QVariant &value, int rol
 
 bool TreeModel::insertRows(int position, int rows, const QModelIndex &parent)
 {
-    //WARNING: Могут быть проблемы т.к. немного поменял логику метода, а он много где используется
     TreeItem *parentItem = getItem(parent);
-    bool success;
-    //TODO: Проверку на вставку
-
-    //WARNING: layoutAboutToBeChanged();
-    //WARNING: layoutChanged();
 
     layoutAboutToBeChanged();
     beginInsertRows(parent, position, position + rows - 1);
-//    parentItem->insertChildren(new TreeItem("", getItem(parent)));
     if(parent.isValid())
         parentItem->insertChildren(new TreeItem("", getItem(parent)));
     else
@@ -210,12 +181,10 @@ bool TreeModel::insertRows(int position, int rows, const QModelIndex &parent)
 
 bool TreeModel::removeRows(int row, int count, const QModelIndex &parent)
 {
-    //TODO: Удалить метод deleteElement
     qDebug() << "Start model remove";
     qDebug() << parent.data();
     layoutAboutToBeChanged();
     beginRemoveRows(parent, row, row + count -1);
-    //TODO?: Отдельные методы для удаления родителя/ребенка/внука
     int parentsAmount = m_rootItem->childCount();
     QString itemData = parent.data().toString();
 
@@ -296,57 +265,4 @@ TreeItem *TreeModel::getItem(const QModelIndex &index) const
 
     TreeItem *root = getRoot();
     return root;
-}
-
-void TreeModel::deleteElement(const QModelIndex &index)
-{
-    //TODO?: Отдельные методы для удаления родителя/ребенка/внука
-    int parentsAmount = m_rootItem->childCount();
-    QString itemData = index.data().toString();
-
-    for(int parentsCount = 0; parentsCount < parentsAmount; ++parentsCount)
-    {
-        //QString childData = m_rootItem->child(parentsCount)->data();
-        if(m_rootItem->child(parentsCount)->data() == itemData)
-        {
-            qDebug() << "Match!";
-            m_rootItem->removeChild(parentsCount);
-            break;
-        }
-
-        bool isFound = false;
-
-        int childrenAmount = m_rootItem->child(parentsCount)->childCount();
-        for(int childrenCount = 0; childrenCount < childrenAmount; ++childrenCount)
-        {
-            if(m_rootItem->child(parentsCount)->child(childrenCount)->data() == itemData)
-            {
-                qDebug() << "Match!";
-                m_rootItem->child(parentsCount)->removeChild(childrenCount);
-                isFound = true;
-                break;
-            }
-
-            int grandChildrenAmount = m_rootItem->child(parentsCount)->child(childrenCount)->childCount();
-            for(int grandChildrenCount = 0; grandChildrenCount < grandChildrenAmount; ++grandChildrenCount)
-            {
-                if(m_rootItem->child(parentsCount)->child(childrenCount)->child(grandChildrenCount)->data() == itemData)
-                {
-                    qDebug() << "Match!";
-                    m_rootItem->child(parentsCount)->child(childrenCount)->removeChild(grandChildrenCount);
-                    isFound = true;
-                    break;
-                }
-            }
-
-            if(isFound)
-                break;
-        }
-
-        if(isFound)
-            break;
-    }
-
-    beginRemoveRows(index, 1, 1);
-    endRemoveRows();
 }

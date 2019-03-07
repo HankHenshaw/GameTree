@@ -6,51 +6,17 @@
 ///TODO: То что надо сделать
 ///OFF: Закоммент. нерабочии участки кода
 
-//OFF: Возникает проблемы при редактировании игры из под мода
-//TODO: Add Author of Icons from www.flaticon.com
-//TODO: Добавить авторов стилий
-//TODO: Fix all warnings
-//TODO: Экранирование всех апострофов в запросах к БД
-//TODO: Добавить горизонтальный слайдер в ТриВью если название не влезает в отведенную область
-//TODO: Для централизованного обращение к настройкам можно добавить объект настроек в класс приложения QApplication (пример на стр. 433/412)
-//TODO: Для первого запуска прил. установить положение окна по центру
-//TODO: Предупреждение при удалении буквы/игры/мод что будет удалено все из внутренних папок
-//TODO: Ограничить/заменять символы с помощью которых нельзя задавать имена файлам/папкам
-//TODO: Удаление игр/модов по кнопку delete на клавиатуре
-//TODO: При ипользовании строки поиска, при удалении соответствующего поиску эл-та в результатах поиска появл. новый эл-т не соответствующий поиску
+//TODO: Доделать перевод
 //TODO: Подчистить код, он не нужных строк
-//WARNING: Иногда при выходе из программы вылетает runtime error
 //WARNING: Обнуление лога после каждого запуска
-//TODO: Подумать как лучше реоганизовать метод slotEdit чтобы не повторять один и тотже кусок дважды
-//TODO: Чтение html сделать в другом потоке
-//http://qaru.site/questions/1239698/how-can-i-asynchronously-load-data-from-large-files-in-qt
-//http://itnotesblog.ru/note.php?id=244
-//TODO: Playlist form сдлеать локальным?
-//TODO: Пофиксить баги некоторых стилей
-//TODO: Дописать справку
-//TODO: Добавить в диалог справки кнопку возвращения на начальную страницу
-//TODO: Заменить в textBrowser setHtml на setSource
 //TODO: Сохранять фулскрин и размеры других окон
-//TODO: Добавить хоткеи для аудиоплеера и для запуска игры? и т.д., F1 для справки
-//TODO: Добавить в меню add game в конце троеточие
-//TODO: Обновить ресурс справки
-//TODO: Изменить начальный размер окна справки
-//TODO: Переименовать диалоги добавления, изменения и запуска с параметрами для игр/модов
-//TODO: Для добавления и редактировании игры используется один и тотже диалог, надо установит разное название для них.
-//TODO: Сделать нормальное окно About
-//TODO: Добавить в контекстное меню, возможность открытия разных связных папок
-//TODO: Англ. справка
-//TODO: Подсказки по долгому зависанию курсора над разными эл-тами
-//TODO: Установить назвние создателя программы / организации
-//TODO: В справке поменять на скриншотах с основным окном, на скрины с нормальным названием основного окна, а также добавить скрин окна о программе
-//TODO: ToolTip
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Game Tree"); //TEST
+    this->setWindowTitle("Game Tree");
     qInfo() << "Audioplayer initialization";
     audioPlayerInit();
 
@@ -94,13 +60,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->treeView, &QTreeView::doubleClicked, this, &MainWindow::slotDblClicked);
 
     //Создаем действися для меню трея*/
-    //TODO: Переделать коннекты в новом виде
     QAction* aTrayQuit = new QAction(tr("Quit"), this);
-    connect(aTrayQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
-//    connect(aTrayQuit, &QAction::triggered, qApp, &QApplication::quit);
+    connect(aTrayQuit, &QAction::triggered, qApp, &QApplication::quit);
     QAction* aTrayShowHide = new QAction(tr("Show/Hide Application Window"), this);
-    connect(aTrayShowHide, SIGNAL(triggered()), this, SLOT(slotShowHide()));
-//    connect(aTrayShowHide, &QAction::triggered, &MainWindow::slotShowHide);
+    connect(aTrayShowHide, &QAction::triggered, this, &MainWindow::slotShowHide);
 
     //Создаем меню и заполняем его действиямм
     m_trayMenu = new QMenu(this);
@@ -111,7 +74,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //Создаем иконку для меню и отображаем в трее
     m_trayIcon = new QSystemTrayIcon(this);
     m_trayIcon->setContextMenu(m_trayMenu);
-    m_trayIcon->setToolTip(tr("System Tray")); //TODO: Поменять/Убрать
+    m_trayIcon->setToolTip(tr("Game Tree"));
     m_trayIcon->setIcon(QPixmap(":/menu/icons/tree_24.png"));
     connect(m_trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::slotIconActivated);
 
@@ -158,7 +121,6 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     saveSettings();
-    delete m_playlistForm;
     delete ui;
 }
 
@@ -187,6 +149,10 @@ void MainWindow::loadSettings()
     m_settings->endGroup();
 
     m_settings->beginGroup("Options");
+    if(m_settings->value("Fullscreen").toBool())
+    {
+        showMaximized();
+    }
     m_options.isFullscreen = m_settings->value("Fullscreen").toBool();
     m_options.isCoverSlideshowEnabled = m_settings->value("Covers Slideshow").toBool();
     m_options.coverSlideshowRate = m_settings->value("Covers Slideshow Rate").toInt();
@@ -272,10 +238,10 @@ void MainWindow::on_nextButton_clicked()
 
 void MainWindow::on_playlistButton_clicked()
 {
-    m_playlistForm->setWindowTitle(tr("Playlist"));
-    m_playlistForm->setWindowModality(Qt::ApplicationModal);
-    m_playlistForm->show();
-    m_playlistForm->playlistClicked(m_audioPlayer);
+    m_playlistForm.setWindowTitle(tr("Playlist"));
+    m_playlistForm.setWindowModality(Qt::ApplicationModal);
+    m_playlistForm.show();
+    m_playlistForm.playlistClicked(m_audioPlayer);
 }
 
 //void MainWindow::on_volumeSlider_sliderMoved(int position)
@@ -292,9 +258,6 @@ void MainWindow::audioPlayerInit()
 {
     //
     m_isPlayButtonClicked = false;
-
-    //Создаем виджет для списка песен
-    m_playlistForm = new PlaylistForm();
 
     // Set icons
     ui->playButton->setIcon(QIcon(":/audioplayer/icons/play-button.png"));
@@ -322,7 +285,7 @@ void MainWindow::audioPlayerInit()
     connect(m_audioPlayer, SIGNAL(durationChanged(qint64)), SLOT(slotSetDuration(qint64)));
     connect(m_audioPlayer, SIGNAL(positionChanged(qint64)), SLOT(slotSetProgressPosotion(qint64)));
     connect(ui->durationProgressBar, &MyProgressBar::signalMousePressedPos, this, &MainWindow::slotSetMediaPosition);
-    connect(m_playlistForm, &PlaylistForm::signalPlay, this, &MainWindow::slotPlaylistFormClicked);
+    connect(&m_playlistForm, &PlaylistForm::signalPlay, this, &MainWindow::slotPlaylistFormClicked);
     // Set text in the middle of the progress bar
     ui->durationProgressBar->setAlignment(Qt::AlignCenter);
     ui->durationProgressBar->setTextVisible(true);
@@ -330,20 +293,17 @@ void MainWindow::audioPlayerInit()
     // Set start value and format
     ui->durationProgressBar->setValue(0);
     ui->durationProgressBar->setFormat(msecsToString(0));
-
-    //TEST: testing label
-//    ui->coverLabel->setText("<img src = \"Front.jpg\" height = \"60\" width = \"60\" />");
 }
 
 void MainWindow::slotSetDuration(qint64 n)
 {
-    ui->durationProgressBar->setRange(0, n);
+    ui->durationProgressBar->setRange(0, static_cast<int>(n));
     ui->durationProgressBar->setFormat(msecsToString(n));
 }
 
 void MainWindow::slotSetProgressPosotion(qint64 n)
 {
-    ui->durationProgressBar->setValue(n);
+    ui->durationProgressBar->setValue(static_cast<int>(n));
 
     int nDuration = ui->durationProgressBar->maximum();
     ui->durationProgressBar->setFormat(msecsToString(nDuration - n));
@@ -351,7 +311,7 @@ void MainWindow::slotSetProgressPosotion(qint64 n)
 
 QString MainWindow::msecsToString(qint64 n)
 {
-    int nHours   = (n / (60 * 60 * 1000));
+    int nHours   = (static_cast<int>(n) / (60 * 60 * 1000));
     int nMinutes = ((n  % (60 * 60 * 1000)) / (60 * 1000));
     int nSeconds = ((n % (60 * 1000)) / 1000);
 
@@ -363,7 +323,8 @@ void MainWindow::slotSetMediaPosition(QPoint pos)
     int widthOfProgressBar = size().width() - 86; // 24 = 9x2 (Margins) - 6(Space between progressbar and label) - 60 (Lable size) - 2(idk, mb Border)
 
     double nScale = static_cast<double>(pos.x())/widthOfProgressBar;
-    m_audioPlayer->setPosition((ui->durationProgressBar->maximum())*nScale);
+    qint64 position = static_cast<qint64>((ui->durationProgressBar->maximum())*nScale);
+    m_audioPlayer->setPosition(position);
 }
 
 void MainWindow::slotPlaylistFormClicked()
@@ -384,9 +345,9 @@ void MainWindow::changeLanguage(QString postfix)
 
 void MainWindow::changeEvent(QEvent *event)
 {
-    qDebug() << "Language Change";
     if(event->type() == QEvent::LanguageChange)
     {
+        qDebug() << "Language Change";
         setWindowTitle(tr("GameTree"));
         ui->menuLanguage->setTitle(tr("Language"));
         ui->menuHelp->setTitle(tr("Help"));
@@ -535,10 +496,10 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     QMenu invalidIndexMenu;
 
     //Создаем действие для добавления игры
-    QAction *addGame = new QAction(tr("Add game"));
+    QAction *addGame = new QAction(tr("Add game..."));
 
     //Создаем действие для добавления мода
-    QAction *addMod = new QAction(tr("Add mod"));
+    QAction *addMod = new QAction(tr("Add mod..."));
 
     //Создаем действие для запуска игры
     QAction *startGame = new QAction(tr("Start game"));
@@ -553,13 +514,25 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     QAction *startModWithParameters = new QAction(tr("Start mod with parameters..."));
 
     //Создаем действие для удаления игры
-    QAction *deleteGame = new QAction(tr("Delete game/mod"));
+    QAction *deleteGame = new QAction(tr("Delete game(s)/mod(s)"));
 
     //Создаем действие для редактирования информации об игре
-    QAction *editGame = new QAction(tr("Edit information about game"));
+    QAction *editGame = new QAction(tr("Edit information about game..."));
 
     //Создаем действие для редактирования информации о моде
-    QAction *editMod = new QAction(tr("Edit information about mod"));
+    QAction *editMod = new QAction(tr("Edit information about mod..."));
+
+    //Создаем действие для открытия папки игры в окне обозревателя
+    QAction *openGameDir = new QAction(tr("Open game dir..."));
+
+    //Создаем действие для открытия папки мода в окне обозревателя
+    QAction *openModDir = new QAction(tr("Open mod dir..."));
+
+    //Создаем действие для открытия папки игры в окне обозревателя
+    QAction *openProgramGameDir = new QAction(tr("Open game info dir..."));
+
+    //Создаем действие для открытия папки мода в окне обозревателя
+    QAction *openProgramModDir = new QAction(tr("Open mod info dir..."));
 
     //Заполняем оба меню действиями
     invalidIndexMenu.addAction(addGame);
@@ -572,6 +545,8 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
 //    modMenu.addAction(editGame); //Вырублено до лучших времен
     modMenu.addAction(editMod);
     modMenu.addAction(deleteGame);
+    modMenu.addAction(openModDir);
+    modMenu.addAction(openProgramModDir);
 
     gameMenu.addAction(startGame);
     gameMenu.addAction(startGameWithParameters);
@@ -580,6 +555,8 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     gameMenu.addAction(addMod);
     gameMenu.addAction(editGame);
     gameMenu.addAction(deleteGame);
+    gameMenu.addAction(openGameDir);
+    gameMenu.addAction(openProgramGameDir);
 
     letterMenu.addAction(addGame);
     letterMenu.addAction(deleteGame);
@@ -594,6 +571,10 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
     connect(startGameWithParameters, &QAction::triggered, this, &MainWindow::slotStartWithParameters);
     connect(startMod, &QAction::triggered, this, &MainWindow::slotStartMod);
     connect(startModWithParameters, &QAction::triggered, this, &MainWindow::slotStartModWithParameters);
+    connect(openGameDir, &QAction::triggered, this, &MainWindow::slotOpenGameDir);
+    connect(openModDir, &QAction::triggered, this, &MainWindow::slotOpenModDir);
+    connect(openProgramGameDir, &QAction::triggered, this, &MainWindow::slotOpenProgramGameDir);
+    connect(openProgramModDir, &QAction::triggered, this, &MainWindow::slotOpenProgramModDir);
 
     //Исп. перемн. класса, а не локальную, для того что бы запоминать послд. выделен. позицию и исп. эту перемен. в слотах QAction
     m_selectedIndex = ui->treeView->indexAt(pos);
@@ -700,8 +681,6 @@ void MainWindow::slotDelete()
         QSqlQuery queryRemove;
         queryRemove.exec(strRemoveMod);
 
-        //TODO: Удалить таблицу с модами, если модов не осталось
-        //DROP TABLE Имя_таблицы
         if(m_model->getItem(selectedOriginalIndex.parent())->childCount() == 1) // 1, т.к. удаление из модели происходит после редактирования БД
         {
             QString strDropTable("DROP TABLE '" + gameName + "'");
@@ -713,7 +692,6 @@ void MainWindow::slotDelete()
         QString path = m_dir.path() + '/' + selectedOriginalIndex.parent().data().toString().at(0) + '/' + selectedIndex.parent().data().toString() + "/mods/" + selectedIndex.data().toString();
         QDir dir(path);
         dir.removeRecursively();
-        //TODO: добавить qDebug?
     }
 
     //Удаление из модели
@@ -732,9 +710,6 @@ void MainWindow::slotEdit()
 
     //TODO: При редактировании, если в строке путь, в диалоге до .ехе нажать отмена
     //То потом в диалоге редактироваения можно нажать "Ок"(нельзя давать нажимать "Ок", если путь пустой)
-    //TODO: При редактировании после нажатия Ок, путь до .ехе сбрасывается, починить!!!!
-    //Сбрасывается т.к. я пока не добавил занос данных в БД
-    //TODO: При редактировании игры из под индекса мода, меняется название мода а не игры
 
     //Создаем диалог
     AddGameDialog dialog;
@@ -807,7 +782,6 @@ void MainWindow::slotEdit()
                     QString newPath = m_dir.path() + '/' + gameName.at(0) + '/' + dialog.getInfo().m_name;
                     QDir dir;
                     dir.rename(oldPath, newPath);
-                    //TODO: qDebug??
                 }
                 else //Если буква не совпадает
                 {
@@ -879,7 +853,6 @@ void MainWindow::slotEdit()
                         QString newPath = m_dir.path() + '/' + dialog.getInfo().m_name.at(0) + '/' + dialog.getInfo().m_name;
                         QDir dir;
                         dir.rename(oldPath, newPath);
-                        //TODO: qDebug??
 
                         //Удаляем старую запись
                         //m_model->deleteElement(selectedIndex);
@@ -954,7 +927,6 @@ void MainWindow::slotEdit()
                         QString newPath = m_dir.path() + '/' + dialog.getInfo().m_name.at(0) + '/' + dialog.getInfo().m_name;
                         QDir dir;
                         dir.rename(oldPath, newPath);
-                        //TODO: qDebug??
 
                         //Удаляем игру
                         //m_model->deleteElement(selectedIndex);
@@ -1030,7 +1002,6 @@ void MainWindow::slotEdit()
                     QString newPath = m_dir.path() + '/' + gameName.at(0) + '/' + dialog.getInfo().m_name;
                     QDir dir;
                     dir.rename(oldPath, newPath);
-                    //TODO: qDebug??
                 }
                 else //Если буква не совпадает
                 {
@@ -1099,7 +1070,6 @@ void MainWindow::slotEdit()
                         QString newPath = m_dir.path() + '/' + dialog.getInfo().m_name.at(0) + '/' + dialog.getInfo().m_name;
                         QDir dir;
                         dir.rename(oldPath, newPath);
-                        //TODO: qDebug??
 
                         //Удаляем старую запись
                         qDebug() << "Start remove";
@@ -1173,7 +1143,6 @@ void MainWindow::slotEdit()
                         QString newPath = m_dir.path() + '/' + dialog.getInfo().m_name.at(0) + '/' + dialog.getInfo().m_name;
                         QDir dir;
                         dir.rename(oldPath, newPath);
-                        //TODO: qDebug??
 
                         //Удаляем игру
                         m_proxy->removeRow(m_proxy->mapFromSource(selectedOriginalIndex).parent().row(), m_proxy->mapFromSource(selectedOriginalIndex).parent());
@@ -1192,6 +1161,9 @@ void MainWindow::slotEditMod()
 
     //Создаем диалог
     EditModDialog dialog;
+
+    //Устанавливаем имя окна
+    dialog.setWindowTitle(tr("Editing Mod"));
 
     //Получаем имя мода
     QString modName = selectedIndex.data().toString();
@@ -1238,7 +1210,6 @@ void MainWindow::slotEditMod()
             QString newPath = m_dir.path() + '/' + gameName.at(0) + '/' + gameName + "/mods/" + dialog.getInfo().m_name;
             QDir dir;
             dir.rename(oldPath, newPath);
-            //TODO: qDebug??
 
             //Обновляем модель
             //m_model->setData(selectedIndex, dialog.getInfo().m_name);
@@ -1582,7 +1553,6 @@ void MainWindow::slotAdd()
             dir.mkpath("image/screenshots");
             dir.mkdir("video");
             dir.mkdir("mods");
-            //TODO: добавить qDebug?
 
             //Добавляем в БД
             QString strInsert("INSERT INTO Games(Title, Path) VALUES ('" + gameName + "', '" + path + "');");
@@ -1626,7 +1596,6 @@ void MainWindow::slotAdd()
             dir.mkpath("image/screenshots");
             dir.mkdir("video");
             dir.mkdir("mods");
-            //TODO: добавить qDebug?
 
             //Добавляем запись в БД
             QString strInsert("INSERT INTO Games(Title, Path) VALUES ('" + gameName + "', '" + path + "');");
@@ -1651,7 +1620,7 @@ void MainWindow::slotAddMod()
         //Добавляем в диалог имя игры и путь до .ехе
         //QString gameName = m_selectedIndex.data().toString();
         QString gameName = selectedIndex.data().toString();
-        QString strGamePath("SELECT Path FROM Games WHERE Title = '" + gameName + "'"); //TODO: Экранировать апостроф
+        QString strGamePath("SELECT Path FROM Games WHERE Title = '" + gameName + "'");
         QSqlQuery queryPath;
         queryPath.exec(strGamePath);
         queryPath.next(); //Проверка на валидность?
@@ -1697,7 +1666,6 @@ void MainWindow::slotAddMod()
             dir.mkpath("image/covers");
             dir.mkpath("image/screenshots");
             dir.mkdir("video");
-            //TODO: добавить qDebug?
 
             //Добавляем запись в БД
             QString strInsert("INSERT INTO '" + gameName + "'(Title, Path) VALUES('" + modName + "', '" + dialog.getInfo().m_path + "');");
@@ -1763,6 +1731,65 @@ void MainWindow::slotAddMod()
         }
     }
 }
+
+void MainWindow::slotOpenGameDir()
+{
+    QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex(); //mapToSource?
+    QString gameName = selectedIndex.data().toString();
+    QString strPath("SELECT Path FROM Games WHERE Title = '" + gameName + "'");
+    QSqlQuery queryPath;
+    queryPath.exec(strPath);
+    queryPath.next(); //Проверка на валидность??
+    QString path = queryPath.value(0).toString();
+
+    QFileInfo info(path);
+
+    if(!QDesktopServices::openUrl(QUrl::fromLocalFile(info.path())))
+    {
+        QMessageBox::information(this, tr("Message"), tr("Directory: ") + path + tr(" doesn't exist"));
+    }
+}
+
+void MainWindow::slotOpenModDir()
+{
+    QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex(); //mapToSource?
+    QString gameName = selectedIndex.parent().data().toString();
+    QString modName = selectedIndex.data().toString();
+    QString strPath("SELECT Path FROM '" + gameName + "' WHERE Title = '" + modName + "'");
+    QSqlQuery queryPath;
+    queryPath.exec(strPath);
+    queryPath.next();
+    QString path = queryPath.value(0).toString();
+
+    QFileInfo info(path);
+
+    if(!QDesktopServices::openUrl(QUrl::fromLocalFile(info.path())))
+    {
+        QMessageBox::information(this, tr("Message"), tr("Directory: ") + path + tr(" doesn't exist"));
+    }
+}
+
+void MainWindow::slotOpenProgramGameDir()
+{
+    QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex(); //mapToSource?
+    QString dirPath = m_appPath + "/Games/" + selectedIndex.data().toString().at(0) + '/' + selectedIndex.data().toString();
+
+    if(!QDesktopServices::openUrl(QUrl::fromLocalFile(dirPath)))
+    {
+        QMessageBox::information(this, tr("Message"), tr("Directory: ") + dirPath + tr(" doesn't exist"));
+    }
+}
+
+void MainWindow::slotOpenProgramModDir()
+{
+    QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex(); //mapToSource?
+    QString dirPath = m_appPath + "/Games/" + selectedIndex.parent().data().toString().at(0) + '/' + selectedIndex.parent().data().toString() + "/mods/" + selectedIndex.data().toString();
+
+    if(!QDesktopServices::openUrl(QUrl::fromLocalFile(dirPath)))
+    {
+        QMessageBox::information(this, tr("Message"), tr("Directory: ") + dirPath + tr(" doesn't exist"));
+    }
+}
 /*Context Menu*/
 
 /*Buttons*/
@@ -1777,14 +1804,10 @@ void MainWindow::on_buttonStart_clicked()
     {
         slotStartMod();
     }
-    //TODO: Message box, что выбрана не игра/мод или вообще ничего не выбрано
-    //Или не давать нажимать на кнопку
-    //Или в конструкторе ставить сразу игру выделенной, н-р последнюю запушенную
 }
 
 void MainWindow::on_buttonEdit_clicked()
 {
-    //TODO: Не очень хороша, так делать, лучше сделать, что бы кнопки были не активны пока не выбрана игра или мод
     QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex();
 //    if(!selectedIndex.parent().isValid())
 //    {
@@ -1844,6 +1867,7 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
     {
         //Очищаем список и сцены, а также обновляем отображения
 //        m_audioPlayerList->clear();
+        ui->textBrowser->clear();
         m_coverScene->clear();
         m_mediaScene->clear();
         ui->coversView->viewport()->update();
@@ -1952,12 +1976,14 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
             htmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
             QTextStream stream(&htmlFile);
             ui->textBrowser->setHtml(htmlFile.readAll());
+            htmlFile.close();
         }
     }
     else if(!selectedIndex.parent().parent().parent().isValid()) //Если выбран мод
     {
         //Очищаем список и сцены, а также обновляем отображения
 //        m_audioPlayerList->clear();
+        ui->textBrowser->clear();
         m_coverScene->clear();
         m_mediaScene->clear();
         ui->coversView->viewport()->update();
@@ -2023,8 +2049,6 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         /*Audio Player*/
 
         //Covers & Media Views
-//        QString strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/covers";
-//        QString strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/screenshots";
         m_strToMedia = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/screenshots";
         m_strToCover = pathToItem + '/' + gameName.at(0) + '/' + gameName + "/mods/" + modName + "/image/covers";
 
@@ -2038,7 +2062,6 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         {
             QPixmap cover(m_strToCover + '/' + m_coversList.at(0));
             ui->coversView->setSceneRect(0, 0, cover.width(), cover.height());
-            //cover.scaled(ui->coversView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *coverItem = new QGraphicsPixmapItem(cover);
             m_coverScene->addItem(coverItem);
             ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
@@ -2047,7 +2070,6 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
         {
             QPixmap media(m_strToMedia + '/' + m_mediaList.at(0));
             ui->mediaView->setSceneRect(0, 0, media.width(), media.height());
-            //media.scaled(ui->mediaView->size(), Qt::KeepAspectRatio);
             QGraphicsPixmapItem *mediaItem = new QGraphicsPixmapItem(media);
             m_mediaScene->addItem(mediaItem);
             ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
@@ -2065,6 +2087,7 @@ void MainWindow::slotButtonActivator(QModelIndex selectedIndex)
             htmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
             QTextStream stream(&htmlFile);
             ui->textBrowser->setHtml(htmlFile.readAll());
+            htmlFile.close();
         }
     }
     /*Получаем медиафайламы*/
@@ -2132,6 +2155,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         event->ignore();
     }
 }
+/*System Tray*/
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
@@ -2139,7 +2163,29 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
     QMainWindow::resizeEvent(event);
 }
-/*System Tray*/
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    //TODO: Срабатывает только если не активировано виджет поиска, трифью или текст браузер
+    if(event->key() == Qt::Key_Space)
+    {
+        if(!m_isPlayButtonClicked)
+        {
+            m_isPlayButtonClicked = true;
+            ui->playButton->setIcon(QIcon(":/audioplayer/icons/pause-button.png"));
+            m_audioPlayer->play();
+        }
+        else
+        {
+            m_isPlayButtonClicked = false;
+            ui->playButton->setIcon(QIcon(":/audioplayer/icons/play-button.png"));
+            m_audioPlayer->pause();
+        }
+    }
+    else
+        QMainWindow::keyPressEvent(event);
+}
+
 
 /*Show Image*/
 void MainWindow::showEvent(QShowEvent *event)
@@ -2222,12 +2268,31 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionAbout_triggered()
 {
-    QMessageBox::information(this, tr("About"), tr("GameTree v0.1 By Max Zherebkov"));
+    QMessageBox::information(this, tr("About"), tr("GameTree v0.1.0.0 By Maxim Zherebkov\n\n\n"
+                                                   "Used Resources:\n"
+                                                   "Icons:\n"
+                                                   "From https://flaticon.com:\n"
+                                                   "\tTree, Setting by Freepik\n"
+                                                   "\tPlay, Pause, Playlist by Appzgear\n"
+                                                   "\tStop by Elegant Themes\n"
+                                                   "\tCheck by Maxim Basinski\n"
+                                                   "\tPrevious, Next by Alessio Atzeni\n"
+                                                   "From https://thenounproject.com:\n"
+                                                   "\tExit by JS\n"
+                                                   "\tAbout by Deemak Daksina\n"
+                                                   "\tHelp by i cons\n"
+                                                   "\tGamepad by mikicon\n"
+                                                   "\tHome by Smashicons\n"
+                                                   "Styles:\n"
+                                                   "From https://gitlab.com:\n"
+                                                   "\tCoffee by Sergei Galin\n"
+                                                   "From https://github.com:\n"
+                                                   "\tFlat by chenwen1126"));
+
 }
 
 void MainWindow::on_actionSettings_triggered()
 {
-    /*TEST*/
     OptionsDialog dialog;
 
 //    qDebug() << m_options.isFullscreen;
@@ -2272,11 +2337,14 @@ void MainWindow::on_actionSettings_triggered()
             this->setWindowState(Qt::WindowNoState);
         }
     }
-    /*TEST*/
 }
 void MainWindow::on_actionHelp_triggered()
 {
     HelpDialog dialog;
     dialog.exec();
+}
+void MainWindow::on_actionStart_Game_triggered()
+{
+    slotAdd();
 }
 /*Menu Actions*/

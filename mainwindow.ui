@@ -55,6 +55,9 @@
         </layout>
        </widget>
        <widget class="QTabWidget" name="tabWidget">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
           <string>Info</string>
@@ -122,7 +125,7 @@
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget1">
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout">
@@ -350,7 +353,7 @@
      <normaloff>:/menu/icons/Start.png</normaloff>:/menu/icons/Start.png</iconset>
    </property>
    <property name="text">
-    <string>Add Game</string>
+    <string>Add Game...</string>
    </property>
   </action>
   <action name="actionQuit">
@@ -363,6 +366,10 @@
    </property>
   </action>
   <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/menu/icons/settings.png</normaloff>:/menu/icons/settings.png</iconset>
+   </property>
    <property name="text">
     <string>Settings...</string>
    </property>

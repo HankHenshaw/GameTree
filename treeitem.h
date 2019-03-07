@@ -12,14 +12,13 @@ public:
 
     TreeItem *child(int number);
     int childCount() const;
-    QString data() const; // const QString& ???
+    QString data() const; // TODO: const QString& ???
     void insertChildren(TreeItem *item);
     TreeItem* parent();
     void setData(const QString &data);
     int childNumber() const;
     void removeChild(int row);
     const QList<TreeItem*>& getList() const;
-    //bool removeChildren(int position, int count);
 
 private:
     QList<TreeItem*> m_childItems;

@@ -30,7 +30,6 @@ public:
 
     TreeItem *getItem(const QModelIndex &index) const;
     TreeItem* getRoot() const;
-    void deleteElement(const QModelIndex &index);
 
 private:
     TreeItem *m_rootItem;

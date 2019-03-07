@@ -14,10 +14,26 @@
         <file>icons/About.png</file>
         <file>icons/Help.png</file>
         <file>icons/English128x86.png</file>
-        <file>icons/tree.png</file>
         <file>icons/tree_16.png</file>
         <file>icons/tree_24.png</file>
         <file>icons/tree_64.png</file>
-        <file>icons/checked.png</file>
+        <file>icons/tree_64.ico</file>
+        <file>icons/settings.png</file>
+        <file>icons/home.png</file>
+    </qresource>
+    <qresource prefix="/stylesicons">
+        <file>styleicons/checkbox.png</file>
+        <file>styleicons/checkbox_h.png</file>
+        <file>styleicons/checkbox_p.png</file>
+        <file>styleicons/checked.png</file>
+        <file>styleicons/downarrow.png</file>
+        <file>styleicons/hor_scroll_left_arrow.png</file>
+        <file>styleicons/hor_scroll_right_arrow.png</file>
+        <file>styleicons/radio.png</file>
+        <file>styleicons/radio_h.png</file>
+        <file>styleicons/radio_p.png</file>
+        <file>styleicons/sizegrip.png</file>
+        <file>styleicons/ver_scroll_bottom_arrow.png</file>
+        <file>styleicons/ver_scroll_top_arrow.png</file>
     </qresource>
 </RCC>

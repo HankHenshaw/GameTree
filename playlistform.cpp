@@ -23,7 +23,7 @@ void PlaylistForm::playlistClicked(QMediaPlayer *mp)
     QMediaPlaylist *list = mp->playlist();
     int listCount = list->mediaCount();
 
-    if(ui->listWidget->count() < listCount) //TODO: Костыль, надо подумать как переделать
+    if(ui->listWidget->count() < listCount)
     {
         ui->listWidget->clear();
         for(int i = 0; i < listCount; ++i)

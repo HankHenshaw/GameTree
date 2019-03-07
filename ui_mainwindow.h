@@ -129,6 +129,9 @@ public:
         actionQuit->setIcon(icon5);
         actionSettings = new QAction(MainWindow);
         actionSettings->setObjectName(QStringLiteral("actionSettings"));
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/menu/icons/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionSettings->setIcon(icon6);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout_4 = new QVBoxLayout(centralWidget);
@@ -348,6 +351,9 @@ public:
 
         retranslateUi(MainWindow);
 
+        tabWidget->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
@@ -361,7 +367,7 @@ public:
 #endif // QT_NO_SHORTCUT
         actionEnglish->setText(QApplication::translate("MainWindow", "English", Q_NULLPTR));
         actionRussian->setText(QApplication::translate("MainWindow", "Russian", Q_NULLPTR));
-        actionStart_Game->setText(QApplication::translate("MainWindow", "Add Game", Q_NULLPTR));
+        actionStart_Game->setText(QApplication::translate("MainWindow", "Add Game...", Q_NULLPTR));
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", Q_NULLPTR));
         actionSettings->setText(QApplication::translate("MainWindow", "Settings...", Q_NULLPTR));
         searchGameLine->setPlaceholderText(QApplication::translate("MainWindow", "Search...", Q_NULLPTR));

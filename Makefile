@@ -218,9 +218,9 @@ Makefile: GameTree.pro ../../5.9.2/mingw53_32/mkspecs/win32-g++/qmake.conf ../..
 		../../5.9.2/mingw53_32/mkspecs/features/resolve_config.prf \
 		../../5.9.2/mingw53_32/mkspecs/features/exclusive_builds_post.prf \
 		../../5.9.2/mingw53_32/mkspecs/features/default_post.prf \
+		../../5.9.2/mingw53_32/mkspecs/features/warn_on.prf \
 		../../5.9.2/mingw53_32/mkspecs/features/qml_debug.prf \
 		../../5.9.2/mingw53_32/mkspecs/features/precompile_header.prf \
-		../../5.9.2/mingw53_32/mkspecs/features/warn_on.prf \
 		../../5.9.2/mingw53_32/mkspecs/features/qt.prf \
 		../../5.9.2/mingw53_32/mkspecs/features/resources.prf \
 		../../5.9.2/mingw53_32/mkspecs/features/moc.prf \
@@ -400,9 +400,9 @@ Makefile: GameTree.pro ../../5.9.2/mingw53_32/mkspecs/win32-g++/qmake.conf ../..
 ../../5.9.2/mingw53_32/mkspecs/features/resolve_config.prf:
 ../../5.9.2/mingw53_32/mkspecs/features/exclusive_builds_post.prf:
 ../../5.9.2/mingw53_32/mkspecs/features/default_post.prf:
+../../5.9.2/mingw53_32/mkspecs/features/warn_on.prf:
 ../../5.9.2/mingw53_32/mkspecs/features/qml_debug.prf:
 ../../5.9.2/mingw53_32/mkspecs/features/precompile_header.prf:
-../../5.9.2/mingw53_32/mkspecs/features/warn_on.prf:
 ../../5.9.2/mingw53_32/mkspecs/features/qt.prf:
 ../../5.9.2/mingw53_32/mkspecs/features/resources.prf:
 ../../5.9.2/mingw53_32/mkspecs/features/moc.prf:

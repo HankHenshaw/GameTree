@@ -15,6 +15,7 @@ bool MyProgressBar::event(QEvent *ev)
             emit signalMousePressedPos(mEvent->pos());
         }
     }
-    QProgressBar::event(ev);
+    else
+        QProgressBar::event(ev);
     //TODO: Возвращаемое значение
 }

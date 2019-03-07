@@ -28,7 +28,6 @@ QString TreeItem::data() const
 
 void TreeItem::insertChildren(TreeItem *item)
 {
-    //TODO
     m_childItems.append(item);
 }
 

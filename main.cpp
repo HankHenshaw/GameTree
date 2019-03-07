@@ -10,15 +10,8 @@ void messageToFile(QtMsgType type, const QMessageLogContext &context, const QStr
 
 int main(int argc, char *argv[])
 {
-//    QApplication::setStyle(QStyleFactory::create("Fusion"));
-    //Windows
-    //WindowsXP
-    //WindowsVista
-    //Fusion
-    //Пустая строка - Default
     QApplication a(argc, argv);
     a.setWindowIcon(QIcon(":/menu/icons/tree_64.png"));
-    QApplication::setApplicationName("GameTree");
     {
 //#ifndef QT_DEBUG // Для записи в файл только во время отладки
 //    qInstallMessageHandler(messageToFile); // Чтобы вернуть старый хэндлер qInstallMessageHandler()

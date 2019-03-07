@@ -4,10 +4,6 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QPushButton>
-//TODO?: методы для получения данных из структуры
-//TODO: Подсказку в которой будет сказано, что некоторые игры(моды) запускаются через лаунчеры
-//TODO: Если введено имя и потом добалвяется путь, сделать что бы кнопка ок становилась активной
-//TODO: Сделать невозможным в качестве имени установить пробел
 
 struct ModInfo
 {
@@ -38,7 +34,7 @@ private slots:
 
 private:
     Ui::AddModDialog *ui;
-    ModInfo m_modinfo; // ptr?
+    ModInfo m_modinfo;
 };
 
 #endif // ADDMODDIALOG_H

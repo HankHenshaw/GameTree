@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>styles/Coffee.qss</file>
         <file>styles/Lime.qss</file>
+        <file>styles/Flat.qss</file>
     </qresource>
 </RCC>

@@ -1,13 +1,13 @@
 #include "argsdialog.h"
 #include "ui_argsdialog.h"
-//TODO: Подсказку, что в случае если аргументов нет, то игра запустится в обычном режиме
 //WARNING: Могут быть проблемы с аргументами в которых есть пробел
+
 ArgsDialog::ArgsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ArgsDialog)
 {
     ui->setupUi(this);
-    ui->labelArgs->setText(tr("Arguments"));
+    ui->labelArgs->setText(tr("Arguments:"));
     ui->lineEditArgs->setPlaceholderText(tr("Enter arguments here"));
 
     this->setWindowTitle(tr("Start With Arguments"));

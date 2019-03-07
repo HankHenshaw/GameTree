@@ -15,7 +15,7 @@ public:
     explicit ArgsDialog(QWidget *parent = nullptr);
     ~ArgsDialog();
 
-    const QStringList& getList() const; // const QStringList& ???
+    const QStringList& getList() const;
 private slots:
     void on_buttonBox_accepted();
 

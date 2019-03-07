@@ -7,7 +7,7 @@ EditModDialog::EditModDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->labelName->setText(tr("Mod Name:"));
-    ui->labelPath->setText(tr("Path to .exe"));
+    ui->labelPath->setText(tr("Path to .exe:"));
     ui->lineEditName->setPlaceholderText(tr("Enter mod name here"));
     ui->lineEditPath->setPlaceholderText(tr("Choose path here"));
 }

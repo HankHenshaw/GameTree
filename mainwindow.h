@@ -21,6 +21,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QTimer>
+#include <QDesktopServices>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
@@ -56,6 +57,7 @@ protected:
     virtual void showEvent(QShowEvent *event) override;
     virtual void closeEvent(QCloseEvent *event) override;
     virtual void resizeEvent(QResizeEvent *event) override;
+    virtual void keyPressEvent(QKeyEvent *event) override;
 
 private slots:
     /*Audio Player Slots*/
@@ -89,6 +91,10 @@ private slots:
     void slotStartModWithParameters();
     void slotAdd();
     void slotAddMod();
+    void slotOpenGameDir();
+    void slotOpenModDir();
+    void slotOpenProgramGameDir();
+    void slotOpenProgramModDir();
     /*Context Menu Slots*/
 
     /*Button slots*/
@@ -127,6 +133,8 @@ private slots:
     void on_actionSettings_triggered();
     void on_actionHelp_triggered();
     /*Menu Actions*/
+    void on_actionStart_Game_triggered();
+
 private:
     Ui::MainWindow *ui;
 
@@ -151,7 +159,7 @@ private:
     void audioPlayerInit();
     QString msecsToString(qint64 n);
 
-    PlaylistForm *m_playlistForm;
+    PlaylistForm m_playlistForm;
 
     bool m_isPlayButtonClicked;
     /*Audio Player*/
