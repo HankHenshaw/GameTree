@@ -22,6 +22,7 @@
 #include <QGraphicsPixmapItem>
 #include <QTimer>
 #include <QDesktopServices>
+#include <QDesktopWidget>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
@@ -132,9 +133,8 @@ private slots:
     void on_actionAbout_triggered();
     void on_actionSettings_triggered();
     void on_actionHelp_triggered();
-    /*Menu Actions*/
     void on_actionStart_Game_triggered();
-
+    /*Menu Actions*/
 private:
     Ui::MainWindow *ui;
 

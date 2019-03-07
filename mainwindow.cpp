@@ -9,7 +9,7 @@
 //TODO: Доделать перевод
 //TODO: Подчистить код, он не нужных строк
 //WARNING: Обнуление лога после каждого запуска
-//TODO: Сохранять фулскрин и размеры других окон
+//TODO: Подчистить файл стиля flat
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -116,6 +116,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_coversSlideshowTimer, &QTimer::timeout, this, &MainWindow::slotCoversSlideshowStart);
     connect(m_mediaSlideshowTimer, &QTimer::timeout, this, &MainWindow::slotMediaSlideshowStart);
     /*Timer*/
+
+    if(m_options.isFullscreen)
+        this->setWindowState(Qt::WindowMaximized);
 }
 
 MainWindow::~MainWindow()
@@ -141,7 +144,7 @@ void MainWindow::loadSettings()
     qDebug() << "Load settings";
 
     m_settings->beginGroup(objectName());
-    this->setGeometry(m_settings->value("Geometry", QRect(100, 100, 800, 640)).toRect());
+    this->setGeometry(m_settings->value("Geometry", QRect(static_cast<int>(qApp->desktop()->screenGeometry().width()*0.5) - 400, static_cast<int>(qApp->desktop()->screenGeometry().height()*0.5) - 320, 800, 640)).toRect());
     ui->splitterVertical->restoreState(m_settings->value("Vertical Splitter").toByteArray());
     ui->splitterHorizontal->restoreState(m_settings->value("Horizontal Splitter").toByteArray());
     ui->splitterVerticalInfo->restoreState(m_settings->value("Vertical Info Splitter").toByteArray());
@@ -149,10 +152,6 @@ void MainWindow::loadSettings()
     m_settings->endGroup();
 
     m_settings->beginGroup("Options");
-    if(m_settings->value("Fullscreen").toBool())
-    {
-        showMaximized();
-    }
     m_options.isFullscreen = m_settings->value("Fullscreen").toBool();
     m_options.isCoverSlideshowEnabled = m_settings->value("Covers Slideshow").toBool();
     m_options.coverSlideshowRate = m_settings->value("Covers Slideshow Rate").toInt();
@@ -169,14 +168,6 @@ void MainWindow::saveSettings()
 {
     qDebug() << "Save settings";
 
-    m_settings->beginGroup(objectName());
-    m_settings->setValue("Geometry", geometry());
-    m_settings->setValue("Vertical Splitter", ui->splitterVertical->saveState());
-    m_settings->setValue("Horizontal Splitter", ui->splitterHorizontal->saveState());
-    m_settings->setValue("Vertical Info Splitter", ui->splitterVerticalInfo->saveState());
-    m_settings->setValue("Horizontal Info Splitter", ui->splitterHorizontalInfo->saveState());
-    m_settings->endGroup();
-
     m_settings->beginGroup("Options");
     m_settings->setValue("Fullscreen", m_options.isFullscreen);
     m_settings->setValue("Covers Slideshow", m_options.isCoverSlideshowEnabled);
@@ -185,6 +176,21 @@ void MainWindow::saveSettings()
     m_settings->setValue("Media Slideshow Rate", m_options.mediaSlideshowRate);
     m_settings->setValue("Style Number", m_options.styleNumber);
     m_settings->endGroup();
+
+    m_settings->beginGroup(objectName());
+    if(m_options.isFullscreen)
+    {
+        this->setGeometry(m_settings->value("Geometry", QRect(static_cast<int>(qApp->desktop()->screenGeometry().width()*0.5) - 400, static_cast<int>(qApp->desktop()->screenGeometry().height()*0.5) - 320, 800, 640)).toRect());
+    }
+    else
+        m_settings->setValue("Geometry", geometry());
+    m_settings->setValue("Vertical Splitter", ui->splitterVertical->saveState());
+    m_settings->setValue("Horizontal Splitter", ui->splitterHorizontal->saveState());
+    m_settings->setValue("Vertical Info Splitter", ui->splitterVerticalInfo->saveState());
+    m_settings->setValue("Horizontal Info Splitter", ui->splitterHorizontalInfo->saveState());
+    m_settings->endGroup();
+
+
 }
 /*Settings*/
 
@@ -387,11 +393,13 @@ void MainWindow::changeEvent(QEvent *event)
 
         if(this->isMaximized())
         {
+            m_options.isFullscreen = true;
             ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
             ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
         }
         else
         {
+            m_options.isFullscreen = false;
             ui->coversView->fitInView(m_coverScene->itemsBoundingRect(), Qt::KeepAspectRatio);
             ui->mediaView->fitInView(m_mediaScene->itemsBoundingRect(), Qt::KeepAspectRatio);
         }
