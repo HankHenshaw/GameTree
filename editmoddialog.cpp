@@ -63,5 +63,9 @@ void EditModDialog::on_lineEditName_textChanged(const QString &arg1)
             else
                 ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
         }
+        else
+        {
+            ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
+        }
     }
 }

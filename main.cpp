@@ -32,6 +32,13 @@ void messageToFile(QtMsgType type, const QMessageLogContext &context, const QStr
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) // Убрать Append?
         return;
 
+    static int count = 0;
+    if(count == 0)
+    {
+        file.resize(0);
+    }
+    ++count;
+
     QString strDate = QDateTime::currentDateTime().toString("dd.MM.yy-hh:mm");
 
     QTextStream stream(&file);

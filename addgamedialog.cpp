@@ -68,5 +68,13 @@ void AddGameDialog::on_lineEditPath_textChanged(const QString &arg1)
             else
                 ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
         }
+        else
+        {
+            ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
+        }
+    }
+    else
+    {
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
     }
 }

@@ -1,97 +1,19 @@
-08.03.19-02:02 Info: "GameTree", main.cpp
-08.03.19-02:02 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:02 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:02 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:02 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:02 Debug: Load settings, mainwindow.cpp
-08.03.19-02:02 Debug: Save settings, mainwindow.cpp
-08.03.19-02:02 Info: "GameTree", main.cpp
-08.03.19-02:02 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:02 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:02 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:02 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:02 Debug: Load settings, mainwindow.cpp
-08.03.19-02:02 Debug: Save settings, mainwindow.cpp
-08.03.19-02:16 Info: "GameTree", main.cpp
-08.03.19-02:16 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:16 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:16 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:16 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:16 Debug: Load settings, mainwindow.cpp
-08.03.19-02:16 Debug: Save settings, mainwindow.cpp
-08.03.19-02:16 Info: "GameTree", main.cpp
-08.03.19-02:16 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:16 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:16 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:16 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:16 Debug: Load settings, mainwindow.cpp
-08.03.19-02:17 Warning: setGeometry: Unable to set geometry 261x175+666+361 on QWidgetWindow/'OptionsDialogWindow'. Resulting geometry:  269x179+666+361 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 269x179, maximum size: 16777215x16777215)., qwindowswindow.cpp
-08.03.19-02:17 Debug: Save settings, mainwindow.cpp
-08.03.19-02:17 Info: "GameTree", main.cpp
-08.03.19-02:17 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:17 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:17 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:17 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:17 Debug: Load settings, mainwindow.cpp
-08.03.19-02:17 Warning: setGeometry: Unable to set geometry 261x175+666+361 on QWidgetWindow/'OptionsDialogWindow'. Resulting geometry:  269x179+666+361 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 269x179, maximum size: 16777215x16777215)., qwindowswindow.cpp
-08.03.19-02:17 Debug: Save settings, mainwindow.cpp
-08.03.19-02:17 Info: "GameTree", main.cpp
-08.03.19-02:17 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:17 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:17 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:17 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:17 Debug: Load settings, mainwindow.cpp
-08.03.19-02:17 Warning: setGeometry: Unable to set geometry 261x175+666+361 on QWidgetWindow/'OptionsDialogWindow'. Resulting geometry:  269x179+666+361 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 269x179, maximum size: 16777215x16777215)., qwindowswindow.cpp
-08.03.19-02:17 Debug: Save settings, mainwindow.cpp
-08.03.19-02:17 Info: "GameTree", main.cpp
-08.03.19-02:17 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:17 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:17 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:17 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:17 Debug: Load settings, mainwindow.cpp
-08.03.19-02:17 Warning: setGeometry: Unable to set geometry 261x175+666+361 on QWidgetWindow/'OptionsDialogWindow'. Resulting geometry:  269x179+666+361 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 269x179, maximum size: 16777215x16777215)., qwindowswindow.cpp
-08.03.19-02:18 Debug: Save settings, mainwindow.cpp
-08.03.19-02:19 Info: "GameTree", main.cpp
-08.03.19-02:19 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:19 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:19 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:19 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:19 Debug: Load settings, mainwindow.cpp
-08.03.19-02:19 Debug: Save settings, mainwindow.cpp
-08.03.19-02:19 Info: "GameTree", main.cpp
-08.03.19-02:19 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:19 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:19 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:19 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:19 Debug: Load settings, mainwindow.cpp
-08.03.19-02:19 Debug: Save settings, mainwindow.cpp
-08.03.19-02:19 Info: "GameTree", main.cpp
-08.03.19-02:19 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:19 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:19 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:19 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:19 Debug: Load settings, mainwindow.cpp
-08.03.19-02:19 Warning: setGeometry: Unable to set geometry 261x175+666+361 on QWidgetWindow/'OptionsDialogWindow'. Resulting geometry:  269x179+666+361 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 269x179, maximum size: 16777215x16777215)., qwindowswindow.cpp
-08.03.19-02:19 Debug: Save settings, mainwindow.cpp
-08.03.19-02:22 Info: "GameTree", main.cpp
-08.03.19-02:22 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:22 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:22 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:22 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:22 Debug: Load settings, mainwindow.cpp
-08.03.19-02:22 Debug: Save settings, mainwindow.cpp
-08.03.19-02:22 Info: "GameTree", main.cpp
-08.03.19-02:22 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:22 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:22 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:22 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:22 Debug: Load settings, mainwindow.cpp
-08.03.19-02:22 Warning: setGeometry: Unable to set geometry 261x175+666+361 on QWidgetWindow/'OptionsDialogWindow'. Resulting geometry:  269x179+666+361 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 269x179, maximum size: 16777215x16777215)., qwindowswindow.cpp
-08.03.19-02:22 Debug: Save settings, mainwindow.cpp
-08.03.19-02:22 Info: "GameTree", main.cpp
-08.03.19-02:22 Info: Audioplayer initialization, mainwindow.cpp
-08.03.19-02:22 Info: Get Data From DB, mainwindow.cpp
-08.03.19-02:22 Debug: DB Connected, mainwindow.cpp
-08.03.19-02:22 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
-08.03.19-02:22 Debug: Load settings, mainwindow.cpp
-08.03.19-02:22 Debug: Save settings, mainwindow.cpp
+08.03.19-15:15 Info: "GameTree", main.cpp
+08.03.19-15:15 Info: Audioplayer initialization, mainwindow.cpp
+08.03.19-15:15 Info: Get Data From DB, mainwindow.cpp
+08.03.19-15:15 Debug: DB Connected, mainwindow.cpp
+08.03.19-15:15 Debug: "C:/Qt/project/GameTree", mainwindow.cpp
+08.03.19-15:15 Debug: Load settings, mainwindow.cpp
+08.03.19-15:15 Warning: setGeometry: Unable to set geometry 265x179+666+361 on QWidgetWindow/'OptionsDialogWindow'. Resulting geometry:  269x179+666+361 (frame: 8, 30, 8, 8, custom margin: 0, 0, 0, 0, minimum size: 269x179, maximum size: 16777215x16777215)., qwindowswindow.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Warning: libpng warning: iCCP: known incorrect sRGB profile, image\qpnghandler.cpp
+08.03.19-15:15 Debug: Save settings, mainwindow.cpp

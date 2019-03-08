@@ -6,10 +6,7 @@
 ///TODO: То что надо сделать
 ///OFF: Закоммент. нерабочии участки кода
 
-//TODO: Доделать перевод
 //TODO: Подчистить код, он не нужных строк
-//WARNING: Обнуление лога после каждого запуска
-//TODO: Подчистить файл стиля flat
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -119,6 +116,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if(m_options.isFullscreen)
         this->setWindowState(Qt::WindowMaximized);
+
+    ui->tabWidget->setTabEnabled(1, false);
 }
 
 MainWindow::~MainWindow()
@@ -369,6 +368,7 @@ void MainWindow::changeEvent(QEvent *event)
         ui->buttonStart->setText(tr("Start"));
         ui->buttonRemove->setText(tr("Remove"));
         ui->searchGameLine->setPlaceholderText(tr("Search..."));
+        ui->tabWidget->setTabText(0, tr("Info"));
     }
     else if(event->type() == QEvent::WindowStateChange)
     {
@@ -2276,7 +2276,7 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionAbout_triggered()
 {
-    QMessageBox::information(this, tr("About"), tr("GameTree v0.1.0.0 By Maxim Zherebkov\n\n\n"
+    QMessageBox::information(this, tr("About"), tr("GameTree v0.1.0.0 \u00A9 2018-2019 Maxim Zherebkov\n\n\n"
                                                    "Used Resources:\n"
                                                    "Icons:\n"
                                                    "From https://flaticon.com:\n"
