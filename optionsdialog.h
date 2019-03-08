@@ -20,6 +20,7 @@ struct Setting
     int coverSlideshowRate;
     int mediaSlideshowRate;
     int styleNumber;
+    QString language;
 };
 
 class OptionsDialog : public QDialog

@@ -1,9 +1,5 @@
 #include "playlistform.h"
 #include "ui_playlistform.h"
-//TODO: Delete Item
-//TODO: DropItem
-//TODO: Get MetaData
-//TODO: TableWidget/View
 
 PlaylistForm::PlaylistForm(QWidget *parent) :
     QWidget(parent),

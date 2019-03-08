@@ -22,7 +22,6 @@ TreeModel::TreeModel(QMap<QChar, int> &lettersList, QMap<QString, QSet<QString> 
     {
         //Добавляем буквы (0 уровень вложенности, если не считать корень)
         parents.last()->insertChildren(new TreeItem(lettersBeginIterator.key()));
-        //parents.last()->insertChildren(new TreeItem(lettersBeginIterator.key(), parents.last()));
 
         //Получаем кол-во игр в данной секции
         int numberOfParticularGames = lettersBeginIterator.value();
@@ -33,7 +32,7 @@ TreeModel::TreeModel(QMap<QChar, int> &lettersList, QMap<QString, QSet<QString> 
         //Позиция родителя 1 ур-ня вложенности(подродителя)
         int subParentNumber = 0;
 
-        while(counterOfGames < numberOfParticularGames) // Решить что лучше цикл по списку(мар) игр или по кол-ву
+        while(counterOfGames < numberOfParticularGames)
         {
             //Итераторы по подпозициям в зависимости от позиции
             QSet<QString>::iterator subGamesBeginIterator = gamesBeginIterator.value().begin();
@@ -190,7 +189,6 @@ bool TreeModel::removeRows(int row, int count, const QModelIndex &parent)
 
     for(int parentsCount = 0; parentsCount < parentsAmount; ++parentsCount)
     {
-        //QString childData = m_rootItem->child(parentsCount)->data();
         if(m_rootItem->child(parentsCount)->data() == itemData)
         {
             qDebug() << "Match!";

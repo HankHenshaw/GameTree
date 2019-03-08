@@ -36,7 +36,7 @@ void EditModDialog::on_buttonBox_accepted()
 
 void EditModDialog::on_lineEditPath_textChanged(const QString &arg1)
 {
-    Q_UNUSED(arg1); //Что за arg1??
+    Q_UNUSED(arg1);
     if(ui->lineEditName->text().isEmpty())
         ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
     else
@@ -52,12 +52,11 @@ void EditModDialog::on_lineEditPath_textChanged(const QString &arg1)
 
 void EditModDialog::on_lineEditName_textChanged(const QString &arg1)
 {
-    Q_UNUSED(arg1);//Что за arg1??
+    Q_UNUSED(arg1);
     if(!ui->lineEditPath->text().isEmpty())
     {
         if(!ui->lineEditName->text().isEmpty())
         {
-//            if(!ui->buttonBox->button(QDialogButtonBox::Ok)->isEnabled())
             if(ui->lineEditName->text().startsWith(" "))
                 ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
             else

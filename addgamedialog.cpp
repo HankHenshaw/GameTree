@@ -1,6 +1,5 @@
 #include "addgamedialog.h"
 #include "ui_addgamedialog.h"
-#include <QDebug> // Потом убрать?
 
 AddGameDialog::AddGameDialog(QWidget *parent) :
     QDialog(parent),
@@ -41,7 +40,7 @@ void AddGameDialog::on_buttonBox_accepted()
 
 void AddGameDialog::on_lineEditName_textChanged(const QString &arg1)
 {
-    Q_UNUSED(arg1); //Что за arg1??
+    Q_UNUSED(arg1);
     if(ui->lineEditName->text().isEmpty())
         ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
     else
@@ -57,12 +56,11 @@ void AddGameDialog::on_lineEditName_textChanged(const QString &arg1)
 
 void AddGameDialog::on_lineEditPath_textChanged(const QString &arg1)
 {
-    Q_UNUSED(arg1);//Что за arg1??
+    Q_UNUSED(arg1);
     if(!ui->lineEditPath->text().isEmpty())
     {
         if(!ui->lineEditName->text().isEmpty())
         {
-//            if(!ui->buttonBox->button(QDialogButtonBox::Ok)->isEnabled())
             if(ui->lineEditName->text().startsWith(" "))
                 ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
             else

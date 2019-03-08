@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QPushButton>
+#include <QDebug>
 
 struct GameInfo
 {

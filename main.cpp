@@ -12,12 +12,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     a.setWindowIcon(QIcon(":/menu/icons/tree_64.png"));
-    {
-//#ifndef QT_DEBUG // Для записи в файл только во время отладки
-//    qInstallMessageHandler(messageToFile); // Чтобы вернуть старый хэндлер qInstallMessageHandler()
-//#endif
-    qInstallMessageHandler(messageToFile); // Чтобы вернуть старый хэндлер qInstallMessageHandler()
-    }
+    qInstallMessageHandler(messageToFile);
     qInfo() << QApplication::applicationName();
     MainWindow w;
     w.show();
@@ -29,7 +24,7 @@ void messageToFile(QtMsgType type, const QMessageLogContext &context, const QStr
 {
     QString path = MainWindow::appPath() + '\\';
     QFile file(path + "log.log");
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) // Убрать Append?
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
         return;
 
     static int count = 0;
