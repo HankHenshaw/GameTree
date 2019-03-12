@@ -38,7 +38,8 @@ SOURCES += \
     playlistform.cpp \
     myproxymodel.cpp \
     optionsdialog.cpp \
-    helpdialog.cpp
+    helpdialog.cpp \
+    mytreeview.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -53,7 +54,8 @@ HEADERS += \
     playlistform.h \
     myproxymodel.h \
     optionsdialog.h \
-    helpdialog.h
+    helpdialog.h \
+    mytreeview.h
 
 FORMS += \
         mainwindow.ui \
@@ -80,7 +82,7 @@ RESOURCES += \
     styles.qrc \
     help.qrc
 
-VERSION = 0.1.0.0
+VERSION = 0.1.0.1
 QMAKE_TARGET_PRODUCT = Game Tree
 QMAKE_TARGET_COPYRIGHT = Zherebkov Maxim
 

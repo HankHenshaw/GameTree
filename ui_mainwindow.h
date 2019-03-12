@@ -29,10 +29,10 @@
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolButton>
-#include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "myprogressbar.h"
+#include "mytreeview.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -53,7 +53,7 @@ public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLineEdit *searchGameLine;
-    QTreeView *treeView;
+    MyTreeView *treeView;
     QTabWidget *tabWidget;
     QWidget *tab;
     QVBoxLayout *verticalLayout_3;
@@ -161,7 +161,7 @@ public:
 
         verticalLayout_2->addWidget(searchGameLine);
 
-        treeView = new QTreeView(layoutWidget);
+        treeView = new MyTreeView(layoutWidget);
         treeView->setObjectName(QStringLiteral("treeView"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
@@ -397,3 +397,4 @@ namespace Ui {
 QT_END_NAMESPACE
 
 #endif // UI_MAINWINDOW_H
+

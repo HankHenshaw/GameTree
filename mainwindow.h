@@ -23,6 +23,7 @@
 #include <QTimer>
 #include <QDesktopServices>
 #include <QDesktopWidget>
+#include <QMimeData>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
@@ -33,6 +34,7 @@
 #include "myproxymodel.h"
 #include "optionsdialog.h"
 #include "helpdialog.h"
+#include "mytreeview.h"
 
 namespace Ui {
 class MainWindow;
@@ -59,6 +61,8 @@ protected:
     virtual void closeEvent(QCloseEvent *event) override;
     virtual void resizeEvent(QResizeEvent *event) override;
     virtual void keyPressEvent(QKeyEvent *event) override;
+    virtual void dragEnterEvent(QDragEnterEvent *event) override;
+    virtual void dropEvent(QDropEvent *event) override;
 
 private slots:
     /*Audio Player Slots*/
@@ -135,6 +139,11 @@ private slots:
     void on_actionHelp_triggered();
     void on_actionStart_Game_triggered();
     /*Menu Actions*/
+
+    /*Tree View Key Event*/
+    void slotKeyDelete();
+    void slotKeyEnter();
+    /*Tree View Key Event*/
 private:
     Ui::MainWindow *ui;
 

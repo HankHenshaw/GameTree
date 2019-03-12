@@ -6,9 +6,6 @@
 ///TODO: То что надо сделать
 ///OFF: Закоммент. нерабочии участки кода
 
-//TODO: Подчистить код, он не нужных строк
-//TODO: Сохранение настройки языка
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -124,6 +121,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Установка языка перевода
     this->changeLanguage(m_options.language);
+
+    //Устанавливаем возможность передаскивания файлов
+    setAcceptDrops(true);
+
+    //Соединяем сигналы My Tree View, со слотами для обработки нажатия Enter и Delete
+    connect(ui->treeView, &MyTreeView::signalKeyEnter, this, &MainWindow::slotKeyEnter);
+    connect(ui->treeView, &MyTreeView::signalKeyDelete, this, &MainWindow::slotKeyDelete);
 }
 
 MainWindow::~MainWindow()
@@ -145,16 +149,15 @@ const QString MainWindow::appPath()
 /*Settings*/
 void MainWindow::loadSettings()
 {
-    //setGeometry(m_settings->value("Geometry", QRect(100, 100, 800, 640)).toRect());
     qDebug() << "Load settings";
 
-    m_settings->beginGroup(objectName());
-    this->setGeometry(m_settings->value("Geometry", QRect(static_cast<int>(qApp->desktop()->screenGeometry().width()*0.5) - 400, static_cast<int>(qApp->desktop()->screenGeometry().height()*0.5) - 320, 800, 640)).toRect());
-    ui->splitterVertical->restoreState(m_settings->value("Vertical Splitter").toByteArray());
-    ui->splitterHorizontal->restoreState(m_settings->value("Horizontal Splitter").toByteArray());
-    ui->splitterVerticalInfo->restoreState(m_settings->value("Vertical Info Splitter").toByteArray());
-    ui->splitterHorizontalInfo->restoreState(m_settings->value("Horizontal Info Splitter").toByteArray());
-    m_settings->endGroup();
+//    m_settings->beginGroup(objectName());
+//    this->setGeometry(m_settings->value("Geometry", QRect(static_cast<int>(qApp->desktop()->screenGeometry().width()*0.5) - 400, static_cast<int>(qApp->desktop()->screenGeometry().height()*0.5) - 320, 800, 640)).toRect());
+//    ui->splitterVertical->restoreState(m_settings->value("Vertical Splitter").toByteArray());
+//    ui->splitterHorizontal->restoreState(m_settings->value("Horizontal Splitter").toByteArray());
+//    ui->splitterVerticalInfo->restoreState(m_settings->value("Vertical Info Splitter").toByteArray());
+//    ui->splitterHorizontalInfo->restoreState(m_settings->value("Horizontal Info Splitter").toByteArray());
+//    m_settings->endGroup();
 
     m_settings->beginGroup("Options");
     m_options.isFullscreen = m_settings->value("Fullscreen").toBool();
@@ -164,6 +167,14 @@ void MainWindow::loadSettings()
     m_options.mediaSlideshowRate = m_settings->value("Media Slideshow Rate").toInt();
     m_options.styleNumber = m_settings->value("Style Number").toInt();
     m_options.language = m_settings->value("Language").toString();
+    m_settings->endGroup();
+
+    m_settings->beginGroup(objectName());
+    this->setGeometry(m_settings->value("Geometry", QRect(static_cast<int>(qApp->desktop()->screenGeometry().width()*0.5) - 400, static_cast<int>(qApp->desktop()->screenGeometry().height()*0.5) - 320, 800, 640)).toRect());
+    ui->splitterVertical->restoreState(m_settings->value("Vertical Splitter").toByteArray());
+    ui->splitterHorizontal->restoreState(m_settings->value("Horizontal Splitter").toByteArray());
+    ui->splitterVerticalInfo->restoreState(m_settings->value("Vertical Info Splitter").toByteArray());
+    ui->splitterHorizontalInfo->restoreState(m_settings->value("Horizontal Info Splitter").toByteArray());
     m_settings->endGroup();
 
     OptionsDialog dialog;
@@ -1190,6 +1201,7 @@ void MainWindow::slotEditMod()
 
 void MainWindow::slotStart()
 {
+    qDebug() << "Slot Start!";
     //WARNING: Проблема такого запуска игр, в том, что будет если ехе находится на большей вложенности
 
     //Получаем имя игры
@@ -1202,6 +1214,8 @@ void MainWindow::slotStart()
     queryPath.next();
     QString path = queryPath.value(0).toString();
 
+    qDebug() << "Path: " << path;
+
     qDebug() << "Start Game:" << gameName << "From:" << path;
 
     //Устанавливаем путь до папки где расположен ехе
@@ -1209,9 +1223,17 @@ void MainWindow::slotStart()
     dir.cdUp();
     QDir::setCurrent(dir.path());
 
+    qDebug() << "Current Path:" << QDir::currentPath();
+
     //Запускаем .ехе
     QFileInfo pathToExe(path);
-    QProcess::startDetached(pathToExe.fileName());
+    qDebug() << "Path To .exe: " << pathToExe.fileName();
+
+//    QProcess::startDetached(pathToExe.fileName()); // Старый запуск
+
+    QString execute = "start \"\" \"" + pathToExe.fileName() + '\"';
+    qDebug() << "Execute string: " << execute;
+    system(execute.toStdString().c_str());
 }
 
 void MainWindow::slotStartWithParameters()
@@ -1232,15 +1254,30 @@ void MainWindow::slotStartWithParameters()
         queryPath.next();
         QString path = queryPath.value(0).toString();
 
+        qDebug() << "Path: " << path;
+
         //Устанавливаем путь до папки где расположен ехе
         QDir dir(path);
         dir.cdUp();
 
         QDir::setCurrent(dir.path());
 
+        qDebug() << "Current Path:" << QDir::currentPath();
+
         //Запускаем .ехе
         QFileInfo pathToExe(path);
-        QProcess::startDetached(pathToExe.fileName());
+        qDebug() << "Path To .exe: " << pathToExe.fileName();
+//        QProcess::startDetached(pathToExe.fileName()); // Старый запуск
+
+        QString execute = "start \"\" \"" + pathToExe.fileName() + "\" ";
+        QStringList argsList = dialog.getList();
+        foreach(QString arg, argsList)
+        {
+            execute.append(" ");
+            execute.append(arg);
+        }
+        qDebug() << "Execute string: " << execute;
+        system(execute.toStdString().c_str());
     }
 }
 
@@ -1272,8 +1309,14 @@ void MainWindow::slotStartMod()
     dir.cdUp();
     QDir::setCurrent(dir.path());
 
+    qDebug() << "Current Path:" << QDir::currentPath();
+
     QFileInfo pathToExe(path);
-    QProcess::startDetached(pathToExe.fileName());
+//    QProcess::startDetached(pathToExe.fileName()); Старый запуск
+
+    QString execute = "start \"\" \"" + pathToExe.fileName() + '\"';
+    qDebug() << "Execute string: " << execute;
+    system(execute.toStdString().c_str());
 }
 
 void MainWindow::slotStartModWithParameters()
@@ -1304,9 +1347,21 @@ void MainWindow::slotStartModWithParameters()
         dir.cdUp();
         QDir::setCurrent(dir.path());
 
+        qDebug() << "Current Path:" << QDir::currentPath();
+
         //Запускаем .ехе
         QFileInfo pathToExe(path);
-        QProcess::startDetached(pathToExe.fileName());
+//        QProcess::startDetached(pathToExe.fileName()); // Старый запуск
+
+        QString execute = "start \"\" \"" + pathToExe.fileName() + "\" ";
+        QStringList argsList = dialog.getList();
+        foreach(QString arg, argsList)
+        {
+            execute.append(" ");
+            execute.append(arg);
+        }
+        qDebug() << "Execute string: " << execute;
+        system(execute.toStdString().c_str());
     }
 }
 
@@ -1973,6 +2028,131 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         QMainWindow::keyPressEvent(event);
 }
 
+/*Drag & Drop*/
+void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+{
+    if(event->mimeData()->hasFormat("text/uri-list"))
+    {
+        event->acceptProposedAction();
+    }
+}
+
+void MainWindow::dropEvent(QDropEvent *event)
+{
+    QList<QUrl> urlList = event->mimeData()->urls();
+    foreach(QUrl url, urlList)
+    {
+        if(url.toString().endsWith(".exe") || url.toString().endsWith(".lnk"))
+        {
+            qDebug() << "Link:" << url;
+            QFileInfo info(url.toString());
+            QString gameName = info.baseName();
+            QFile file(url.toLocalFile());
+            qDebug() << "File:" << file.readLink();
+            qDebug() << info.suffix();
+            QString path;
+            if(info.suffix() == "lnk") //Если ссылка, то получаем путь куда ссылается
+                 path = file.readLink();
+            else if(info.suffix() == "exe") //Если .ехе, просто получаем путь
+                 path = url.toLocalFile();
+            else
+                return;
+
+            //Переводим первую букву в верхний регистр
+            gameName.replace(0, 1, gameName.at(0).toUpper());
+
+            //Ищем букву
+            int i = 0;
+            bool isFound = false;
+            for(; i < m_model->getRoot()->childCount(); ++i)
+            {
+                if(m_model->getRoot()->child(i)->data() == gameName.at(0))
+                {
+                    isFound = true;
+                    break;
+                }
+            }
+
+            //Если буква найдена
+            if(isFound)
+            {
+                qDebug() << "Letter found";
+
+                //Получаем индекс родителя(буквы)
+                QModelIndex parent = m_model->index(i, 0);
+
+                //Получаем номер новой строки
+                int newRowNumber = m_model->getRoot()->child(i)->childCount();
+
+                //Добавляем строку
+                m_proxy->insertRow(newRowNumber, m_proxy->mapFromSource(parent));
+
+                //Получаем индекс новой строки
+                QModelIndex newIdx = m_model->index(newRowNumber, 0, parent);
+
+                //Устанавливаем данные в новой строке
+                m_proxy->setData(newIdx, gameName);
+
+                //Создаем папки игры и т.д
+                QString pathToLetter = m_dir.path() + '/' + gameName.at(0);
+                QDir dir(pathToLetter);
+                QString pathToGame = pathToLetter + '/' + gameName + '/';
+                dir.mkdir(gameName);
+                dir.setPath(pathToGame);
+                dir.mkpath("music/covers");
+                dir.mkpath("image/covers");
+                dir.mkpath("image/screenshots");
+                dir.mkdir("video");
+                dir.mkdir("mods");
+
+                //Добавляем в БД
+                QString strInsert("INSERT INTO Games(Title, Path) VALUES ('" + gameName + "', '" + path + "');");
+                QSqlQuery queryInsert;
+                queryInsert.exec(strInsert);
+            }
+            else //Если нет
+            {
+                qDebug() << "Letter not found";
+
+                //Добавляем строку
+                int newRowNumber = m_model->getRoot()->childCount();
+                m_proxy->insertRow(newRowNumber);
+
+                //Получаем индекс добавленной строки
+                QModelIndex newRowIdx = m_model->index(newRowNumber, 0);
+
+                //Переименовываем пустую строку
+                m_proxy->setData(newRowIdx, gameName.at(0));
+
+                /*Добавляем игру*/
+                //Добавляем строку
+                m_proxy->insertRow(0, m_proxy->mapFromSource(newRowIdx));
+
+                //Получаем индекс на вставленную строку
+                QModelIndex newGameIdx = m_model->index(0, 0, newRowIdx);
+
+                //Устанавливаем данные в этой строке
+                m_proxy->setData(newGameIdx, gameName);
+
+                //Создаем папки буквы/игры и т.д
+                QString pathToGame = m_dir.path() + '/' + gameName.at(0) + '/' + gameName + '/';
+                m_dir.mkpath(pathToGame);
+                QDir dir(pathToGame);
+                dir.mkpath("music/covers");
+                dir.mkpath("image/covers");
+                dir.mkpath("image/screenshots");
+                dir.mkdir("video");
+                dir.mkdir("mods");
+
+                //Добавляем запись в БД
+                QString strInsert("INSERT INTO Games(Title, Path) VALUES ('" + gameName + "', '" + path + "');");
+                QSqlQuery queryInsert;
+                queryInsert.exec(strInsert);
+            }
+        }
+    }
+}
+/*Drag & Drop*/
 
 /*Show Image*/
 void MainWindow::showEvent(QShowEvent *event)
@@ -2055,7 +2235,7 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionAbout_triggered()
 {
-    QMessageBox::information(this, tr("About"), tr("GameTree v0.1.0.0 \u00A9 2018-2019 Maxim Zherebkov\n\n\n"
+    QMessageBox::information(this, tr("About"), tr("GameTree v0.1.0.1 \u00A9 2018-2019 Maxim Zherebkov\n\n\n"
                                                    "Used Resources:\n"
                                                    "Icons:\n"
                                                    "From https://flaticon.com:\n"
@@ -2129,3 +2309,17 @@ void MainWindow::on_actionStart_Game_triggered()
     slotAdd();
 }
 /*Menu Actions*/
+
+/*Tree View Key Event*/
+void MainWindow::slotKeyDelete()
+{
+    if(ui->treeView->currentIndex().isValid())
+        slotDelete();
+}
+
+void MainWindow::slotKeyEnter()
+{
+    if(ui->treeView->currentIndex().isValid())
+        slotStart();
+}
+/*Tree View Key Event*/

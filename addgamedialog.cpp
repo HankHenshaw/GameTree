@@ -34,7 +34,10 @@ void AddGameDialog::setNamePath(const QString &gameName, const QString &pathName
 
 void AddGameDialog::on_buttonBox_accepted()
 {
-    m_gameinfo.m_name = ui->lineEditName->text();
+    QString name = ui->lineEditName->text();
+    name.replace(0, 1, name.at(0).toUpper());
+//    m_gameinfo.m_name = ui->lineEditName->text();
+    m_gameinfo.m_name = name;
     m_gameinfo.m_path = ui->lineEditPath->text();
 }
 

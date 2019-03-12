@@ -303,7 +303,7 @@
     <message>
         <location filename="mainwindow.cpp" line="75"/>
         <source>Game Tree</source>
-        <translation>Дерево игр</translation>
+        <translation>Игровое Дерево</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="242"/>
@@ -313,7 +313,7 @@
     <message>
         <location filename="mainwindow.cpp" line="347"/>
         <source>GameTree</source>
-        <translation>Дерево Игр</translation>
+        <translation>Игровое Дерево</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="351"/>
