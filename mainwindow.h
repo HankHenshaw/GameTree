@@ -24,6 +24,8 @@
 #include <QDesktopServices>
 #include <QDesktopWidget>
 #include <QMimeData>
+#include <QDesktopWidget>
+#include <QScreen>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
