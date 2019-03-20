@@ -9,7 +9,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
-{
+{ 
     ui->setupUi(this);
     this->setWindowTitle("Game Tree");
     qInfo() << "Audioplayer initialization";
@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Создаем основную папку для контента
     m_dir = MainWindow::appPath();
+    m_dir.mkdir("Screenshots");
     m_dir.mkdir("Games");
     m_dir = MainWindow::appPath() + "/Games/";
 
@@ -128,11 +129,33 @@ MainWindow::MainWindow(QWidget *parent) :
     //Соединяем сигналы My Tree View, со слотами для обработки нажатия Enter и Delete
     connect(ui->treeView, &MyTreeView::signalKeyEnter, this, &MainWindow::slotKeyEnter);
     connect(ui->treeView, &MyTreeView::signalKeyDelete, this, &MainWindow::slotKeyDelete);
+
+    /*Screenshots*/
+    m_screens = QGuiApplication::screens();
+    if(!RegisterHotKey(HWND(winId()), 0, MOD_SHIFT, 112))
+        qWarning() << "Can't register hotkey SHIFT+F1";
+
+    for(int hotKeyNumber = 1; hotKeyNumber < m_screens.size() + 1; ++hotKeyNumber)
+    {
+        size_t keyNumber = 111 + static_cast<size_t>(hotKeyNumber);
+        if(!RegisterHotKey(HWND(winId()), hotKeyNumber, MOD_CONTROL, keyNumber))
+        {
+            QString warningStr = "Can't register hotkey CTRL+F";
+            warningStr.append(QString::number(hotKeyNumber));
+            qWarning() << warningStr;
+        }
+    }
+    /*Screenshots*/
 }
 
 MainWindow::~MainWindow()
 {
     saveSettings();
+    UnregisterHotKey(HWND(winId()), 0);
+    for(int i = 1; i < m_screens.size() + 1; ++i)
+    {
+            UnregisterHotKey(HWND(winId()), i);
+    }
     delete ui;
 }
 
@@ -2323,3 +2346,67 @@ void MainWindow::slotKeyEnter()
         slotStart();
 }
 /*Tree View Key Event*/
+
+/*Screenshots*/
+bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result)
+{
+    MSG *msg = static_cast<MSG*>(message);
+    if(msg->message == WM_HOTKEY)
+    {
+        QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex(); //mapToSource?
+        if(msg->wParam == 0)
+        {
+            QRect screenGeometry = qApp->primaryScreen()->virtualGeometry();
+            QPixmap screenPixmap = qApp->primaryScreen()->grabWindow(qApp->desktop()->winId(), screenGeometry.x(), screenGeometry.y(), screenGeometry.width(), screenGeometry.height());
+            QString fileName("screenshot_full_" + QDateTime::currentDateTime().toString("ddMMyy_HHmmss") + ".png");
+            if(!selectedIndex.isValid() || !selectedIndex.parent().isValid())
+            {
+                qDebug() << screenPixmap.save(m_appPath + "/screenshots/" + fileName);
+                qDebug() << m_appPath + "/Screenshots/" + fileName;
+            }
+            else if(!selectedIndex.parent().parent().isValid())
+            {
+                QString dirPath = m_appPath + "/Games/" + selectedIndex.data().toString().at(0) + '/' + selectedIndex.data().toString() + "/image/screenshots/";
+                qDebug() << screenPixmap.save(dirPath + fileName);
+            }
+            else
+            {
+                QString dirPath = m_appPath + "/Games/" + selectedIndex.parent().data().toString().at(0) + '/' + selectedIndex.parent().data().toString() + "/mods/" + selectedIndex.data().toString() + "/image/screenshots/";
+                qDebug() << screenPixmap.save(dirPath + fileName);
+            }
+            return true;
+        }
+        for(int hotKeyNumber = 1; hotKeyNumber < m_screens.size() + 1; ++hotKeyNumber)
+        {
+            QString str("screen_");
+            str.append(QString::number(hotKeyNumber));
+            str.append(".png");
+            if(msg->wParam == static_cast<uint>(hotKeyNumber))
+            {
+                QPixmap screen = m_screens.at(hotKeyNumber-1)->grabWindow(0);
+                QString fileName("screenshot_" + QString::number(hotKeyNumber) + QDateTime::currentDateTime().toString("ddMMyy_HHmmss") + ".png");
+                if(!selectedIndex.isValid() || !selectedIndex.parent().isValid())
+                {
+                    qDebug() << screen.save(m_appPath + "/Screenshots/" + fileName); //Добавить формат файла
+                }
+                else if(!selectedIndex.parent().parent().isValid())
+                {
+                    QString dirPath = m_appPath + "/Games/" + selectedIndex.data().toString().at(0) + '/' + selectedIndex.data().toString() + "/image/screenshots/";
+                    qDebug() << screen.save(dirPath + fileName);
+                }
+                else
+                {
+                    QString dirPath = m_appPath + "/Games/" + selectedIndex.parent().data().toString().at(0) + '/' + selectedIndex.parent().data().toString() + "/mods/" + selectedIndex.data().toString() + "/image/screenshots/";
+                    qDebug() << screen.save(dirPath + fileName);
+                }
+                return true;
+            }
+        }
+        return true; // или false
+    }
+    else
+    {
+        return QMainWindow::nativeEvent(eventType, message, result);
+    }
+}
+/*Screenshots*/

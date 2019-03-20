@@ -37,5 +37,12 @@
         <file>help/about.html</file>
         <file>help/ContextMenu3.png</file>
         <file>help/ContextMenu4.png</file>
+        <file>help/ContextButton.png</file>
+        <file>help/dragdrop.html</file>
+        <file>help/DragDrop1.png</file>
+        <file>help/DragDrop2.png</file>
+        <file>help/DragDrop3.png</file>
+        <file>help/DragDrop4.png</file>
+        <file>help/screenshot.html</file>
     </qresource>
 </RCC>

@@ -26,6 +26,7 @@
 #include <QMimeData>
 #include <QDesktopWidget>
 #include <QScreen>
+#include <windows.h>
 #include "treemodel.h"
 #include "addgamedialog.h"
 #include "addmoddialog.h"
@@ -65,6 +66,7 @@ protected:
     virtual void keyPressEvent(QKeyEvent *event) override;
     virtual void dragEnterEvent(QDragEnterEvent *event) override;
     virtual void dropEvent(QDropEvent *event) override;
+    virtual bool nativeEvent(const QByteArray &eventType, void *message, long *result) override;
 
 private slots:
     /*Audio Player Slots*/
@@ -146,6 +148,8 @@ private slots:
     void slotKeyDelete();
     void slotKeyEnter();
     /*Tree View Key Event*/
+
+
 private:
     Ui::MainWindow *ui;
 
@@ -226,6 +230,12 @@ private:
     /*Options*/
     Setting m_options;
     /*Options*/
+
+    /*Screenshots*/
+    QList<QScreen*> m_screens;
+    /*Screenshots*/
+
+    // QWidget interface
 };
 
 #endif // MAINWINDOW_H

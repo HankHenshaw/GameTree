@@ -24,6 +24,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11 warn_on
 
+LIBS += -lUser32
+
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
