@@ -9,6 +9,9 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     QStringList styles;
     styles.append(QStyleFactory::keys());
 
+    foreach(QString stl, styles)
+        qDebug() << stl;
+
     QDirIterator it(":/styles", QDirIterator::Subdirectories);
     while (it.hasNext()) {
         it.next();
@@ -102,15 +105,16 @@ void OptionsDialog::setSettings(const Setting &settings)
 
 void OptionsDialog::on_comboStylesBox_currentIndexChanged(int index)
 {
+    qDebug() << "Style Index:" << index;
     qApp->setStyleSheet(styleSheet());
     QApplication::setStyle(QStyleFactory::create(ui->comboStylesBox->itemText(2)));
-    if(index < 4)
+    if(index < 3)
     {
         QApplication::setStyle(QStyleFactory::create(ui->comboStylesBox->itemText(index)));
     }
     else
     {
-        QFile file(stylesPath.at(index - 4));
+        QFile file(stylesPath.at(index - 3));
         file.open(QFile::ReadOnly);
         QString str = QLatin1String(file.readAll());
         qApp->setStyleSheet(str);

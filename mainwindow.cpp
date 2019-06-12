@@ -436,6 +436,7 @@ void MainWindow::changeEvent(QEvent *event)
         ui->menuMenu->setTitle(tr("Menu"));
         ui->menuOption->setTitle(tr("Options"));
         ui->actionAbout->setText(tr("About"));
+        ui->actionSettings->setText(tr("Settings..."));
         ui->actionHelp->setText(tr("Help"));
         ui->actionQuit->setText(tr("Quit"));
         ui->actionEnglish->setText(tr("English"));
