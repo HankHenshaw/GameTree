@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtConcurrent>
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QTime>
@@ -38,6 +39,7 @@
 #include "optionsdialog.h"
 #include "helpdialog.h"
 #include "mytreeview.h"
+#include "aviwriter.h"
 
 namespace Ui {
 class MainWindow;
@@ -235,6 +237,21 @@ private:
     QList<QScreen*> m_screens;
     /*Screenshots*/
 
+    /*Screen Recording*/
+    QTime m_timer;
+    QVector<QImage> m_vecImage;
+    QVector<QFuture<QImage>> m_futureVecImage;
+    bool m_isRecordingDone;
+    int m_frames;
+    AVIWriter m_writer;
+    QImage m_frame;
+    QString m_outputDir;
+    int m_fps;
+    int m_lockedFps;
+    int m_shortcutNumber;
+
+    QImage takeFrame();
+    /*Screen Recording*/
     // QWidget interface
 };
 

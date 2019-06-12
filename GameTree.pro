@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql multimedia multimediawidgets
+QT       += core gui sql multimedia multimediawidgets concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,6 +27,7 @@ CONFIG += c++11 warn_on
 LIBS += -lUser32
 
 SOURCES += \
+    aviwriter.cpp \
         main.cpp \
         mainwindow.cpp \
     treemodel.cpp \
@@ -44,6 +45,7 @@ SOURCES += \
     mytreeview.cpp
 
 HEADERS += \
+    aviwriter.h \
         mainwindow.h \
     treemodel.h \
     treeitem.h \

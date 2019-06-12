@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>265</width>
-    <height>179</height>
+    <height>367</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,18 +21,18 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QComboBox" name="comboStylesBox"/>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="labelFullscreen">
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="checkBoxFullscreen">
      <property name="text">
       <string>Fullscreen</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QCheckBox" name="checkBoxFullscreen">
+   <item row="0" column="1">
+    <widget class="QComboBox" name="comboStylesBox"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="labelFullscreen">
      <property name="text">
       <string>Fullscreen</string>
      </property>
@@ -58,6 +58,20 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="labelMediaSHRate">
+        <property name="text">
+         <string>Rate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="checkBoxMediaSH">
+        <property name="text">
+         <string>Screenshots Slideshow</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="2">
        <widget class="QSpinBox" name="spinBoxCoversSH">
         <property name="specialValueText">
@@ -74,21 +88,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="checkBoxMediaSH">
-        <property name="text">
-         <string>Screenshots Slideshow</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="labelMediaSHRate">
-        <property name="text">
-         <string>Rate:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
+      <item row="2" column="2">
        <widget class="QSpinBox" name="spinBoxMediaSH">
         <property name="suffix">
          <string> sec</string>
@@ -101,7 +101,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="5" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -109,6 +109,79 @@
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBoxRecording">
+     <property name="title">
+      <string>Screen Recoding</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelThread">
+        <property name="text">
+         <string>Threads Amount</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSpinBox" name="spinBoxThread"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="labelQuality">
+        <property name="text">
+         <string>Custom Quality</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="checkBoxQuality">
+        <property name="text">
+         <string>Enable</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="labelQualityValue">
+        <property name="text">
+         <string>Quality</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="spinBoxQualityValue"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="labelCodec">
+        <property name="text">
+         <string>Codec</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="comboBoxCodec"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="checkBoxSetFps">
+        <property name="text">
+         <string>Set FPS</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QSpinBox" name="spinBoxSetFps"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="checkBoxLockFps">
+        <property name="text">
+         <string>Lock FPS</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QSpinBox" name="spinBoxLockFps"/>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

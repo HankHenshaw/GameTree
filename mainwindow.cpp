@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_dir = MainWindow::appPath();
     m_dir.mkdir("Screenshots");
     m_dir.mkdir("Games");
+    m_dir.mkdir("Video");
     m_dir = MainWindow::appPath() + "/Games/";
 
     //Путь к приложению
@@ -130,32 +131,65 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->treeView, &MyTreeView::signalKeyEnter, this, &MainWindow::slotKeyEnter);
     connect(ui->treeView, &MyTreeView::signalKeyDelete, this, &MainWindow::slotKeyDelete);
 
-    /*Screenshots*/
+    /*Screenshot & Screen Recording Shortcuts*/
     m_screens = QGuiApplication::screens();
-    if(!RegisterHotKey(HWND(winId()), 0, MOD_SHIFT, 112))
-        qWarning() << "Can't register hotkey SHIFT+F1";
-
-    for(int hotKeyNumber = 1; hotKeyNumber < m_screens.size() + 1; ++hotKeyNumber)
+    int hotKeyNumber = 0;
+    int keyCode = 112;
+    for(; hotKeyNumber < m_screens.size()*2 + 1; ++hotKeyNumber)
     {
-        size_t keyNumber = 111 + static_cast<size_t>(hotKeyNumber);
-        if(!RegisterHotKey(HWND(winId()), hotKeyNumber, MOD_CONTROL, keyNumber))
+        if(!hotKeyNumber)
         {
-            QString warningStr = "Can't register hotkey CTRL+F";
-            warningStr.append(QString::number(hotKeyNumber));
-            qWarning() << warningStr;
+            if(!RegisterHotKey(HWND(winId()), hotKeyNumber, MOD_SHIFT, 112))
+                qWarning() << "Can't register hotkey SHIFT+F1";
+        }
+        else if(hotKeyNumber <= m_screens.size())
+        {
+            if(!RegisterHotKey(HWND(winId()), hotKeyNumber, MOD_CONTROL, static_cast<uint>(keyCode+hotKeyNumber-1)))
+            {
+                QString warningStr = "Can't register hotkey CTRL+F";
+                warningStr.append(QString::number(hotKeyNumber));
+                qWarning() << warningStr;
+            }
+        }
+        else
+        {
+            if(!RegisterHotKey(HWND(winId()), hotKeyNumber, MOD_SHIFT, static_cast<uint>(keyCode+hotKeyNumber-m_screens.size())))
+            {
+                QString warningStr = "Can't register hotkey SHIFT+F";
+                warningStr.append(QString::number(hotKeyNumber-m_screens.size()));
+                qWarning() << warningStr;
+            }
         }
     }
-    /*Screenshots*/
+    /*Screenshot & Screen Recording Shortcuts*/
+
+    /*Screen Recording*/
+    m_isRecordingDone = true;
+    m_frames = 0;
+    m_fps = 0;
+    m_lockedFps = 0;
+    m_outputDir = m_appPath + "/Video/";
+
+    for(int i = 0; i < QThread::idealThreadCount(); ++i)
+    {
+        m_vecImage.push_back(QImage());
+        m_futureVecImage.push_back(QFuture<QImage>());
+    }
+    /*Screen Recording*/
 }
 
 MainWindow::~MainWindow()
 {
     saveSettings();
     UnregisterHotKey(HWND(winId()), 0);
-    for(int i = 1; i < m_screens.size() + 1; ++i)
+    for(int i = 1; i < m_screens.size()*2+ 1; ++i)
     {
             UnregisterHotKey(HWND(winId()), i);
     }
+//    for(int i = 100; i < m_screens.size(); ++i)
+//    {
+//            UnregisterHotKey(HWND(winId()), i);
+//    }
     delete ui;
 }
 
@@ -190,6 +224,15 @@ void MainWindow::loadSettings()
     m_options.mediaSlideshowRate = m_settings->value("Media Slideshow Rate").toInt();
     m_options.styleNumber = m_settings->value("Style Number").toInt();
     m_options.language = m_settings->value("Language").toString();
+    m_options.threadCount = m_settings->value("Threads Number").toInt();
+    m_options.isCustomQualityEnabled = m_settings->value("Custom Frame Quality").toBool();
+    m_options.frameQuality = m_settings->value("Frame Quality").toInt();
+    m_options.codec = m_settings->value("Codec FourCC").toString();
+    m_options.codecIndex = m_settings->value("Codec Index").toInt();
+    m_options.isFpsSetEnabled = m_settings->value("Set FPS Enabled").toBool();
+    m_options.fpsSet = m_settings->value("FPS Set Value").toInt();
+    m_options.isFpsLockEnabled = m_settings->value("Lock FPS Enabled").toBool();
+    m_options.fpsLock = m_settings->value("Fps Lock Value").toInt();
     m_settings->endGroup();
 
     m_settings->beginGroup(objectName());
@@ -216,6 +259,15 @@ void MainWindow::saveSettings()
     m_settings->setValue("Media Slideshow Rate", m_options.mediaSlideshowRate);
     m_settings->setValue("Style Number", m_options.styleNumber);
     m_settings->setValue("Language", m_options.language);
+    m_settings->setValue("Threads Number", m_options.threadCount);
+    m_settings->setValue("Custom Frame Quality", m_options.isCustomQualityEnabled);
+    m_settings->setValue("Frame Quality", m_options.frameQuality);
+    m_settings->setValue("Codec FourCC", m_options.codec);
+    m_settings->setValue("Codec Index", m_options.codecIndex);
+    m_settings->setValue("Set FPS Enabled", m_options.isFpsSetEnabled);
+    m_settings->setValue("FPS Set Value", m_options.fpsSet);
+    m_settings->setValue("Lock FPS Enabled", m_options.isFpsLockEnabled);
+    m_settings->setValue("Fps Lock Value", m_options.fpsLock);
     m_settings->endGroup();
 
     m_settings->beginGroup(objectName());
@@ -2347,12 +2399,13 @@ void MainWindow::slotKeyEnter()
 }
 /*Tree View Key Event*/
 
-/*Screenshots*/
+/*Screenshots & Screen Recording*/
 bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result)
 {
     MSG *msg = static_cast<MSG*>(message);
     if(msg->message == WM_HOTKEY)
     {
+        qDebug() << "SC Number" << msg->wParam;
         QModelIndex selectedIndex = ui->treeView->selectionModel()->currentIndex(); //mapToSource?
         if(msg->wParam == 0)
         {
@@ -2376,30 +2429,188 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *r
             }
             return true;
         }
-        for(int hotKeyNumber = 1; hotKeyNumber < m_screens.size() + 1; ++hotKeyNumber)
+        if(msg->wParam <= static_cast<uint>(m_screens.size()))
         {
-            QString str("screen_");
-            str.append(QString::number(hotKeyNumber));
-            str.append(".png");
-            if(msg->wParam == static_cast<uint>(hotKeyNumber))
+            for(int hotKeyNumber = 1; hotKeyNumber < m_screens.size() + 1; ++hotKeyNumber)
             {
-                QPixmap screen = m_screens.at(hotKeyNumber-1)->grabWindow(0);
-                QString fileName("screenshot_" + QString::number(hotKeyNumber) + QDateTime::currentDateTime().toString("ddMMyy_HHmmss") + ".png");
-                if(!selectedIndex.isValid() || !selectedIndex.parent().isValid())
+                QString str("screen_");
+                str.append(QString::number(hotKeyNumber));
+                str.append(".png");
+                if(msg->wParam == static_cast<uint>(hotKeyNumber))
                 {
-                    qDebug() << screen.save(m_appPath + "/Screenshots/" + fileName); //Добавить формат файла
+                    QPixmap screen = m_screens.at(hotKeyNumber-1)->grabWindow(0);
+                    QString fileName("screenshot_" + QString::number(hotKeyNumber) + QDateTime::currentDateTime().toString("ddMMyy_HHmmss") + ".png");
+                    if(!selectedIndex.isValid() || !selectedIndex.parent().isValid())
+                    {
+                        qDebug() << screen.save(m_appPath + "/Screenshots/" + fileName); //Добавить формат файла
+                    }
+                    else if(!selectedIndex.parent().parent().isValid())
+                    {
+                        QString dirPath = m_appPath + "/Games/" + selectedIndex.data().toString().at(0) + '/' + selectedIndex.data().toString() + "/image/screenshots/";
+                        qDebug() << screen.save(dirPath + fileName);
+                    }
+                    else
+                    {
+                        QString dirPath = m_appPath + "/Games/" + selectedIndex.parent().data().toString().at(0) + '/' + selectedIndex.parent().data().toString() + "/mods/" + selectedIndex.data().toString() + "/image/screenshots/";
+                        qDebug() << screen.save(dirPath + fileName);
+                    }
+                    return true;
                 }
-                else if(!selectedIndex.parent().parent().isValid())
+            }
+        }
+        else
+        {
+            if(!m_isRecordingDone)
+                m_isRecordingDone = true;
+            else
+            {
+                for(int hotKeyNumber = m_screens.size()+1; hotKeyNumber <= m_screens.size()*2; ++hotKeyNumber)
                 {
-                    QString dirPath = m_appPath + "/Games/" + selectedIndex.data().toString().at(0) + '/' + selectedIndex.data().toString() + "/image/screenshots/";
-                    qDebug() << screen.save(dirPath + fileName);
+                    qDebug() << "Screen Recording";
+                    if(msg->wParam == static_cast<uint>(hotKeyNumber))
+                    {
+                        m_isRecordingDone = false;
+
+                        m_shortcutNumber = hotKeyNumber-m_screens.size();
+
+                        if(m_options.isFpsSetEnabled)
+                            m_fps = m_options.fpsSet;
+                        if(m_options.isFpsLockEnabled)
+                            m_fps = m_options.fpsLock;
+
+                        int numberOfThreads = m_options.threadCount;
+                        int quality = -1;
+                        if(m_options.isCustomQualityEnabled)
+                            quality = m_options.frameQuality;
+
+                        qDebug() << "Threads Number:" << numberOfThreads;
+
+                        for(int i = 0; i < numberOfThreads; ++i)
+                            m_futureVecImage[i] = QtConcurrent::run(this, &MainWindow::takeFrame);
+
+                        m_writer.start(static_cast<uint>(m_screens.at(m_shortcutNumber-1)->size().width()), static_cast<uint>(m_screens.at(m_shortcutNumber-1)->size().height()), m_outputDir, m_fps, m_options.codec.toUtf8().data());
+                        if(m_lockedFps)
+                        {
+                            qDebug() << "Locked FPS Mode";
+                            if(numberOfThreads > 1)
+                            {
+                                int period = 1000/m_lockedFps;
+                                int realPeriod = 0;
+                                int totalTime = 0;
+                                int iteration = 0;
+                                m_timer.start();
+                                while(!m_isRecordingDone)
+                                {
+                                    for(int i = 0; i < numberOfThreads; ++i)
+                                    {
+                                        ++iteration;
+                                        realPeriod = m_timer.elapsed();
+                                        m_timer.start();
+                                        totalTime += realPeriod;
+                                        if(totalTime < period*iteration)
+                                        {
+                                            ulong sleep = period*iteration - totalTime;
+                                            QThread::msleep(sleep);
+                                        }
+
+                                        m_vecImage[i] = m_futureVecImage.at(i).result();
+                                        m_writer.addFrame(&m_vecImage[i], quality);
+
+                                        m_futureVecImage[((numberOfThreads+i-1)%numberOfThreads)] = QtConcurrent::run(this, &MainWindow::takeFrame);
+                                        ++m_frames;
+
+                                        qApp->processEvents();
+                                    }
+                                }
+                                qDebug() << "Time:" << m_timer.elapsed();
+                                qDebug() << "Frames:" << m_frames;
+                                qDebug() << "Total Time: " << totalTime;
+                                float time = totalTime/1000;
+                                qDebug() << "FPS:" << m_frames/time;
+                                m_writer.stop(time, m_frames);
+                            }
+                            else if(numberOfThreads == 1)
+                            {
+                                int period = 1000/m_lockedFps;
+                                int realPeriod = 0;
+                                int totalTime = 0;
+                                int iteration = 0;
+                                m_timer.start();
+                                while (!m_isRecordingDone)
+                                {
+                                    ++iteration;
+                                    realPeriod = m_timer.elapsed();
+                                    m_timer.start();
+                                    totalTime += realPeriod;
+                                    if(totalTime < period*iteration)
+                                    {
+                                        ulong sleep = period*iteration-totalTime;
+                                        QThread::msleep(sleep);
+                                    }
+                                    m_frame = m_screens.at(m_shortcutNumber-1)->grabWindow(0).toImage();
+                                    m_writer.addFrame(&m_frame, quality);
+
+                                    ++m_frames;
+
+                                    qApp->processEvents();
+                                }
+                                qDebug() << "Time:" << m_timer.elapsed();
+                                qDebug() << "Frames:" << m_frames;
+                                qDebug() << "Total Time: " << totalTime;
+                                float time = totalTime/1000;
+                                qDebug() << "FPS:" << m_frames/time;
+                                m_writer.stop(time, m_frames);
+                            }
+                        }
+                        else
+                        {
+                            qDebug() << "Not Locked Mode";
+                            if(numberOfThreads > 1)
+                            {
+                                m_timer.start();
+                                while(!m_isRecordingDone)
+                                {
+                                    for(int i = 0; i < numberOfThreads; ++i)
+                                    {
+                                        m_vecImage[i] = m_futureVecImage.at(i).result();
+                                        m_writer.addFrame(&m_vecImage[i], quality);
+
+                                        m_futureVecImage[((numberOfThreads+i-1)%numberOfThreads)] = QtConcurrent::run(this, &MainWindow::takeFrame);
+                                        ++m_frames;
+
+                                        qApp->processEvents();
+                                    }
+                                }
+                                qDebug() << "Time:" << m_timer.elapsed();
+                                qDebug() << "Frames:" << m_frames;
+
+                                float time = m_timer.elapsed()/1000;
+                                qDebug() << "FPS:" << m_frames/time;
+                                m_writer.stop(time, m_frames);
+                            }
+                            else if(numberOfThreads == 1)
+                            {
+                                m_timer.start();
+                                while(!m_isRecordingDone)
+                                {
+                                    m_frame = m_screens.at(m_shortcutNumber-1)->grabWindow(0).toImage();
+                                    m_writer.addFrame(&m_frame, quality);
+
+                                    ++m_frames;
+
+                                    qApp->processEvents();
+                                }
+                                qDebug() << "Time:" << m_timer.elapsed();
+                                qDebug() << "Frames:" << m_frames;
+
+                                float time = m_timer.elapsed()/1000;
+                                qDebug() << "FPS:" << m_frames/time;
+                                m_writer.stop(time, m_frames);
+                            }
+                        }
+                    }
+                    m_frames = 0;
                 }
-                else
-                {
-                    QString dirPath = m_appPath + "/Games/" + selectedIndex.parent().data().toString().at(0) + '/' + selectedIndex.parent().data().toString() + "/mods/" + selectedIndex.data().toString() + "/image/screenshots/";
-                    qDebug() << screen.save(dirPath + fileName);
-                }
-                return true;
             }
         }
         return true; // или false
@@ -2409,4 +2620,13 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *r
         return QMainWindow::nativeEvent(eventType, message, result);
     }
 }
-/*Screenshots*/
+/*Screenshots & Screen Recording*/
+
+/*Screen Recording*/
+QImage MainWindow::takeFrame()
+{
+    //qDebug() << "ThreadID" << QThread::currentThreadId();
+    m_frame = m_screens.at(m_shortcutNumber-1)->grabWindow(0).toImage();
+    return m_frame;
+}
+/*Screen Recording*/
