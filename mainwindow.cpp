@@ -2462,7 +2462,11 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *r
         else
         {
             if(!m_isRecordingDone)
+            {
                 m_isRecordingDone = true;
+                qApp->setWindowIcon(QIcon(":/menu/icons/tree_64.png"));
+                m_trayIcon->setIcon(QPixmap(":/menu/icons/tree_24.png"));
+            }
             else
             {
                 for(int hotKeyNumber = m_screens.size()+1; hotKeyNumber <= m_screens.size()*2; ++hotKeyNumber)
@@ -2470,6 +2474,9 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *r
                     qDebug() << "Screen Recording";
                     if(msg->wParam == static_cast<uint>(hotKeyNumber))
                     {
+                        qApp->setWindowIcon(QIcon(":/menu/icons/tree_rec_64.png"));
+                        m_trayIcon->setIcon(QPixmap(":/menu/icons/tree_rec_24.png"));
+
                         m_isRecordingDone = false;
 
                         m_shortcutNumber = hotKeyNumber-m_screens.size();

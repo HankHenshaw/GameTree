@@ -20,6 +20,8 @@
         <file>icons/tree_64.ico</file>
         <file>icons/settings.png</file>
         <file>icons/home.png</file>
+        <file>icons/tree_rec_24.png</file>
+        <file>icons/tree_rec_64.png</file>
     </qresource>
     <qresource prefix="/stylesicons">
         <file>styleicons/checkbox.png</file>
