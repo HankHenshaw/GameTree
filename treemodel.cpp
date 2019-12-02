@@ -2,7 +2,7 @@
 
 TreeModel::TreeModel(QMap<QChar, int> &lettersList, QMap<QString, QSet<QString> > &gamesList, QObject *parent) : QAbstractItemModel(parent)
 {
-    QString rootData("Title");
+    QString rootData(tr("Title"));
     m_rootItem = new TreeItem(rootData);
 
     //Устнановка данных

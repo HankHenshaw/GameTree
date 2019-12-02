@@ -2,6 +2,7 @@ QWidget{
     background: qlineargradient(
     x1:0, y1:0, x2:0, y2:1, stop:0 #afd30f, stop:1 #afd30f);
 }
+
 QPushButton{
     background: qlineargradient(
     x1:0, y1:0, x2:0, y2:1, stop:0 #b2d511, stop:1 #96b210);
@@ -31,14 +32,16 @@ QToolButton::hover{
     background: qlineargradient(
     x1:0, y1:0, x2:0, y2:1, stop:0 #cde36c, stop:1 #96b210);
 }
-QComboBox{
-    background: qlineargradient(
-    x1:0, y1:0, x2:0, y2:1, stop:0 #b2d511, stop:1 #96b210);
+
+QComboBox {
+    background: #b2d511
 }
+
 QLineEdit{
     background: white;
     border: 1px solid black;
 }
+
 QSpinBox{
     background: qlineargradient(
     x1:0, y1:0, x2:0, y2:1, stop:0 #b2d511, stop:1 #96b210);
@@ -96,7 +99,24 @@ QProgressBar {
     text-align: center;
 }
 
+QCheckBox::hover {
+    background-color: #05B8CC;
+}
+
+QCheckBox::indicator
+{
+        width:15px;
+        height:15px;
+}
+
+QCheckBox::indicator::unchecked {
+    background-color: #05B8CC;
+    border: 1px solid black;
+}
+
 QCheckBox::indicator:checked {
+    background-color: #05B8CC;
+    border: 1px solid black;
     image: url(:/stylesicons/styleicons/checked.png);
 }
 
@@ -104,6 +124,16 @@ QTabWidget::pane {
     border: 1px solid black;
     margin-top: 3px;
     margin-bottom: 1px;
+}
+
+QTabBar::tab
+{
+    background: wheat;
+}
+
+QTabBar::tab:selected
+{
+    background: #05B8CC;
 }
 
 QMenu {

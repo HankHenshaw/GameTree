@@ -616,4 +616,12 @@ From https://github.com:
         <translation>Форма</translation>
     </message>
 </context>
+<context>
+    <name>TreeModel</name>
+    <message>
+        <location filename="treemodel.cpp" line="5"/>
+        <source>Title</source>
+        <translation>Название</translation>
+    </message>
+</context>
 </TS>
