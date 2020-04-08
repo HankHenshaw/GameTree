@@ -243,7 +243,6 @@ private:
     QVector<QFuture<QImage>> m_futureVecImage;
     bool m_isRecordingDone;
     int m_frames;
-    AVIWriter m_writer;
     QImage m_frame;
     QString m_outputDir;
     int m_fps;

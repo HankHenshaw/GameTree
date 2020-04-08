@@ -2477,6 +2477,8 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *r
                         qApp->setWindowIcon(QIcon(":/menu/icons/tree_rec_64.png"));
                         m_trayIcon->setIcon(QPixmap(":/menu/icons/tree_rec_24.png"));
 
+                        AVIWriter m_writer;
+
                         m_isRecordingDone = false;
 
                         m_shortcutNumber = hotKeyNumber-m_screens.size();
